@@ -18,9 +18,9 @@ your local machine.
 
 ( Make sure **git** is already installed )
 
-* [git for Windows](http://code.google.com/p/msysgit/)
+* [git for Windows](http://msysgit.github.io)
 
-* [git for MacOS](http://code.google.com/p/git-osx-installer)
+* [git for MacOS](http://sourceforge.net/projects/git-osx-installer/)
 
 + Using "cd" to navigate to the folder where you want to place your
 repository
@@ -28,8 +28,7 @@ repository
 + Then, copy and paste the commands below into your terminal or shell
 
 
-![alt
-text](https://bitbucket.org/litao_shen/swen30007_group9/raw/d90135153ea8f5cf40c187dfb666560c97632ead/clone_repo.png
+![alt text](https://bitbucket.org/litao_shen/swen30007_group9/raw/d90135153ea8f5cf40c187dfb666560c97632ead/clone_repo.png
 "clone repo instructions")
 
 ** git clone

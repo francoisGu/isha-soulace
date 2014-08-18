@@ -3,7 +3,7 @@
 This is the markdown cheatsheet which is useful when you want to edit
 markdown file.
 
-[markdown cheatsheet](https://github.com/adam-p/markdown-here.wiki.git)
+[markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ## description of project
 

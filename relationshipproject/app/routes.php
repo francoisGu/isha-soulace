@@ -18,5 +18,10 @@ Route::get('/hello', function()
 
 Route::get('/', function()
 {
-	return View::make('offcanvas');
+	return View::make('home');
+});
+
+Route::get('/about', function()
+{
+	return View::make('about');
 });

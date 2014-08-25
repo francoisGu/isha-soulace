@@ -27,22 +27,22 @@
           </button>
           <a class="navbar-brand" href="/">Isha SoulAce</a>
         </div>
-        
+        <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
             <li><a href="about">About</a></li>
             <li><a href="#donate">Donate</a></li>
             <li><a href="#sponsor">Sponsor</a></li>
             <li><a href="#review">Review</a></li>
           </ul>
-        <div class="navbar-collapse collapse">
+
           <form class="navbar-form navbar-right" role="form">
-          <div class="form-group">
-            <input type="text" placeholder="Email" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Password" class="form-control">
-          </div>
+			<div class="form-group">
+			  <input type="text" placeholder="Email" class="form-control">
+			</div>
+			<div class="form-group">
+			  <input type="password" placeholder="Password" class="form-control">
+			</div>
             <button type="submit" class="btn btn-success">Sign in</button>
             <button type="submit" class="btn btn-success">Register</button>
           </form>

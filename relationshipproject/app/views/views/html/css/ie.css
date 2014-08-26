@@ -1,0 +1,28 @@
+#page-header .navbar-form,
+.slider-home .flex-control-nav,
+#main-content > .container .area-1 > .main-top .featured-item,
+.last-video .kp-media,
+.sidebar-bottom .newsletter .navbar-form,
+.sidebar-bottom .follow-us li a,
+.pagination ul li a,
+.sidebar .archives li,
+.single-page .info-author .pull-left, .about-us-sidebar .info-author .pull-left,
+.single-page .info-author .pull-left p a, .about-us-sidebar .info-author .pull-left p a,
+.single-page .detail-post .detail-top,
+.single-page .kp-tags,
+.single-page .kp-comment .parent-cm li .comment-detail header,
+.single-page .kp-comment .parent-cm li .comment-detail > p,
+.single-page .form-reply .submit-form,
+.single-page .related-articles .prev,
+.single-page .related-articles .next,
+#protfolios-2 li a .caption .icon-search, #protfolios-3 li a .caption .icon-search,
+.single-page .kp-tags strong
+
+ {
+	behavior: url(js/PIE.htc);
+}
+
+.single-page .form-reply #name-input,
+.single-page .form-reply #email-input {
+  height: 20px;
+}

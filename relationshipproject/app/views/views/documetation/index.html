@@ -1,0 +1,561 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<title>Blog Responsive HTML5 template documentation</title>
+   <!-- Framework CSS -->
+<link rel="stylesheet" href="style.css" media="screen" />
+<link href="assets/src/prettify.css" type="text/css" rel="stylesheet" />
+    <script src="assets/src/prettify.js" type="text/javascript"></script>
+   <style type="text/css" media="screen">
+      p, table, hr, .box { margin-bottom:10px; }
+      .box p { margin-bottom:10px; }
+   </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+   <h1 align="center">&ldquo;Blog - Responsive HTML5 template&rdquo;</h1>
+   <p class="subtitle">Created: 22/March/2013<br>
+               By: KOPATHEME<br>
+               Email: <a href="mailto:kopatheme@gmail.com">kopatheme@gmail.com</a><br>
+               Website: <a href="http://kopatheme.com">http://kopatheme.com</a><br>
+               Support: <a href="http://kopatheme.com/forum">http://kopatheme.com/forum</a></p>
+   <div class="separater"></div>
+      <h2 id="toc" class="alt">Table of Contents</h2>
+      <ol class="alpha">
+         <li><a href="#FontUsage">Special Note for Fonts usage</a></li>
+         <li><a href="#htmlStructure">HTML Structure</a></li>
+         <li><a href="#cssFiles">CSS Files and Structure</a></li>
+         <li><a href="#javascript">JavaScript</a></li>
+         <li><a href="#credits">Sources and Credits</a></li>         
+      </ol>
+      <div class="separater"></div>
+</div>
+<div class="wrapper">
+
+   <h3 id="FontUsage"><strong>A)Special Note for Fonts usage</strong> - <a href="#toc">top</a></h3>
+   <p>Please read this important note before working with this template.</p>
+         <p>This template uses Font Icomoon to display various icons. It is free! However, we don't have rights to distribute the Font so you need to download the font by yourself.</p>
+         <p>Follows these steps to add Font Icomoon kit to the template:</p>
+         <ol>
+            <li><a href="http://icomoon.io/app/" target="_blank" style = "color:red">Click here</a> to visit Font download site</li>
+            
+            <li>Unzip the dowloaded file and copy following files to "/font" folder of <strong>"Magazine"</strong> template:
+               <ol>              
+                  <li>icomoon.eot</li>
+                  <li>icomoon.svg</li>
+                  <li>icomoon.ttf</li>
+                  <li>icomoon.woff</li>
+               </ol>
+            </li>
+         </ol>
+</div>
+<div class="wrapper">
+<h3 id="htmlStructure"><strong>B) HTML Structure</strong> - <a href="#toc">top</a></h3>
+<h5>B. 1.1) Home page</h5>
+<p>Home page is divided into following main parts: </p>
+    <ol>
+      <li><strong>#page-header</strong></li>
+      <li><strong>#slider-home</strong></li>
+      <li><strong>#main-content</strong></li>
+      <li><strong>#page-footer</strong></li>
+   </ol>
+    <p>Here is the general structure.</p>
+    <pre class="prettyprint lines">
+
+         
+    &ltbody class="kp-home"&gt
+        
+         &ltheader id="page-header"&gt
+         
+                &ltdiv id="header-top"&gt
+                    [LOGO]
+                &lt/div&gt&lt!--header-top--&gt
+
+                &ltnav class="navbar"&gt
+                    [MAIN MENU]
+
+                    [SEARCH BOX]
+                &lt/nav&gt
+                &lt!-- navbar --&gt
+                
+            &lt/header&gt&lt!--page-header--&gt
+            &ltdiv class="slider-home"&gt
+
+                [SLIDE CONTENT]
+        
+            &lt/div&gt
+            &lt!-- slider-home --&gt
+            
+            &ltdiv id="main-content"&gt
+                
+                &ltdiv class="main-top"&gt
+
+                    [HEAD LINE]
+
+                &lt/div&gt&lt!--"main-top--&gt
+                
+                &ltdiv class="container"&gt
+                    &ltdiv class="widget area-1"&gt
+                        &ltdiv class="main-top clearfix"&gt
+
+                            [WIDGET]                       
+                           
+                        &lt/div&gt
+                        &lt!-- main-top --&gt
+                    &lt/div&gt&lt!--widget--&gt
+                    &ltdiv class="main-content-bottom"&gt
+
+                            [WIDGET]
+
+                            [WIDGET]
+
+                        
+                    &lt/div&gt
+                    &lt!-- main-content-middle-bottom --&gt
+                &lt/div&gt
+                &lt!-- container --&gt
+                &ltaside class="sidebar-bottom"&gt
+
+                        [WIDGET]
+
+                        [WIDGET]
+
+                        [WIDGET]
+
+                        [WIDGET]
+
+                &lt/aside&gt
+                &lt!-- sidebar --&gt
+            &lt/div&gt
+            &lt!--main-content--&gt
+            
+
+            
+            &ltfooter id="page-footer" class="container"&gt
+                
+                    [WIDGET]
+                    
+                    [COPYRIGHT]
+                               
+            &lt/footer&gt&lt!--page-footer--&gt
+
+    </pre>  
+        <div class="separater "></div>
+
+<h6>Slider</h6>
+    <p>The template uses Flex slider jQuery plugin for Home page slider. Here is the general structure.<p/>
+    <pre class="prettyprint lines">  
+      &ltdiv class="widget slider-home"&gt
+          &ltsection class="slider"&gt
+              &ltdiv class="flexslider"&gt
+                  &ltul class="slides"&gt
+                      
+                      &ltli&gt
+                      [SLIDE CONTENT]                                 
+                      &lt/li&gt
+                      &ltli&gt
+                      [SLIDE CONTENT]                            
+                      &lt/li&gt
+                      &ltli&gt
+                      [SLIDE CONTENT]                                    
+                      &lt/li&gt
+                      &ltli&gt
+                      [SLIDE CONTENT]                                    
+                      &lt/li&gt
+
+                  &lt/ul&gt
+              &lt/div&gt
+          &lt/section&gt
+      &lt/div&gt
+      &lt!-- slider-home --&gt
+    </pre>    
+        <div class="separater"></div>
+        
+        <h5>Sidebars</h5>
+    <p>There are left sidebar containts widgets. Here is general structure of sidebars and widgets:</p>
+        
+    <pre class="prettyprint lines">
+      &ltaside class="sidebar-bottom container"&gt
+
+              &ltdiv&gt
+                  [WIDGET]
+              &lt/div&gt
+
+              &ltdiv&gt
+                  [WIDGET]                         
+              &lt/div&gt
+
+              &ltdiv&gt
+                  [WIDGET]
+              &lt/div&gt
+              &ltdiv&gt
+                  [WIDGET]
+              &lt/div&gt
+
+      &lt/aside&gt
+    </pre>  
+
+<h5>B.1.2) Sub pages with sidebar</h5>    
+    <p>Here is general HTML structure of the sub page with right sidebar</p>
+    <pre class="prettyprint lines">
+
+          &ltbody class="kp-home"&gt
+        
+         &ltheader id="page-header"&gt
+         
+                &ltdiv id="header-top"&gt
+                    [LOGO]
+                &lt/div&gt&lt!--header-top--&gt
+
+                &ltnav class="navbar"&gt
+                    [MAIN MENU]
+
+                    [SEARCH BOX]
+                &lt/nav&gt
+                &lt!-- navbar --&gt
+                
+            &lt/header&gt&lt!--page-header--&gt
+                       
+            &ltdiv id="main-content"&gt
+                   
+                &ltdiv class="main-col"&gt
+
+                    [WIDGET]
+                    
+                &lt/div&gt
+                &lt!-- main-col --&gt
+      
+                &ltdiv class="sidebar"&gt
+
+                    [WIDGET]
+
+                    [WIDGET]
+
+                    [WIDGET]
+
+                &lt/div&gt
+                &lt!-- sidebar --&gt                   
+                    
+                [WIDGET]
+                
+                &ltaside class="sidebar-bottom container"&gt
+
+                      &ltdiv&gt
+                          [WIDGET]
+                      &lt/div&gt
+
+                      &ltdiv&gt
+                          [WIDGET]                         
+                      &lt/div&gt
+
+                      &ltdiv&gt
+                          [WIDGET]
+                      &lt/div&gt
+                      &ltdiv&gt
+                          [WIDGET]
+                      &lt/div&gt
+
+                &lt/aside&gt
+                &lt!-- sidebar --&gt
+            &lt/div&gt
+            &lt!--main-content--&gt
+            
+
+            
+            &ltfooter id="page-footer"&gt
+
+                [WIDGET]
+
+                [COPYRIGHT]                
+
+            &lt/footer&gt&lt!--page-footer--&gt
+        
+        </pre>
+<h5>B.1.3) Sub pages without sidebar (full width page)</h5>   
+    <p>Here is general HTML structure of the sub page widthout sidebar</p>
+    <pre class="prettyprint lines">
+
+          &ltbody class="kp-home"&gt
+        
+         &ltheader id="page-header"&gt
+         
+                &ltdiv id="header-top"&gt
+                    [LOGO]
+                &lt/div&gt&lt!--header-top--&gt
+
+                &ltnav class="navbar"&gt
+                    [MAIN MENU]
+
+                    [SEARCH BOX]
+                &lt/nav&gt
+                &lt!-- navbar --&gt
+                
+            &lt/header&gt&lt!--page-header--&gt
+                       
+            &ltdiv id="main-content"&gt
+                   
+                [WIDGET]
+                
+                &ltaside class="sidebar-bottom container"&gt
+
+                      &ltdiv&gt
+                          [WIDGET]
+                      &lt/div&gt
+
+                      &ltdiv&gt
+                          [WIDGET]                         
+                      &lt/div&gt
+
+                      &ltdiv&gt
+                          [WIDGET]
+                      &lt/div&gt
+                      &ltdiv&gt
+                          [WIDGET]
+                      &lt/div&gt
+
+                &lt/aside&gt
+                &lt!-- sidebar --&gt
+            &lt/div&gt
+            &lt!--main-content--&gt
+            
+
+            
+            &ltfooter id="page-footer"&gt
+
+                [WIDGET]
+
+                [COPYRIGHT]                
+
+            &lt/footer&gt&lt!--page-footer--&gt      
+        
+        </pre>
+        <h5>B.1.4) Elements</h5>
+    <p>All of elements can be found in the <strong>elements.html</strong> file.</p>
+    
+</div><!--wrapper-->
+<div class="wrapper">
+<h3 id="cssFiles"><strong>B) CSS Files and Structure</strong> - <a href="#toc">top</a></h3>
+<p>This theme uses <strong>style.css</strong> file as main CSS file and other additional css files located at css folder.</p>
+    <h6>style.css</h6>
+    <p>Main CSS files in this theme is style.css that contains all of specific stylings for the theme.The file is separated into sections using labels as follows:</p> 
+
+<pre class="prettyprint lines">   
+/* =========================================================
+Common styles
+============================================================ */
+
+[SOME CODES]
+
+/* =========================================================
+  Columns
+============================================================ */
+
+[SOME CODES]
+
+/* =========================================================
+  Header
+============================================================ */
+
+[SOME CODES]
+
+/* =========================================================
+  Slider  
+============================================================ */
+
+[SOME CODES]
+
+/* =========================================================
+  Main content 
+============================================================ */
+
+[SOME CODES]
+
+/* =========================================================
+  Sidebar
+============================================================ */
+
+[SOME CODES]
+
+/* =========================================================
+  Footer
+============================================================ */
+
+[SOME CODES]
+
+/* =========================================================
+    Blog page
+============================================================ */
+
+    [SOME CODES]
+
+/* =========================================================
+    Blog detail
+============================================================ */
+    
+    [SOME CODES]
+
+/* =========================================================
+    about
+============================================================ */
+    
+    [SOME CODES]
+
+/* =========================================================
+    protfolios
+============================================================ */
+    
+    [SOME CODES]
+
+
+/* =========================================================
+    error-404
+============================================================ */
+
+    [SOME CODES]
+
+
+</pre>
+<p>If you would like to edit a specific section of the site, simply find the appropriate label in the CSS file, and then scroll down until you find the appropriate style that needs to be edited.</p> 
+    <h6>responsive.css</h6> 
+    <p>responsive.css contains styling for media queries that allows us to tailor to different resolutions and devices without changing the content. The file is separated into sections as follows:</p>
+    <pre class="prettyprint lines"> 
+
+@media only screen and (min-width: 1024px) and (max-width: 1080px) {
+    [SOME CODE]
+}
+
+@media only screen and (min-width: 980px) and (max-width: 1023px) {
+    [SOME CODE]
+}
+
+@media only screen and (min-width: 900px) and (max-width: 979px) {
+    [SOME CODE]
+}
+
+@media only screen and (min-width: 800px) and (max-width: 899px) {
+    [SOME CODE]
+}
+
+@media only screen and (min-width: 768px) and (max-width: 799px) {
+    [SOME CODE]
+}
+
+@media only screen and (min-width: 640px) and (max-width: 767px) {
+    [SOME CODE]
+}
+
+@media only screen and (min-width: 600px) and (max-width: 639px) {
+    [SOME CODE]
+}
+
+@media only screen and (min-width: 480px) and (max-width: 599px) {
+    [SOME CODE]
+}
+
+@media only screen and (max-width: 479px) {
+    [SOME CODE]
+}
+
+
+   </pre> 
+   <p>If you would like to edit styling of the specific device width, simply find the appropriate label in the <strong>responsive.css</strong> file, and then scroll down until you find the appropriate style that needs to be edited.</p> 
+    <h4>Additional css files at css folder</h4>
+    <ol>
+      
+      <li><strong>prettyPhoto.css</strong> - style for prettyphoto jQuery plugin that we use for flickr feed at the footer of pages
+      </li>
+      <li><strong>flexslider.css</strong> - style for featured news slider</li>
+      <li><strong>icoMoon.css</strong> - Icon Fonts Plugin</li>
+      <li><strong>bootstrap.css</strong> - Frame css Plugin</li>
+      <li><strong>bootstrap-responsive.css</strong> - Frame css Plugin</li>
+      <li><strong>ie.css</strong> - fix IE problem</li>
+      <li><strong>ie7.css</strong> - fix IE7 problem</li>
+      <li><strong>font-awesome-ie7.min.css</strong> - support Icon Fonts for IE7</li>
+      <li><strong>responsive.css</strong> - Responsive CSS</li>            
+    </ol>
+</div><!--wrapper-->
+<div class="wrapper">
+<h3 id="javascript"><strong>C) JavaScript</strong> - <a href="#toc">top</a></h3>
+<p>This theme imports following Javascript files.</p>
+    
+    <ol>
+      <li><strong>jquery-1.8.3.min.js</strong> - Javascript library</li>
+      <li><strong>jquery.prettyPhoto.js</strong> - prettyphoto jQuery plugin</li>
+      <li><strong>jquery.flexslider.js</strong> - Homepage slider</li>
+      <li><strong>jquery.carouFredSel-6.2.1-packed.js</strong> - Related Articles slider</li>
+      <li><strong>superfish.js</strong> - main menu</li>
+      <li><strong>jquery.validate.min.js</strong> - form validator that is used for contact page (contact form) and single page (comment form)</li>
+      
+      <li><strong>PIE.htc</strong> - PIE: CSS3 rendering for IE</li>
+      <li><strong>PIE_IE678.js</strong> - PIE: CSS3 rendering for IE 6, 7 ,8</li>
+
+      <li><strong>custom.js</strong> - contains custom script</li>      
+    </ol>
+    <p>Except <strong>custom.js</strong>, all of the plugins are packed, so you don't need to manually edit anything in these files. The only necessary thing to know is how to call the method. You can refer to the website of the plugin author I listed in the <strong>"Sources and Credits"</strong> section  to learn more about them.</p>  
+    <p><strong>custom.js</strong> contains custom scripts and scripts to call method for above plugin. The file is separated in to sections with appropriate label.</p>
+  <pre class="prettyprint lines"> 
+
+/* =========================================================
+hover images
+============================================================ */
+
+ [SOME CODE]
+
+/* =========================================================
+prettyPhoto
+==========================================================*/
+
+ [SOME CODE]
+
+/* =========================================================
+flexslider
+============================================================ */
+
+ [SOME CODE]
+
+/* =========================================================
+carouFredSel
+==========================================================*/
+
+ [SOME CODE]
+
+/* =========================================================
+ menu
+==========================================================*/
+
+ [SOME CODE]
+
+/* =========================================================
+validate form
+============================================================ */
+
+ [SOME CODE]
+
+        </pre>    
+  
+</div><!--wrapper-->
+<div class="wrapper">
+   <h3 id="credits"><strong>E) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+   <p>I've used the following images, icons or other files as listed.</p>
+   <ul>
+      <li><a target="_blank" href="http://www.jquery.com">jquery-1.8.3.min.js</a></li>
+      <li><a target="_blank" href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/">jquery.prettyPhoto.js</a></li>       
+      <li><a href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/" target="_blank">form validator</a></li>      
+      <li><a href="http://www.woothemes.com/flexslider/" target="_blank"> Flexslider jQuery plugin</a></li>
+      <li><a href="http://caroufredsel.dev7studios.com/" target="_blank"> Caroufredsel jQuery plugin</a></li>     
+      <li><a href="http://css3pie.com" target="_blank">PIE</a></li>
+      <li><a href="http://icomoon.io/app/" target="_blank">Icomoon Icons Font</a></li>
+   </ul>
+</div>
+<div class="wrapper">
+   <p>Thank you so much for purchasing this theme. If you have any question relating to the themes please don't hesitate to ask your question at <a href="http://kopatheme.com/forum">http://kopatheme.com/forum</a></p> 
+   <p class="append-bottom alt large"><strong>KOPATHEME</strong><br>
+    Email: <a href="mailto:kopatheme@gmail.com">kopatheme@gmail.com</a><br>
+   Website: <a href="http://kopatheme.com">http://kopatheme.com</a><br>
+   Website: <a href="http://kopatheme.com/forum">http://kopatheme.com/forum</a></p>
+   <p><a href="#toc">Go To Table of Contents</a></p>
+</div>
+</body>
+<script type="text/javascript" src="assets/prettify/prettify.js"></script>
+   <script> prettyPrint(); </script>
+</html>

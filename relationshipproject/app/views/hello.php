@@ -1,8 +1,17 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Laravel PHP Framework</title>
+    <head>
+        <meta charset="UTF-8">
+            <title>Laravel PHP Framework</title>
+            <script type="text/javascript">
+                function run(){
+                    alert("hello world");
+                }
+
+                <?php
+                echo "run();";
+                ?>
+            </script>
 	<style>
 		@import url(//fonts.googleapis.com/css?family=Lato:700);
 

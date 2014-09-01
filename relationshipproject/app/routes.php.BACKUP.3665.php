@@ -9,6 +9,11 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the Closure to execute when that URI is requested.
 |
+<<<<<<< HEAD
+ */
+//Route::controller('home', 'HomeController');
+
+=======
 */
 Route::get('/client_admin', function()
 {
@@ -22,17 +27,16 @@ Route::get('/serviceList', function()
 {
 	return View::make('serviceList');
 });
- */
-//Route::controller('home', 'HomeController');
-
+>>>>>>> 852f1f6eac01ffc6930fff81a7e48156104e26bf
 Route::get('/login', function()
 {
 	return View::make('login');
 });
-Route::get('/register', function()
-{
-	return View::make('register');
-});
+
+/*Route::get('/register', function()*/
+//{
+	//return View::make('register');
+/*});*/
 
 Route::get('/', function()
 {

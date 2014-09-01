@@ -10,7 +10,18 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+Route::get('/client_admin', function()
+{
+	return View::make('client');
+});
+Route::get('/login_admin', function()
+{
+	return View::make('login_admin');
+});
+Route::get('/serviceList', function()
+{
+	return View::make('serviceList');
+});
 Route::get('/login', function()
 {
 	return View::make('login');

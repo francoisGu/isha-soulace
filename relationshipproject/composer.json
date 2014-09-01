@@ -4,8 +4,14 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.2.*"
-        "guzzlehttp/guzzle": "~4.0"
+		"laravel/framework": "4.2.*",
+        "guzzlehttp/guzzle": "~4.0",
+        "cartalyst/sentry": "2.1.*",
+        "anouar/paypalpayment": "dev-master",
+        "bogardo/mailgun": "3.0.*",
+        "toin0u/geocoder-laravel": "0.4.1",
+        "frozennode/administrator": "dev-master",
+        "appitventures/phpgmaps": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
@@ -33,5 +39,5 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable",
+	"minimum-stability": "stable"
 }

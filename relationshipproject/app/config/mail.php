@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.gamil.com',
+	'host' => 'smtp.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'litaoshen0315@gmail.com', 'name' => 'Terry Testing Email'),
+    'from' => array('address' => 'support@ishasoulace.com', 'name' => 'IshaSoulAce'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'litaoshen0315@gmail.com',
+	'username' => '',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-    'password' => 'terry_315-5566',
+    'password' => '',
 
 	/*
 	|--------------------------------------------------------------------------

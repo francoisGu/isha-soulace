@@ -36,16 +36,17 @@
             <li><a href="#review">Review</a></li>
           </ul>
 
-          <form class="navbar-form navbar-right" role="form">
-			<div class="form-group">
-			  <input type="text" placeholder="Email" class="form-control">
-			</div>
-			<div class="form-group">
-			  <input type="password" placeholder="Password" class="form-control">
-			</div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-            <button type="submit" class="btn btn-success">Register</button>
+            <div class="form-group">
+          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get">
+                <!-- <input type="text" name="email" placeholder="Email" class="form-control"/> -->
+			    <!-- <input type="password" name="password" placeholder="Password" class="form-control"/> -->
+                    <input type="submit" value="Sign in" class="btn btn-success"/>
+            <!--<button type="submit" class="btn btn-success">Sign in</button>-->
           </form>
+          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
+            <input type="submit" value="Register" class="btn btn-success"/>
+          </form>
+        </div>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->

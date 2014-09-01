@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 <?php
     
 ?>
+=======
+>>>>>>> adc1c8ecd663769d113982d89208271666d3b393
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +39,7 @@
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+<<<<<<< HEAD
     <script type="text/javascript">
 
         var main = function() {
@@ -53,6 +57,8 @@
         }
         $(document).ready(main);
     </script>
+=======
+>>>>>>> adc1c8ecd663769d113982d89208271666d3b393
     
   </head>
   <body>
@@ -87,7 +93,11 @@
                     <a href="about.html">About Us</a>      
                   </li>
 
+<<<<<<< HEAD
               </ul>
+=======
+                </ul>
+>>>>>>> adc1c8ecd663769d113982d89208271666d3b393
               </li>
               <li>
                 <a href="blog.html">Blog</a>
@@ -342,6 +352,7 @@
                       </div>
                     </div>
 
+<<<<<<< HEAD
                     <!-- Button -->
                     <div class="control-group">
                       <label class="control-label" for="submit"></label>
@@ -354,14 +365,45 @@
               </div>
               <div id="step2Form" style="display:none;">
                 <p>You have registered successfully. What you should do next is to wait for the approval of Admin. Once your account have been approved, an e-mail will be sent. After confirming the email, you can use this account regularly. Thank you. </p>
+=======
+                    
+                  </fieldset>
+                </form>
+                <!-- Button -->
+                    <div class="control-group">
+                      <label class="control-label" for="submit"></label>
+                      <div class="controls">
+                        <button class="btn btn-success" onclick="submitForm()" style="margin-left: 100px;">Submit</button>
+                      </div>
+                    </div>
+              </div>
+              <div id="step2Form" style="display:none;">
+                <p style="font-size:14px;">You have registered successfully. What you should do next is to wait for the approval of Admin. Once your account have been approved, an e-mail will be sent. After confirming the email, you can use this account regularly. Thank you. </p>
+>>>>>>> adc1c8ecd663769d113982d89208271666d3b393
               </div>                        
             </div>
           </div>
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </div》
 
 </body>
 
 </html>
+=======
+  </div>
+
+  </body>
+  <script type="text/javascript">
+    function submitForm() {
+      document.getElementById("step1").style.color = "black";
+      document.getElementById("step2").style.color = "red";
+      document.getElementById("step1Form").style.display = "none";
+      document.getElementById("step2Form").style.display = "";
+      return;
+    }
+    </script>
+  </html>
+>>>>>>> adc1c8ecd663769d113982d89208271666d3b393

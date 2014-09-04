@@ -1,6 +1,6 @@
 <?php
 
-class Email {
+class Email extends Eloquent {
     
     public $text;
     public $emal;  

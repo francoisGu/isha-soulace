@@ -24,7 +24,7 @@ class UsersController extends BaseController {
                             'password' => Input::has('password') ? Input::get('password') : null,                
                         ), false); 
 
-                $activationCode = $user->getActivationCode();
+                $activationCode = URL::to('/') . '/activate/' . $user->getActivationCode();
                 Mailgun::send('emails.welcome', 
                     array('firstname' => Input::get('firstname'),  
                     'activationCode'  => $activationCode), 
@@ -58,13 +58,21 @@ class UsersController extends BaseController {
         $this->layout->content = View::make('users.activation');
     }
 
-    public function postActivate() {
+    public function activate( $activationCode ) {
+
+		//public static $rules = array(
+			//'firstname'=>'required|alpha|min:2',
+			//'lastname'=>'required|alpha|min:2',
+			//'email'=>'required|email|unique:users',
+			//'password'=>'required|alpha_num|between:6,12|confirmed',
+			//'password_confirmation'=>'required|alpha_num|between:6,12'
+		/*);*/
         try
         {
-            $user = Sentry::findUserByCredentials(array(
-                    'email' => Input::get('email'),
-                    ));
-            $activationCode = Input::get('activationCode');
+    /*        $user = Sentry::findUserByCredentials(array(*/
+                    //'email' => Input::get('email'),
+                    /*));*/
+            //$activationCode = Input::get('activationCode');
             $user = Sentry::findUserByActivationCode($activationCode);
 
             if($user -> attemptActivation($activationCode))
@@ -77,7 +85,7 @@ class UsersController extends BaseController {
             }
             else
             {
-                return Redirect::to('users/activate')->with('message'. 'Your 
+                return Redirect::to('users/register')->with('message'. 'Your 
                     activation code is incorrect')->withInput(); 
             } 
         }

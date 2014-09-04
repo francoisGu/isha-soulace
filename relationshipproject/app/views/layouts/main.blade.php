@@ -51,7 +51,6 @@
                     <input type="submit" value="Sign out" class="btn btn-success"/>
                 </form>
 
-                <!-- <li>{{ HTML::link('users/logout', 'Sign out') }}</li> -->
                 @endif
 
         </div>

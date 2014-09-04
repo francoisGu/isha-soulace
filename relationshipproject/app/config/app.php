@@ -127,6 +127,8 @@ return array(
         'Toin0u\Geocoder\GeocoderServiceProvider',
         'Appitventures\Phpgmaps\PhpgmapsServiceProvider',
         'Frozennode\Administrator\AdministratorServiceProvider',
+        'Way\Generators\GeneratorsServiceProvider',
+        'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
 
 	),
 
@@ -196,9 +198,9 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
         'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
         'Mailgun'         => 'Bogardo\Mailgun\MailgunServiceProvider',
-        'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-        'Geocoder' => 'Toin0u\Geocoder\GeocoderFacade',
-        'Gmaps' => 'Appitventures\Phpgmaps\Facades\Phpgmaps',
+        'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+        'Geocoder'        => 'Toin0u\Geocoder\GeocoderFacade',
+        'Gmaps'           => 'Appitventures\Phpgmaps\Facades\Phpgmaps',
 
 	),
 

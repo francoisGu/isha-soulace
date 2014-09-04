@@ -1,4 +1,4 @@
-{{ Form::open(array('url'=>'users/activate', 'class'=>'form-activate')) }}
+{{ Form::open(array('url'=>'users/', 'class'=>'form-activate')) }}
 	<h2 class="form-activate-heading">Please Activate</h2>
 
 	<ul>

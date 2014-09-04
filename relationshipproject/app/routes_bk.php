@@ -46,6 +46,26 @@ Route::get('/about', function()
 Route::controller('users', 'UsersController');
 Route::controller('emails', 'EmailController');
 Route::controller('password', 'PasswordController');
-Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
 
-Route::controller('map', 'MapController');
+
+Route::get('/map', function(){
+    $config = array();
+    $config['center'] = 'auto';
+    $config['onboundschanged'] = 'if (!centreGot) {
+            var mapCentre = map.getCenter();
+            marker_0.setOptions({
+                position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
+            });
+        }
+        centreGot = true;';
+
+    Gmaps::initialize($config);
+
+    // set up the marker ready for positioning
+    // once we know the users location
+    $marker = array();
+    Gmaps::add_marker($marker);
+
+    $map = Gmaps::create_map();
+    echo "<html><head>".$map['js']."</head><body>".$map['html']."</body></html>";
+});

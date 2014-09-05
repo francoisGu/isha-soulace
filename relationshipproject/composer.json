@@ -7,20 +7,15 @@
         "laravel/framework": "4.2.*",
         "guzzlehttp/guzzle": "~4.0",
         "cartalyst/sentry": "2.1.*",
-        "anouar/paypalpayment": "dev-master",
         "bogardo/mailgun": "3.0.*",
         "toin0u/geocoder-laravel": "0.4.1",
         "frozennode/administrator": "dev-master",
         "appitventures/phpgmaps": "dev-master",
         "xethron/migrations-generator": "dev-master",
-        "ext-curl": "*",
-        "ext-json": "*",
-        "paypal/rest-api-sdk-php" : "0.5.*"
+        "payum/payum-laravel-package":"*@stable",
+        "payum/payum":"*@stable"
     },
 
-    "require-dev": { 
-        "phpmd/phpmd" : "2.0.*" 
-    }, 
     "autoload": {
         "classmap": [
             "app/commands",

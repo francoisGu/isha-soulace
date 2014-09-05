@@ -40,6 +40,7 @@ class Map extends Eloquent {
             });
             }
             centreGot = true;';
+
         return $config;
  
     }

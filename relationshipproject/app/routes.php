@@ -43,9 +43,11 @@ Route::get('/about', function()
     return View::make('about');
 });
 
+Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
 Route::controller('users', 'UsersController');
 Route::controller('emails', 'EmailController');
 Route::controller('password', 'PasswordController');
-Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
 
 Route::controller('map', 'MapController');
+
+Route::resource('payment', 'PaymentController');

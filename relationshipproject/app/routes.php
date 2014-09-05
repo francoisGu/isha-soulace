@@ -10,11 +10,15 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/client_admin', function()
+Route::get('/account/profile', function()
 {
-	return View::make('client');
+	return View::make('account/profile');
 });
-Route::get('/login_admin', function()
+Route::get('/clientTable', function()
+{
+	return View::make('client_admin');
+});
+Route::get('/admin', function()
 {
 	return View::make('login_admin');
 });

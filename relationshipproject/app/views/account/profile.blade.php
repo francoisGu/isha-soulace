@@ -70,34 +70,30 @@
         <div class="row-fluid">
           <div class="span3">
             <div class="panel panel-success" style="min-height:200px;">
-              <div class="panel-heading">
-                <h3 class="panel-title">
-                  Registration Steps</h3>
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Welcome, XX</h3>
                 </div>
-                <div class="panel-body">
-                  <ul>
-                    <li>
-                      <a id="step1" href="#" style="color:red">Step 1: Fill in a form</a>
-                    </li>
-                    <li>
-                      <a id="step2" href="#">Step 2: Wait for approval</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                <ul class="list-group">
+                    <a href="account/profile" class="list-group-item active">Profile</a>
+                    <a href="#" class="list-group-item">Advertise a new workshop</a>
+                    <a href="#" class="list-group-item">My workshops</a>
+                    <a href="#" class="list-group-item">Review the website</a>
+                    <a href="#" class="list-group-item">Clients</a>
+                </ul>
+            </div>
             </div><!--span3-->
             <div class="span9">
               <div id="step1Form" class="panel panel-success" style="min-height:100px;">
                 <div class="panel-heading">
                   <h3 class="panel-title">
-                    Step 1: Fill in a form</h3>
+                    Profile<a id="edit" style="float:right;margin-right:30px;cursor:pointer;" onclick="inputChange()">Edit</a></h3>                  
                   </div>
-                  <form class="form-horizontal">
-                    <fieldset>
-
+                  
+                  <form class="form-horizontal" >
+                    <fieldset id="forms" disabled="disabled">
                       <!-- Form Name -->
                       <legend></legend>
-
                       <!-- Text input-->
                       <div class="control-group">
                         <label class="control-label" for="email">Email Address</label>
@@ -215,27 +211,14 @@
                           </label>
                         </div>
                       </div>
-
-
                     </fieldset>
                   </form>
                   <!-- Button -->
-                  <div class="control-group">
-                    <label class="control-label" for="submit"></label>
-                    <div class="controls">
-                      <button class="btn btn-success" onclick="submitForm()" style="margin-left: 100px;">Submit</button>
-                    </div>
-                  </div>
+                  <div style="margin-left:100px; margin-bottom:30px;">
+                  <a id="submit" style="display:none;" class="btn btn-success btn-outline">Submit</a>
+            <a id="cancel" style="display:none;" class="btn btn-warning btn-outline">Cancel</a>
+          </div>
                 </div>
-                <div id="step2Form" class="panel panel-success" style="min-height:200px;display:none;">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">
-                      Step 2: Wait for approval</h3>
-                    </div>
-                    <div class="panel-body">
-                      <p style="font-size:14px;">You have registered successfully. What you should do next is to wait for the approval of Admin. Once your account have been approved, an e-mail will be sent. After confirming the email, you can use this account regularly. Thank you. </p>
-                    </div>                        
-                  </div>
                 </div>
               </div>
               <footer>
@@ -249,11 +232,22 @@
     </body>
     <script type="text/javascript">
     function submitForm() {
-      document.getElementById("step1").style.color = "black";
-      document.getElementById("step2").style.color = "red";
-      document.getElementById("step1Form").style.display = "none";
-      document.getElementById("step2Form").style.display = "";
-      return;
+      document.getElementById("forms").disabled = "disabled";
+      document.getElementById("submit").style.display = "none";
+      document.getElementById("cancel").style.display = "none";
+      document.getElementById("edit").style.display = "";
+    }
+    function cancelForm() {
+      document.getElementById("forms").disabled = "disabled";
+      document.getElementById("submit").style.display = "none";
+      document.getElementById("cancel").style.display = "none";
+      document.getElementById("edit").style.display = "";
+    }
+    function inputChange() {
+      document.getElementById("forms").disabled = "";
+      document.getElementById("submit").style.display = "";
+      document.getElementById("cancel").style.display = "";
+      document.getElementById("edit").style.display = "none";
     }
     </script>
     </html>

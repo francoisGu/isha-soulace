@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
-            <li class="active"><a href="#about">About</a></li>
+            <li class="active"><a href="about">About</a></li>
             <li><a href="#donate">Donate</a></li>
             <li><a href="#sponsor">Sponsor</a></li>
             <li><a href="#review">Review</a></li>
@@ -44,7 +44,7 @@
 			  <input type="password" placeholder="Password" class="form-control">
 			</div>
             <button type="submit" class="btn btn-success">Sign in</button>
-            <button type="submit" class="btn btn-success">Register</button>
+            <a href="register" class="btn btn-success">Register</a>
           </form>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->

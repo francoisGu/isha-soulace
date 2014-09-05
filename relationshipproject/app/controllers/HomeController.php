@@ -15,9 +15,10 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+    protected $layout = "home";
+	public function getHome()
 	{
-		return View::make('hello');
+        $this->layout = View::make('resolution.hello');
 	}
 
 }

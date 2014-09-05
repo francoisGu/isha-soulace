@@ -36,6 +36,7 @@
             <li><a href="#review">Review</a></li>
           </ul>
 
+<<<<<<< HEAD
           <form class="navbar-form navbar-right" role="form">
 			<div class="form-group">
 			  <input type="text" placeholder="Email" class="form-control">
@@ -45,7 +46,19 @@
 			</div>
             <button type="submit" class="btn btn-success"> Sign in</button>
             <a href="register" class="btn btn-success">Register</a>
+=======
+            <div class="form-group">
+          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get">
+                <!-- <input type="text" name="email" placeholder="Email" class="form-control"/> -->
+			    <!-- <input type="password" name="password" placeholder="Password" class="form-control"/> -->
+                    <input type="submit" value="Sign in" class="btn btn-success"/>
+            <!--<button type="submit" class="btn btn-success">Sign in</button>-->
+>>>>>>> 8854ab0ebc7340f7cd90f12e839ce895392bd8a1
           </form>
+          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
+            <input type="submit" value="Register" class="btn btn-success"/>
+          </form>
+        </div>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->

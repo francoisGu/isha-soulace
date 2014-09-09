@@ -2,7 +2,7 @@
 
 class UsersController extends BaseController {
 
-    protected $layout = "layouts.main";
+    protected $layout = "layouts.menu";
 
     public function __construct() {
         $this->beforeFilter('csrf', array('on'=>'post'));
@@ -10,7 +10,7 @@ class UsersController extends BaseController {
     }
 
     public function getRegister() {
-        $this->layout->content = View::make('users.register');
+        $this->layout->content = View::make('users.register2');
     }
 
     public function postRegister() {

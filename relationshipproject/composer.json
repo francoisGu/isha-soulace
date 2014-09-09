@@ -12,15 +12,9 @@
         "toin0u/geocoder-laravel": "0.4.1",
         "frozennode/administrator": "dev-master",
         "appitventures/phpgmaps": "dev-master",
-        "xethron/migrations-generator": "dev-master",
-        "ext-curl": "*",
-        "ext-json": "*",
-        "paypal/rest-api-sdk-php" : "0.5.*"
+        "xethron/migrations-generator": "dev-master"
     },
 
-    "require-dev": { 
-        "phpmd/phpmd" : "2.0.*" 
-    }, 
     "autoload": {
         "classmap": [
             "app/commands",

@@ -1,4 +1,4 @@
-{{ Form::open(array('url' => 'services/familylaw')) }}
+<!-- {{ Form::open(array('url' => 'services/familylaw')) }} -->
 	<h2 class="form-signup-heading">Brief details</h2>
 	<p> Give some brief details about yourself so the expert can understand your situation. This saves time and cost before actual contact between yourself and the expert.</p>
 
@@ -7,25 +7,31 @@
 			<li>{{ $error }}</li>
 		@endforeach
 	</ul>
-  <div class="form-group">
-    {{ Form::label('first_name', 'First Name', array('class' => 'control_label')) }}
-    {{ Form::text('first_name', null, array('class' => 'form-control')) }}
-  </div>
-  <div class="form-group">
-    {{ Form::label('last_name', 'Last Name', array('class' => 'control_label')) }}
-    {{ Form::text('last_name', null, array('class' => 'form-control')) }}
-  </div>
-  <div class="form-group">
-    {{ Form::label('date_of_birth', 'Date of Birth', array('class' => 'control_label')) }}
-    {{ Form::text('date_of_birth', null, array('class' => 'form-control')) }}
-  </div>
-  <div class="form-group">
-    {{ Form::label('email', 'Email', array('class' => 'control_label')) }}
-    {{ Form::email('email', null, array('class' => 'form-control')) }}
-  </div>
-  <div class="form-group">
-    {{ Form::label('password', 'Password', array('class' => 'control_label')) }}
-    {{ Form::password('password', array('class' => 'form-control')) }}
-  </div>
-  {{ Form::submit('Submit', array('class' => 'btn btn-primary')) }}
-{{ Form::close() }}
+{{ Former::horizontal_open()
+  ->id('FamilyLawForm')
+  ->secure()
+  ->rules(['name' => 'required'])
+  ->method('GET');
+}}
+{{ Former::text('name')
+    ->placeholder('Name')
+    ->required()
+    ->autofocus();
+}}
+{{ Former::number('age')
+    ->required();
+}}
+{{ Former::inline_checkboxes('foo')->checkboxes('foo', 'bar')
+    ->required();
+}}
+{{ Former::number('postcode')
+    ->required();
+}}
+{{ Former::textarea('comments')
+    ->rows(10)->columns(20);
+}}
+{{ Former::actions()
+    ->large_primary_submit('Submit')
+    ->large_inverse_reset('Reset');
+}}
+{{ Former::close(); }}

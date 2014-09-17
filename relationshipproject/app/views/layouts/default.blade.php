@@ -12,6 +12,7 @@
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/offcanvas.css') }}
+    {{ HTML::style('css/plugins/bootstrap.css') }}
 
   </head>
 
@@ -25,14 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Isha SoulAce</a>
-          <!--           <a class="navbar-brand" href="/">Isha SoulAce</a> -->
-          <!--<div class="navbar-inner">
-            <div class="container">
-              <a href="/home" class="brand"><img alt="Logo" src="images/logo/Isha SoulAce_Red-Font.png" /></a>
-            </div>
-          </div>-->
-<!--         </div> -->
+          <!-- <a class="navbar-brand" href="/"><img alt="Logo" src="images/logo/Isha SoulAce_Red-Font-pic-only.png"> Isha SoulAce</a> -->
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">

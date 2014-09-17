@@ -35,16 +35,18 @@ Route::get('/register', function()
 
 Route::get('/', function()
 {
-    return View::make('home');
+    return Redirect::to('home');//View::make('home');
 });
 
-Route::get('/about', function()
-{
-    return View::make('about');
-});
+// Route::get('/about', function()
+// {
+//     return View::make('about');
+// });
 
+Route::controller('services','ServiceFormController');
 Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
 Route::controller('users', 'UsersController');
+Route::controller('/', 'HomeController');
 Route::controller('emails', 'EmailController');
 Route::controller('password', 'PasswordController');
 

@@ -22,7 +22,6 @@ Route::get('/serviceList', function()
 {
 	return View::make('serviceList');
 });
-// Route::controller('home', 'HomeController');
 
 Route::get('/login', function()
 {
@@ -37,11 +36,6 @@ Route::get('/', function()
 {
     return Redirect::to('home');//View::make('home');
 });
-
-// Route::get('/about', function()
-// {
-//     return View::make('about');
-// });
 
 Route::controller('services','ServiceFormController');
 Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 

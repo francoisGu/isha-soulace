@@ -51,39 +51,39 @@
             <li><a href="#sponsor">Sponsor</a></li>
             <li><a href="#review">Review</a></li>
           </ul>
-            @if(!Sentry::check())
-            <form  class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
-            <a href="register" class="btn btn-success">Register</a>
+          @if(!Sentry::check())
+
+          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
+            <input type="submit" value="Register" class="btn btn-success"/>
           </form>
-            <form class="navbar-form navbar-right" action="{{ action('UsersController@getLogin') }}" method="get">
-              <div class="form-group">              
-              <input name="email" type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input name="password" type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
+
+          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get">
+            <input type="submit" value="Sign in" class="btn btn-success"/>
           </form>
           
           @else
+          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogout') }}" method="get">
+            <input type="submit" value="Sign out" class="btn btn-success"/>
+          </form>
           @endif
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->
     <div id="main-content">
-      @if(Session::has('message'))
-      <p class="alert">{{ Session::get('message') }}</p>
-    @endif
+      <div class="container" style="margin-top:30px;">
+      
 
       {{ $content }}
-              <footer>
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>&copy; Company 2014</p>
-          </footer>
-            </div>
-          
+      
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div>
+    </div>
 
-    </body>
-    <script type="text/javascript">
-    </script>
-    </html>
+
+  </body>
+  <script type="text/javascript">
+  </script>
+  </html>

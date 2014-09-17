@@ -10,26 +10,26 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('account/myClients', function()
-{
-	return View::make('account/myClients');
-});
-Route::get('account/review', function()
-{
-	return View::make('account/review');
-});
-Route::get('account/myWorkshops', function()
-{
-	return View::make('account/myWorkshops');
-});
-Route::get('account/advertiseWS', function()
-{
-	return View::make('account/advertiseWS');
-});
-Route::get('account/profile', function()
-{
-	return View::make('account/profile');
-});
+// Route::get('account/myClients', function()
+// {
+// 	return View::make('account/myClients');
+// });
+// Route::get('account/review', function()
+// {
+// 	return View::make('account/review');
+// });
+// Route::get('account/myWorkshops', function()
+// {
+// 	return View::make('account/myWorkshops');
+// });
+// Route::get('account/advertiseWS', function()
+// {
+// 	return View::make('account/advertiseWS');
+// });
+// Route::get('account/profile', function()
+// {
+// 	return View::make('account/profile');
+// });
 Route::get('/clientTable', function()
 {
 	return View::make('client_admin');
@@ -44,15 +44,6 @@ Route::get('/serviceList', function()
 });
 // Route::controller('home', 'HomeController');
 
-Route::get('/login', function()
-{
-	return View::make('login');
-});
-Route::get('/register', function()
-{
-	return View::make('register');
-});
-
 Route::get('/', function()
 {
     return View::make('home');
@@ -63,9 +54,15 @@ Route::get('/about', function()
     return View::make('about');
 });
 
+
+Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
 Route::controller('users', 'UsersController');
+Route::controller('account', 'AccountController');
 Route::controller('emails', 'EmailController');
 Route::controller('password', 'PasswordController');
-Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
 
 Route::controller('map', 'MapController');
+
+Route::resource('payment', 'PaymentController');
+
+

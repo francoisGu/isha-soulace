@@ -10,7 +10,7 @@ class UsersController extends BaseController {
     }
 
     public function getRegister() {
-        $this->layout->content = View::make('users.register2');
+        $this->layout->content = View::make('users.register');
     }
 
     public function postRegister() {
@@ -46,7 +46,7 @@ class UsersController extends BaseController {
             }
 
             return Redirect::to('users/login')->with('message', 'Thanks 
-                for registering!');
+                for registering! Only when your account gets approved, you can log into the website. We will manage it as soon as possible. Thank you for your support.');
         } else {
             return Redirect::to('users/register')->with('message', 'The 
                 following errors 
@@ -105,7 +105,7 @@ class UsersController extends BaseController {
         $this->layout->content = View::make('users.login');
 
         if(Sentry::check()){
-            return Redirect::to('users/dashboard');
+            return Redirect::to('account/profile');
         }
     }
 
@@ -123,17 +123,25 @@ class UsersController extends BaseController {
             //$user = Sentry::authenticate($credentials, false);
             $user = Sentry::authenticate($credentials, Input::get('rememberme')?:false);
             
-            return Redirect::to('users/dashboard')->with('message', 'You 
+            return Redirect::to('account/profile')->with('message', 'You 
                 are now logged in!');
 
         }
         catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
         {
             echo 'Email field is required.';
+                        return Redirect::to('users/login')
+                ->with('message', 'Your username/password combination was 
+                incorrect')
+                ->withInput();
         }
         catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
         {
             echo 'Password field is required.';
+                        return Redirect::to('users/login')
+                ->with('message', 'Your username/password combination was 
+                incorrect')
+                ->withInput();
         }
         catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
         {
@@ -148,32 +156,44 @@ class UsersController extends BaseController {
         catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
         {
             echo 'User was not found.';
+                        return Redirect::to('users/login')
+                ->with('message', 'Your username/password combination was 
+                incorrect')
+                ->withInput();
         }
         catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
         {
             echo 'User is not activated.';
+                        return Redirect::to('users/login')
+                ->with('message', 'Your account is not activated now')
+                ->withInput();
         }
         
         // The following is only required if the throttling is enabled
         catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
         {
             echo 'User is suspended.';
+                        return Redirect::to('users/login')
+                ->with('message', 'Your username/password combination was 
+                incorrect')
+                ->withInput();
         }
         catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
         {
             echo 'User is banned.';
+                        return Redirect::to('users/login')
+                ->with('message', 'Your username/password combination was 
+                incorrect')
+                ->withInput();
         }
     
     }
 
-    public function getDashboard() {
-        $this->layout->content = View::make('users.dashboard');
-    }
 
     public function getLogout() {
         //Auth::logout();
         Sentry::logout();
-        return Redirect::to('users/login')->with('message', 'Your are now 
+        return Redirect::to('users/login')->with('message', 'You are now 
             logged out!');
     }
 }

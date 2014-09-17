@@ -1,3 +1,3 @@
 <h1>Hi!</h1>
  
-<p>{{ $text }}</p>
+<p>Hello there, this is message from Relationship: {{ $text }}</p>

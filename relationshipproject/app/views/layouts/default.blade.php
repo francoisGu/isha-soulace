@@ -10,9 +10,10 @@
 
     <title>{{ $title }}</title>
 
-    {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/offcanvas.css') }}
+<!--     {{ HTML::style('css/bootstrap.min.css') }} -->
     {{ HTML::style('css/plugins/bootstrap.css') }}
+    {{ HTML::style('css/offcanvas.css') }}
+    {{ HTML::style('css/bootstrap-responsive.css') }}
 
   </head>
 

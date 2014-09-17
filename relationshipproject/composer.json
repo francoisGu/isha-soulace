@@ -14,7 +14,8 @@
         "appitventures/phpgmaps": "dev-master",
         "xethron/migrations-generator": "dev-master",
         "payum/payum-laravel-package":"*@stable",
-        "payum/payum":"*@stable"
+        "payum/payum":"*@stable",
+        "anahkiasen/former": "dev-master"
     },
 
     "autoload": {

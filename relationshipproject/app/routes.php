@@ -43,11 +43,15 @@ Route::get('/about', function()
     return View::make('about');
 });
 
+Route::get('password/remind', array('uses' => 'PasswordController@getRemind'));
+Route::get('password/reset', array('uses' => 'PasswordController@getReset'));
+Route::post('password/remind', array('uses' => 'PasswordController@postRemind'));
+Route::post('/password/reset/', array('uses' => 'PasswordController@postReset'));
 Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
 Route::controller('users', 'UsersController');
 Route::controller('emails', 'EmailController');
-Route::controller('password', 'PasswordController');
+//Route::controller('password', 'PasswordController');
 
 Route::controller('map', 'MapController');
 
-Route::resource('payment', 'PaymentController');
+Route::resource('payment', 'PaypalPaymentController');

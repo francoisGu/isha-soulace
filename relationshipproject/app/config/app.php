@@ -121,6 +121,7 @@ t branch --set-upstream-		'Illuminate\Foundation\Providers\ArtisanServiceProvide
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+
         'Cartalyst\Sentry\SentryServiceProvider',
         'Bogardo\Mailgun\MailgunServiceProvider',
         'Toin0u\Geocoder\GeocoderServiceProvider',
@@ -130,6 +131,8 @@ t branch --set-upstream-		'Illuminate\Foundation\Providers\ArtisanServiceProvide
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
         'Payum\LaravelPackage\PayumServiceProvider',
         'Former\FormerServiceProvider',
+        'Barryvdh\DomPDF\ServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 	),
 
@@ -197,12 +200,15 @@ t branch --set-upstream-		'Illuminate\Foundation\Providers\ArtisanServiceProvide
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+
         'Mailgun'         => 'Bogardo\Mailgun\MailgunServiceProvider',
         'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Geocoder'        => 'Toin0u\Geocoder\GeocoderFacade',
         'Gmaps'           => 'Appitventures\Phpgmaps\Facades\Phpgmaps',
         'Payum'           => 'Payum\LaravelPackage\PayumServiceProvider',
         'Former'          => 'Former\Facades\Former',
+        'Admin'           => 'Frozennode\Administrator\AdministratorServiceProvider',
+        'PDF'             => 'Barryvdh\DomPDF\Facade',
 
 	),
 

@@ -43,7 +43,7 @@
 				<li><a href="{{ URL::to('services/fitnessandnutrition') }}">Fitness & Nutrition</a></li>
 				<li><a href="{{ URL::to('services/mentalwellbeing') }}">Mental Wellbeing, Counselling</a></li>
 				<li><a href="{{ URL::to('services/financialadvice') }}">Financial Advice</a></li>
-				<li><a href="#review">Workshops</a></li>
+				<li><a href="#workshops">Workshops</a></li>
               </ul>
             </li>
             <li><a href="#donate">Donate</a></li>

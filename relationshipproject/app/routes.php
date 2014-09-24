@@ -49,15 +49,11 @@ Route::get('/', function()
 });
 
 Route::controller('services','ServiceFormController');
+Route::controller('reviews', 'ReviewController');
 Route::get('password/remind', array('uses' => 'PasswordController@getRemind'));
 Route::get('password/reset', array('uses' => 'PasswordController@getReset'));
 Route::post('password/remind', array('uses' => 'PasswordController@postRemind'));
 Route::post('/password/reset/', array('uses' => 'PasswordController@postReset'));
-
-Route::get('/about', function()
-    {
-        return View::make('about');
-    });
 
 /*Route::get('workshops/', function(){*/
 
@@ -87,7 +83,6 @@ Route::controller('emails', 'EmailController');
 Route::controller('map', 'MapController');
 
 Route::resource('payment', 'PaypalPaymentController');
-
 /* HTML Macros */
 HTML::macro('smartNavMenu', function($url, $text) {
     $class = ( Request::is($url) || Request::is($url.'/*') ) ? ' class="active"' : '';

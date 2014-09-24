@@ -95,7 +95,7 @@ return array(
 
 	'providers' => array(
 
-t branch --set-upstream-		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
+		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
 		'Illuminate\Session\CommandsServiceProvider',

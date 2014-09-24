@@ -87,3 +87,13 @@ Route::controller('emails', 'EmailController');
 Route::controller('map', 'MapController');
 
 Route::resource('payment', 'PaypalPaymentController');
+
+/* HTML Macros */
+HTML::macro('smartNavMenu', function($url, $text) {
+    $class = ( Request::is($url) || Request::is($url.'/*') ) ? ' class="active"' : '';
+    return '<li'.$class.'><a href="'.URL::to($url).'">'.$text.'</a></li>';
+});
+HTML::macro('startSmartDropdown', function($url) {
+    $class = ( Request::is($url) || Request::is($url.'/*') ) ? ' class="active"' : '';
+    return ''.$class.' class="dropdown"';
+});

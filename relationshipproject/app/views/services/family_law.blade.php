@@ -1,44 +1,57 @@
-<!-- {{ Form::open(array('url' => 'services/familylaw')) }} -->
-	<h2 class="form-signup-heading">Brief details</h2>
-	<p> Please give some brief details about yourself. This helps the expert understand your situation and saves time and cost before actual contact between yourself and the expert.</p>
+
+<h2 class="form-signup-heading">Brief details</h2>
+  <p> Please give some brief details about yourself. This helps the expert understand your situation and saves time and cost before actual contact between yourself and the expert.</p>
   <br>
-	<ul>
-		@foreach($errors->all() as $error)
-			<li>{{ $error }}</li>
+  <ul>
+	@foreach($errors->all() as $error)
+	  <li>{{ $error }}</li>
 		@endforeach
-	</ul>
-{{ Former::horizontal_open()
-  ->id('FamilyLawForm')
+  </ul>
+{{ Former::open()
+  ->id('familyLawForm')
   ->secure()
-  ->rules(['name' => 'required'])
-  ->method('GET');
+  ->rules(['postcode' => 'required'])
+  ->method('POST');
 }}
-{{ Former::text('name')
-    ->placeholder('Name')
-    ->required()
-    ->autofocus();
+{{ Former::radio('title')
+    ->radios(array('Mr' => 'title', 'Ms' => 'title', 'Mrs' => 'title', 'Miss' => 'title'))
+    ->inline();
 }}
-<!--        <div class="control-group">
-          <label class="control-label" for="radios">Identity</label>
-          <div class="controls">
-            <label class="radio inline" for="radios-0">
-              {{ Form::radio('identity', null, array('checked'=>'checked', 'value'=>'Individual')) }}
-              Individual
-            </label>
-            <label class="radio inline" for="radios-1">
-              {{ Form::radio('identity', null, array('value'=>'Company')) }}
-              Company
-            </label>
-          </div>
-        </div> -->
+{{ Former::text('first name')
+	->class('form-control input-xlarge')
+    ->placeholder('First Name');
+}}
+{{ Former::text('last name')
+	->class('form-control input-xlarge')
+    ->placeholder('Last Name');
+}}
 {{ Former::radio('gender')
     ->radios(array('M' => 'gender', 'F' => 'gender'))
     ->inline()
     ->required();
 }}
+{{ Former::text('Address Line 1')
+	->class('form-control input-xxlarge')
+	->placeholder('Address Line 1');
+}}
+{{ Former::text('Address Line 2')
+	->class('form-control input-xxlarge')
+	->placeholder('Address Line 2');
+}}
+{{ Former::text('Suburb')
+	->class('form-control input-large')
+	->placeholder('Suburb');
+}}
 {{ Former::number('postcode')
+	->class('form-control input-small')
     ->placeholder('3000')
+    ->min('0200')
+    ->max('9944')
     ->required();
+}}
+{{ Former::text('Country')
+	->class('form-control input-large')
+	->placeholder('Country');
 }}
 {{ Former::radio('Type of service')
     ->radios(array('Separation & Divorce' => 'service', 'Pre-nuptial agreement' => 'service'))
@@ -57,34 +70,43 @@
 }}
 {{ Former::radio('Are you employed?')
     ->radios(array('Yes' => 'employed', 'No' => 'employed'))
-    ->inline();
+    ->inline()
+    ->required();
 }}
 {{ Former::radio('What is your residency status?')
     ->radios(array('Student Visa' => 'residency-status', '457 Visa' => 'residency-status', 'Permanent Resident' => 'residency-status', 'Citizen' => 'residency-status'))
-    ->inline();
+    ->inline()
+    ->required();
 }}
-{{ Former::radio('Do you have any jointly owned property with your partner?')
+{{ Former::radio('Do you own property?')
     ->radios(array('Yes' => 'property', 'No' => 'property'))
-    ->inline();
+    ->inline()
+    ->required();
 }}
 {{ Former::radio('Do you have any liabilities? e.g. Mortage loan, financial debt, car loan')
     ->radios(array('Yes' => 'liability', 'No' => 'liability'))
-    ->inline();
+    ->inline()
+    ->required();
 }}
 {{ Former::radio('Do you have superannuation?')
     ->radios(array('Yes' => 'superannuation', 'No' => 'superannuation'))
-    ->inline();
+    ->inline()
+    ->required();
 }}
 {{ Former::radio('Do you have a will?')
     ->radios(array('Yes' => 'will', 'No' => 'will'))
-    ->inline();
+    ->inline()
+    ->required();
 }}
 {{ Former::radio('Do you have children?')
     ->radios(array('Yes' => 'children', 'No' => 'children'))
-    ->inline();
+    ->inline()
+    ->required();
 }}
-{{ Former::textarea('State of health')
-
+{{ Former::textarea('Health Status')
+	->class('form-control')
+	->placeholder('Please describe your current state of health')
+	->required();
 }}
 {{ Former::actions()
     ->large_primary_submit('Submit')

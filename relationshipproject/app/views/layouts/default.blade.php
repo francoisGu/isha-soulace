@@ -31,11 +31,31 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="about">About</a></li>
+            <!--<li class="active"><a href="/">Home</a></li>
+            <li><a href=" {{ URL::to('about') }}">About</a></li>-->
+            {{ HTML::smartNavMenu('home', 'Home') }}
+            {{ HTML::smartNavMenu('about', 'About') }}
+			<li {{ HTML::startSmartDropdown('services') }} ><!-- <li class="active" class="dropdown" > -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+				<li><a href="{{ URL::to('services/familylaw') }}">Family Law</a></li>
+				<li><a href="{{ URL::to('services/accommodation') }}">Accommodation</a></li>
+				<li><a href="{{ URL::to('services/fitnessandnutrition') }}">Fitness & Nutrition</a></li>
+				<li><a href="{{ URL::to('services/mentalwellbeing') }}">Mental Wellbeing, Counselling</a></li>
+				<li><a href="{{ URL::to('services/financialadvice') }}">Financial Advice</a></li>
+				<li><a href="#review">Workshops</a></li>
+              </ul>
+            </li>
             <li><a href="#donate">Donate</a></li>
             <li><a href="#sponsor">Sponsor</a></li>
-            <li><a href="#review">Review</a></li>
+            <li {{ HTML::startSmartDropdown('reviews') }} ><!-- <li class="active" class="dropdown" > -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Review<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+				<li><a href="{{ URL::to('reviews/website') }}">Review our website</a></li>
+				<li><a href="{{ URL::to('reviews/services') }}">Review services</a></li>
+				<li><a href="{{ URL::to('reviews/workshops') }}">Review workshops</a></li>
+              </ul>
+            </li>
             <!-- Manage active state for pages -->
           </ul>
 

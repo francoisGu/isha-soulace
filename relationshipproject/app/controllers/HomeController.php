@@ -15,10 +15,20 @@ class HomeController extends BaseController {
 	|
 	*/
 
-    protected $layout = "home";
+    protected $layout = "layouts.default";
+    
 	public function getHome()
 	{
-        $this->layout = View::make('resolution.hello');
+        $this->layout->title = 'Isha SoulAce - Home';
+        $this->layout->content = View::make('home');
+        
+	}
+
+	public function getAbout()
+	{
+        $this->layout->title = 'About Us - Isha SoulAce';
+        $this->layout->content = View::make('about');
+        
 	}
 
 }

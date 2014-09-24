@@ -121,15 +121,18 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+
         'Cartalyst\Sentry\SentryServiceProvider',
-        'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
         'Bogardo\Mailgun\MailgunServiceProvider',
         'Toin0u\Geocoder\GeocoderServiceProvider',
         'Appitventures\Phpgmaps\PhpgmapsServiceProvider',
         'Frozennode\Administrator\AdministratorServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
+        'Payum\LaravelPackage\PayumServiceProvider',
         'Former\FormerServiceProvider',
+        'Barryvdh\DomPDF\ServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 	),
 
@@ -197,12 +200,15 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-        'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
+
         'Mailgun'         => 'Bogardo\Mailgun\MailgunServiceProvider',
         'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Geocoder'        => 'Toin0u\Geocoder\GeocoderFacade',
         'Gmaps'           => 'Appitventures\Phpgmaps\Facades\Phpgmaps',
+        'Payum'           => 'Payum\LaravelPackage\PayumServiceProvider',
         'Former'          => 'Former\Facades\Former',
+        'Admin'           => 'Frozennode\Administrator\AdministratorServiceProvider',
+        'PDF'             => 'Barryvdh\DomPDF\Facade',
 
 	),
 

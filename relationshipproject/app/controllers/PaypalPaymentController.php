@@ -1,5 +1,5 @@
 <?php
-class PaymentController extends BaseController {
+class PaypalPaymentController extends BaseController {
 
     /**
      * object to authenticate the call.

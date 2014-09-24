@@ -195,9 +195,9 @@ return array(
         ),
 
         'price' => array(
-            'title' => 'Price',
+            'title' => 'Price (AU$)',
             'type' => 'number',
-            'symbol' => 'AUD', //optional, defaults to ''
+            //'symbol' => 'AU$', //optional, defaults to ''
             'decimals' => 2, //optional, defaults to 0
             'thousands_separator' => ',', //optional, defaults to ','
             'decimal_separator' => '.', //optional, defaults to '.'

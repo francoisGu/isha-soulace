@@ -129,6 +129,7 @@ return array(
         'Frozennode\Administrator\AdministratorServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
+        'Former\FormerServiceProvider',
 
 	),
 
@@ -201,6 +202,7 @@ return array(
         'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Geocoder'        => 'Toin0u\Geocoder\GeocoderFacade',
         'Gmaps'           => 'Appitventures\Phpgmaps\Facades\Phpgmaps',
+        'Former' => 'Former\Facades\Former',
 
 	),
 

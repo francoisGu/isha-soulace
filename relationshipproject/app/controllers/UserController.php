@@ -21,9 +21,23 @@ class UsersController extends BaseController {
             try {
                 $user = Sentry::register(array(
                             'email'    => Input::has('email') ? Input::get('email') : null,
-                            'password' => Input::has('password') ? Input::get('password') : null,                
+                            'password' => Input::has('password') ? Input::get('password') : null,
+                            'first_name' => Input::has('firstname')? Input::get('firstname') : null,
+                            'last_name' => Input::has('lastname')? Input::get('lastname') : null,
+                            'type' => '1',             
                         ), false); 
-
+                $serviceProvider = ServiceProvider::create(array(
+                    'identity' => Input::get('identity'),
+                    'abn' => Input::has('ABN') ? Input::get('ABN') : null,
+                    'acn' => Input::has('ACN') ? Input::get('ACN') : null,
+                    'address' => Input::has('address') ? Input::get('address') : null,
+                    'phone' => Input::has('phone') ? Input::get('phone') : null,
+                    'mobile' => Input::has('mobile') ? Input::get('mobile') : null,
+                    'mode' => Input::has('mode') ? Input::get('mode') : null,
+                    'companyname' => Input::has('companyname') ? Input::get('companyname') : null,
+                    'user_id' => $user->id,
+                    ));
+                
                 $activationCode = URL::to('/') . '/activate/' . $user->getActivationCode();
                 Mailgun::send('emails.welcome', 
                     array('firstname' => Input::get('firstname'),  
@@ -105,7 +119,7 @@ class UsersController extends BaseController {
         $this->layout->content = View::make('users.login');
 
         if(Sentry::check()){
-            return Redirect::to('account/profile');
+            return Redirect::to('serviceProvider/profile');
         }
     }
 
@@ -118,13 +132,12 @@ class UsersController extends BaseController {
                 'email'    => Input::get('email'),
                 'password' => Input::get('password'),
             );
-        
+            
             // Authenticate the user
             //$user = Sentry::authenticate($credentials, false);
             $user = Sentry::authenticate($credentials, Input::get('rememberme')?:false);
             
-            return Redirect::to('account/profile')->with('message', 'You 
-                are now logged in!');
+            return Redirect::to('serviceProvider/profile');
 
         }
         catch (Cartalyst\Sentry\Users\LoginRequiredException $e)

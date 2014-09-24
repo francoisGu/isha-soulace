@@ -5,7 +5,21 @@ class AccountController extends BaseController {
 	protected $layout = "layouts.menu";
 
 	public function getProfile() {
+		$user = new User;
+		
 		$this->layout->content = View::make('account.profile');
+		
+	}else return Redirect::to('users/login');
+	}
+	public function postProfile() {
+		$user = new User;
+		if(Sentry::Check()) {
+			$user = User::where('email', '=', Sentry::getUser()->email)->first();
+			 $user->first_name = Input::get('firstname');
+			 $user->last_name = Input::get('lastname');
+			 $user->save();
+		}
+		return Redirect::to('account/profile');
 	}
      
     public function getAdvertise() {

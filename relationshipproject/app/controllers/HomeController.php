@@ -15,10 +15,42 @@ class HomeController extends BaseController {
 	|
 	*/
 
-    protected $layout = "home";
+    protected $layout = "layouts.menu";
+
+	public function getDonations()
+	{
+		$this->layout->content = View::make('donations');
+	}
+
 	public function getHome()
 	{
-        $this->layout = View::make('resolution.hello');
+		$this->layout->content = View::make('home');
+	}
+
+	public function getAbout()
+	{
+		$this->layout->content = View::make('about');
+	}
+
+	public function getReviews()
+	{		
+		$this->layout->content = View::make('reviews');
+	}
+
+	public function postReviews()
+	{
+		$review = Review::getReview(Input::get('form_id'));
+		if(is_null($review)) {
+            $review = Review::create(array(
+            	'form_id' => Input::has('form_id') ? Input::get('form_id') : null,
+            	'rating' => Input::has('ratings') ? Input::get('score') : null,
+            	'review_content' => Input::has('review_content') ? Input::get('review_content') : null,
+            	));
+            
+            return Redirect::to('/reviews')->with('message','You have reviewed successfully! Thank you!');
+		}
+		
+		return Redirect::to ('/reviews')->with('message','You have already reviewed for this service!')->with('review', $review);
 	}
 
 }

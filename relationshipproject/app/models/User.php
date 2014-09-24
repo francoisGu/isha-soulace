@@ -17,6 +17,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'password_confirmation'=>'required|alpha_num|between:6,12'
 	);
 
+	public function serviceProvider()
+	{
+		return $this->hasOne('ServiceProvider');
+	}
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -74,5 +79,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public function getRememberTokenName()
     {
         return 'remember_token';
+    }
+
+    static public function getUser()
+    {
+    	return User::where('email', '=', Sentry::getUser()->email)->first();
+    }
+
+    static public function updateUser() {
+    	$user = User::getUser();
+    	$user->first_name = Input::get('firstname');
+		$user->last_name = Input::get('lastname');
+		$user->save();
+		return $user;
     }
 }

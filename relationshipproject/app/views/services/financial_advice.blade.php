@@ -39,7 +39,8 @@
 }}
 {{ Former::text('Address Line 1')
 	->class('form-control input-xxlarge')
-	->placeholder('Address Line 1');
+	->placeholder('Address Line 1')
+	->required();
 }}
 {{ Former::text('Address Line 2')
 	->class('form-control input-xxlarge')
@@ -47,7 +48,8 @@
 }}
 {{ Former::text('Suburb')
 	->class('form-control input-large')
-	->placeholder('Suburb');
+	->placeholder('Suburb')
+	->required();
 }}
 {{ Former::number('postcode')
 	->class('form-control input-small')
@@ -56,9 +58,13 @@
     ->max('9944')
     ->required();
 }}
+{{ Former::select('State')
+	->options(array(''=>'Select a state','ACT'=> 'ACT','NSW'=>'NSW','NT'=>'NT','QLD'=>'QLD','SA'=>'SA','TAS'=>'TAS','VIC'=>'VIC','WA'=>'WA'))
+	->required();; }}
 {{ Former::text('Country')
 	->class('form-control input-large')
-	->placeholder('Country');
+	->value('Australia')
+	->readonly();
 }}
 {{ Former::number('Number of dependants (Includes children from current and previous relationships and any other family members e.g. partner/spouse/grandparents/parents)')
 	->class('form-control input-small')
@@ -66,18 +72,18 @@
 	->min(0)
 	->required();
 }}
-{{ Former::number('Approximate Personal Income')
-	->class('form-control input-small')
+{{ Former::number('Approximate Personal Income (Includes superannuation)')
+	->class('form-control input-medium')
 	->min(0)
 	->required();
 }}
-{{ Former::number('Approximate Family Income')
-	->class('form-control input-small')
+{{ Former::number('Approximate Family Income (Includes superannuation)')
+	->class('form-control input-medium')
 	->min(0)
 	->required();
 }}
 {{ Former::number('Approximate day-to-day expenses')
-	->class('form-control input-small')
+	->class('form-control input-medium')
 	->min(0)
 	->required();
 }}
@@ -97,11 +103,11 @@
 	->required();
 }}
 {{ Former::checkbox('Do you have any insurance?')
-    ->checkboxes(array('Medical' => 'insurance', 'Total and Permanent Disability' => 'insurance', 'Income Protecttion' => 'insurance', 'Life insurance' => 'insurance'))
+    ->checkboxes(array('Medical' => 'insurance', 'Total and Permanent Disability' => 'insurance', 'Income Protection' => 'insurance', 'Life insurance' => 'insurance'))
     ->inline();
 }}
 {{ Former::checkbox('Do you have any investments?')
-    ->checkboxes(array('Propert' => 'investments', 'Shares' => 'investments', 'Cash Investments' => 'investments'))
+    ->checkboxes(array('Property' => 'investments', 'Shares' => 'investments', 'Cash Investments' => 'investments'))
     ->inline();
 }}
 {{ Former::textarea('State of health - Do you have any existing injury?')

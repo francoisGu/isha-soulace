@@ -49,9 +49,11 @@
     ->max('9944')
     ->required();
 }}
+{{ Former::select('State')->options(array(''=>'Select a state','ACT'=> 'ACT','NSW'=>'NSW','NT'=>'NT','QLD'=>'QLD','SA'=>'SA','TAS'=>'TAS','VIC'=>'VIC','WA'=>'WA')); }}
 {{ Former::text('Country')
 	->class('form-control input-large')
-	->placeholder('Country');
+	->value('Australia')
+	->readonly();
 }}
 {{ Former::radio('Type of service')
     ->radios(array('Separation & Divorce' => 'service', 'Pre-nuptial agreement' => 'service'))

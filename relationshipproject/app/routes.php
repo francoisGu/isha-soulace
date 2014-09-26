@@ -86,6 +86,8 @@ Route::controller('emails', 'EmailController');
 Route::controller('map', 'MapController');
 
 Route::resource('payment', 'PaypalPaymentController');
+Route::resource('payment', 'PaymentController');
+
 /* HTML Macros */
 HTML::macro('smartNavMenu', function($url, $text) {
     $class = ( Request::is($url) || Request::is($url.'/*') ) ? ' class="active"' : '';

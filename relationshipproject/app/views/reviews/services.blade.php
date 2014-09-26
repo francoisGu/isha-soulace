@@ -46,7 +46,6 @@
 
   </div>
   {{ HTML::script('js/jquery-1.8.3.min.js') }}
-  {{ HTML::script('js/bootstrap.min.js') }}
   {{ HTML::script('js/plugins/jquery.raty.min.js') }}
   <script type="text/javascript">
   var url = 'http://localhost:8000/reviews';

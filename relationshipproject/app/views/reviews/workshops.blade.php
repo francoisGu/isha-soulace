@@ -67,3 +67,4 @@
     document.getElementById('details').style.display = '';
   }
   </script>
+  {{ HTML::script('js/bootstrap.min.js') }}

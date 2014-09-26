@@ -49,12 +49,15 @@ Route::get('/', function()
 });
 
 Route::controller('services','ServiceFormController');
-Route::controller('reviews', 'ReviewController');
+//Route::controller('reviews', 'ReviewController');
 Route::get('password/remind', array('uses' => 'PasswordController@getRemind'));
 Route::get('password/reset', array('uses' => 'PasswordController@getReset'));
 Route::post('password/remind', array('uses' => 'PasswordController@postRemind'));
 Route::post('/password/reset/', array('uses' => 'PasswordController@postReset'));
 
+Route::get('reviews/website', array('uses' => 'ReviewController@getWebsite'));
+Route::get('reviews/services', array('uses' => 'ReviewController@getServices'));
+Route::get('reviews/workshops', array('uses' => 'ReviewController@getWorkshops'));
 /*Route::get('workshops/', function(){*/
 
     //return View::make('workshops.index');

@@ -1,7 +1,6 @@
-
-	<h2 class="form-signup-heading">Brief details</h2>
-	<p> Give some brief details about yourself so the expert can understand your situation. This saves time and cost before actual contact between yourself and the expert.</p>
-
+<h2 class="form-signup-heading">Brief details</h2>
+  <p> Please give some brief details about yourself. This helps the expert understand your situation and saves time and cost before actual contact between yourself and the expert.</p>
+  <br>
 	<ul>
 		@foreach($errors->all() as $error)
 			<li>{{ $error }}</li>
@@ -65,7 +64,7 @@
 }}
 {{ Former::number('weight')
 	->class('form-control input-small')
-    ->placeholder('kgs')
+    ->placeholder(' kgs')
     ->required();
 }}
 {{ Former::radio('Type of service')

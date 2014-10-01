@@ -1,6 +1,6 @@
 <div class="container auth">
   <h4 class="text-center">Review our website</h4>
-  <p class="text-center">Tell us what you think about our website. We would love feedback from you so we can keep making the website better!</p>
+  <p class="text-center">Tell us what you think about our website. We would love feedback from you so we can make the website even better!</p>
   <div id="big-form" class="well auth-box">
     {{Former::framework('Nude');}}
     {{Former::open()->method('POST')->url('reviews')->class('')}}
@@ -21,7 +21,7 @@
 
       <div class="form-group" >
         <label class=" control-label" for="">Reviews*</label>
-        {{Former::textarea('review_content')->placeholder('Leave your reviews here...')->rows(4)->class('input-xxlarge input-md form-control')->required()}}
+        {{Former::textarea('review_content')->maxlength('2500')->placeholder('Leave your review here...')->rows(4)->class('input-xxlarge input-md form-control')->required()}}
       </div>
 
       <div class="form-group controls">
@@ -52,9 +52,9 @@
   var url = 'http://localhost:8000/reviews';
   $('div#custom').raty({
     path:"/img",
-    number:   10,
-    start:8,
-    score: 5,
+    number: 5,
+    start: 3,
+    score: 3,
     onClick: function(score){
       saveScore(score);
     } 

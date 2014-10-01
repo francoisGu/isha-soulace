@@ -72,21 +72,48 @@
 	->min(0)
 	->required();
 }}
-{{ Former::number('Approximate Personal Income (Includes superannuation)')
+{{ Former::group('Approximate Personal Income (Includes superannuation)') }}
+<div class="controls">
+  {{ Former::select('frequency')
+	  ->options(array(''=>'Select a frequency','fortnightly'=>'Fortnightly','monthly'=> 'Monthly','annually'=>'Annually')) 
+	  ->class('form-control input-large')
+	  ->required();
+  }}
+  {{ Former::number('personal_income')
 	->class('form-control input-medium')
-	->min(0)
+	->min('0')
 	->required();
-}}
-{{ Former::number('Approximate Family Income (Includes superannuation)')
+  }}
+</div>
+{{ Former::closeGroup() }}
+{{ Former::group('Approximate Family Income (Includes superannuation)') }}
+<div class="controls">
+  {{ Former::select('frequency')
+	  ->options(array(''=>'Select a frequency','fortnightly'=>'Fortnightly','monthly'=> 'Monthly','annually'=>'Annually')) 
+	  ->class('form-control input-large')
+	  ->required();
+  }}
+  {{ Former::number('personal_income')
 	->class('form-control input-medium')
-	->min(0)
+	->min('0')
 	->required();
-}}
-{{ Former::number('Approximate day-to-day expenses')
+  }}
+</div>
+{{ Former::closeGroup() }}
+{{ Former::group('Approximate day-to-day expenses') }}
+<div class="controls">
+  {{ Former::select('frequency')
+	  ->options(array(''=>'Select a frequency','fortnightly'=>'Fortnightly','monthly'=> 'Monthly','annually'=>'Annually')) 
+	  ->class('form-control input-large')
+	  ->required();
+  }}
+  {{ Former::number('personal_income')
 	->class('form-control input-medium')
-	->min(0)
+	->min('0')
 	->required();
-}}
+  }}
+</div>
+{{ Former::closeGroup() }}
 {{ Former::radio('Do you have any liabilities? e.g. Mortage loan, financial debt, car loan')
     ->radios(array('Yes' => 'liability', 'No' => 'liability'))
     ->inline()
@@ -112,6 +139,7 @@
 }}
 {{ Former::textarea('State of health - Do you have any existing injury?')
 	->class('form-control')
+	->maxlength('2500')
 	->required();
 }}
 {{ Former::actions()

@@ -63,21 +63,40 @@
 }}
 {{ Former::number('weight')
 	->class('form-control input-small')
-    ->placeholder('kgs')
+    ->placeholder(' kgs')
+    ->min('1')
     ->required();
 }}
-{{ Former::group('Height (cm)') }}
+{{ Former::radio('Height Unit')
+	->radios(array(' cm' => array('name' => 'unit', 'checked' => 'checked'), ' feet and inches' => array('name' => 'unit', 'checked' => '')))
+	->onchange('change()')
+	->inline()
+	->required();
+}}
+{{ Former::group('Height')->required(); }}
 <div class="controls">
-  {{ Former::number('height')
-	->class('form-control input-small')
-	->min(1)
+  <div id='cm_part'>
+  {{ Former::number('cm')
+	->class('form-control input-medium')
+	->min('1')
 	->placeholder('176 cm')
 	->required();
   }}
-<!--  {{ Former::select('Select unit for height')
-	->class('form-control input-small')
-	->options(array('cm' => 'cm', 'inch' => 'ft and inches'), array('cm'));
-  }}-->
+  </div>
+  <div id='feet_and_inches_part' style='display:none'>
+  {{ Former::number('feet')
+	->class('form-control input-medium')
+	->min('1')
+	->placeholder('5 feet')
+	->required();
+  }}
+  {{ Former::number('inch')
+	->class('form-control input-medium')
+	->min('0')
+	->placeholder('20 inches')
+	->required();
+  }}
+  </div>
 </div>
 {{ Former::closeGroup() }}
 {{ Former::checkbox('Fitness Goal')
@@ -87,6 +106,7 @@
 }}
 {{ Former::textarea('Do you have any injury/illness - e.g. diabetes?')
 	->class('form-control')
+	->maxlength('2500')
 	->required();
 }}
 {{ Former::actions()
@@ -94,3 +114,16 @@
     ->large_inverse_reset('Reset');
 }}
 {{ Former::close(); }}
+<script>
+  function change() {
+	var radio = document.getElementsByName('unit');
+	if (radio[0].checked) {
+	  document.getElementById('cm_part').style.display = '';
+	  document.getElementById('feet_and_inches_part').style.display = 'none';
+	} else if (radio[1].checked) {
+	  document.getElementById('cm_part').style.display = 'none';
+	  document.getElementById('feet_and_inches_part').style.display = '';
+	  
+	}
+  }
+</script>

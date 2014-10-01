@@ -21,7 +21,7 @@
 
       <div class="form-group" >
         <label class=" control-label" for="">Reviews*</label>
-        {{Former::textarea('review_content')->placeholder('Leave your reviews here...')->rows(4)->class('input-xxlarge input-md form-control')->required()}}
+        {{Former::textarea('review_content')->placeholder('Leave your review here...')->rows(4)->class('input-xxlarge input-md form-control')->required()}}
       </div>
 
       <div class="form-group controls">
@@ -52,9 +52,9 @@
   var url = 'http://localhost:8000/reviews';
   $('div#custom').raty({
     path:"/img",
-    number:   10,
-    start:8,
-    score: 5,
+    number: 5,
+    start: 3,
+    score: 3,
     onClick: function(score){
       saveScore(score);
     } 

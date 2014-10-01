@@ -26,7 +26,7 @@
     ->placeholder('Last Name');
 }}
 {{ Former::radio('gender')
-    ->radios(array('M' => 'gender', 'F' => 'gender'))
+    ->radios(array('Male' => 'gender', 'Female' => 'gender'))
     ->inline()
     ->required();
 }}
@@ -60,13 +60,13 @@
     ->inline()
     ->required();
 }}
-{{ Former::radio('Are you in a same-sex relationship?')
+{{ Former::radio('same-sex', 'Are you in a same-sex relationship?')
     ->radios(array('Yes' => 'same-sex', 'No' => 'same-sex'))
     ->inline()
     ->required();
 }}
 {{ Former::radio('Relationship status')
-    ->radios(array('Married' => 'status', 'De facto' => 'status'))
+    ->radios(array('Married' => 'status', 'De facto' => 'status', 'Separated' => 'status'))
     ->inline()
     ->required();
 }}
@@ -107,6 +107,7 @@
 }}
 {{ Former::textarea('Health Status')
 	->class('form-control')
+	->maxlength('2500')
 	->placeholder('Please describe your current state of health')
 	->required();
 }}

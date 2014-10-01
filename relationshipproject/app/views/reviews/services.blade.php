@@ -8,7 +8,7 @@
 
     <div class="form-group">
       <label class=" control-label" for="">Form ID*</label>
-      {{Former::text('form_id')->placeholder('Type the Form ID you received')->class('input-xlarge input-md form-control')->required()}}
+      {{Former::text('form_id')->placeholder('Enter the Form ID you received')->class('input-xlarge input-md form-control')->required()}}
     </div>
 
     <div class="form-group ">
@@ -21,7 +21,7 @@
 
       <div class="form-group" >
         <label class=" control-label" for="">Reviews*</label>
-        {{Former::textarea('review_content')->placeholder('Leave your reviews here...')->rows(4)->class('input-xxlarge input-md form-control')->required()}}
+        {{Former::textarea('review_content')->maxlength('2500')->placeholder('Leave your review here...')->rows(4)->class('input-xxlarge input-md form-control')->required()}}
       </div>
 
       <div class="form-group controls">
@@ -46,14 +46,15 @@
 
   </div>
   {{ HTML::script('js/jquery-1.8.3.min.js') }}
+  {{ HTML::script('js/bootstrap.min.js') }}
   {{ HTML::script('js/plugins/jquery.raty.min.js') }}
   <script type="text/javascript">
   var url = 'http://localhost:8000/reviews';
   $('div#custom').raty({
     path:"/img",
-    number:   10,
-    start:8,
-    score: 5,
+    number: 5,
+    start: 3,
+    score: 3,
     onClick: function(score){
       saveScore(score);
     } 
@@ -66,3 +67,4 @@
     document.getElementById('details').style.display = '';
   }
   </script>
+  {{ HTML::script('js/bootstrap.min.js') }}

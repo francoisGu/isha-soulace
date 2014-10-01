@@ -30,5 +30,10 @@ class HomeController extends BaseController {
         $this->layout->content = View::make('about');
         
 	}
-
+	
+	public function getPrivatebrowsing(){
+		$this->layout->title = 'Private Browsing - Isha SoulAce';
+		$this->layout->content = View::make('private_browsing');
+	}
+	
 }

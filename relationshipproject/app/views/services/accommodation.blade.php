@@ -25,15 +25,14 @@
 	->class('form-control input-xlarge')
     ->placeholder('Last Name');
 }}
-{{ Former::number('age')
+{{ Former::number('Age (yrs)')
 	->class('form-control input-small')
     ->placeholder('25')
     ->min(1)
-    ->max(300)
-	->required();
+    ->max(200);
 }}
 {{ Former::radio('gender')
-    ->radios(array('M' => 'gender', 'F' => 'gender'))
+    ->radios(array('Male' => 'gender', 'Female' => 'gender'))
     ->inline()
     ->required();
 }}
@@ -56,7 +55,10 @@
     ->max('9944')
     ->required();
 }}
-{{ Former::select('State')->options(array(''=>'Select a state','ACT'=> 'ACT','NSW'=>'NSW','NT'=>'NT','QLD'=>'QLD','SA'=>'SA','TAS'=>'TAS','VIC'=>'VIC','WA'=>'WA')); }}
+{{ Former::select('State')
+	->options(array(''=>'Select a state','ACT'=> 'ACT','NSW'=>'NSW','NT'=>'NT','QLD'=>'QLD','SA'=>'SA','TAS'=>'TAS','VIC'=>'VIC','WA'=>'WA'))
+	->required(); 
+}}
 {{ Former::text('Country')
 	->class('form-control input-large')
 	->value('Australia')

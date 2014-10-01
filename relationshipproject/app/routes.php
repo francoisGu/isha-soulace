@@ -30,10 +30,9 @@ Route::get('/login_admin', function()
         return View::make('login_admin');
     });
 Route::get('/serviceList', function()
-    {
-        return View::make('serviceList');
-    });
-// Route::controller('home', 'HomeController');
+{
+	return View::make('serviceList');
+});
 
 Route::get('/login', function()
     {
@@ -45,9 +44,11 @@ Route::get('/register', function()
     });
 
 Route::get('/', function()
-    {
-        return View::make('home');
-    });
+{
+    return Redirect::to('home');//View::make('home');
+});
+
+Route::controller('services','ServiceFormController');
 
 Route::get('/about', function()
     {
@@ -81,9 +82,21 @@ Route::resource('clients', 'ClientsController');
 //Route::post('/password/reset/', array('uses' => 'PasswordController@postReset'));
 Route::controller('password', 'PasswordController');
 Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
+
+Route::controller('/', 'HomeController');
 Route::controller('emails', 'EmailController');
 //Route::controller('password', 'PasswordController');
 
 Route::controller('map', 'MapController');
 
-Route::resource('payment', 'PaypalPaymentController');
+Route::resource('payment', 'PaymentController');
+
+/* HTML Macros */
+HTML::macro('smartNavMenu', function($url, $text) {
+    $class = ( Request::is($url) || Request::is($url.'/*') ) ? ' class="active"' : '';
+    return '<li'.$class.'><a href="'.URL::to($url).'">'.$text.'</a></li>';
+});
+HTML::macro('startSmartDropdown', function($url) {
+    $class = ( Request::is($url) || Request::is($url.'/*') ) ? ' class="active"' : '';
+    return ''.$class.' class="dropdown"';
+});

@@ -123,6 +123,11 @@ class ServiceProvidersController extends \BaseController {
 		//
 	}
 
+	/**
+     *  	 
+     * retrieve all workshops w.r.t currently loging user	 
+	 * @return Response
+	 */
     public function getMyWorkshops(){
         $sp = Sentry::getUser()->userable;
 

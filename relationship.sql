@@ -16341,7 +16341,7 @@ CREATE TABLE `serviceProviders` (
 
 LOCK TABLES `serviceProviders` WRITE;
 /*!40000 ALTER TABLE `serviceProviders` DISABLE KEYS */;
-INSERT INTO `serviceProviders` VALUES (1,'0','','09808908','8979','898','lkjlkj','ljljl','jljl','lklkjl',9808,'12345678','',1,'','Litao1','Shen','litaoshen_0315@hotmail.com','2014-09-29 05:11:44','2014-09-29 06:56:34');
+INSERT INTO `serviceProviders` VALUES (1,'0','','09808908','8979','898','lkjlkj','ljljl','jljl','lklkjl',9808,'12345678','',0,'','Litao1','Shen','litaoshen_0315@hotmail.com','2014-09-29 05:11:44','2014-09-30 17:48:58');
 /*!40000 ALTER TABLE `serviceProviders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16642,4 +16642,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-01 13:46:36
+-- Dump completed on 2014-10-01 14:11:26

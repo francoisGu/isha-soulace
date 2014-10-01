@@ -32,7 +32,6 @@
           </ul>
 
             <div class="form-group">
-                <ul class="navbar-form navbar-right">
                 @if(!Sentry::check())
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getActivation') }}" method="get">
                     <input type="submit" value="Activate" class="btn btn-success"/>

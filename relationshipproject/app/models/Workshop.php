@@ -7,6 +7,7 @@ class Workshop extends \Eloquent {
     protected $guarded = array('id');
 
     public static $rules = array(
+        //'service_provider_id'   => 'required',
         'topic'                 => 'required',
         'description'           => 'required',
         'unit'                  => 'required',

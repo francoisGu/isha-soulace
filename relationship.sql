@@ -16341,7 +16341,7 @@ CREATE TABLE `serviceProviders` (
 
 LOCK TABLES `serviceProviders` WRITE;
 /*!40000 ALTER TABLE `serviceProviders` DISABLE KEYS */;
-INSERT INTO `serviceProviders` VALUES (1,'0','','09808908','8979','898','lkjlkj','ljljl','jljl','lklkjl',9808,'12345678','',0,'','Litao1','Shen','litaoshen_0315@hotmail.com','2014-09-29 05:11:44','2014-09-30 17:48:58');
+INSERT INTO `serviceProviders` VALUES (1,'0','','09808908','79','898','collins','ljljl','jljl','lklkjl',9808,'12345678','',0,'','Litao','Shen','litaoshen_0315@hotmail.com','2014-09-29 05:11:44','2014-10-01 02:49:29');
 /*!40000 ALTER TABLE `serviceProviders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16502,7 +16502,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'litaoshen_0315@hotmail.com','$2y$10$Z2MtoBWaJ7.rOrrNI6pahuwmJQuI3JngzEW.YI/BVZhdZRe.moBDi',NULL,1,'oi1C03GHq0H4bFvUv1mlCIMtzBKnA6WvsFSYUOo9KH',NULL,'2014-09-29 05:17:53','$2y$10$MKrId7O6myGzFMaMpk8qfe000gIUKODtM3hsLorNMHTHTE7s/LeC.',NULL,NULL,NULL,'2014-09-29 05:11:44','2014-09-29 05:17:53',1,'ServiceProvider');
+INSERT INTO `users` VALUES (1,'litaoshen_0315@hotmail.com','$2y$10$Z2MtoBWaJ7.rOrrNI6pahuwmJQuI3JngzEW.YI/BVZhdZRe.moBDi',NULL,1,'oi1C03GHq0H4bFvUv1mlCIMtzBKnA6WvsFSYUOo9KH',NULL,'2014-10-01 02:43:29','$2y$10$7Nr7Zh5j4b31uSee5.u.xO9ETEdkj/nTAfLTeSMRx3hf8rnIyh3ZO',NULL,NULL,NULL,'2014-09-29 05:11:44','2014-10-01 02:43:29',1,'ServiceProvider');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16618,7 +16618,7 @@ CREATE TABLE `workshops` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `service_provider_id` (`service_provider_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16630,6 +16630,7 @@ LOCK TABLES `workshops` WRITE;
 INSERT INTO `workshops` VALUES (NULL,1,'test3','test3','807','74','Queens','Road','Melbourne','VIC',3000,'2014-09-04','10:09:00','02:09:00',1234,1234,123.00,NULL,'144.979558','-37.852241','2014-09-24 03:39:08','2014-09-24 03:49:33');
 INSERT INTO `workshops` VALUES (NULL,2,'Test3','test33','hello','123','collins','st','melbourne ','Vic',3000,'2014-09-27','19:09:00','19:09:00',123,123,23.00,NULL,'144.9696667','-37.8146515','2014-09-27 03:36:33','2014-09-27 03:36:33');
 INSERT INTO `workshops` VALUES (NULL,3,'test4','test4','123','123','collins','st','melbourne','NSW',3004,'2014-09-25','17:09:00','17:09:00',123,123,123.00,NULL,'144.9696667','-37.8146515','2014-09-27 21:20:53','2014-09-27 21:20:53');
+INSERT INTO `workshops` VALUES (NULL,5,'hello','hello','123','123','collins','st','Melbourne','Vic',3000,'1899-12-29','18:10:00','02:10:00',123,123,123.00,1,'144.9696667','-37.8146515','2014-10-01 03:10:15','2014-10-01 03:10:15');
 /*!40000 ALTER TABLE `workshops` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -16642,4 +16643,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-01 14:11:26
+-- Dump completed on 2014-10-02  1:03:40

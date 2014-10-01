@@ -41,6 +41,8 @@ class CreateWorkshopsTable extends Migration {
         $table->string('latitude')->nullable();
 
         $table->timestamps();
+
+        $table->index('service_provider_id');
     });
     }
 

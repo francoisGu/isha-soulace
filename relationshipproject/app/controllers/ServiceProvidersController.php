@@ -123,19 +123,4 @@ class ServiceProvidersController extends \BaseController {
 		//
 	}
 
-	/**
-     *  	 
-     * retrieve all workshops w.r.t currently loging user	 
-	 * @return Response
-	 */
-    public function getMyWorkshops(){
-        $sp = Sentry::getUser()->userable;
-
-        if(get_class($sp) == 'ServiceProvider'){
-            $workshops = $sp->workshops();
-            return View::make('serviceProviders.myWorkshops')->with('workshops', $workshops);
-        
-        }
-    }
-
 }

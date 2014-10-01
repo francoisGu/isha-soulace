@@ -1,3 +1,10 @@
+@extends('layouts.main')
+
+@section('title')
+<title>Isha SoulAce - Home</title>
+@stop
+
+@section('main')
 <!-- Begin page content -->
 <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 <div class="row">
@@ -88,3 +95,5 @@
   </div>
 </div>
 <hr>
+
+@stop

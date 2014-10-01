@@ -45,6 +45,12 @@ class WorkshopsController extends \BaseController {
     public function store()
     {
         //
+        //
+        if(! Sentry::check()){
+            return Redirect::to('users/login')->with('message', 'Please log in first'); 
+        }
+
+        $sp = Sentry::getUser()->userable;
         $input = Input::all();
         $validator = Validator::make($input, Workshop::$rules);
 
@@ -57,16 +63,18 @@ class WorkshopsController extends \BaseController {
                     . Input::get('state') . ',' . Input::get('postcode');
                 $geocode = Geocoder::geocode($venue);
                 // ...
-                Workshop::create(array_merge( array('ticket_number' => 
-                    Input::get('total_ticket_number'), 'longitude' => 
-                    $geocode['longitude'], 'latitude' => $geocode['latitude']) , 
+                Workshop::create(array_merge( array(
+                    'service_provider_id' => $sp->id, 
+                    'ticket_number' => Input::get('total_ticket_number'), 
+                    'longitude' => $geocode['longitude'], 
+                    'latitude' => $geocode['latitude']) , 
                     $input));
                 //return Response::json(array('success' => true));
                 //
 
                 Session::flash('message', 'Address: ' . $venue . ' | Geocode: ' 
                     . $geocode{'latitude'}. ',' . $geocode['longitude']);
-                return Redirect::route('workshops.index'); 
+                return Redirect::to('myworkshops'); 
 
             } catch (\Exception $e) {
                 // Here we will get "The FreeGeoIpProvider does not support 
@@ -97,7 +105,7 @@ class WorkshopsController extends \BaseController {
     {
         $workshop = Workshop::find($id);
         if(is_null($workshop)){
-            return Redirect::route('workshops.index');
+            return Redirect::back();
         }
 
         return View::make('workshops.show')
@@ -187,10 +195,31 @@ class WorkshopsController extends \BaseController {
     public function destroy($id)
     {
         Workshop::find($id)->delete();
-        return Redirect::route('workshop.index');
+        //return Redirect::route('workshops.index');
+        return Redirect::to('myworkshops');
 
         //Workshop::destroy($id);
         //return Response::json(array('success' => true));
+    }
+
+	/**
+     *  	 
+     * retrieve all workshops w.r.t currently loging user	 
+	 * @return Response
+	 */
+    public function getMyWorkshops(){
+        if(! Sentry::check()){
+            return Redirect::to('users/login')->with('message', 'Please log in first.'); 
+        }
+        $sp = Sentry::getUser()->userable;
+        //dd($sp->email);
+
+        if(get_class($sp) == 'ServiceProvider'){
+            $workshops = $sp->workshops;
+
+            return View::make('serviceProviders.myWorkshops')->with('workshops', $workshops)->with('sp', $sp);
+        
+        }
     }
 
     public function findByPostcode($postcode){

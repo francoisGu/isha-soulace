@@ -1,5 +1,10 @@
 @extends('layouts.main')
 
+@section('title')
+<title>Isha SoulAce - Register</title>
+@stop
+
+
 @section('main')
 <div class="row-fluid">
 	<div class="span9">

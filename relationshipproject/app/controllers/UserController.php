@@ -97,7 +97,7 @@ class UsersController extends BaseController {
 
             $loginMessage = $this->account->login($loginInfo);
 
-            return Redirect::to($loginMessage['url'])->with('message', 
+            return Redirect::to($loginMessage['url'] . Sentry::getUser()->id)->with('message', 
                 $loginMessage['message']);
         }
 

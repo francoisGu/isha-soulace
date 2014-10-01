@@ -65,13 +65,23 @@ Route::get('/about', function()
     //Route::resource('workshops', 'WorkshopsController', 
         //array('only' => array('index', 'store', 'destroy', 'create', 'edit')));
 //});
+//Route::get('serviceProviders/myworkshops', 'ServiceProvidersController@getMyWorkshops');
+
 
 Route::controller('users', 'UsersController');
 Route::get('workshopAdvertisements/premium', 'WorkshopAdvertisementsController@getPremiumAdvertisements');
 
 Route::resource('workshops', 'WorkshopsController');
-Route::get('serviceProviders/myWorkshops', 'ServiceProvidersController@getMyWorkshops');
 Route::resource('serviceProviders', 'ServiceProvidersController');
+
+Route::get('/myworkshops', 'WorkshopsController@getMyWorkshops');
+
+//Route::get('/myworkshops', function(){
+    
+    //return View::make('serviceProviders.myWorkshops');
+
+/*});*/
+
 Route::resource('workshopAdvertisements', 'WorkshopAdvertisementsController');
 Route::resource('tickets', 'TicketsController');
 Route::resource('clients', 'ClientsController');

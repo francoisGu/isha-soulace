@@ -161,7 +161,7 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
 
             $message = 'You are now logged in!';
             $user = Sentry::getUser()->userable;
-            return ['url' => 'users/dashboard', 'message' => $user->email];
+            return ['url' => 'serviceProviders/', 'message' => $user->email];
 
 
         }

@@ -51,22 +51,22 @@
     <div class="col-4 col-sm-4"> 
       <h4>Financial Abuse</h4>
       <p>withholding money, forcing total control over victims earned income, forbidding employment</p>
-      <p><a id="financial" class="btn btn-default" role="button">I need help in...</a></p>
+      <p><a id="financial" class="btn btn-default" onclick="showFinancial()" role="button">I need help in...</a></p>
 		</div><!--/span-->
 		<div class="col-4 col-sm-4">
       <h4>Physical Abuse</h4>
       <p>slapping, hitting, beating, kicking, arm twisting, punching, stabbing</p>
-      <p><a id="physical" class="btn btn-default" role="button">I need help in...</a></p>
+      <p><a id="physical" class="btn btn-default" onclick="showPhysical()" role="button">I need help in...</a></p>
 		</div><!--/span-->
 		<div class="col-4 col-sm-5">
       <h4>Psychological Abuse</h4>
       <p>intimidation, damaging property, stalking, isolating from friends and family</p>
-      <p><a id="psychological" class="btn btn-default" role="button">I need help in...</a></p>
+      <p><a id="psychological" class="btn btn-default" onclick="showPsychological()" role="button">I need help in...</a></p>
     </div><!--/span-->
 		<div class="col-4 col-sm-5">
       <h4>Sexual Abuse</h4>
       <p>marital rape, forced sex after physical abuse, forced prostitution</p>
-      <p><a id="sexual" class="btn btn-default" role="button">I need help in...</a></p>
+      <p><a id="sexual" class="btn btn-default" onclick="showSexual()" role="button">I need help in...</a></p>
     </div><!--/span--><!--
 		<div class="active col-6 col-sm-6 col-sm-3">
       <h4>CONTACT HELP</h4>
@@ -79,12 +79,12 @@
 	  <div class="list-group">
 		<a id="family_law" href="services/familylaw" class="list-group-item">Family Law</a>
 		<a id="accommodation" href="services/accommodation" class="list-group-item">Accommodation</a>
-		<a id="fitness" href="services/fitnessandnutition" class="list-group-item">Fitness & Nutrition</a>
+		<a id="fitness" href="services/fitnessandnutrition" class="list-group-item">Fitness & Nutrition</a>
 		<a id="mental_wellbeing" href="services/mentalwellbeing" class="list-group-item">Mental Wellbeing, Counselling</a>
 		<a id="financial_advice" href="services/financialadvice" class="list-group-item">Financial Advice</a>
 		<a href="#" class="list-group-item">Workshops</a>
 <!-- 		Domestic Violence Help Contact Numbers -->
-		<a class="list-group-item">
+		<a id="help" class="list-group-item">
 		  <strong>CONTACT HELP</strong>
 		  <br>
 		  Police 000
@@ -111,11 +111,90 @@
 
 <!-- Controls the highlight effect for relevant services for specific types of domestic violence -->
 <script>
-// Highlights emotional and psychological services
-  function showEmotional() {
-	$("a#emotional").toggleClass("active");
+// Toggles services for different types of domestic violence
+  function toggleEmotionalAndPsychological() {
 	$("a#family_law").toggleClass("active");
 	$("a#fitness").toggleClass("active");
 	$("a#mental_wellbeing").toggleClass("active");
+  }
+  function togglePhysicalAndSexual() {
+	$("a#family_law").toggleClass("active");
+	$("a#accommodation").toggleClass("active");
+	$("a#help").toggleClass("active");
+  }
+  
+  function toggleFinancial() {
+	$("a#family_law").toggleClass("active");
+	$("a#financial_advice").toggleClass("active");
+  }
+// Highlights emotional services
+  function showEmotional() {
+	if ($("a#physical").hasClass("active")) {
+	  showPhysical();
+	} else if ($("a#financial").hasClass("active")) {
+	  showFinancial();
+	} else if ($("a#psychological").hasClass("active")) {
+	  showPsychological();
+	} else if ($("a#sexual").hasClass("active")) {
+	  showSexual();
+	} 
+	$("a#emotional").toggleClass("active");
+	toggleEmotionalAndPsychological();
+  }
+  
+  function showFinancial() {
+	if ($("a#physical").hasClass("active")) {
+	  showPhysical();
+	} else if ($("a#emotional").hasClass("active")) {
+	  showEmotional();
+	} else if ($("a#psychological").hasClass("active")) {
+	  showPsychological();
+	} else if ($("a#sexual").hasClass("active")) {
+	  showSexual();
+	}
+	$("a#financial").toggleClass("active");
+	toggleFinancial();
+	
+  }
+  function showPsychological() {
+	if ($("a#physical").hasClass("active")) {
+	  showPhysical();
+	} else if ($("a#financial").hasClass("active")) {
+	  showFinancial();
+	} else if ($("a#emotional").hasClass("active")) {
+	  showEmotional();
+	} else if ($("a#sexual").hasClass("active")) {
+	  showSexual();
+	}
+	$("a#psychological").toggleClass("active");
+	toggleEmotionalAndPsychological();
+}
+  
+  function showPhysical() {
+	if ($("a#emotional").hasClass("active")) {
+	  showEmotional();
+	} else if ($("a#financial").hasClass("active")) {
+	  showFinancial();
+	} else if ($("a#psychological").hasClass("active")) {
+	  showPsychological();
+	} else if ($("a#sexual").hasClass("active")) {
+	  showSexual();
+	}
+	$("a#physical").toggleClass("active");
+	togglePhysicalAndSexual();
+  }
+  
+  function showSexual() {
+	if ($("a#physical").hasClass("active")) {
+	  showPhysical();
+	} else if ($("a#financial").hasClass("active")) {
+	  showFinancial();
+	} else if ($("a#psychological").hasClass("active")) {
+	  showPsychological();
+	} else if ($("a#emotional").hasClass("active")) {
+	  showEmotional();
+	}
+	$("a#sexual").toggleClass("active");
+	togglePhysicalAndSexual();
   }
 </script>

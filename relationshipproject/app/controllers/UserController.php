@@ -4,13 +4,12 @@ use App\Interfaces\UserAccountInterface;
 
 class UsersController extends BaseController {
 
+
     protected $layout = "layouts.main";
-    static $lay = "layouts.main";
-    protected $account;
+
 
     public function __construct(User $account) {
-        $this->account = $account; 
-        $this->beforeFilter('csrf', 
+        $this->account = $account; $this->beforeFilter('csrf', 
             array('on'=>'post'));
         //$this->beforeFilter('auth', array('only'=>array('getDashboard')));
     }
@@ -30,19 +29,25 @@ class UsersController extends BaseController {
 
         $validator = Validator::make(Input::all(), $rules);
 
+
         if ($validator->passes()) {
+            /*$registerInfo = array(*/
+                //'email'     => Input::get('email', null),
+                //'password'  => Input::get('password', null),
+                //'firstname' => Input::get('firstname', null),
+                //'lastname'  => Input::get('lastname', null),
+            //);
+            //
+            $registerInfo = Input::all();
 
-            $registerInfo = array(
-                'email'     => Input::get('email'),
-                'password'  => Input::get('password'),
-                'firstname' => Input::get('firstname'),
-                'lastname'  => Input::get('lastname'),
-            );
+            $this->account->register('ServiceProvider' , $registerInfo);
 
-            $this->account->register($registerInfo);
 
             return Redirect::to('users/login')->with('message', 'Thanks for 
-                registering!');
+                registering! Only when your account gets approved, you can log 
+                into the website. We will manage it as soon as possible. Thank 
+                you for your support.');
+
         } else {
             return Redirect::back()->with('message', 'The following errors 
                 occurred')->withErrors($validator)->withInput();
@@ -66,7 +71,7 @@ class UsersController extends BaseController {
         $this->layout->content = View::make('users.login');
 
         if(Sentry::check()){
-            return Redirect::to('users/dashboard');
+            return Redirect::to('serviceProvider/profile');
         }
     }
 
@@ -102,10 +107,12 @@ class UsersController extends BaseController {
         $this->layout->content = View::make('users.dashboard');
     }
 
+
+
     public function getLogout() {
         Sentry::logout();
-        return Redirect::to('users/login')->with('message', 'Your are now 
-            logged out!');
+        return Redirect::to('users/login')->with('message', 'You are now logged 
+            out!');
     }
 
 }

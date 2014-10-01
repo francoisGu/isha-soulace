@@ -63,7 +63,8 @@
 			<p class="alert">{{ Session::get('message') }}</p>
 		@endif
 
-	   	{{ $content }}
+        {{-- $content --}}
+        @yield('main')
 	</div>
 
     <!-- Bootstrap core JavaScript

@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Workshop extends \Eloquent {
-    protected $fillable = ['topic','description','unit', 'street_number', 'street_name', 'street_type', 'suburb', 'state', 'postcode', 'date','start_time','end_time','total_ticket_number','price'];
+    protected $fillable = ['service_provider_id','topic','description','unit', 'street_number', 'street_name', 'street_type', 'suburb', 'state', 'postcode', 'date','start_time','end_time','total_ticket_number', 'ticket_number', 'price', 'longitude', 'latitude'];
     protected $guarded = array('id');
 
     public static $rules = array(
@@ -26,12 +26,15 @@ class Workshop extends \Eloquent {
 
     protected $table = "workshops";
 
+    public function workshopAdvertisement(){
+        return $this->hasOne('WorkshopAdvertisement');
+    }
+
     public function ticket(){
         return $this->hasMany('Ticket'); 
     }
 
-    public function __toString()
-    {
-      return $this->name;
+    public function serviceProvider(){
+        return $this->belongsTo('ServiceProvider');
     }
 }

@@ -65,8 +65,15 @@ Route::get('/about', function()
         //array('only' => array('index', 'store', 'destroy', 'create', 'edit')));
 //});
 
+Route::controller('users', 'UsersController');
+Route::get('workshopAdvertisements/premium', 'WorkshopAdvertisementsController@getPremiumAdvertisements');
+
 Route::resource('workshops', 'WorkshopsController');
-Route::resource('ServiceProviders', 'ServiceProvidersController');
+Route::get('serviceProviders/myWorkshops', 'ServiceProvidersController@getMyWorkshops');
+Route::resource('serviceProviders', 'ServiceProvidersController');
+Route::resource('workshopAdvertisements', 'WorkshopAdvertisementsController');
+Route::resource('tickets', 'TicketsController');
+Route::resource('clients', 'ClientsController');
 //Route::resource('Administrators', 'AdministratorsController');
 //Route::get('password/remind', array('uses' => 'PasswordController@getRemind'));
 //Route::get('password/reset', array('uses' => 'PasswordController@getReset'));
@@ -74,7 +81,6 @@ Route::resource('ServiceProviders', 'ServiceProvidersController');
 //Route::post('/password/reset/', array('uses' => 'PasswordController@postReset'));
 Route::controller('password', 'PasswordController');
 Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
-Route::controller('users', 'UsersController');
 Route::controller('emails', 'EmailController');
 //Route::controller('password', 'PasswordController');
 

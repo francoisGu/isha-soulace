@@ -16,54 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Administrators`
---
-
-DROP TABLE IF EXISTS `Administrators`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Administrators` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Administrators`
---
-
-LOCK TABLES `Administrators` WRITE;
-/*!40000 ALTER TABLE `Administrators` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Administrators` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ServiceProviders`
---
-
-DROP TABLE IF EXISTS `ServiceProviders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ServiceProviders` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ServiceProviders`
---
-
-LOCK TABLES `ServiceProviders` WRITE;
-/*!40000 ALTER TABLE `ServiceProviders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ServiceProviders` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `admin`
 --
 
@@ -86,6 +38,30 @@ CREATE TABLE `admin` (
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `administrators`
+--
+
+DROP TABLE IF EXISTS `administrators`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `administrators` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `administrators`
+--
+
+LOCK TABLES `administrators` WRITE;
+/*!40000 ALTER TABLE `administrators` DISABLE KEYS */;
+/*!40000 ALTER TABLE `administrators` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -112,6 +88,59 @@ CREATE TABLE `client` (
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clients`
+--
+
+DROP TABLE IF EXISTS `clients`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clients` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `clients_email_unique` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clients`
+--
+
+LOCK TABLES `clients` WRITE;
+/*!40000 ALTER TABLE `clients` DISABLE KEYS */;
+/*!40000 ALTER TABLE `clients` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `groups`
+--
+
+DROP TABLE IF EXISTS `groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groups` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `permissions` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `groups_name_unique` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groups`
+--
+
+LOCK TABLES `groups` WRITE;
+/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -150,8 +179,16 @@ INSERT INTO `migrations` VALUES ('2014_09_03_153612_add_foreign_keys_to_workshop
 INSERT INTO `migrations` VALUES ('2014_09_03_153612_add_foreign_keys_to_workshops_table',0);
 INSERT INTO `migrations` VALUES ('2014_09_20_033559_create_workshops_table',1);
 INSERT INTO `migrations` VALUES ('2014_09_20_041012_create_ticket_table',1);
-INSERT INTO `migrations` VALUES ('2014_09_22_073315_create_ServiceProviders_table',1);
-INSERT INTO `migrations` VALUES ('2014_09_23_054048_create_Administrators_table',2);
+INSERT INTO `migrations` VALUES ('2012_12_06_225921_migration_cartalyst_sentry_install_users',2);
+INSERT INTO `migrations` VALUES ('2012_12_06_225929_migration_cartalyst_sentry_install_groups',2);
+INSERT INTO `migrations` VALUES ('2012_12_06_225945_migration_cartalyst_sentry_install_users_groups_pivot',2);
+INSERT INTO `migrations` VALUES ('2012_12_06_225988_migration_cartalyst_sentry_install_throttle',2);
+INSERT INTO `migrations` VALUES ('2014_09_22_073315_create_ServiceProviders_table',3);
+INSERT INTO `migrations` VALUES ('2014_09_23_054048_create_Administrators_table',3);
+INSERT INTO `migrations` VALUES ('2014_09_25_100908_create_WorkshopAdvertisements_table',3);
+INSERT INTO `migrations` VALUES ('2014_09_25_133449_create_Clients_table',3);
+INSERT INTO `migrations` VALUES ('2014_09_25_153216_create_Tickets_table',3);
+INSERT INTO `migrations` VALUES ('2014_09_29_143333_users',3);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16266,6 +16303,49 @@ INSERT INTO `postcode_db` VALUES (0,'','','','',0,0);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `serviceProviders`
+--
+
+DROP TABLE IF EXISTS `serviceProviders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `serviceProviders` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `identity` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `acn` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `abn` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `unit` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `street_number` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `street_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `street_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `suburb` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `postcode` int(10) unsigned DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mobile` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mode` tinyint(1) NOT NULL DEFAULT '0',
+  `companyName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `firstName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `serviceproviders_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `serviceProviders`
+--
+
+LOCK TABLES `serviceProviders` WRITE;
+/*!40000 ALTER TABLE `serviceProviders` DISABLE KEYS */;
+INSERT INTO `serviceProviders` VALUES (1,'0','','09808908','8979','898','lkjlkj','ljljl','jljl','lklkjl',9808,'12345678','',1,'','Litao1','Shen','litaoshen_0315@hotmail.com','2014-09-29 05:11:44','2014-09-29 06:56:34');
+/*!40000 ALTER TABLE `serviceProviders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `service_provider`
 --
 
@@ -16324,29 +16404,160 @@ LOCK TABLES `services_payment` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `ticket`
+-- Table structure for table `throttle`
 --
 
-DROP TABLE IF EXISTS `ticket`;
+DROP TABLE IF EXISTS `throttle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ticket` (
-  `workshop_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+CREATE TABLE `throttle` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
+  `ip_address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `attempts` int(11) NOT NULL DEFAULT '0',
+  `suspended` tinyint(1) NOT NULL DEFAULT '0',
+  `banned` tinyint(1) NOT NULL DEFAULT '0',
+  `last_attempt_at` timestamp NULL DEFAULT NULL,
+  `suspended_at` timestamp NULL DEFAULT NULL,
+  `banned_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `throttle_user_id_index` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `throttle`
+--
+
+LOCK TABLES `throttle` WRITE;
+/*!40000 ALTER TABLE `throttle` DISABLE KEYS */;
+INSERT INTO `throttle` VALUES (1,1,'::1',0,0,0,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `throttle` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tickets`
+--
+
+DROP TABLE IF EXISTS `tickets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tickets` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `workshop_id` int(10) unsigned NOT NULL,
+  `class` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `client_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tickets_class_workshop_id_id_unique` (`class`,`workshop_id`,`id`),
+  KEY `tickets_workshop_id_foreign` (`workshop_id`),
+  CONSTRAINT `tickets_workshop_id_foreign` FOREIGN KEY (`workshop_id`) REFERENCES `workshops` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ticket`
+-- Dumping data for table `tickets`
 --
 
-LOCK TABLES `ticket` WRITE;
-/*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
+LOCK TABLES `tickets` WRITE;
+/*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `permissions` text COLLATE utf8_unicode_ci,
+  `activated` tinyint(1) NOT NULL DEFAULT '0',
+  `activation_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `activated_at` timestamp NULL DEFAULT NULL,
+  `last_login` timestamp NULL DEFAULT NULL,
+  `persist_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reset_password_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `userable_id` int(10) unsigned NOT NULL,
+  `userable_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`),
+  KEY `users_activation_code_index` (`activation_code`),
+  KEY `users_reset_password_code_index` (`reset_password_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'litaoshen_0315@hotmail.com','$2y$10$Z2MtoBWaJ7.rOrrNI6pahuwmJQuI3JngzEW.YI/BVZhdZRe.moBDi',NULL,1,'oi1C03GHq0H4bFvUv1mlCIMtzBKnA6WvsFSYUOo9KH',NULL,'2014-09-29 05:17:53','$2y$10$MKrId7O6myGzFMaMpk8qfe000gIUKODtM3hsLorNMHTHTE7s/LeC.',NULL,NULL,NULL,'2014-09-29 05:11:44','2014-09-29 05:17:53',1,'ServiceProvider');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_groups`
+--
+
+DROP TABLE IF EXISTS `users_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_groups` (
+  `user_id` int(10) unsigned NOT NULL,
+  `group_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`user_id`,`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_groups`
+--
+
+LOCK TABLES `users_groups` WRITE;
+/*!40000 ALTER TABLE `users_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `workshopAdvertisements`
+--
+
+DROP TABLE IF EXISTS `workshopAdvertisements`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `workshopAdvertisements` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `workshop_id` int(10) unsigned NOT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'general',
+  `paid` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `workshopadvertisements_workshop_id_foreign` (`workshop_id`),
+  CONSTRAINT `workshopadvertisements_workshop_id_foreign` FOREIGN KEY (`workshop_id`) REFERENCES `workshops` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `workshopAdvertisements`
+--
+
+LOCK TABLES `workshopAdvertisements` WRITE;
+/*!40000 ALTER TABLE `workshopAdvertisements` DISABLE KEYS */;
+/*!40000 ALTER TABLE `workshopAdvertisements` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -16398,13 +16609,16 @@ CREATE TABLE `workshops` (
   `start_time` time DEFAULT NULL,
   `end_time` time DEFAULT NULL,
   `total_ticket_number` int(11) DEFAULT NULL,
+  `ticket_number` int(11) DEFAULT NULL,
   `price` float(8,2) DEFAULT NULL,
   `service_provider_id` int(11) DEFAULT NULL,
+  `longitude` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `latitude` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `service_provider_id` (`service_provider_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16413,7 +16627,9 @@ CREATE TABLE `workshops` (
 
 LOCK TABLES `workshops` WRITE;
 /*!40000 ALTER TABLE `workshops` DISABLE KEYS */;
-INSERT INTO `workshops` VALUES (NULL,1,'Hello','this is workshop','1206','123','hello ','st','Carlton','Vic',3004,'2014-09-25','02:09:00','07:09:00',123,123.00,NULL,'2014-09-23 05:23:04','2014-09-23 05:23:04');
+INSERT INTO `workshops` VALUES (NULL,1,'test3','test3','807','74','Queens','Road','Melbourne','VIC',3000,'2014-09-04','10:09:00','02:09:00',1234,1234,123.00,NULL,'144.979558','-37.852241','2014-09-24 03:39:08','2014-09-24 03:49:33');
+INSERT INTO `workshops` VALUES (NULL,2,'Test3','test33','hello','123','collins','st','melbourne ','Vic',3000,'2014-09-27','19:09:00','19:09:00',123,123,23.00,NULL,'144.9696667','-37.8146515','2014-09-27 03:36:33','2014-09-27 03:36:33');
+INSERT INTO `workshops` VALUES (NULL,3,'test4','test4','123','123','collins','st','melbourne','NSW',3004,'2014-09-25','17:09:00','17:09:00',123,123,123.00,NULL,'144.9696667','-37.8146515','2014-09-27 21:20:53','2014-09-27 21:20:53');
 /*!40000 ALTER TABLE `workshops` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -16426,4 +16642,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-24 10:13:11
+-- Dump completed on 2014-10-01 13:46:36

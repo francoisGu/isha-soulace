@@ -1,9 +1,8 @@
-<?php 
-class Map extends Eloquent {
+<?php class Map extends Eloquent {
 
     protected $table = 'postcode_db';
     // retrieve latitude, latitude for a postcode
-    public function getPositionByPostcode($postcode, $suburb=''){
+    public static function getPositionByPostcode($postcode, $suburb=''){
         $extra = '';
         if ($suburb != '')
         {
@@ -11,11 +10,15 @@ class Map extends Eloquent {
         }
 
         // cache for 120 mins.
-        //$lon = Map::where('postcode', '=', $postcode) -> remember(120) -> select('lon') -> pluck('lon');
-        //$lat = Map::where('postcode', '=', $postcode) -> remember(120) -> select('lat') -> pluck('lat');
+        //$lon = Map::where('postcode', '=', $postcode) -> remember(120) -> 
+        //select('lon') -> pluck('lon');
+        //$lat = Map::where('postcode', '=', $postcode) -> remember(120) -> 
+        //select('lat') -> pluck('lat');
 
-        $lat = Map::where('postcode', '=', $postcode) -> select('lat') -> pluck('lat');
-        $lon = Map::where('postcode', '=', $postcode) -> select('lon') -> pluck('lon');
+        $lat = Map::where('postcode', '=', $postcode) -> select('lat') -> 
+            pluck('lat');
+        $lon = Map::where('postcode', '=', $postcode) -> select('lon') -> 
+            pluck('lon');
         $pos = array('lon' => $lon, 'lat' => $lat);
 
         Log::info('This is result of sql query' . var_dump($pos) );
@@ -28,15 +31,18 @@ class Map extends Eloquent {
         $config = array();
         //$config['center'] = strvar($lat) . ',' . strvar($lon);
 
-        $config['center'] = ($lat != 0.0 || $lon != 0.0)? $lat . ',' . $lon : 'auto';
+        $config['center'] = ($lat != 0.0 || $lon != 0.0)? $lat . ',' . $lon : 
+            'auto';
         $config['zoom'] = '15';
+        $config['cluster'] = TRUE;
         //$config['places'] = TRUE;
         //$config['placesLocation'] = $lat . ',' . $lon;
         //$config['placesRadius'] = '200';
         $config['onboundschanged'] = 'if (!centreGot) {
             var mapCentre = map.getCenter();
             marker_0.setOptions({
-                position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
+                position: new google.maps.LatLng(mapCentre.lat(), 
+mapCentre.lng())
             });
             }
             centreGot = true;';
@@ -50,10 +56,38 @@ class Map extends Eloquent {
         $markerInfo = array();
         $markerInfo['position'] = $config['center'];
         $markerInfo['infowindow_content'] = $description;
-        $markerInfo['icon'] = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|9999FF|000000';
+        $markerInfo['icon'] = 
+            'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|9999FF|000000';
 
         return $markerInfo;
 
+    }
+
+    public function expandRange($range, $postcode){
+
+        $lat = Map::where('postcode', '=', $postcode) -> select('lat') -> 
+            pluck('lat');
+        $lon = Map::where('postcode', '=', $postcode) -> select('lon') -> 
+            pluck('lon');
+    }
+
+
+    public static function withinRange($range = 0.0, $postcodes, $latitude1, $longitude1){
+
+        $within = false;
+        
+        $lat = Map::where('postcode', '=', $postcode) -> select('lat') -> 
+            pluck('lat');
+        $lon = Map::where('postcode', '=', $postcode) -> select('lon') -> 
+            pluck('lon');
+
+        $dist = Map::calc_dist($lat, $lon, $latitude1, $longitude1);
+
+        if($dist <= $range){
+            $within = true; 
+        }
+        return $within;
+    
     }
 
     #The following software is distributed free of charge using the BSD Licence:
@@ -61,9 +95,12 @@ class Map extends Eloquent {
     ##
     ## Copyright (c) 2008, Corra Communications
     ## All rights reserved.
-    function calc_dist($latitude1, $longitude1, $latitude2, $longitude2) {
+    public static function calc_dist($latitude1, $longitude1, $latitude2, 
+        $longitude2) {
         $thet = $longitude1 - $longitude2;
-        $dist = (sin(deg2rad($latitude1)) * sin(deg2rad($latitude2))) + (cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * cos(deg2rad($thet)));
+        $dist = (sin(deg2rad($latitude1)) * sin(deg2rad($latitude2))) + 
+            (cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * 
+            cos(deg2rad($thet)));
         $dist = acos($dist);
         $dist = rad2deg($dist);
         $kmperlat = 111.325; // Kilometers per degree latitude constant
@@ -72,15 +109,15 @@ class Map extends Eloquent {
     }
 
     //Ca}culates distance in KM between postcodes
-    function postcode_dist($postcode1,$postcode2, $suburb1 = '', $suburb2 = 
-        '') {
+    function postcode_dist($postcode1,$postcode2, $suburb1 = '', $suburb2 = '') 
+    {
             //Get lat and lon for postcode 1
             $extra = "";
             if ($suburb1 != '') {
                 $extra = " and suburb = '$suburb1'";
             }
-            $sqlquery = "SELECT * FROM postcode_db WHERE lat <> 0 and lon <> 0 and 
-                postcode = '$postcode1'$extra";
+            $sqlquery = "SELECT * FROM postcode_db WHERE lat <> 0 and lon <> 0 
+                and postcode = '$postcode1'$extra";
             $res = mysql_query($sqlquery);
             $num = mysql_num_rows($res);
 
@@ -91,8 +128,8 @@ class Map extends Eloquent {
             if ($suburb2 != '') {
                 $extra = " and suburb = '$suburb2'";
             }
-            $sqlquery = "SELECT * FROM postcode_db WHERE lat <> 0 and lon <> 0 and 
-                postcode = '$postcode2'$extra";
+            $sqlquery = "SELECT * FROM postcode_db WHERE lat <> 0 and lon <> 0 
+                and postcode = '$postcode2'$extra";
             $res1 = mysql_query($sqlquery);
             $num1 = mysql_num_rows($res1);
 

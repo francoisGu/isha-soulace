@@ -2,15 +2,20 @@
   <h4 class="text-center">Review our website</h4>
   <p class="text-center">Tell us what you think about our website. We would love feedback from you so we can make the website even better!</p>
   <div id="big-form" class="well auth-box">
-    {{Former::framework('Nude');}}
-    {{Former::open()->method('POST')->url('reviews')->class('')}}
+ <form action="/" method="POST">  
+  {{Former::framework('Nude');}}
+	 {{Former::open()->method('POST')->url('reviews')->class('')}}
+	 {{ Form::open(array('route' => 'review.store')) }}
+   
+	
     <!-- Form Name -->
+	
 
     <div class="form-group">
       <label class=" control-label" for="">Email Address*</label>
-      {{Former::email('email address')->placeholder('Please enter your email address')->class('input-xlarge input-md form-control')->required()}}
+      {{Former::email('email_address')->placeholder('Please enter your email address')->class('input-xlarge input-md form-control')->required()}}
     </div>
-
+{{Form::hidden('rating', null, array('id'=>'ratings-hidden'))}}
     <div class="form-group ">
       <label class=" control-label" for="">Ratings*</label>
       <div class="controls">                     
@@ -43,7 +48,7 @@
       @endif
     </div>
     <div class="clearfix"></div>
-
+</form>
   </div>
   {{ HTML::script('js/jquery-1.8.3.min.js') }}
   {{ HTML::script('js/bootstrap.min.js') }}

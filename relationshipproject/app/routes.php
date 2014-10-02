@@ -10,7 +10,39 @@
 | and give it the Closure to execute when that URI is requested.
 |
  */
+// Route that handles submission of review - rating/comment
+Route::resource('review', 'WebReviewController');
+/*Route::post('/', array('before'=>'csrf', function()
+{
+  $input = array(
+  'email_address' => Input::get('email_address'),
+	'rating'  => Input::get('rating'),
+	'review_content' => Input::get('review_content')
+	
+  );
+  // instantiate Rating model
+  $reviews = new reviews;
 
+  // Validate that the user's input corresponds to the rules specified in the review model
+ // $validator = Validator::make( $input, $review->getCreateRules());
+
+  // If input passes validation - store the review in DB, otherwise return to product page with error message 
+  //if ($validator->passes()) {
+	$reviews->storeReviewForProduct($input['email_address'], $input['rating'], $input['review_content']);
+	//return Redirect::to('products/'.$id.'#reviews-anchor')->with('review_posted',true);
+  //}
+
+  //return Redirect::to('products/'.$id.'#reviews-anchor')->withErrors($validator)->withInput();
+}));
+*/
+Route::group(array('prefix' => 'api'), function() {
+
+	// since we will be using this just for CRUD, we won't need create and edit
+	// Angular will handle both of those forms
+	// this ensures that a user can't access api/create or api/edit when there's nothing there
+	Route::resource('comments', 'CommentController', 
+		array('only' => array('index', 'store', 'destroy')));
+});
 //App::bind(
 //'App\Interfaces\UserAccountInterface',
 //'app\models\User'
@@ -20,6 +52,7 @@
 //'App\Interfaces\PasswordInterface',
 //'app\models\PasswordReminder'
 /*);*/
+
 
 Route::get('/client_admin', function()
 {
@@ -61,6 +94,7 @@ Route::get('reviews/workshops', array('uses' => 'ReviewController@getWorkshops')
 /*Route::get('workshops/', function(){*/
 
     //return View::make('workshops.index');
+
 
 //});
 //Route::group(array('prefix' => 'api'), function() {

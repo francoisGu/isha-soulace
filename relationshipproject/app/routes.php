@@ -11,7 +11,7 @@
 |
  */
 // Route that handles submission of review - rating/comment
-Route::resource('review', 'WebReviewController');
+
 /*Route::post('/', array('before'=>'csrf', function()
 {
   $input = array(
@@ -94,7 +94,11 @@ Route::get('reviews/workshops', array('uses' => 'ReviewController@getWorkshops')
 /*Route::get('workshops/', function(){*/
 
     //return View::make('workshops.index');
-
+Route::post('WebReview', function()
+{
+        $obj = new WebReviewsController() ;
+        return $obj->store();
+});
 
 //});
 //Route::group(array('prefix' => 'api'), function() {

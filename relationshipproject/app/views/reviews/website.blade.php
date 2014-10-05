@@ -4,8 +4,8 @@
   <div id="big-form" class="well auth-box">
  <form action="/" method="POST">  
   {{Former::framework('Nude');}}
-	 {{Former::open()->method('POST')->url('reviews')->class('')}}
-	 {{ Form::open(array('route' => 'review.store')) }}
+	 {{Former::open()->method('POST')->url('WebReview')->class('')}}
+	
    
 	
     <!-- Form Name -->

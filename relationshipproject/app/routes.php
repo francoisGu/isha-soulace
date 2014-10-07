@@ -81,6 +81,11 @@ Route::get('/', function()
     return Redirect::to('home');//View::make('home');
 });
 
+
+Route::post('reviews/website', 'WebReviewsController@storeComment');
+Route::post('reviews/workshops', 'WorkshopReviewsController@storeComment');
+Route::post('reviews/services', 'ServicesReviewsController@storeComment');
+
 Route::controller('services','ServiceFormController');
 //Route::controller('reviews', 'ReviewController');
 Route::get('password/remind', array('uses' => 'PasswordController@getRemind'));
@@ -94,11 +99,11 @@ Route::get('reviews/workshops', array('uses' => 'ReviewController@getWorkshops')
 /*Route::get('workshops/', function(){*/
 
     //return View::make('workshops.index');
-Route::post('WebReview', function()
-{
-        $obj = new WebReviewsController() ;
-        return $obj->store();
-});
+//Route::post('WebReview', function()
+//{
+  //      $obj = new WebReviewsController() ;
+    //    return $obj->store();
+//});
 
 //});
 //Route::group(array('prefix' => 'api'), function() {

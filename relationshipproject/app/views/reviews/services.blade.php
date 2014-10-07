@@ -1,9 +1,9 @@
 <div class="container auth">
-  <h4 class="text-center">Review our website</h4>
+  <h4 class="text-center">Review our Services</h4>
   <p class="text-center">Tell us what you think about the services providers you contacted so service providers can improve!</p>
   <div id="big-form" class="well auth-box">
     {{Former::framework('Nude');}}
-    {{Former::open()->method('POST')->url('reviews')->class('')}}
+    {{Former::open()->method('POST')->url('reviews/services')->class('')}}
     <!-- Form Name -->
 
     <div class="form-group">

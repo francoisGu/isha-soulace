@@ -3,11 +3,12 @@
 class WebReviewsController extends \BaseController {
 
 
-public function store()
+
+public function storeComment()
 {
    
     
-    Register::saveFormData(Input::except(array('_token')));
+    WebReviews::saveFormData(Input::except(array('_token')));
 
 }
 

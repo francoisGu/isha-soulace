@@ -1,6 +1,5 @@
   {{ HTML::style('css/plugins/dataTables.tableTools.css') }} 
   {{ HTML::style('css/plugins/dataTables.bootstrap.css') }}
-  {{ HTML::style('css/plugins/editor.bootstrap.css') }}
   <div class="row-fluid">
     <div class="span3">
       <div class="panel panel-success" style="min-height:200px;">
@@ -44,6 +43,13 @@
                 </tr>
               </thead>
               <tbody id="datas">
+                @foreach ($clients as $client)
+                <tr class="odd gradeX">
+                <td> {{ $client->name }} </td>
+                <td>Law</td>
+                <td>view</td>
+               </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -59,24 +65,19 @@
   {{ HTML::script('js/plugins/dataTables/dataTables.bootstrap.js') }}
 
   <script class="init">
-  $(document).ready(function() {
-    url = 'http://localhost:8000/serviceProvider/clients';    
-     $.getJSON(url, function(data){ 
-      document.getElementById('datas').innerHTML = 
-     });
-    var table = $('#myDatas').DataTable({
-    });
+
+    var table = $('#myDatas').DataTable();
     var select =$('#selectWorkshop').on('change',function() {
       var val = $(this).val();
-      table.column(0)
+      table.column(1)
       .search( val ? '^'+$(this).val()+'$' : val, true, false )
       .draw();
     });
 
-    table.column(0).data().unique().sort().each( function (d,j) {
+    table.column(1).data().unique().sort().each( function (d,j) {
       select.append( '<option value="'+d+'">'+d+'</option>' )
     } );
 
-  });
+
   </script>
 

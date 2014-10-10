@@ -1,11 +1,12 @@
 
-<div class="row-fluid">
+<div class="row-fluid" style="">
 	<div class="span9">
-		<div id="step1Form" class="panel panel-success" style="min-height:100px;">
+		<div id="step1Form" class="panel panel-success" style="min-height:100px;margin:auto;">
 			<div class="panel-heading">
 				<h3 class="panel-title">
 					Register</h3>
-				</div> 
+				</div>
+				<div style="padding-left: 5px;padding-right: 5px;"> 
 				 {{Former::open()->method('POST')->class('form-horizontal')->url('users/register')}}          
 				<!-- Form Name -->
 				<legend></legend>
@@ -34,22 +35,25 @@
                 <div id='individual_part'>
 				{{ Former::text('ABN')->class('input-medium inputHeight form-control')->placeholder('ABN')}}
                 </div>
+
+                {{ Former::select('service type')->class('input-large inputHeight form-control')->placeholder('Service Type') }}
+
 				{{ Former::text('address')->class('input-xxlarge inputHeight form-control')->placeholder('Address')->required() }}
 
 				{{ Former::number('phone')->class('input-medium inputHeight form-control')->placeholder('Phone Number')->required() }}
 
 				{{ Former::number('mobile')->class('input-medium inputHeight form-control')->placeholder('Mobile') }}
 
-				{{ Former::inline_radios('mode')->radios(array('hourly' =>array( 'name'=>'mode','checked'=>'checked'), 'session' => array('name'=>'mode', 'checked'=>''))) }}
+				{{ Former::inline_radios('mode')->radios(array('hourly' =>array( 'name'=>'mode','checked'=>'checked'), 'session' => array('name'=>'mode', 'checked'=>'')))->required() }}
 				<!-- Multiple Radios -->
-				
+				{{Former::checkboxes('checkme')->checkboxes('first', 'second', 'third', 'fourth')->required()}}
 				<div class="control-group controls">
 					{{ Form::submit('Register', array('class'=>'btn btn-success'))}}
 				</div>
 				{{ Former::close()}}
 
 			</div>
-
+            </div>
 			</div>
 		</div>
 		<script type="text/javascript">

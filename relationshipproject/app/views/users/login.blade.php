@@ -23,6 +23,8 @@
               <label class="checkbox inline" for="checkboxes-0">
                 {{ Form::checkbox('rememberme', 'Remember me.', false)}}
                 Remember me
+                <br/>
+    <a href="{{ URL::to('/password/remind/') }}">Forget password?<a/>
               </label>
             </div>
           </div>
@@ -37,3 +39,4 @@
       </div>
     </div><!--span12-->
   </div>
+

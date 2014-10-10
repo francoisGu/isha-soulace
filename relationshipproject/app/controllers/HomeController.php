@@ -22,6 +22,11 @@ class HomeController extends BaseController {
 		$this->layout->content = View::make('donations');
 	}
 
+	public function getSponsors()
+	{
+		$this->layout->content = View::make('sponsors');
+	}
+
 	public function getHome()
 	{
 		$this->layout->content = View::make('home');
@@ -35,6 +40,11 @@ class HomeController extends BaseController {
 	public function getReviews()
 	{		
 		$this->layout->content = View::make('reviews');
+	}
+
+	public function getRemove()
+	{		
+		$this->layout->content = View::make('removeHistory');
 	}
 
 	public function postReviews()

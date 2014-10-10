@@ -1,3 +1,4 @@
+{{ HTML::style('css/plugins/bootstrap-datetimepicker.min.css') }}
 <div class="container auth">
     <h1 class="text-center">Offer your donations here!<span>Thank you for your support!</span> </h1>
     <div id="big-form" class="well auth-box">
@@ -9,17 +10,27 @@
           <div class="form-group">
             <label class=" control-label" for="radios">Donation Amount</label>
             <div class='radio'>
-            {{ Former::radios('')->radios(array('AUD$100' =>array( 'name'=>'amount','checked'=>'checked')))}}
+            {{ Former::radios('')->radios(array('AUD$100' =>array( 'name'=>'amount','checked'=>'')))}}
             </div>
             <div class='radio'>
             {{ Former::radios('')->radios(array( 'AUD$250' => array('name'=>'amount', 'checked'=>'')))}}
             </div>
+            <div class='radio'>
+            {{ Former::radios('')->radios(array( 'Other(No less than AUD$10)' => array('name'=>'amount', 'checked'=>'')))}}
+            {{ Former::number('other_amount')->min(10)->placeholder('No less than AUD$10')->style('color:black;')->class('input-medium input-md form-control')}}
+            </div>
         </div>
           <legend class="text-center" style="border-bottom:solid 1px;">Personal Details</legend>
 
+          
           <div class="form-group">
-            <label class=" control-label" for="">Email Address*</label>
-            {{Former::text('email')->placeholder('Email')->class('input-xlarge input-md form-control')->required()}}
+            <label class=" control-label" for="">Title*</label>
+            {{Former::select('title')->class('input-large input-md form-control')->required()->options(array(
+    1  => 'Ms.',
+    2  => 'Miss',
+    3 => 'Mr.',
+    4 => 'Mrs.'
+));}}
           </div>
 
           <div class="form-group">
@@ -32,7 +43,18 @@
             {{Former::text('lastname')->placeholder('Last Name')->class('input-large input-md form-control')->required()}}
           </div>
 
+          <div class="form-group">
+            <label class=" control-label" for="">Date of birth</label>
+            {{Former::text('birthday')->placeholder('Birthday')->class('input-large input-md form-control form_birthday')}}
+          </div>
+
           <legend class="text-center" style="border-bottom:solid 1px;">Contact Details</legend>
+
+          <div class="form-group">
+            <label class=" control-label" for="">Email Address*</label>
+            {{Former::text('email')->placeholder('Email')->class('input-xlarge input-md form-control')->required()}}
+          </div>
+
 
           <div class="form-group">
             <label class=" control-label" for="">Country*</label>
@@ -41,12 +63,18 @@
 
           <div class="form-group">
             <label class=" control-label" for="">Address*</label>
-            {{Former::text('address')->placeholder('Home or Work...')->class('input-xxlarge input-md form-control')->required()}}
+            {{Former::text('address_home')->placeholder('Home...')->class('input-xxlarge input-md form-control')->required()}}
+            {{Former::text('address_work')->placeholder('Work...')->class('input-xxlarge input-md form-control')->required()}}
+          </div>
+
+          <div class="form-group">
+            <label class=" control-label" for="">Suburb*</label>
+            {{Former::text('suburb')->placeholder('Suburb')->class('input-large input-md form-control')->required()}}
           </div>
 
           <div class="form-group">
             <label class=" control-label" for="">Postcode*</label>
-            {{Former::number('postcode')->placeholder('3000')->class('input-large input-md form-control')->required()}}
+            {{Former::number('postcode')->placeholder('3000')->class('input-medium input-md form-control')->required()}}
           </div>
 
           <div class="form-group">
@@ -58,6 +86,16 @@
             <label class=" control-label" for="">Mobile</label>
             {{Former::number('mobile')->placeholder('04...')->class('input-large input-md form-control')}}
           </div>
+          <div class="form-group">
+            <label class=" control-label" for="radios">Please issue receipt in*</label>
+            <div class='radio'>
+            {{ Former::radios('')->radios(array('My Name' =>array( 'name'=>'receipt','checked'=>'checked')))}}
+            </div>
+            <div class='radio'>
+            {{ Former::radios('')->radios(array( 'My Organization(Leave the organization name here)' => array('name'=>'receipt', 'checked'=>'')))}}
+            {{ Former::text('organization_name')->class('input-xlarge input-md form-control')}}
+            </div>
+        </div>
 
           <div class="form-group controls">
           {{ Form::submit('Use paypal to Donate', array('class'=>'btn btn-success'))}}
@@ -66,3 +104,16 @@
     </div>
     <div class="clearfix"></div>
   </div>
+  {{ HTML::script('js/plugins/dataTables/jquery.js') }}
+{{ HTML::script('js/bootstrap.min.js') }}
+{{ HTML::script('js/plugins/dataTables/bootstrap-datetimepicker.js') }}
+{{ HTML::script('js/plugins/dataTables/bootstrap-datetimepicker.min.js') }}
+<script type="text/javascript">
+$('.form_birthday').datetimepicker({
+        format: "dd MM yyyy",
+        autoclose: true,
+        todayBtn: true,
+        pickerPosition: "bottom-left",
+        minView: 2,
+    });
+</script>

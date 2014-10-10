@@ -31,7 +31,7 @@
           <legend></legend>
           <!-- title input-->
           <div class="control-group">
-            <label class="control-label" for="date">Title</label>
+            <label class="control-label" for="title">Title</label>
             <div class="controls">
               <input id="title" name="title" type="text" placeholder="workshop name" class="input-xlarge inputHeight form-control">
 
@@ -152,11 +152,21 @@
               <label class="" for="adPrice" style="padding-top:5px;">AUD$250</label>
             </div>
           </div>
-          <!-- Text input-->
+          <!-- date input-->
           <div class="control-group">
-            <label class="control-label" for="adDate">Advertisement Date</label>
+            <label class="control-label" for="date">Start Date</label>
             <div class="controls">
-              <input id="adDate" name="adDate" type="text" placeholder="" class="input-xxlarge inputHeight form-control">
+              <input id="start_date" name="start_date" type="text" class="input-xlarge inputHeight form-control form_start_date" type="text" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+
+            </div>
+          </div>
+
+          <!-- time input-->
+          <div class="control-group">
+            <label class="control-label" for="time">End Time</label>
+            <div class="controls">
+              <input id="end_date" name="end_date" type="text" class="input-xlarge inputHeight form-control form_end_date" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+
             </div>
           </div>
           <!-- Multiple Radios -->
@@ -195,6 +205,18 @@ $('.form_start_time').datetimepicker({
         pickerPosition: "bottom-left"
     });
 $('.form_end_time').datetimepicker({
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        pickerPosition: "bottom-left"
+    });
+$('.form_start_date').datetimepicker({
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        pickerPosition: "bottom-left"
+    });
+$('.form_end_date').datetimepicker({
         format: "dd MM yyyy - hh:ii",
         autoclose: true,
         todayBtn: true,

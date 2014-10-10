@@ -12,7 +12,7 @@ class Client extends Eloquent {
 
     static public function getClients($user_id)
     {
-    	$clients =  Client::where('service_provider_id', '=', $user_id)->first();
+    	$clients =  Client::where('service_provider_id', '=', $user_id)->get();
     	return $clients;
     }
 

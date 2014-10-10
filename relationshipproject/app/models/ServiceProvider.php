@@ -1,5 +1,6 @@
 <?php
 
+
 class ServiceProvider extends Eloquent {
 
 	public function user() {
@@ -34,5 +35,4 @@ class ServiceProvider extends Eloquent {
     }
 
     
-	
-}
+	}

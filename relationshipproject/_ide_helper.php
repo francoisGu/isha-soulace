@@ -1,11 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 4, to provide autocomplete information to your IDE
-<<<<<<< HEAD
- * Generated for Laravel 4.2.11 on 2014-10-09.
-=======
- * Generated for Laravel 4.2.9 on 2014-10-01.
->>>>>>> cb292299bfdd082e4822bb82e1f3e11a99eb6c7f
+ * Generated for Laravel 4.2.11 on 2014-10-10.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper

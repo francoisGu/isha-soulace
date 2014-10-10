@@ -2,8 +2,8 @@
 
 class ServiceProvider extends \Eloquent {
 
-    protected $fillable = array('identity', 'abn', 
-        'acn','unit','street_number','street_name','street_type','suburb','state','postcode' ,'phone','mobile','mode','companyName', 'firstName', 'lastName', 'email');
+    protected $fillable = array('identity', 'type', 'abn', 
+        'acn','unit','street_number','street_name','street_type','suburb','state','postcode' ,'phone','mobile','mode','companyName', 'first_name', 'last_name', 'email', 'longitude', 'latitude');
 
     public static $rules = array();
 
@@ -15,6 +15,10 @@ class ServiceProvider extends \Eloquent {
 
     public function workshops(){
         return $this->hasMany('Workshop'); 
+    }
+
+    public function clients(){
+        return $this->belongsToMany('Client');
     }
 
 }

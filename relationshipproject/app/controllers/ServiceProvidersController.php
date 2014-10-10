@@ -34,7 +34,8 @@ class ServiceProvidersController extends \BaseController {
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+     * Store a manually newly created resource in storage.
+     * with default password 123456
 	 * POST /serviceproviders
 	 *
 	 * @return Response

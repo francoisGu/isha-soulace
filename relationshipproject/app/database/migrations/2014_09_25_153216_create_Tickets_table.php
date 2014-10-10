@@ -24,7 +24,8 @@ class CreateTicketsTable extends Migration {
 
         $table->string('ticketNumber')->unique();
 
-        $table->string('client_id')->nullable();
+        $table->string('client_id')->references('id')->on('clients');
+
 
         $table->unique(array('class', 'workshop_id', 'id'));
         $table->timestamps();

@@ -37,12 +37,12 @@ class CreateWorkshopsTable extends Migration {
         $table->integer('ticket_number')->nullable();
         $table->float('price')->nullable();
         
-        $table->string('longitude')->nullable();
-        $table->string('latitude')->nullable();
+        $table->double('longitude')->nullable();
+        $table->double('latitude')->nullable();
 
         $table->timestamps();
 
-        $table->index('service_provider_id');
+        $table->index(array('service_provider_id', 'longitude', 'latitude'));
     });
     }
 

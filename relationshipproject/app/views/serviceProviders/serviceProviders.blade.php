@@ -6,7 +6,7 @@
     <div class="panel panel-success" style="min-height:200px;">
       <div class="panel-heading">
         <h3 class="panel-title">
-            Welcome, {{ Sentry::getUser()->firstName }}
+            Welcome, {{ Sentry::getUser()->first_name }}
         </h3>
       </div>
       <ul class="list-group">
@@ -29,24 +29,5 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-
-function submitForm() {
-  document.getElementById("forms").disabled = "disabled";
-  document.getElementById("submit").style.display = "none";
-  document.getElementById("cancel").style.display = "none";
-  document.getElementById("edit").style.display = "";
-}
-function cancelForm() {
-  window.location.reload();
-}
-function inputChange() {
-  document.getElementById("forms").disabled = "";
-  document.getElementById("submit").style.display = "";
-  document.getElementById("cancel").style.display = "";
-  document.getElementById("edit").style.display = "none";
-}
-</script>
 
 @stop

@@ -21,6 +21,39 @@
 //'app\models\PasswordReminder'
 /*);*/
 
+/*View::composer('map.map', function($view){*/
+        //$config = array();
+        //$config['center'] = 'auto';
+        //$config['zoom'] = 'auto';
+        ////$config['places'] = TRUE;
+        ////$config['placesLocation'] = 'auto';
+        ////$config['placesRadius'] = '200';
+        //$config['onboundschanged'] = 'if (!centreGot) {
+            //var mapCentre = map.getCenter();
+            //marker_0.setOptions({
+                //position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
+            //});
+            //}
+            //centreGot = true;';
+
+        //Gmaps::initialize($config);
+
+        //// set up the marker ready for positioning
+        //// once we know the users location
+        //$marker = array();
+        //Gmaps::add_marker($marker);
+
+        //$map = Gmaps::create_map();
+
+    //$view->with('map', $map);
+
+//});
+
+Route::get('/map', 'MapController@getMap');
+Route::post('/map', 'MapController@postMap');
+//Route::controller('map', 'MapController');
+
+
 Route::get('/client_admin', function()
 {
     return View::make('client');
@@ -96,9 +129,6 @@ Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@acti
 Route::controller('/', 'HomeController');
 Route::controller('emails', 'EmailController');
 //Route::controller('password', 'PasswordController');
-
-Route::controller('map', 'MapController');
-
 Route::resource('payment', 'PaymentController');
 
 /* HTML Macros */

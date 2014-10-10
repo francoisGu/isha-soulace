@@ -8,8 +8,16 @@ class Client extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = ['email'];
 
     protected $table = 'clients';
+
+    public function workshops(){
+        return $this->belongsToMany('Workshop');
+    }
+
+    public function serviceProviders(){
+        return $this->belongsToMany('ServiceProvider');
+    }
 
 }

@@ -31,11 +31,15 @@ class Workshop extends \Eloquent {
         return $this->hasOne('WorkshopAdvertisement');
     }
 
-    public function ticket(){
+    public function tickets(){
         return $this->hasMany('Ticket'); 
     }
 
     public function serviceProvider(){
         return $this->belongsTo('ServiceProvider');
+    }
+
+    public function clients(){
+        return $this->belongsToMany('Client');
     }
 }

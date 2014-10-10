@@ -51,7 +51,10 @@ return array(
 	 * 		'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
 	 *	)
 	 */
-    'menu' => array( 'users', 'serviceProviders', 'workshops'),
+    'menu' => array( 'users', 'serviceProviders', 'workshops',
+                //'Map'=> 'page.map.map',
+
+    ),
 
 	/**
 	 * The permission option is the highest-level authentication check that lets you define a closure that should return true if the current user
@@ -77,7 +80,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'dashboard_view' => '',
+    'dashboard_view' => 'map.map',
 
 	/**
 	 * The menu item that should be used as the default landing page of the administrative section
@@ -105,7 +108,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'logout_path' => false,
+	'logout_path' => 'users/login',
 
 	/**
 	 * This is the key of the return path that is sent with the redirection to your login_action. Session::get('redirect') will hold the return URL.

@@ -36,9 +36,9 @@
 				{{ Former::password('password_confirmation','Confirm Password')->class('input-xlarge inputHeight form-control')->placeholder('Confirm Password')->required() }}
 
 
-				{{ Former::text('firstname','first name')->class('input-large inputHeight form-control')->placeholder('First Name')->required() }}
+				{{ Former::text('first_name','first name')->class('input-large inputHeight form-control')->placeholder('First Name')->required() }}
 
-				{{ Former::text('lastname','last name')->class('input-large inputHeight form-control')->placeholder('Last Name')->required() }}
+				{{ Former::text('last_name','last name')->class('input-large inputHeight form-control')->placeholder('Last Name')->required() }}
 
 
 				{{ Former::inline_radios('identity')->radios(array('Individual' =>array( 'name'=>'identity','checked'=>'checked'), 'Company' => array('name'=>'identity', 'checked'=>'')))->onchange('change()') }}
@@ -46,13 +46,13 @@
                 <div id='company_part' style="display:none;">
 				{{ Former::text('companyname','company name')->class('input-xlarge inputHeight form-control')->placeholder('Company Name')->required()}}
 		
-				{{ Former::text('acn')->class('input-medium inputHeight form-control')->placeholder('ACN')->required()}}
+                {{ Former::text('acn')->label('ACN')->class('input-medium inputHeight form-control')->placeholder('ACN')->required()}}
                 </div>
                 <div id='individual_part'>
-				{{ Former::text('abn')->class('input-medium inputHeight form-control')->placeholder('ABN')->required()}}
+                    {{ Former::text('abn')->label('ABN')->class('input-medium inputHeight form-control')->placeholder('ABN')->required()}}
                 </div>
 
-                {{ Former::select('service type')->class('input-large inputHeight form-control')->placeholder('Service Type') }}
+                {{ Former::select('type')->class('input-large inputHeight form-control')->placeholder('Service Type')->options($services) }}
 
                 {{ Former::text('unit')->class('input-xxlarge inputHeight form-control')->placeholder('unit')->required() }}
 

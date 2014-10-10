@@ -14,9 +14,13 @@ class CreateClientsTable extends Migration {
     {
         Schema::create('clients', function(Blueprint $table)
     {
+
+        $table->engine ='InnoDB';
         $table->increments('id');
         $table->string('email')->unique();
         $table->timestamps();
+
+        $table->unique(array('id', 'email'));
     });
     }
 

@@ -2,14 +2,37 @@
 
 @section('content')
 
-{{ HTML::style('css/plugins/metisMenu/metisMenu.min.css') }}     
+{{ HTML::script('js/plugins/dataTables/jquery.js') }}
+{{ HTML::script('js/bootstrap.min.js') }}
+{{ HTML::script('js/plugins/dataTables/jquery.dataTables.js') }}
+{{ HTML::script('js/plugins/dataTables/dataTables.bootstrap.js') }}
+{{ HTML::script('js/plugins/dataTables/shCore.js') }}
+
+
 {{ HTML::style('css/plugins/dataTables.bootstrap.css') }}
-{{ HTML::style('css/sb-admin-2.css') }}
 
 <script>
     $('.list-group-item').removeClass('active');
     $('#myWorkshopsPage').addClass('active');
 </script>
+
+<script class="init">
+    $(document).ready(function() {
+        var table = $('#myDatas').DataTable();
+        var select =$('#selectWorkshop').on('change',function() {
+            var val = $(this).val();
+            table.column(1)
+            .search( val ? '^'+$(this).val()+'$' : val, true, false )
+            .draw();
+        });
+
+        table.column(1).data().unique().sort().each( function (d,j) {
+            select.append( '<option value="'+d+'">'+d+'</option>' )
+        } );
+
+    });
+</script>
+
 
 <div class="panel-heading">
     <h3 class="panel-title">
@@ -78,44 +101,3 @@
 
 </div>
 @stop
-
-{{ HTML::script('js/plugins/dataTables/jquery.js') }}
-{{ HTML::script('js/bootstrap.min.js') }}
-{{ HTML::script('js/plugins/dataTables/jquery.dataTables.js') }}
-{{ HTML::script('js/plugins/metisMenu/metisMenu.min.js') }}
-{{ HTML::script('js/sb-admin-2.js') }}
-{{ HTML::script('js/plugins/dataTables/dataTables.bootstrap.js') }}
-{{ HTML::script('js/plugins/dataTables/shCore.js') }}
-<script class="init">
-    $(document).ready(function() {
-        var table = $('#myDatas').DataTable();
-        var select =$('#selectWorkshop').on('change',function() {
-            var val = $(this).val();
-            table.column(1)
-            .search( val ? '^'+$(this).val()+'$' : val, true, false )
-            .draw();
-        });
-
-        table.column(1).data().unique().sort().each( function (d,j) {
-            select.append( '<option value="'+d+'">'+d+'</option>' )
-        } );
-
-    });
-</script>
-
-<script type="text/javascript">
-
-    function submitForm() {
-        document.getElementById("forms2").style.display = "";
-    }
-    function cancelForm() {
-
-}
-function inputChange() {
-    document.getElementById("forms").disabled = "";
-    document.getElementById("submit").style.display = "";
-    document.getElementById("cancel").style.display = "";
-    document.getElementById("edit").style.display = "none";
-}
-</script>
-

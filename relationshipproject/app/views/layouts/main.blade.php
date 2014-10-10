@@ -89,9 +89,10 @@
 
     
 	<div class="container">
-	   	@if(Session::has('message'))
+        <!--@if(Session::has('message'))
 			<p class="alert">{{ Session::get('message') }}</p>
 		@endif
+        -->
 
         @yield('main')
 

@@ -15,13 +15,23 @@ class UsersController extends BaseController {
     }
 
     public function getRegister() {
-        $this->layout->content = View::make('users.register');
+        $types = DB::table('services')->lists('type');
+
+        $services = array();
+
+        foreach($types as $type){
+        
+            $services[$type] = $type;
+            
+        
+        }
+        return View::make('users.register')->with('services', $services);
     }
 
     public function postRegister() {
         $rules = array(
-            'firstname' =>'required|alpha|min:2',
-            'lastname'  =>'required|alpha|min:2',
+            'first_name' =>'required|alpha|min:2',
+            'last_name'  =>'required|alpha|min:2',
             'email'     =>'required|email|unique:users',
             'password'  =>'required|alpha_num|between:6,12|confirmed',
             'password_confirmation' =>'required|alpha_num|between:6,12'
@@ -32,13 +42,21 @@ class UsersController extends BaseController {
 
         if ($validator->passes()) {
             /*$registerInfo = array(*/
-                //'email'     => Input::get('email', null),
-                //'password'  => Input::get('password', null),
-                //'firstname' => Input::get('firstname', null),
-                //'lastname'  => Input::get('lastname', null),
+            //'email'     => Input::get('email', null),
+            //'password'  => Input::get('password', null),
+            //'firstname' => Input::get('firstname', null),
+            //'lastname'  => Input::get('lastname', null),
             //);
             //
-            $registerInfo = Input::all();
+            $venue = Util::getVenue(Input::all());
+
+            $geocode = Map::validateAddress($venue, Input::get('postcode'));
+
+            if(is_null($geocode)){
+                return Redirect::back()->with('message', 'Location not found.')->withInput();
+            }
+
+            $registerInfo = array_merge(Input::all(), array('longitude' => $geocode['longitude'], 'latitude' => $geocode['latitude']));
 
             $this->account->register('ServiceProvider' , $registerInfo);
 
@@ -97,8 +115,12 @@ class UsersController extends BaseController {
 
             $loginMessage = $this->account->login($loginInfo);
 
+            if(Sentry::check()){
             return Redirect::to($loginMessage['url'] . Sentry::getUser()->id)->with('message', 
                 $loginMessage['message']);
+            } else {
+                return Redirect::to($loginMessage['url'])->withMessage($loginMessage['message']);
+            }
         }
 
     }

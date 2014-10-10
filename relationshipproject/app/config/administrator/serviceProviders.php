@@ -205,6 +205,32 @@ return array(
 
     ),
 
+    /**
+     * This is where you can define the model's custom actions
+     */
+    'global_actions' => array(
+        //Clearing the site cache
+        'view_map' => array(
+            'title' => 'View Map',
+            'messages' => array(
+                'active' => 'Rendering map...',
+                'success' => 'Map showed',
+                'error' => 'There was an error while rendering map',
+            ),
+            //the settings data is passed to the function and saved if a truthy response is returned
+            'action' => function()
+            {
+                //Cache::flush();
+
+                //return true to flash the success message
+                //return false to flash the default error
+                //return a string to show a custom error
+                //return a Response::download() to initiate a file download
+                return Redirect::to('map');
+            }
+        ),
+    ),
+
 );
 
 ?>

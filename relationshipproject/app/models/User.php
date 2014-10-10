@@ -94,12 +94,48 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
         return 'remember_token';
     }
 
+    public function createUser($type, array $info){
+ 
+        if(class_exists($type)){
+            try {
+                $register = array('email'    => $registerInfo['email'], 
+                    'password' => $registerInfo['password'],
+                    'first_name' => $registerInfo['first_name'],
+                    'last_name'  => $registerInfo['last_name'],
+                    'activated'  => true);
+                //$user = Sentry::register($register, false); 
+
+                // create user into its own table
+                $type_user = $type::create($info);
+
+                $user = Sentry::createUser(array_merge($register, array('userable_id' => $type_user->id, 'userable_type' => $type)));
+            } 
+            catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
+                echo 'Login field is required.'; 
+            }
+            catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
+                echo 'Password field is required.'; 
+            }
+            catch (Cartalyst\Sentry\Users\UserExistsException $e) {
+                echo 'User with this login already exists.'; 
+            }
+        }
+        else{
+            throw new Exception('Invalid user type');
+
+        }
+   
+    
+    }
+
     public function register($type, array $registerInfo){
 
         if(class_exists($type)){
             try {
                 $register = array('email'    => $registerInfo['email'], 
-                    'password' => $registerInfo['password']);
+                    'password' => $registerInfo['password'],
+                    'first_name' => $registerInfo['first_name'],
+                    'last_name'  => $registerInfo['last_name']);
                 //$user = Sentry::register($register, false); 
 
                 // create user into its own table
@@ -110,19 +146,19 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
                 $activationCode = URL::to('/') . '/activate/' .  
                     $user->getActivationCode();
 
-                $data = array('firstname'      => $registerInfo['firstname'],
+                $data = array('first_name'      => $registerInfo['first_name'],
                     'activationCode' => $activationCode
                 );
 
-                $userInfo = array('firstname' => $registerInfo['firstname'],
-                    'lastname'  => $registerInfo['lastname'],
+                $userInfo = array('first_name' => $registerInfo['first_name'],
+                    'last_name'  => $registerInfo['last_name'],
                     'email'     => $registerInfo['email'],
                 );
 
                 Mailgun::send('emails.welcome', $data, function($message) use 
                     ($userInfo) {
                         $message -> to($userInfo['email'], 
-                            $userInfo['firstname'] . ' ', $userInfo['lastname']) 
+                            $userInfo['first_name'] . ' ', $userInfo['last_name']) 
                             -> subject('Welcome to the Isha SoulAce');
                     });
 

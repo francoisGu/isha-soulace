@@ -7,10 +7,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  {{ HTML::style('css/plugins/bootstrap.css') }}     
-  {{ HTML::style('css/offcanvas.css') }}
-  {{ HTML::style('css/bootstrap-responsive.css') }}
-  
+  <link rel="stylesheet" href="css/bootstrap.css" media="screen" />
+  <link rel="stylesheet" href="css/icoMoon.css" media="all" />       
+  <link rel="stylesheet" href="css/bootstrap-responsive.css" media="all">
+  <link rel="stylesheet" href="css/prettyPhoto.css" media="all">
+  <link rel="stylesheet" href="style.css" media="all">    
+
+  <link href="css/responsive.css" rel="stylesheet" media="all">
+
 <!--[if IE]>
 <style type="text/css">
     .single-page .detail-post .detail-main .kp-dropcap:first-letter {
@@ -29,91 +33,191 @@
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
-    
+
   </head>
   <body>
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Isha SoulAce</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href="#donate">Donate</a></li>
-            <li><a href="#sponsor">Sponsor</a></li>
-            <li><a href="#review">Review</a></li>
-          </ul>
+    <header id="page-header">
 
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-            <button type="submit" class="btn btn-success">Register</button>
-          </form>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
+      <div id="header-top">
+        <div class="container">
+          <div id="kp-logo"><a href="#"><img src="placeholders/logo.png" alt=""></a></div>
+        </div>
+      </div><!--header-top-->
+
+      <nav class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+
+            <ul class="sf-menu" id="menu-top">
+              <li class="current-menu-item">
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="about.html">Pages</a>
+                <ul>
+                  <li>
+                    <a href="portfolios-2-column.html">Portfolios 2 column</a>
+
+                  </li>
+                  <li>
+                    <a href="portfolios-3-column.html">Portfolios 3 column</a>
+
+                  </li>
+                  <li>
+                    <a href="about.html">About Us</a>      
+                  </li>
+
+                </ul>
+              </li>
+              <li>
+                <a href="blog.html">Blog</a>
+                <ul>
+                  <li><a href="blog-detail.html">Blog detail</a></li>
+                  <li><a href="blog.html">Blog</a></li>
+                </ul> 
+              </li>
+              <li><a href="#">Shortcode</a></li>
+              <li><a href="contact.html">Archives</a></li>
+              <li><a href="contact.html">Contact</a></li>                                     
+            </ul>
+            <div id="mobile-menu">
+              <span>Menu</span>
+              <ul id="toggle-view-menu">
+                <li class="clearfix">
+                  <h3><a href="#">Home</a></h3>
+                  <span>+</span>
+                  <div class="clearfix"></div>                    
+                  <div class="menu-panel clearfix">
+                    <ul>
+                      <li><a href="index.html">Index style 1</a></li>
+                      <li><a href="index-2.html">Index style 2</a></li>
+                      <li><a href="index-3.html">Index style 3</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="clearfix">
+                  <h3><a href="#">Pages</a></h3>
+                  <span>+</span>
+                  <div class="clearfix"></div>                    
+                  <div class="menu-panel clearfix">
+                    <ul>
+                      <li><a href="about.html">About page</a></li>
+                      <li><a href="elements.html">Elements page</a></li>
+                      <li><a href="404.html">404 page</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="clearfix">
+                  <h3><a href="#">Portfolio</a></h3>
+                  <span>+</span>
+                  <div class="clearfix"></div>                    
+                  <div class="menu-panel clearfix">
+                    <ul>
+                      <li><a href="portfolio-3col.html">Portfolio 3 column</a></li>
+                      <li><a href="portfolio-2col.html">Portfolio 2 column</a></li>
+                      <li><a href="portfolio-1col.html">Portfolio 1 column</a></li>
+                      <li>
+                        <a href="#">Portfolio detail</a>
+                        <ul>
+                          <li><a href="portfolio-detail.html">Portfolio single</a></li>
+                          <li><a href="portfolio-audio.html">Portfolio audio</a></li>
+                          <li><a href="portfolio-gallery.html">Portfolio gallery</a></li>
+                          <li><a href="portfolio-video.html">Portfolio video</a></li>
+                          <li><a href="portfolio-soundcloud.html">Portfolio soundcloud</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="clearfix">
+                  <h3><a href="#">Blog</a></h3>
+                  <span>+</span>
+                  <div class="clearfix"></div>                    
+                  <div class="menu-panel clearfix">
+                    <ul>
+                      <li>
+                        <a href="#">Blog style 1</a>
+                        <ul>
+                          <li><a href="blog-1-left-sidebar.html">Width left sidebar</a></li>
+                          <li><a href="blog-1-right-sidebar.html">Width right sidebar</a></li>
+                          <li><a href="blog-1-two-sidebar.html">Width two sidebar</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="blog-2.html">Blog style 2</a></li>
+                      <li>
+                        <a href="#">Blog style 3</a>
+                        <ul>
+                          <li><a href="blog-3-one-sidebar.html">Width one sidebar</a></li>
+                          <li><a href="blog-3-two-sidebar.html">Width two sidebar</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#">Blog single</a>
+                        <ul>
+                          <li><a href="single-1.html">Single style 1</a></li>
+                          <li><a href="single-2.html">Single style 2</a></li>
+                          <li><a href="single-3.html">Single style 3</a></li>
+                          <li><a href="single-4.html">Single style 4</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="clearfix"><h3><a href="contact.html">Contact</a></h3></li>                   
+              </ul><!--toggle-view-menu-->
+            </div><!--mobile-menu-->                         
+            <form class="navbar-form pull-right">
+              <input type="text" placeholder="Search this site...">
+            </form>
+          </div>
+          <!-- container -->
+        </div>
+      </nav>
+      <!-- navbar -->
+    </header><!--page-header-->
     
     <div id="main-content">
       <div class="container" style="margin-top:30px;">
         <div class="row-fluid">
-          <div class="span6">
-            <div id="step1Form" class="panel panel-success" style="min-height:200px;">
-              <div class="panel-heading">
-                <h3 class="panel-title">
-                  Log in</h3>
+          <div class="span12">
+            <form class="form-horizontal">
+              <fieldset>
+
+                <!-- Form Name -->
+                <legend>Log in</legend>
+
+                <!-- Text input-->
+                <div class="control-group">
+                  <label class="control-label" for="username">Username</label>
+                  <div class="controls">
+                    <input id="username" name="username" type="text" placeholder="email" class="input-xlarge">
+
+                  </div>
                 </div>
-                <form class="form-horizontal">
-                  <fieldset>
 
-                    <!-- Form Name -->
-                    <legend></legend>
-
-                    <!-- Text input-->
-                    <div class="control-group">
-                      <label class="control-label" for="username">Username</label>
-                      <div class="controls">
-                        <input id="username" name="username" type="text" placeholder="email" class="input-xlarge form-control">
-
-                      </div>
-                    </div>
-
-                    <!-- Password input-->
-                    <div class="control-group">
-                      <label class="control-label" for="password">Password</label>
-                      <div class="controls">
-                        <input id="password" name="password" type="password" placeholder="password" class="input-xlarge form-control">
-                        <p class="help-block">Forget password?</p>
-                      </div>
-                    </div>
-                    
-
-                  </fieldset>
-                </form>
-                <div class="control-group" style="margin-left:100px;">
+                <!-- Password input-->
+                <div class="control-group">
+                  <label class="control-label" for="password">Password</label>
+                  <div class="controls">
+                    <input id="password" name="password" type="password" placeholder="password" class="input-xlarge">
+                    <p class="help-block">Forget password?</p>
+                  </div>
+                </div>
+                <div class="control-group">
                       <label class="control-label" for="submit"></label>
                       <div class="controls">
                         <button class="btn btn-success" onclick="">Login</button>
                       </div>
                     </div>
-              </div>
-            </div><!--span12-->
-          </div>
+
+              </fieldset>
+            </form>
+
+          </div><!--span12-->
         </div>
       </div>
+    </div>
 
-    </body>
+  </body>
 
-    </html>
+  </html>

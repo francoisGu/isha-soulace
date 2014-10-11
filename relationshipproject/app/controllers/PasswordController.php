@@ -1,10 +1,14 @@
 <?php
 
+//use App\Interfaces\PasswordInterface;
+
 class PasswordController extends BaseController {
 
     protected $layout = "layouts.main";
+    protected $reminder;
 
-    public function __construct(){
+    public function __construct(PasswordReminder $reminder){
+        $this->reminder = $reminder;
         $this->beforeFilter('csrf', array('on'=>'post'));
     }
 
@@ -14,69 +18,72 @@ class PasswordController extends BaseController {
 
     public function postRemind(){
 
-        try
-        {
-            $email = Input::get('email');
-            // Find the user using the user email address
-            $user = Sentry::findUserByLogin($email);
-        
-            // Get the password reset code
-            $resetCode = $user->getResetPasswordCode();
-            //echo $resetCode;
-            $data = array('text' => $resetCode);
-        
-            Mailgun::send('emails.message', $data, function($message){
-                $message->to(Input::get('email'), 'Receiver')->subject('Reset password');
-            }); 
+        $rules = array(
+            'email' => 'required|email'
+        );
+        $validator = Validator::make(Input::all(), $rules);
 
-            return Redirect::to('password/reset')->with('message', 'Thanks for 
-                using.');
- 
-        }
-        catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-        {
-            return Redirect::back()->with('message', 'User was not found.')->onlyInput('email');
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator)->withInput();
+        } else{
+            $message = $this->reminder->remind(Input::get('email'));
+
+            return Redirect::to($message['url'])->with('message', 
+                $message['message']);
         }
     }
 
     public function getReset(){
-        $this->layout->content = View::make('password.reset');
-    
+        if (Input::has('email') && Input::has('resetPasswordCode')) {
+
+            try {
+                // Find the user using the user id
+                $user = Sentry::findUserByLogin(Input::get('email'));
+
+                // Check if the reset password code is valid
+                if ($user -> 
+                    checkResetPasswordCode(Input::get('resetPasswordCode'))) {
+                        $this->layout->content = View::make('password.reset');
+                    } else {
+                        Session::flash('error_msg', 'Invalid request . Please enter 
+                            email to reset your password');
+                        return Redirect::to('/password/remind');
+                    }
+            } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
+                Session::flash('error_msg', 'User not found');
+                return Redirect::to('/password/remind');
+            }
+        } else {
+            Session::flash('error_msg', 'Invalid request . Please enter email 
+                to reset your password');
+            return Redirect::to('/password/remind');
+
+        }
+
     }
 
     public function postReset() {
-        try
-        {
-            $resetPasswordCode = Input::get('resetcode');
+
+        $rules = array(
+            'password' => 'required|alpha_num|between:6,12|confirmed',
+            'password_confirmation' => 'required|alpha_num|between:6,12'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator);
+        } else {
+            $resetPasswordCode = Input::get('resetPasswordCode');
             $newPassword = Input::get('password');
-            // Find the user using the user id
-            $user = Sentry::findUserByResetPasswordCode($resetPasswordCode);
-        
-            // Check if the reset password code is valid
-            if ($user->checkResetPasswordCode($resetPasswordCode))
-            {
-                // Attempt to reset the user password
-                if ($user->attemptResetPassword($resetPasswordCode, $newPassword))
-                {
-                    // Password reset passed
-                    return Redirect::to('users/login')->with('message', 'Password reset!');
-                }
-                else
-                {
-                    return Redirect::to('password/remind')->with('message', 'password reset failed');
-                }
-            }
-            else
-            {
-                // The provided password reset code is Invalid
-                return Redirect::to('password/remind')->with('message', 
-                    'password reset code Invalid');
-            }
+
+            $resetMessage = array(
+                'resetPasswordCode' => $resetPasswordCode,
+                'password' => $newPassword
+            );
+
+            $this->reminder->reset($resetMessage);
         }
-        catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-        {
-            return Redirect::back()->with('message', 'User was not found.')->onlyInput('email');
-        }   
     }
 
 }

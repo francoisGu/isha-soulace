@@ -1,69 +1,73 @@
 <?php
 
+use App\Interfaces\UserAccountInterface;
+
 class UsersController extends BaseController {
 
-    protected $layout = "layouts.menu";
 
-    public function __construct() {
-        $this->beforeFilter('csrf', array('on'=>'post'));
+    protected $layout = "layouts.main";
+
+
+    public function __construct(User $account) {
+        $this->account = $account; $this->beforeFilter('csrf', 
+            array('on'=>'post'));
         //$this->beforeFilter('auth', array('only'=>array('getDashboard')));
     }
 
     public function getRegister() {
-        $this->layout->content = View::make('users.register');
+        $types = DB::table('services')->lists('type');
+
+        $services = array();
+
+        foreach($types as $type){
+        
+            $services[$type] = $type;
+            
+        
+        }
+        return View::make('users.register')->with('services', $services);
     }
 
     public function postRegister() {
-        $validator = Validator::make(Input::all(), User::$rules);
+        $rules = array(
+            'first_name' =>'required|alpha|min:2',
+            'last_name'  =>'required|alpha|min:2',
+            'email'     =>'required|email|unique:users',
+            'password'  =>'required|alpha_num|between:6,12|confirmed',
+            'password_confirmation' =>'required|alpha_num|between:6,12'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
 
         if ($validator->passes()) {
+            /*$registerInfo = array(*/
+            //'email'     => Input::get('email', null),
+            //'password'  => Input::get('password', null),
+            //'firstname' => Input::get('firstname', null),
+            //'lastname'  => Input::get('lastname', null),
+            //);
+            //
+            $venue = Util::getVenue(Input::all());
 
-            try {
-                $user = Sentry::register(array(
-                            'email'    => Input::has('email') ? Input::get('email') : null,
-                            'password' => Input::has('password') ? Input::get('password') : null,
-                            'first_name' => Input::has('firstname')? Input::get('firstname') : null,
-                            'last_name' => Input::has('lastname')? Input::get('lastname') : null,
-                            'type' => '1',             
-                        ), false); 
-                $serviceProvider = ServiceProvider::create(array(
-                    'identity' => Input::get('identity'),
-                    'abn' => Input::has('ABN') ? Input::get('ABN') : null,
-                    'acn' => Input::has('ACN') ? Input::get('ACN') : null,
-                    'address' => Input::has('address') ? Input::get('address') : null,
-                    'phone' => Input::has('phone') ? Input::get('phone') : null,
-                    'mobile' => Input::has('mobile') ? Input::get('mobile') : null,
-                    'mode' => Input::has('mode') ? Input::get('mode') : null,
-                    'companyname' => Input::has('companyname') ? Input::get('companyname') : null,
-                    'user_id' => $user->id,
-                    ));
-                
-                $activationCode = URL::to('/') . '/activate/' . $user->getActivationCode();
-                Mailgun::send('emails.welcome', 
-                    array('firstname' => Input::get('firstname'),  
-                    'activationCode'  => $activationCode), 
-                    function($message){
-                        $message -> to(Input::get('email'), 
-                            Input::get('firstname') . ' ', Input::get('lastname')) -> 
-                            subject('Welcome to the Isha SoulAce');
-                    });
-                
-            } 
-            catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
-                echo 'Login field is required.'; 
-            }
-            catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
-                echo 'Password field is required.'; 
-            }
-            catch (Cartalyst\Sentry\Users\UserExistsException $e) {
-                echo 'User with this login already exists.'; 
+            $geocode = Map::validateAddress($venue, Input::get('postcode'));
+
+            if(is_null($geocode)){
+                return Redirect::back()->with('message', 'Location not found.')->withInput();
             }
 
-            return Redirect::to('users/login')->with('message', 'Thanks 
-                for registering! Only when your account gets approved, you can log into the website. We will manage it as soon as possible. Thank you for your support.');
+            $registerInfo = array_merge(Input::all(), array('longitude' => $geocode['longitude'], 'latitude' => $geocode['latitude']));
+
+            $this->account->register('ServiceProvider' , $registerInfo);
+
+
+            return Redirect::to('users/login')->with('message', 'Thanks for 
+                registering! Only when your account gets approved, you can log 
+                into the website. We will manage it as soon as possible. Thank 
+                you for your support.');
+
         } else {
-            return Redirect::to('users/register')->with('message', 'The 
-                following errors 
+            return Redirect::back()->with('message', 'The following errors 
                 occurred')->withErrors($validator)->withInput();
         }
     }
@@ -74,45 +78,11 @@ class UsersController extends BaseController {
 
     public function activate( $activationCode ) {
 
-		//public static $rules = array(
-			//'firstname'=>'required|alpha|min:2',
-			//'lastname'=>'required|alpha|min:2',
-			//'email'=>'required|email|unique:users',
-			//'password'=>'required|alpha_num|between:6,12|confirmed',
-			//'password_confirmation'=>'required|alpha_num|between:6,12'
-		/*);*/
-        try
-        {
-    /*        $user = Sentry::findUserByCredentials(array(*/
-                    //'email' => Input::get('email'),
-                    /*));*/
-            //$activationCode = Input::get('activationCode');
-            $user = Sentry::findUserByActivationCode($activationCode);
+        $activateMessage = $this->account->activate( $activationCode );
 
-            if($user -> attemptActivation($activationCode))
-            {
-                //TO-Do
-                // Assign user to a group with some permissions 
-                return Redirect::to('users/login')->with('message', 'Thanks 
-                    for activating!');
-       
-            }
-            else
-            {
-                return Redirect::to('users/register')->with('message'. 'Your 
-                    activation code is incorrect')->withInput(); 
-            } 
-        }
-        catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-        {
-            return Redirect::to('users/register')->with('message'. 'User was not 
-                found.'); 
-        } 
-        catch (Cartalyst\Sentry\Users\UserAlreadyActivatedException $e)
-        {
-            return Redirect::to('users/login')->with('message', 'User is already 
-                activated.');
-        }
+        return Redirect::to($activateMessage['url'])->with('message', 
+            $activateMessage['message']);
+
     }
 
     public function getLogin() {
@@ -125,88 +95,46 @@ class UsersController extends BaseController {
 
     public function postLogin() {
 
-        try
-        {
-            // Login credentials
-            $credentials = array(
-                'email'    => Input::get('email'),
-                'password' => Input::get('password'),
-            );
-            
-            // Authenticate the user
-            //$user = Sentry::authenticate($credentials, false);
-            $user = Sentry::authenticate($credentials, Input::get('rememberme')?:false);
-            
-            return Redirect::to('serviceProvider/profile');
+        $rules = array(
+            'email'     => 'required|email',
+            'password'  => 'required|between:6,12'
+        );
 
-        }
-        catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
-        {
-            echo 'Email field is required.';
-                        return Redirect::to('users/login')
-                ->with('message', 'Your username/password combination was 
-                incorrect')
-                ->withInput();
-        }
-        catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
-        {
-            echo 'Password field is required.';
-                        return Redirect::to('users/login')
-                ->with('message', 'Your username/password combination was 
-                incorrect')
-                ->withInput();
-        }
-        catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
-        {
+        $validator = Validator::make(Input::all(), $rules);
 
-            echo 'Wrong password, try again.';
-
+        if($validator->fails()){
             return Redirect::to('users/login')
-                ->with('message', 'Your username/password combination was 
-                incorrect')
-                ->withInput();
-        }
-        catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+                -> withErrors($validator)
+                -> withInput(Input::except('password'));
+        } else
         {
-            echo 'User was not found.';
-                        return Redirect::to('users/login')
-                ->with('message', 'Your username/password combination was 
-                incorrect')
-                ->withInput();
+            $loginInfo = array(
+                'email'         => Input::get('email'),
+                'password'      => Input::get('password'),
+                'rememberme'    => Input::get('rememberme') );
+
+            $loginMessage = $this->account->login($loginInfo);
+
+            if(Sentry::check()){
+            return Redirect::to($loginMessage['url'] . Sentry::getUser()->id)->with('message', 
+                $loginMessage['message']);
+            } else {
+                return Redirect::to($loginMessage['url'])->withMessage($loginMessage['message']);
+            }
         }
-        catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
-        {
-            echo 'User is not activated.';
-                        return Redirect::to('users/login')
-                ->with('message', 'Your account is not activated now')
-                ->withInput();
-        }
-        
-        // The following is only required if the throttling is enabled
-        catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
-        {
-            echo 'User is suspended.';
-                        return Redirect::to('users/login')
-                ->with('message', 'Your username/password combination was 
-                incorrect')
-                ->withInput();
-        }
-        catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
-        {
-            echo 'User is banned.';
-                        return Redirect::to('users/login')
-                ->with('message', 'Your username/password combination was 
-                incorrect')
-                ->withInput();
-        }
-    
+
     }
+
+    public function getDashboard() {
+        $this->layout->content = View::make('users.dashboard');
+    }
+
 
 
     public function getLogout() {
-        //Auth::logout();
         Sentry::logout();
-        return Redirect::to('users/login')->with('message', 'You are now 
-            logged out!');
+        return Redirect::to('users/login')->with('message', 'You are now logged 
+            out!');
     }
+
 }

@@ -1,22 +1,23 @@
 <?php
 
+class Client extends \Eloquent {
 
-class Client extends Eloquent {
+	// Add your validation rules here
+	public static $rules = [
+		// 'title' => 'required'
+	];
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'clients';
+	// Don't forget to fill this array
+	protected $fillable = ['email'];
 
-    static public function getClients($user_id)
-    {
-    	$clients =  Client::where('service_provider_id', '=', $user_id)->first();
-    	return $clients;
+    protected $table = 'clients';
+
+    public function workshops(){
+        return $this->belongsToMany('Workshop');
     }
 
+    public function serviceProviders(){
+        return $this->belongsToMany('ServiceProvider');
+    }
 
- 
-// Alias Editor classes so they are easy to use
 }

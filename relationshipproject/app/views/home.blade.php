@@ -1,245 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="http://localhost:8000/favicon.ico">
+@extends('layouts.main')
 
-    <title>Off Canvas Template for Bootstrap</title>
+@section('title')
+<title>Isha SoulAce - Home</title>
+@stop
 
-    {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/offcanvas.css') }}
-
-  </head>
-
-  <body>
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Isha SoulAce</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href="#donate">Donate</a></li>
-            <li><a href="#sponsor">Sponsor</a></li>
-            <li><a href="reviews">Review</a></li>
-          </ul>
-          <form class="navbar-form navbar-right" role="form">
-			<div class="form-group">
-			  <input type="text" placeholder="Email" class="form-control">
-			</div>
-			<div class="form-group">
-			  <input type="password" placeholder="Password" class="form-control">
-			</div>
-            <button type="submit" class="btn btn-success"> Sign in</button>
-            <a href="register" class="btn btn-success">Register</a>
-
-            <div class="form-group">
-          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get">
-                <!-- <input type="text" name="email" placeholder="Email" class="form-control"/> -->
-			    <!-- <input type="password" name="password" placeholder="Password" class="form-control"/> -->
-                    <input type="submit" value="Sign in" class="btn btn-success"/>
-            <!--<button type="submit" class="btn btn-success">Sign in</button>-->
-          </form>
-          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
-            <input type="submit" value="Register" class="btn btn-success"/>
-          </form>
-        </div>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
-
-    <div class="container">
-
-      <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-          <div class="jumbotron">
-            <h1>Isha SoulAce</h1>
-            <p>Helping you find the right service to assist in marriage and de facto relationship breakdowns</p>
-          </div>
-          
-              <!-- Begin page content -->
-    
-		  <div class="page-header">
-			<h3>Find help now</h1>
-		  </div>
-			<p>Select one of the services below to find a service to get help. If you don't know what you need, select one of the options on the left list below and the right services will be highlighted for you to choose.</p>
-			<br>
-          
-          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-          <div class="list-group">
-			<a href="#" class="list-group-item">Emotional Abuse</a>
-            <a href="#" class="list-group-item">Financial Abuse</a>
-            <a href="#" class="list-group-item">Physical Abuse</a>
-            <a href="#" class="list-group-item">Psychological Abuse</a>
-            <a href="#" class="list-group-item">Sexual Abuse</a>
-            <!--
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Emotional Abuse</h4>
-              <p class="list-group-item-text">Examples: name-calling, insults, constant criticism, silent treatment, manipulation to induce guilt</p>
-             </a>
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Financial Abuse</h4>
-			  <p class="list-group-item-text">Examples: withholding money, forcing total control over victims earned income, forbidding employment, justification for all money spent</p>
-			 </a>
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Physical Abuse</h4>
-			  <p class="list-group-item-text">Examples: pinching, slapping, hitting, beating, kicking, arm twisting, punching, stabbing, not giving food to eat, forcing drug/alcohol use</p>
-			 </a>
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Psychological Abuse</h4>
-			  <p class="list-group-item-text">Examples: intimidation, damaging property, stalking, isolating from friends, family</p>
-			  </a>
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Sexual Abuse</h4>
-			  <p class="list-group-item-text">Examples: coercing, marital rape, acquaintance rape, forced sex after physical abuse, forced prostitution</p>
-			 </a>
-			 -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6 col-sm-6 col-lg-4">
-            <h4>Family Law</h4>
-            <p>Legal services for family matters.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-<!--             </div><!--/span-->
-<!--             <div class="col-6 col-sm-6 col-lg-4"> -->
-            <h4>Accommodation for Domestic Violence Victims</h4>
-            <p>Housing and lodgings</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-<!--             </div><!--/span-->
-<!--             <div class="col-6 col-sm-6 col-lg-4"> -->
-            <h4>Fitness & Nutrition</h4>
-            <p>Healthy exercise and diets</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-		  </div><!--/span-->
-		  <div class="col-6 col-sm-6 col-lg-4">
-            <h4>Mental Wellbeing, Counselling</h4>
-            <p>Overcome psychological problems and build self esteem</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-<!--             </div><!--/span-->
-<!--             <div class="col-6 col-sm-6 col-lg-4"> -->
-            <h4>Financial Advice</h4>
-            <p>Property settlement, mortage and other financial matters</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-<!--             </div><!--/span-->
-<!--             <div class="col-6 col-sm-6 col-lg-4"> -->
-            <h4>Workshops</h4>
-            <p>Build skills for employment</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-          </div><!--/span-->
-        </div><!--/row-->
-      </div><!--/span-->
-
-      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-        <div class="list-group">
-          <a href="#" class="list-group-item">
-		  <h4 class="list-group-item-heading">Workshop Title</h4>
-		  <p class="list-group-item-text">
-			Topic:<br>
+@section('main')
+<!-- Begin page content -->
+<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+<div class="row">
+<!-- Workshop Advertisments -->
+  <div class="col-md-3 col-md-push-9"><div class="list-group">
+	  <a href="#" class="list-group-item">
+	    <h4 class="list-group-item-heading">Workshop Title</h4>
+	    <p class="list-group-item-text">
 			Date:<br>
 			Time:<br>
 			Venue:<br>
 			Price:<br>
 			Tickets left:<br>
 			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
+	  </a>
+	  <a href="#" class="list-group-item">
 			<h4 class="list-group-item-heading">Workshop Title</h4>
 			<p class="list-group-item-text">
-			Topic:<br>
 			Date:<br>
 			Time:<br>
 			Venue:<br>
 			Price:<br>
 			Tickets left:<br>
 			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
+	  </a>
+	  <a href="#" class="list-group-item">
 			<h4 class="list-group-item-heading">Workshop Title</h4>
 			<p class="list-group-item-text">
-			Topic:<br>
 			Date:<br>
 			Time:<br>
 			Venue:<br>
 			Price:<br>
 			Tickets left:<br>
 			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Topic:<br>
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			Tickets left:<br>
-			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Topic:<br>
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			Tickets left:<br>
-			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Topic:<br>
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			Tickets left:<br>
-			Food & Drinks:<br></p>
-          </a>
-        </div>
-      </div><!--/span-->
-    </div><!--/row-->
+	  </a>
+	</div>
+  </div>
+<!--   Types of services & Domestic Violence -->
+  <div class="col-md-9 col-md-pull-3">
+    <!--<div class="page-header" id="services">
+	  <h3>Find help for domestic violence!</h1>
+	</div>
+	<p>What problems are you facing? Find out which services you need and contact them.</p>--> 
+<!-- 	Types of Domestic Violence -->
+	<div class="col-md-8 col-md-push-4">
+	    <div class="col-6 col-sm-6 col-lg-3">
+      <h4>Emotional Abuse</h4>
+      <p>Legal services for family matters.</p>
+      <p><a class="btn btn-default" href="services/familylaw" role="button">Consult &raquo;</a></p>
+    </div><!--/span-->
+    <div class="col-6 col-sm-6 col-lg-3"> 
+      <h4>Financial Abuse</h4>
+      <p>Housing and lodgings</p>
+      <p><a class="btn btn-default" href="services/accommodation" role="button">Consult &raquo;</a></p>
+		</div><!--/span-->
+		<div class="col-6 col-sm-6 col-lg-3">
+      <h4>Physical Abuse</h4>
+      <p>Healthy exercise and diets</p>
+      <p><a class="btn btn-default" href="services/fitnessandnutrition" role="button">Consult &raquo;</a></p>
+		</div><!--/span-->
+		<div class="col-6 col-sm-6 col-lg-3">
+      <h4>Psychological Abuse</h4>
+      <p>Overcome psychological problems and build self esteem</p>
+      <p><a class="btn btn-default" href="services/mentalwellbeing" role="button">Consult &raquo;</a></p>
+    </div><!--/span-->
+		<div class="col-6 col-sm-6 col-lg-3">
+      <h4>Sexual Abuse</h4>
+      <p>Property settlement, mortage and other financial matters</p>
+      <p><a class="btn btn-default" href="services/financialadvice" role="button">Consult &raquo;</a></p>
+    </div><!--/span-->
+		<div class="col-6 col-sm-6 col-lg-3">
+      <h4>HELP</h4>
+      <p>Build skills for employment</p>
+      <p><a class="btn btn-default" href="#" role="button">Consult &raquo;</a></p>
+    </div><!--/span-->
+	</div>
+<!-- 	Types of Services -->
+	<div class="col-md-4 col-md-pull-8">
+	  <div class="list-group">
+		<a href="services/familylaw" class="list-group-item">Family Law &raquo;</a>
+		<a href="services/accommodation" class="list-group-item">Accommodation &raquo;</a>
+		<a href="services/fitnessandnutition" class="list-group-item">Fitness & Nutrition &raquo;</a>
+		<a href="services/mentalwellbeing" class="list-group-item">Mental Wellbeing, Counselling &raquo;</a>
+		<a href="services/financialadvice" class="list-group-item">Financial Advice &raquo;</a>
+		<a href="#" class="list-group-item">Workshops &raquo;</a>
+	  </div>
+	</div>
+  </div>
+</div>
+<hr>
 
-    
-
-    <footer>
-	  <p class="pull-right"><a href="#">Back to top</a></p>
-      <p>&copy; Company 2014</p>
-    </footer>
-
-    </div><!--/.container-->
-
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/offcanvas.js') }}
-  </body>
-</html>
+@stop

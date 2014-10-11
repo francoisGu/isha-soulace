@@ -7,15 +7,9 @@
 		@endforeach
 	</ul>
 
-    {{ Form::hidden('email', Input::get('email') ) }}
-    {{ Form::hidden('resetPasswordCode', Input::get('resetPasswordCode') ) }}
-
+    {{ Form::text('resetcode', null, array('class'=>'input-block-level', 'placeholder'=>'Reset Password Code')) }}
     {{ Form::password('password', array('class'=>'input-block-level',
     'placeholder'=>'New password')) }}
-
-    {{ Form::password('password_confirmation', array('class'=>'input-block-level',
-    'placeholder'=>'Confirm new password')) }}
-
 
 	{{ Form::submit('Reset password', array('class'=>'btn btn-large btn-primary'))}}
 {{ Form::close() }}

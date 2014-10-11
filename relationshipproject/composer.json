@@ -7,18 +7,15 @@
         "laravel/framework": "4.2.*",
         "guzzlehttp/guzzle": "~4.0",
         "cartalyst/sentry": "2.1.*",
+	    "anouar/paypalpayment": "dev-master",
+        "anahkiasen/former": "dev-master",
         "bogardo/mailgun": "3.0.*",
+        "toin0u/geocoder-laravel": "0.4.1",
         "frozennode/administrator": "dev-master",
-        "toin0u/geocoder-laravel": "@stable",
         "appitventures/phpgmaps": "dev-master",
         "xethron/migrations-generator": "dev-master",
         "payum/payum-laravel-package":"*@stable",
-        "payum/paypal-express-checkout-nvp":"*@stable",
-        "payum/payum":"*@stable",
-        "anahkiasen/former": "dev-master",
-        "barryvdh/laravel-dompdf": "0.4.*",
-        "barryvdh/laravel-ide-helper": "1.*",
-        "fzaninotto/faker": "@stable"
+        "payum/payum":"*@stable"
     },
 
     "autoload": {
@@ -28,7 +25,6 @@
             "app/models",
             "app/database/migrations",
             "app/database/seeds",
-            "app/interfaces",
             "app/tests/TestCase.php"
         ]
     },
@@ -39,13 +35,10 @@
         ],
         "post-update-cmd": [
             "php artisan clear-compiled",
-            "php artisan ide-helper:generate",
-            "php artisan asset:publish frozennode/administrator",
             "php artisan optimize"
         ],
         "post-create-project-cmd": [
-            "php artisan key:generate",
-            "php artisan asset:publish frozennode/administrator"
+            "php artisan key:generate"
         ]
     },
     "config": {

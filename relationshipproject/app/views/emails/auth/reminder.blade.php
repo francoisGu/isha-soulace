@@ -7,12 +7,7 @@
 		<h2>Password Reset</h2>
 
 		<div>
-            To reset your password, complete this form: 
-            <br/>
-            <a href="{{ URL::to('/password/reset/') }}?email={{$email}}&resetPasswordCode={{$resetPasswordCode}}">
-                {{ URL::to('/password/reset/') }}?email={{$email}}&resetPasswordCode={{$resetPasswordCode}}
-            </a> 
-            <br/>
+			To reset your password, complete this form: {{ URL::to('password/reset', array($token)) }}.<br/>
 			This link will expire in {{ Config::get('auth.reminder.expire', 60) }} minutes.
 		</div>
 	</body>

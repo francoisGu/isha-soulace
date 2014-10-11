@@ -89,11 +89,6 @@ Route::get('/about', function()
         return View::make('about');
     });
 
-Route::get('/workshopList', function()
-{
-    return View::make('services.workshop_list');
-});
-
 /*Route::get('workshops/', function(){*/
 
     //return View::make('workshops.index');

@@ -44,14 +44,14 @@
         <div class="row">
 
             <div class="col-lg-6 ">
-                <a class="btn btn-small btn-success" href="{{ URL::to('workshops/create') }}">Create New Workshop</a>
+                <a class="btn btn-small btn-success" href="{{ URL::to('workshops/create') }}">New Workshop</a>
              
                 <label class="form-inline">Service Type: <select id="selectWorkshop" class="form-control input-sm"><option value=""></option></select></label>
             </div>
 
         </div>
 
-        <table id="myDatas" class="table table-striped table-bordered table-hover display" cellspacing="0" >
+        <table id="myDatas" class="table table-responsive table-striped table-condensed table-hover display" cellspacing="0" >
 
             <thead>
                 <tr>

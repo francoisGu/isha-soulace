@@ -16,4 +16,11 @@ class WorkshopAdvertisement extends \Eloquent {
     public function workshop(){
         return $this->belongsTo('Workshop'); 
     }
+
+    public static function getFourWeeksAgo($date){
+
+        $d = date('Y-m-d',strtotime('4 weeks ago ' . $date)); 
+
+        return $d; 
+    }
 }

@@ -36,6 +36,9 @@ class WorkshopAdvertisementsController extends \BaseController {
         $workshop_id = Input::get('workshop_id');
         $workshop = Workshop::find($workshop_id);
         //
+        if(is_null($workshop)){
+            return Redirect::back()->withErrors('Workshop ' . $workshop_id . ' not found!');
+        }
         return View::make('workshopAdvertisements.create')->with('workshop', $workshop);
     }
 

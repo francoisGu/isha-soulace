@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="http://localhost:8000/favicon.ico">
+@extends('layouts.main')
 
-    <title>Off Canvas Template for Bootstrap</title>
+@section('main')
+<div class="page-header">
+	<h3>About Isha SoulAce</h1>
+</div>
+	<p>We are a Not-For-Profit organization that provides support and services to people going through marriage and de facto relationship breakdown. </p>
+	<p>We aim to address a social issue (domestic violence) in the society and intends to raise awareness, promote zero tolerance for any kind of domestic violence and also provide support services to the people going through relationship breakdown caused due to domestic violence. We facilitate activities towards supporting people especially women undergoing domestic violence to transform their lives positively, empowering them by creating opportunities for self sustenance.</p>
 
+<<<<<<< HEAD
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/offcanvas.css') }}
 
@@ -90,3 +88,6 @@
     {{ HTML::script('js/offcanvas.js') }}
   </body>
 </html>
+=======
+@stop 
+>>>>>>> d6b5da5d0c7567750a41788636d1a6bfab2ef384

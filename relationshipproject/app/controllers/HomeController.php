@@ -15,42 +15,23 @@ class HomeController extends BaseController {
 	|
 	*/
 
-    protected $layout = "layouts.menu";
 
-	public function getDonations()
-	{
-		$this->layout->content = View::make('donations');
-	}
-
+    protected $layout = "layouts.main";
+    
 	public function getHome()
 	{
-		$this->layout->content = View::make('home');
+        //$this->layout->title = 'Isha SoulAce - Home';
+        $title = 'Isha SoulAce - Home';
+        //$this->layout->content = View::make('home');
+        return View::make('home')->with('title', $title);
+        
 	}
 
 	public function getAbout()
 	{
-		$this->layout->content = View::make('about');
-	}
+        $this->layout->title = 'About Us - Isha SoulAce';
+        $this->layout->content = View::make('about');
 
-	public function getReviews()
-	{		
-		$this->layout->content = View::make('reviews');
-	}
-
-	public function postReviews()
-	{
-		$review = Review::getReview(Input::get('form_id'));
-		if(is_null($review)) {
-            $review = Review::create(array(
-            	'form_id' => Input::has('form_id') ? Input::get('form_id') : null,
-            	'rating' => Input::has('ratings') ? Input::get('score') : null,
-            	'review_content' => Input::has('review_content') ? Input::get('review_content') : null,
-            	));
-            
-            return Redirect::to('/reviews')->with('message','You have reviewed successfully! Thank you!');
-		}
-		
-		return Redirect::to ('/reviews')->with('message','You have already reviewed for this service!')->with('review', $review);
 	}
 
 }

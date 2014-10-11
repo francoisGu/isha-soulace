@@ -1,4 +1,12 @@
 
+@extends('layouts.main')
+
+@section('title')
+<title>Isha SoulAce - Login</title>
+@stop
+
+
+@section('main')
   <div class="row-fluid">
     <div class="span6">
       <div id="step1Form" class="panel panel-success" style="min-height:200px;">
@@ -23,6 +31,8 @@
               <label class="checkbox inline" for="checkboxes-0">
                 {{ Form::checkbox('rememberme', 'Remember me.', false)}}
                 Remember me
+                <br/>
+    <a href="{{ URL::to('/password/remind/') }}">Forget password?<a/>
               </label>
             </div>
           </div>
@@ -37,3 +47,6 @@
       </div>
     </div><!--span12-->
   </div>
+
+@stop
+

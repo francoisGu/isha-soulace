@@ -51,9 +51,12 @@ return array(
 	 * 		'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
 	 *	)
 	 */
-    'menu' => array( 'users', 'serviceProviders', 'workshops',
+    'menu' => array( 
+    				'users', 
+    				'serviceProviders', 
+    				'workshops',
+    				'advertisements',
                 //'Map'=> 'page.map.map',
-
     ),
 
 	/**

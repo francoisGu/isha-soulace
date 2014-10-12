@@ -16338,7 +16338,7 @@ CREATE TABLE `serviceProviders` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `serviceproviders_email_unique` (`email`),
   KEY `serviceproviders_longitude_latitude_index` (`longitude`,`latitude`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16350,6 +16350,7 @@ LOCK TABLES `serviceProviders` WRITE;
 INSERT INTO `serviceProviders` VALUES (4,'0','Fitness & Nutrition','','808098908','123','89','Queens','Rd','Melbourne','VIC',3004,'080989080','',0,NULL,'litao','shen','litaoshen_0315@hotmail.com',145.2277374,-38.2073102,'2014-10-09 05:55:28','2014-10-09 05:55:28');
 INSERT INTO `serviceProviders` VALUES (5,'0','Family Law','','0980980','87','74','Queens','St','Melbourne','VIC',3004,'0980080','',0,NULL,'litao','shen','litaoshen0315@gmail.com',144.979558,-37.852241,'2014-10-09 05:58:58','2014-10-09 05:58:58');
 INSERT INTO `serviceProviders` VALUES (6,'0','Fitness & Nutrition','','0809808','101','185',' Pelham','Street','Carlton','VIC',3053,'10898','',0,NULL,'hhh','hhhh','423860200@qq.com',144.9599996,-37.8023753,'2014-10-09 07:37:06','2014-10-09 07:37:06');
+INSERT INTO `serviceProviders` VALUES (7,'1','Mental Wellbeing, Counselling','123445',NULL,'Nihil in deserunt ipsum cum corrupti lorem aut explicabo Deserunt eiusmod rerum maxime sequi pariatur Duis nisi modi veniam rerum','324','collins','st','Melbourne','Vic',3000,'18789797','7279878979',1,NULL,'Blake','Henderson','cypazafi@gmail.com',144.9635913,-37.816271,'2014-10-11 18:19:45','2014-10-11 18:19:45');
 /*!40000 ALTER TABLE `serviceProviders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16477,7 +16478,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `users_activation_code_index` (`activation_code`),
   KEY `users_reset_password_code_index` (`reset_password_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16489,6 +16490,7 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (4,'litaoshen_0315@hotmail.com','$2y$10$sN22jCl/6bzeR7PzWnyuROsiB0P0HqvZOM5xE2aE6JubtypNYA7nm',NULL,0,'LzpSjsFjYFBscsiXfizXJr4yCDrhlsLeWcJiYoZbnh',NULL,NULL,NULL,NULL,'litao','shen','2014-10-09 05:55:28','2014-10-09 05:55:28',4,'ServiceProvider');
 INSERT INTO `users` VALUES (5,'litaoshen0315@gmail.com','$2y$10$Ovc049psJD.fTr7VJTGdz.8ZAt929HQls3V84Fy.jwQV.EuH.7FQK',NULL,1,NULL,'2014-10-09 06:05:51','2014-10-10 03:12:11','$2y$10$7dfWKxoUSnC.f4sddoK9WOiRbIi0dyicaaTDnv0tylXHlPaVTss4G',NULL,'litao','shen','2014-10-09 05:58:58','2014-10-10 03:12:11',5,'ServiceProvider');
 INSERT INTO `users` VALUES (6,'423860200@qq.com','$2y$10$KuEktBdN4raYcfTOhojjQ.NEfbMo2jd3aOjD0NFLbWNH5isVkRdZy',NULL,0,'yV43jPwqbTYwSbiTUSXT511BA7kqiuXypZJXi0aQCO',NULL,NULL,NULL,NULL,'hhh','hhhh','2014-10-09 07:37:06','2014-10-09 07:37:06',6,'ServiceProvider');
+INSERT INTO `users` VALUES (7,'cypazafi@gmail.com','$2y$10$mVfIVrNXDvKx6Zz0XlBEHu3AzdpE3ZWfHxnNCs71jteKncAoQrmuG',NULL,0,'KQXvPXuaiUB9h1fOYJNE1MODCylqScFogtYEyA6om2',NULL,NULL,NULL,NULL,'Blake','Henderson','2014-10-11 18:19:45','2014-10-11 18:19:45',7,'ServiceProvider');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16601,4 +16603,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-11 12:33:08
+-- Dump completed on 2014-10-12 16:20:28

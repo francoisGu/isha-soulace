@@ -53,7 +53,7 @@ class UsersController extends BaseController {
             $geocode = Map::validateAddress($venue, Input::get('postcode'));
 
             if(is_null($geocode)){
-                return Redirect::back()->with('message', 'Location not found.')->withInput();
+                return Redirect::back()->withErrors('Location not found.')->withInput();
             }
 
             $registerInfo = array_merge(Input::all(), array('longitude' => $geocode['longitude'], 'latitude' => $geocode['latitude']));

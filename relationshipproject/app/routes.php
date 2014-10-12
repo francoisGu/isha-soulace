@@ -88,6 +88,20 @@ Route::get('/about', function()
         return View::make('about');
     });
 
+/*-----------------------------------------------------*/
+// created by Frank
+Route::get('/sponsors', array(
+            'as' => 'sponsors',
+            'uses' => 'SponsorController@getSponsors'
+    ));
+
+Route::post('/sponsors', array(
+            'as' => 'sponsors-post',
+            'uses' => 'SponsorController@postSponsors'
+    ));
+
+/*-----------------------------------------------------*/
+
 /*Route::get('workshops/', function(){*/
 
     //return View::make('workshops.index');
@@ -129,7 +143,6 @@ Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@acti
 Route::controller('/', 'HomeController');
 Route::controller('emails', 'EmailController');
 //Route::controller('password', 'PasswordController');
-Route::resource('payment', 'PaymentController');
 
 /* HTML Macros */
 HTML::macro('smartNavMenu', function($url, $text) {

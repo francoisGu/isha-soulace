@@ -6,18 +6,27 @@
 
 
 @section('main')
+<style type="text/css">
+.auth .auth-box{
+  background-color: white;
+  max-width:660px;
+  margin:0 auto;
+  border:1px solid rgba(255, 255, 255, 0.4);;
+  margin-top:40px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  -moz-box-shadow:    0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  box-shadow:         0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+</style>
+<div class="auth">
+      <div id="step1Form" class="well auth-box" style="min-height:200px;">
 
-
-<div class="row-fluid">
-    <div class="span9">
-        <div id="step1Form" class="panel panel-success" style="min-height:100px;">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    Register</h3>
-            </div> 
             {{Former::open()->method('POST')->class('form-horizontal')->url('users/register')}}          
             <!-- Form Name -->
-            <legend></legend>
+            <legend  class="text-center" style="border-bottom:solid 1px;">Register</legend>
 
             <ul>
                 @foreach($errors->all() as $error)
@@ -46,12 +55,12 @@
 {{ Former::inline_radios('identity')->radios(array('Individual' =>array( 'name'=>'identity','checked'=>'checked'), 'Company' => array('name'=>'identity', 'checked'=>'')))->onchange('change()') }}
 
 <div id='company_part' style="display:none;">
-    {{ Former::text('companyname','Company Name')->class('input-xlarge inputHeight form-control company')->placeholder('Company Name')->required()}}
+    {{ Former::text('companyname','Company Name')->class('input-xlarge inputHeight form-control company')->placeholder('Company Name')}}
 
-    {{ Former::text('acn')->label('ACN')->class('input-medium inputHeight form-control company')->placeholder('ACN')->required()}}
+    {{ Former::text('acn')->label('ACN')->class('input-medium inputHeight form-control company')->placeholder('ACN')}}
 </div>
 <div id='individual_part'>
-    {{ Former::text('abn')->label('ABN')->class('input-medium inputHeight form-control individual')->placeholder('ABN')->required()}}
+    {{ Former::text('abn')->label('ABN')->class('input-medium inputHeight form-control individual')->placeholder('ABN')}}
 </div>
 
 {{ Former::select('type')->class('input-large inputHeight form-control')->placeholder('Service Type')->options($services)->required() }}
@@ -84,13 +93,12 @@
 <!-- Multiple Radios -->
 
 <div class="control-group controls">
-    {{ Form::submit('Register', array('class'=>'btn btn-success'))}}
+    {{ Form::submit('Register', array('class'=>'btn btn-danger btn-outline'))}}
 </div>
 {{ Former::close()}}
 
             </div>
 
-        </div>
     </div>
 
 

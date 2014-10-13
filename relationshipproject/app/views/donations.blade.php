@@ -1,3 +1,26 @@
+@extends('layouts.main')
+
+@section('title')
+<title>Isha SoulAce - Register</title>
+@stop
+
+
+@section('main')
+<style type="text/css">
+.auth .auth-box{
+  background-color: white;
+  max-width:660px;
+  margin:0 auto;
+  border:1px solid rgba(255, 255, 255, 0.4);;
+  margin-top:40px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  -moz-box-shadow:    0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  box-shadow:         0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+</style>
 <div class="container auth">
     <h1 class="text-center">Offer your donations here!<span>Thank you for your support!</span> </h1>
     <div id="big-form" class="well auth-box">
@@ -13,6 +36,10 @@
             </div>
             <div class='radio'>
             {{ Former::radios('')->radios(array( 'AUD$250' => array('name'=>'amount', 'checked'=>'')))}}
+            </div>
+            <div class='radio'>
+            {{ Former::radios('')->radios(array( 'Other' => array('name'=>'amount', 'checked'=>'')))}}
+            {{Former::number('other_amount')->placeholder('No less than AUD$10')->class('input-large input-md form-control')->min(10)}}
             </div>
         </div>
           <legend class="text-center" style="border-bottom:solid 1px;">Personal Details</legend>
@@ -60,7 +87,7 @@
           </div>
 
           <div class="form-group controls">
-          {{ Form::submit('Use paypal to Donate', array('class'=>'btn btn-success'))}}
+          {{ Form::submit('Use paypal to Donate', array('class'=>'btn btn-danger btn-outline'))}}
         </div>
         {{ Former::close()}}
     </div>

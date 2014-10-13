@@ -100,12 +100,6 @@ return array(
     'edit_fields' => array(
 
 
-        'id' => array(
-            'title' => 'ID',
-
-            'type'  => 'number'
-        ),
-
         'email' => array(
             'title' => 'Email',
             'type'  => 'text'

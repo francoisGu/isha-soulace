@@ -6,9 +6,10 @@
 
 
 @section('main')
+
   <div class="row-fluid">
-    <div class="span6">
-      <div id="step1Form" class="panel panel-success" style="min-height:200px;">
+      <div class="span6" style="margin: 0px auto; min-height:200px;">
+      <div id="step1Form" class="panel panel-success" >
         <div class="panel-heading">
           <h3 class="panel-title">
             Log in</h3>
@@ -20,6 +21,14 @@
            @if(Session::has('message'))
           <p style="color:red; margin-left: 100px;">{{ Session::get('message') }}</p>
           @endif
+
+            @if ($errors->any())
+            <ul>
+                {{ implode('', $errors->all('<li style="color:red" class="error">:message</li>')) }}
+            </ul>
+            @endif
+
+
           {{Former::text('email')->placeholder('Email')->class('input-xlarge inputHeight form-control')->required()}} 
             <!-- {{ Form::text('email', null, array('class'=>'input-xlarge inputHeight form-control', 'placeholder'=>'Email Address')) }} -->
         {{Former::password('password')->placeholder('Password')->class('input-xlarge inputHeight form-control')->required()}}

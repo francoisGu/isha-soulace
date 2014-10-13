@@ -94,7 +94,7 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
         return 'remember_token';
     }
 
-    public function createUser($type, array $info){
+    public function createUser($type, array $registerInfo){
  
         if(class_exists($type)){
             try {
@@ -106,9 +106,14 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
                 //$user = Sentry::register($register, false); 
 
                 // create user into its own table
-                $type_user = $type::create($info);
+                $type_user = $type::create($registerInfo);
 
-                $user = Sentry::createUser(array_merge($register, array('userable_id' => $type_user->id, 'userable_type' => $type)));
+                $user = Sentry::createUser(array_merge($register, 
+                    array('userable_id' => $type_user->id, 'userable_type' => 
+                    $type)));
+
+                $group = Sentry::getGroupProvider()->findByName('General Administrators');
+                $user->addGroup($group);
             } 
             catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
                 echo 'Login field is required.'; 
@@ -135,13 +140,23 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
                 $register = array('email'    => $registerInfo['email'], 
                     'password' => $registerInfo['password'],
                     'first_name' => $registerInfo['first_name'],
-                    'last_name'  => $registerInfo['last_name']);
+                    'last_name'  => $registerInfo['last_name'],
+                    'activated'  => true);
                 //$user = Sentry::register($register, false); 
 
                 // create user into its own table
                 $type_user = $type::create($registerInfo);
 
-                $user = Sentry::register(array_merge($register, array('userable_id' => $type_user->id, 'userable_type' => $type)) , false);
+                $user = Sentry::register(array_merge($register, 
+                    array('userable_id' => $type_user->id, 'userable_type' => 
+                    $type)) , false);
+
+                $group = Sentry::findGroupByName('Service Providers');
+                $user->addGroup($group);
+
+
+                $group = Sentry::getGroupProvider()->findByName('Service Providers');
+                $user->addGroup($group);
 
                 $activationCode = URL::to('/') . '/activate/' .  
                     $user->getActivationCode();
@@ -180,8 +195,6 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
     }
 
     public function login(array $loginInfo){
-
-        $message = "";
 
         try
         {

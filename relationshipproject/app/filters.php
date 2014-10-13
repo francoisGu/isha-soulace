@@ -67,7 +67,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+    if (!Sentry::check()) return Redirect::to('/users/login');
 });
 
 /*
@@ -88,3 +88,26 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+
+Route::filter('sentry', function()
+    {
+        if (!Sentry::check()) return Redirect::to('users/login')->withErrors('Please sign in first.');
+    });
+
+Route::filter('admin', function()
+      {
+        $user = Sentry::getUser();
+        $admin = Sentry::findGroupByName('General Administrators');
+      
+        if (!$user->inGroup($admin)) return Redirect::to('users/login')->withErrors("Administrators only.");
+      });
+
+Route::filter('serviceProviders', function()
+        {
+          $user = Sentry::getUser();
+          $users = Sentry::findGroupByName('Service Providers');
+        
+          if (!$user->inGroup($users)) return Redirect::to('users/login')->withErrors('Service providers only.');
+        });

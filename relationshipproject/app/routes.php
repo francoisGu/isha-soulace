@@ -11,70 +11,24 @@
 |
  */
 
-//App::bind(
-//'App\Interfaces\UserAccountInterface',
-//'app\models\User'
-/*);*/
+# Standard User Routes
+Route::group(['before' => 'sentry|serviceProviders'], function(){
 
-//App::bind(
-//'App\Interfaces\PasswordInterface',
-//'app\models\PasswordReminder'
-/*);*/
-
-/*View::composer('map.map', function($view){*/
-        //$config = array();
-        //$config['center'] = 'auto';
-        //$config['zoom'] = 'auto';
-        ////$config['places'] = TRUE;
-        ////$config['placesLocation'] = 'auto';
-        ////$config['placesRadius'] = '200';
-        //$config['onboundschanged'] = 'if (!centreGot) {
-            //var mapCentre = map.getCenter();
-            //marker_0.setOptions({
-                //position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
-            //});
-            //}
-            //centreGot = true;';
-
-        //Gmaps::initialize($config);
-
-        //// set up the marker ready for positioning
-        //// once we know the users location
-        //$marker = array();
-        //Gmaps::add_marker($marker);
-
-        //$map = Gmaps::create_map();
-
-    //$view->with('map', $map);
-
-//});
-
-Route::get('/map', 'MapController@getMap');
-Route::post('/map', 'MapController@postMap');
-//Route::controller('map', 'MapController');
-
-
-Route::get('/client_admin', function()
-{
-    return View::make('client');
-});
-Route::get('/login_admin', function()
-    {
-        return View::make('login_admin');
-    });
-Route::get('/serviceList', function()
-{
-	return View::make('serviceList');
+    Route::resource('serviceProviders', 'ServiceProvidersController');
+    Route::resource('workshopAdvertisements', 'WorkshopAdvertisementsController');
+    Route::resource('workshops', 'WorkshopsController');
+    Route::get('/myworkshops', 'WorkshopsController@getMyWorkshops');
 });
 
-Route::get('/login', function()
-    {
-        return View::make('login');
-    });
-Route::get('/register', function()
-    {
-        return View::make('register');
-    });
+# Admin Routes
+Route::group(['before' => 'sentry|admin'], function(){
+
+    Route::get('/map', 'MapController@getMap');
+    Route::post('/map', 'MapController@postMap');
+
+});
+
+Route::when('admin/*', 'admin');
 
 Route::get('/', function()
 {
@@ -88,15 +42,10 @@ Route::get('/about', function()
         return View::make('about');
     });
 
-/*Route::get('workshops/', function(){*/
-
-    //return View::make('workshops.index');
-
-//});
 //Route::group(array('prefix' => 'api'), function() {
 
-    //Route::resource('workshops', 'WorkshopsController', 
-        //array('only' => array('index', 'store', 'destroy', 'create', 'edit')));
+//Route::resource('workshops', 'WorkshopsController', 
+//array('only' => array('index', 'store', 'destroy', 'create', 'edit')));
 //});
 //Route::get('serviceProviders/myworkshops', 'ServiceProvidersController@getMyWorkshops');
 
@@ -104,20 +53,10 @@ Route::get('/about', function()
 Route::controller('users', 'UsersController');
 Route::get('workshopAdvertisements/premium', 'WorkshopAdvertisementsController@getPremiumAdvertisements');
 
-Route::resource('workshops', 'WorkshopsController');
-Route::resource('serviceProviders', 'ServiceProvidersController');
 
-Route::get('/myworkshops', 'WorkshopsController@getMyWorkshops');
 
-//Route::get('/myworkshops', function(){
-    
-    //return View::make('serviceProviders.myWorkshops');
-
-/*});*/
-
-Route::resource('workshopAdvertisements', 'WorkshopAdvertisementsController');
-Route::resource('tickets', 'TicketsController');
-Route::resource('clients', 'ClientsController');
+//Route::resource('tickets', 'TicketsController');
+//Route::resource('clients', 'ClientsController');
 //Route::resource('Administrators', 'AdministratorsController');
 //Route::get('password/remind', array('uses' => 'PasswordController@getRemind'));
 //Route::get('password/reset', array('uses' => 'PasswordController@getReset'));
@@ -127,7 +66,7 @@ Route::controller('password', 'PasswordController');
 Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
 
 Route::controller('/', 'HomeController');
-Route::controller('emails', 'EmailController');
+//Route::controller('emails', 'EmailController');
 //Route::controller('password', 'PasswordController');
 Route::resource('payment', 'PaymentController');
 
@@ -140,3 +79,4 @@ HTML::macro('startSmartDropdown', function($url) {
     $class = ( Request::is($url) || Request::is($url.'/*') ) ? ' class="active"' : '';
     return ''.$class.' class="dropdown"';
 });
+

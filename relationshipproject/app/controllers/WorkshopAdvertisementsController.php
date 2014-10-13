@@ -7,6 +7,9 @@ class WorkshopAdvertisementsController extends \BaseController {
 
     public function __construct(){
         $this->beforeFilter('csrf', array('on' => 'post'));
+        $this->beforeFilter('sentry', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy')));
+        $this->beforeFilter('serviceProviders', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy')));
+
     }
     /**
      * Display a listing of the resource.

@@ -64,7 +64,7 @@ return array(
 	 */
 	'permission'=> function()
 	{
-		return true;
+		return Sentry::check();
 	},
 
 	/**

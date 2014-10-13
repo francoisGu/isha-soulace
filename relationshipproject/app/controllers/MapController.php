@@ -3,10 +3,17 @@ class MapController extends BaseController {
 
     protected $layouts = "map.map";
 
+    public function __construct(){
+        $this->beforeFilter('csrf', array('on' => 'post'));
+        $this->beforeFilter('sentry', array('only'=>array('getMap','postMap')));
+        $this->beforeFilter('admin', array('only'=>array('getMap', 'postMap')));
+
+    }
+
     function getMap(){
         $config = array();
         $config['center'] = '185 Pelham Street Carlton 3053 VIC Australia';
-        $config['zoom'] = 'auto';
+        $config['zoom'] = '15';
         //$config['places'] = TRUE;
         //$config['placesLocation'] = 'auto';
         //$config['placesRadius'] = '200';

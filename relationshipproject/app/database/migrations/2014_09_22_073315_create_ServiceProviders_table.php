@@ -39,6 +39,7 @@ class CreateServiceProvidersTable extends Migration {
         $table->double('longitude')->nullable();
         $table->double('latitude')->nullable();
 
+
         $table->index(array('longitude', 'latitude'));
 
 

@@ -62,8 +62,13 @@ mapCentre.lng())
         $markerInfo = array();
         $markerInfo['position'] = $position['center'];
         //$markerInfo['infowindow_content'] = $sp->email . '\n' . $sp->first_name;
+        //
         
-        $markerInfo['infowindow_content'] = $sp->email . '\n' . $sp->first_name;
+        $content = '<strong>Email: </strong>' . $sp->email . '<br/>' . 
+                   '<strong>Name: </strong>'. $sp->first_name;
+        $infowindow_content = ("<div class='infowin-content' style='width: 200px; height: 100px; max-width: 200px; max-height: 100px;'>" . $content . "</div>");
+        //$markerInfo['infowindow_content'] = $sp->email . '\n' . $sp->first_name;
+        $markerInfo['infowindow_content'] = $infowindow_content;
         $markerInfo['infowindowMaxWidth'] = 350;
         $markerInfo['icon'] = 
             'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='. $sp->id.'|9999FF|000000';

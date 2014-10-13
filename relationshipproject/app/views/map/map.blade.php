@@ -7,7 +7,7 @@
         <title></title>
     </head>
     <body>
-        {{ Form::open(array('url' => 'map', 'class' => 'form-map')) }}
+        {{ Former::open()->url('map')->class('form-map') }}
 
     	    <ul>
     	    	@foreach($errors->all() as $error)
@@ -15,9 +15,10 @@
     	    	@endforeach
     	    </ul>
 
-	        {{ Form::text('postcode', null, array('class'=>'input-block-level', 'placeholder'=>'postcode')) }}
+            {{ Former::text('postcode')->label('')->class('input-xxlarge')->placeholder('Enter postcode here...') }}
 
         {{ $map['html'] }}
+        {{ Former::close() }}
     </body>
 
 @stop

@@ -4,6 +4,9 @@ class ServiceProvidersController extends \BaseController {
 
     public function __construct() {
         $this->beforeFilter('csrf',  array('on'=>'post'));
+
+        $this->beforeFilter('sentry', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy')));
+        $this->beforeFilter('serviceProviders', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy')));
     }
 
 
@@ -21,7 +24,7 @@ class ServiceProvidersController extends \BaseController {
         return View::make('serviceProviders.index')->with('sps', $sps);
 	}
 
-	/**
+	/**'
 	 * Show the form for creating a new resource.
 	 * GET /serviceproviders/create
 	 *

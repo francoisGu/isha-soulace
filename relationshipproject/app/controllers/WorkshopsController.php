@@ -4,6 +4,9 @@ class WorkshopsController extends \BaseController {
 
     public function __construct() {
         $this->beforeFilter('csrf',  array('on'=>'post'));
+        $this->beforeFilter('sentry', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy', 'getMyWorkshops')));
+        $this->beforeFilter('serviceProviders', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy', 'getMyWorkshops')));
+
     }
 
 
@@ -57,11 +60,21 @@ class WorkshopsController extends \BaseController {
         if ($validator->passes())
         {
             try {
-                $venue = Input::get('unit') . ' ' . Input::get('street_number') 
-                    .' ' . Input::get('street_name') . ',' .  
-                    Input::get('street_type') . ',' . Input::get('suburb') . ',' 
-                    . Input::get('state') . ',' . Input::get('postcode');
-                $geocode = Geocoder::geocode($venue);
+                //$venue = Input::get('unit') . ' ' . Input::get('street_number') 
+                //.' ' . Input::get('street_name') . ',' .  
+                //Input::get('street_type') . ',' . Input::get('suburb') . ',' 
+                //. Input::get('state') . ',' . Input::get('postcode');
+                //$geocode = Geocoder::geocode($venue);
+
+                $venue = Util::getVenue(Input::all());
+
+                $geocode = Map::validateAddress($venue, Input::get('postcode'));
+
+                if(is_null($geocode)){
+                    return Redirect::back()->withErrors('Location not 
+                        found.')->withInput();
+                }
+
                 // ...
                 Workshop::create(array_merge( array(
                     'service_provider_id' => $sp->id, 
@@ -83,7 +96,7 @@ class WorkshopsController extends \BaseController {
                     ->withinput()
                     ->witherrors($validator)
                     ->with('message', $e->getMessage());
- 
+
             }
 
         }
@@ -162,8 +175,8 @@ class WorkshopsController extends \BaseController {
                     . $geocode{'latitude'}. ',' . $geocode['longitude'] );
                 //Session::flash('message', var_dump($geocode));
                 return Redirect::route('workshops.show', $id);
-                    //->with('message', 'Update successful');
- 
+                //->with('message', 'Update successful');
+
 
             } catch (\Exception $e) {
 
@@ -202,11 +215,11 @@ class WorkshopsController extends \BaseController {
         //return Response::json(array('success' => true));
     }
 
-	/**
+    /**
      *  	 
      * retrieve all workshops w.r.t currently loging user	 
-	 * @return Response
-	 */
+     * @return Response
+     */
     public function getMyWorkshops(){
         if(! Sentry::check()){
             return Redirect::to('users/login')->with('message', 'Please log in first.'); 
@@ -218,29 +231,29 @@ class WorkshopsController extends \BaseController {
             $workshops = $sp->workshops;
 
             return View::make('serviceProviders.myWorkshops')->with('workshops', $workshops)->with('sp', $sp);
-        
+
         }
     }
 
     public function findByPostcode($postcode){
-        
+
         $workshops = Workshop::where('postcode', '=', $postcode)->get();
 
         if(count((array) $workshops) <= 5){
-        
+
         }
-    
+
     }
 
     public function expandRange($postcode, $range){
-        
+
         $expand = [];
         //$workshops = Workshop::get(array('latitude','longitude'))->lists('id');
 
         $pos = Map::getPositionByPostcode($postcode); 
 
         Workshop::chunk(200, function($workshops){
-            
+
             foreach($workshops as $workshop){
 
                 dd($workshop);
@@ -253,11 +266,11 @@ class WorkshopsController extends \BaseController {
                     array_push($expand, $workshop); 
                 }
             }
-        
+
         });
 
         return $expand;
-    
+
     }
 
 }

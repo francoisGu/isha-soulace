@@ -88,7 +88,7 @@
     </div><!--/row-->
 
     
-	<div class="container">
+    <div class="container" >
         <!--@if(Session::has('message'))
 			<p class="alert">{{ Session::get('message') }}</p>
 		@endif

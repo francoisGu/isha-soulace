@@ -9,7 +9,8 @@ class UsersController extends BaseController {
 
 
     public function __construct(User $account) {
-        $this->account = $account; $this->beforeFilter('csrf', 
+        $this->account = $account; 
+        $this->beforeFilter('csrf', 
             array('on'=>'post'));
         //$this->beforeFilter('auth', array('only'=>array('getDashboard')));
     }
@@ -20,10 +21,10 @@ class UsersController extends BaseController {
         $services = array();
 
         foreach($types as $type){
-        
+
             $services[$type] = $type;
-            
-        
+
+
         }
         return View::make('users.register')->with('services', $services);
     }
@@ -73,7 +74,7 @@ class UsersController extends BaseController {
     }
 
     public function getActivation() {
-        $this->layout->content = View::make('users.activation');
+        return View::make('users.activation');
     }
 
     public function activate( $activationCode ) {
@@ -86,11 +87,18 @@ class UsersController extends BaseController {
     }
 
     public function getLogin() {
-        $this->layout->content = View::make('users.login');
 
         if(Sentry::check()){
-            return Redirect::to('serviceProvider/profile');
+            $user = Sentry::getUser();
+            $group = Sentry::findGroupByName('Service Providers');
+            if($user->inGroup($group)){
+                return Redirect::to('serviceProviders/' .$user->id);
+            } else{
+            
+                return Redirect::to('/admin/');
+            }
         }
+        return View::make('users.login');
     }
 
     public function postLogin() {
@@ -116,19 +124,15 @@ class UsersController extends BaseController {
             $loginMessage = $this->account->login($loginInfo);
 
             if(Sentry::check()){
-            return Redirect::to($loginMessage['url'] . Sentry::getUser()->id)->with('message', 
-                $loginMessage['message']);
+                //dd($loginMessage['url']);
+                return Redirect::to($loginMessage['url'] . Sentry::getUser()->id)->with('message', 
+                    $loginMessage['message']);
             } else {
                 return Redirect::to($loginMessage['url'])->withMessage($loginMessage['message']);
             }
         }
 
     }
-
-    public function getDashboard() {
-        $this->layout->content = View::make('users.dashboard');
-    }
-
 
 
     public function getLogout() {

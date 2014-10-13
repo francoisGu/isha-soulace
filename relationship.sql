@@ -16,31 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `admin`
---
-
-DROP TABLE IF EXISTS `admin`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `admin` (
-  `Admin_Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Admin_email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `Admin_Password` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
-  `Admin_Type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`Admin_Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `admin`
---
-
-LOCK TABLES `admin` WRITE;
-/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `administrators`
 --
 
@@ -68,31 +43,6 @@ LOCK TABLES `administrators` WRITE;
 /*!40000 ALTER TABLE `administrators` DISABLE KEYS */;
 INSERT INTO `administrators` VALUES (2,'General Administrators','Marilou','Stroman','zprosacco@herzogbergstrom.com','2014-10-13 04:04:42','2014-10-13 04:04:42');
 /*!40000 ALTER TABLE `administrators` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `client`
---
-
-DROP TABLE IF EXISTS `client`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `client` (
-  `Client_id` int(11) NOT NULL AUTO_INCREMENT,
-  `Client_Email` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Service_Provider_id` int(11) NOT NULL,
-  PRIMARY KEY (`Client_id`),
-  KEY `Service_Provider_id` (`Service_Provider_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `client`
---
-
-LOCK TABLES `client` WRITE;
-/*!40000 ALTER TABLE `client` DISABLE KEYS */;
-/*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -16673,4 +16623,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-14  2:21:06
+-- Dump completed on 2014-10-14  2:26:49

@@ -35,8 +35,8 @@
 	  border-bottom: 1px solid #000;
 	}
 	.hr-black {
-	  margin-top: 30px;
-	  margin-bottom: 20px;
+	  margin-top: 20px;
+	  margin-bottom: 10px;
 	  border: 0;
 	  border-top: 1px solid #000;
 	}

@@ -115,20 +115,50 @@
 	->maxlength('2500')
 	->required();
 }}
+<br>
+<h3>   Your Contact details</h3>
+<br>
+{{Former::number('phonenumber','Phone number')
+	->placeholder('Home or Work')
+	->min('10000000')
+	->max('99999999')
+	->class('input-large input-md form-control')
+	->required();
+}}
+{{Former::number('mobile','Mobile number')
+	->min('0100000000')
+	->max('0999999999')
+	->class('input-large input-md form-control');
+}}
+    <div id="datetimepicker" class="input-append date timepicker">
+    {{Former::text('contact_date','Contact date')
+	  ->class('input-large input-md form-control form_birthday')
+	  ->required();
+	}}
+	</div>
+    {{Former::radio('select_time','Select a time period')
+	  ->radios(array('9am to 1pm' =>array( 'name'=>'contact_time','checked'=>'checked'),
+					'1pm to 5pm' =>array( 'name'=>'contact_time','checked'=>''),
+					'Other' => array('name'=>'contact_time', 'checked'=>'')))
+	  ->required();
+	}}
+    <div id="start_timepicker" class="input-append date timepicker">
+	{{ Former::text('start_time')
+      ->label('Start Time')
+      ->placeholder(' hh:mm')
+      ->class('form-control input-medium'); 
+	}}
+    </div>
+    <span>to<span>
+    <div id="end_timepicker" class="input-append date timepicker">
+	{{ Former::text('end_time')
+      ->label('End Time')
+      ->placeholder(' hh:mm')
+      ->class('form-control input-medium'); 
+    }}
+    </div>
 {{ Former::actions()
-    ->large_primary_submit('Submit');
+  ->large_primary_submit('Submit');
 }}
 {{ Former::close(); }}
 </div>
-<script>
-  function change() {
-	var radio = document.getElementsByName('unit');
-	if (radio[0].checked) {
-	  document.getElementById('cm_part').style.display = '';
-	  document.getElementById('feet_and_inches_part').style.display = 'none';
-	} else if (radio[1].checked) {
-	  document.getElementById('cm_part').style.display = 'none';
-	  document.getElementById('feet_and_inches_part').style.display = '';
-	}
-  }
-</script>

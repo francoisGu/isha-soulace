@@ -202,7 +202,6 @@ If you can’t see the list of bookmarks on the right because Cover Flow view is
   <div class="clearfix"></div>
 </div>
 {{ HTML::script('js/plugins/dataTables/jquery.js') }}
-{{ HTML::script('js/bootstrap.min.js') }}
 <script type="text/javascript">
 $(document).on('click', '.panel-heading span.clickable', function (e) {
   var $this = $(this);

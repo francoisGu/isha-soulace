@@ -21,7 +21,7 @@
               <span class="glyphicon glyphicon-star-empty"></span>
             </div>
             <p> Average 4 <small> / </small> 5 </p>
-			<button type="button" class="btn btn-primary btn-block"> Send Form</button>
+			<button type="button" class="btn btn-danger btn-block"> Send Form</button>
           </div>
         </a>
         <a href="#" class="list-group-item col-md-12">
@@ -38,7 +38,7 @@
               <span class="glyphicon glyphicon-star-empty"></span>
             </div>
             <p> Average 4 <small> / </small> 5 </p>
-			<button type="button" class="btn btn-primary btn-block"> Send Form</button>
+			<button type="button" class="btn btn-danger btn-block"> Send Form</button>
           </div>
         </a>
         <a href="#" class="list-group-item col-md-12">
@@ -55,7 +55,7 @@
               <span class="glyphicon glyphicon-star-empty"></span>
             </div>
             <p> Average 4 <small> / </small> 5 </p>
-			<button type="button" class="btn btn-primary btn-block"> Send Form</button>
+			<button type="button" class="btn btn-danger btn-block"> Send Form</button>
           </div>
         </a>
         <a href="#" class="list-group-item col-md-12">
@@ -72,7 +72,7 @@
               <span class="glyphicon glyphicon-star-empty"></span>
             </div>
             <p> Average 4 <small> / </small> 5 </p>
-			<button type="button" class="btn btn-primary btn-block"> Send Form</button>
+			<button type="button" class="btn btn-danger btn-block"> Send Form</button>
           </div>
         </a>
       </div>

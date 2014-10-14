@@ -1,7 +1,19 @@
+<style>
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+z-index: 2;
+color: #555;
+background-color: #c9302c;
+border-color: white;
+color: white;
+}
+</style>
 <!-- Begin page content -->
 <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-<div class="row-fluid">
 
+<!--<figure align='middle'>
+  {{ HTML::image('images/logo/Isha SoulAce_Red-Font.png', '',array('style' => 'height:100px')) }}
+</figure>-->
+<div class="row-fluid">
 <!--   Types of services & Domestic Violence -->
   <div class="span9"><!--class="col-sm-9 col-sm-pull-3"  style="z-index:0;">-->
   
@@ -28,12 +40,12 @@
 <!-- 	Types of Domestic Violence -->
 	<div class="span8"><!--"col-sm-8 col-sm-push-4" >-->
 	  <div class="span4">
-      <h4>Emotional Abuse</h4>
+      <h4>Psychological Abuse</h4>
 <!--       <p>name-calling, insults, constant criticism, silent treatment</p> -->
 	  <figure>
-		{{ HTML::image('img/emotional.png', '',array('style' => 'height:80px')) }}
+		{{ HTML::image('img/psychological.png', '',array('style' => 'height:80px')) }}
 	  </figure>
-      <a id="emotional" class="btn btn-default" style="margin-top:10px" onclick="showEmotional()" role="button">Seek help</a>
+      <a id="emotional" class="btn btn-danger" style="margin-top:10px" onclick="showEmotional()" role="button">Seek help</a>
     </div><!--/span-->
     <div class="span4"> 
       <h4>Financial Abuse</h4>
@@ -41,35 +53,35 @@
 	  <figure>
 		{{ HTML::image('img/financial.png', '',array('style' => 'height:80px')) }}
 	  </figure>
-      <p><a id="financial" class="btn btn-default" style="margin-top:10px" onclick="showFinancial()" role="button">Seek help</a></p>
+      <p><a id="financial" class="btn btn-danger" style="margin-top:10px" onclick="showFinancial()" role="button">Seek help</a></p>
 	</div><!--/span-->
 	<div class="span4">
-      <h4>Physical Abuse</h4>
+      <h4>Sexual Abuse</h4>
 <!--       <p>slapping, hitting, beating, kicking, arm twisting, punching, stabbing</p> -->
 	  <figure>
-		{{ HTML::image('img/physical.png', '',array('style' => 'height:80px')) }}
+		{{ HTML::image('img/sexual.png', '',array('style' => 'height:80px')) }}
 	  </figure>
-      <p><a id="physical" class="btn btn-default" style="margin-top:10px" onclick="showPhysical()" role="button">Seek help</a></p>
+      <p><a id="physical" class="btn btn-danger" style="margin-top:10px" onclick="showPhysical()" role="button">Seek help</a></p>
 	</div><!--/span-->
 	<div class="span12 panel panel-danger"><!--well auth-box">-->
 	  <div class="panel-heading text-center"><h5><strong>IF YOU ARE IN IMMEDIATE DANGER AND UNSAFE</strong></h5></div>
 	  <div class="panel-body text-center"><strong>CALL POLICE NOW - "000"</strong></div>
 	</div>
 	<div class="span5">
-      <h4>Psychological Abuse</h4>
+      <h4>Emotional Abuse</h4>
 <!--       <p>intimidation, damaging property, stalking, isolating from friends and family</p> -->
 	  <figure>
-		{{ HTML::image('img/psychological.png', '',array('style' => 'height:80px')) }}
+		{{ HTML::image('img/emotional.png', '',array('style' => 'height:80px')) }}
 	  </figure>
-      <p><a id="psychological" class="btn btn-default" style="margin-top:10px" onclick="showPsychological()" role="button">Seek help</a></p>
+      <p><a id="psychological" class="btn btn-danger" style="margin-top:10px" onclick="showPsychological()" role="button">Seek help</a></p>
     </div><!--/span-->
 	<div class="span5">
-      <h4>Sexual Abuse</h4>
+      <h4>Physical Abuse</h4>
 <!--       <p>marital rape, forced sex after physical abuse, forced prostitution</p> -->
 	  <figure>
-		{{ HTML::image('img/sexual.png', '',array('style' => 'height:80px')) }}
+		{{ HTML::image('img/physical.png', '',array('style' => 'height:80px')) }}
 	  </figure>
-      <p><a id="sexual" class="btn btn-default" style="margin-top:10px" onclick="showSexual()" role="button">Seek help</a></p>
+      <p><a id="sexual" class="btn btn-danger" style="margin-top:10px" onclick="showSexual()" role="button">Seek help</a></p>
     </div><!--/span--><!--
 		<div class="active col-6 col-sm-6 col-sm-3">
       <h4>CONTACT HELP</h4>
@@ -93,10 +105,9 @@
   <div class="span3"><!--"col-sm-3 col-sm-push-9">-->
   <div class="list-group">
 	  <a href="#" class="list-group-item">
-	    <h4 class="list-group-item-heading">Workshop Title</h4>
+	    <h4 class="list-group-item-heading">Workshop Title  <span class="label label-danger pull-right">Featured</span></h4>
 	    <p class="list-group-item-text">
-			Date:<br>
-			Time:<br>
+			Date & Time:  <span class="label label-warning pull-right">Top Rated</span><br>
 			Venue:<br>
 			Price:<br>
 			RSVPs<br>
@@ -105,8 +116,7 @@
 	  <a href="#" class="list-group-item">
 			<h4 class="list-group-item-heading">Workshop Title</h4>
 			<p class="list-group-item-text">
-			Date:<br>
-			Time:<br>
+			Date & Time:<br>
 			Venue:<br>
 			Price:<br>
 			RSVPs:<br></p>
@@ -114,8 +124,7 @@
 	  <a href="#" class="list-group-item">
 			<h4 class="list-group-item-heading">Workshop Title</h4>
 			<p class="list-group-item-text">
-			Date:<br>
-			Time:<br>
+			Date & Time:<br>
 			Venue:<br>
 			Price:<br>
 			RSVPs<br></p>
@@ -123,8 +132,7 @@
 	  <a href="#" class="list-group-item">
 			<h4 class="list-group-item-heading">Workshop Title</h4>
 			<p class="list-group-item-text">
-			Date:<br>
-			Time:<br>
+			Date & Time: <br>
 			Venue:<br>
 			Price:<br>
 			RSVPs<br></p>
@@ -132,7 +140,6 @@
 	</div>
   </div>
 </div>
-<hr>
 
 <!-- Controls the highlight effect for relevant services for specific types of domestic violence -->
 <script>

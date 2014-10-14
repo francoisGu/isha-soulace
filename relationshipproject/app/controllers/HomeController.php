@@ -33,7 +33,7 @@ class HomeController extends BaseController {
 	
 	public function getPrivatebrowsing(){
 		$this->layout->title = 'Private Browsing - Isha SoulAce';
-		$this->layout->content = View::make('private_browsing');
+		$this->layout->content = View::make('removeHistory');
 	}
 	
 }

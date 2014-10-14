@@ -1,10 +1,16 @@
-a.list-group-item {
+/*a.list-group-item {
     height:auto;
-    min-height:220px;
-}
+    min-height:150px;
+}*/
 a.list-group-item.active small {
     color:#fff;
 }
 .stars {
     margin:20px auto 1px;    
+}
+.glyphicon-star:before {
+content: "\e006";
+}
+.glyphicon-star-empty:before {
+content: "\e007";
 }

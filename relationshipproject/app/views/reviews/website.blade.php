@@ -2,13 +2,16 @@
   <h4 class="text-center">Review our website</h4>
   <p class="text-center">Tell us what you think about our website. We would love feedback from you so we can make the website even better!</p>
   <div id="big-form" class="well auth-box">
-    {{Former::framework('Nude');}}
-    {{Former::open()->method('POST')->url('reviews')->class('')}}
-    <!-- Form Name -->
 
+  {{Former::framework('Nude');}}
+	 {{Former::open()->method('POST')->url('reviews/website')->class('')}}
+	
+   
+	
+    <!-- Form Name -->
     <div class="form-group">
       <label class=" control-label" for="">Email Address*</label>
-      {{Former::email('email address')->placeholder('Please enter your email address')->class('input-xlarge input-md form-control')->required()}}
+      {{Former::email('email_address')->placeholder('Please enter your email address')->class('input-xlarge input-md form-control')->required()}}
     </div>
 
     <div class="form-group ">

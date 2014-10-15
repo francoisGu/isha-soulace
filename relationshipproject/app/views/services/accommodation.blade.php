@@ -12,7 +12,7 @@
   ->id('accommodationForm')
   ->secure()
   ->rules(['postcode' => 'required'])
-  ->method('POST');
+  ->method('POST')->url('services/accommodation')->class('');
 }}
 {{ Former::radio('title', 'Title')
     ->radios(array('Mr' => 'title', 'Ms' => 'title', 'Mrs' => 'title', 'Miss' => 'title'))

@@ -221,6 +221,9 @@ INSERT INTO `migrations` VALUES ('2014_10_14_095936_create_workshop_types_table'
 INSERT INTO `migrations` VALUES ('2014_10_14_124211_add_food_to_workshops',8);
 INSERT INTO `migrations` VALUES ('2014_10_01_091311_create_webreviews_table',9);
 INSERT INTO `migrations` VALUES ('2014_10_01_142424_create_review_table',9);
+INSERT INTO `migrations` VALUES ('2014_10_15_143956_create_WorkshopReview_table',10);
+INSERT INTO `migrations` VALUES ('2014_10_15_144015_create_WebsiteReview_table',10);
+INSERT INTO `migrations` VALUES ('2014_10_15_144025_create_ServiceReview_table',10);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16335,33 +16338,6 @@ INSERT INTO `postcode_db` VALUES (0,'','','','',0,0);
 UNLOCK TABLES;
 
 --
--- Table structure for table `review`
---
-
-DROP TABLE IF EXISTS `review`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `review` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `rating` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
-  `review` text COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `review`
---
-
-LOCK TABLES `review` WRITE;
-/*!40000 ALTER TABLE `review` DISABLE KEYS */;
-/*!40000 ALTER TABLE `review` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `serviceProviders`
 --
 
@@ -16420,6 +16396,37 @@ INSERT INTO `serviceProviders` VALUES (14,'1','Accommodation for Domestic Violen
 UNLOCK TABLES;
 
 --
+-- Table structure for table `servicereview`
+--
+
+DROP TABLE IF EXISTS `servicereview`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `servicereview` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `service_provider_id` int(10) unsigned NOT NULL,
+  `form_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `score` int(10) unsigned NOT NULL,
+  `ratings` int(10) unsigned NOT NULL,
+  `review` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `servicereview_service_provider_id_form_id_index` (`service_provider_id`,`form_id`),
+  CONSTRAINT `servicereview_service_provider_id_foreign` FOREIGN KEY (`service_provider_id`) REFERENCES `serviceProviders` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `servicereview`
+--
+
+LOCK TABLES `servicereview` WRITE;
+/*!40000 ALTER TABLE `servicereview` DISABLE KEYS */;
+/*!40000 ALTER TABLE `servicereview` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `services`
 --
 
@@ -16469,7 +16476,7 @@ CREATE TABLE `throttle` (
   `banned_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `throttle_user_id_index` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16482,6 +16489,7 @@ INSERT INTO `throttle` VALUES (1,5,'::1',0,0,0,NULL,NULL,NULL);
 INSERT INTO `throttle` VALUES (2,4,'::1',0,0,0,NULL,NULL,NULL);
 INSERT INTO `throttle` VALUES (3,9,'::1',0,0,0,NULL,NULL,NULL);
 INSERT INTO `throttle` VALUES (4,12,'::1',0,0,0,NULL,NULL,NULL);
+INSERT INTO `throttle` VALUES (5,16,'::1',0,0,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `throttle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16571,11 +16579,11 @@ INSERT INTO `users` VALUES (7,'cypazafi@gmail.com','$2y$10$mVfIVrNXDvKx6Zz0XlBEH
 INSERT INTO `users` VALUES (8,'dogokyli@yahoo.com','$2y$10$oipRs8RJlOccElgEUxzky.k9EKnvkLgIVzyxfDRqNFJnH/s/w0N0C',NULL,1,NULL,NULL,NULL,NULL,NULL,'Colton','Hooper','2014-10-13 01:09:14','2014-10-13 01:09:14',8,'ServiceProvider');
 INSERT INTO `users` VALUES (9,'fizepegyz@yahoo.com','$2y$10$ClBINIHbj6w/jjBtgB7WJeXuqhqxm5LUUmQ7vRF4noUd0AI6w47Ia',NULL,1,NULL,NULL,'2014-10-13 01:15:30','$2y$10$yEF5CYJjdZf4rTsEMiZp2e2ZJNtDaeew/ZFYfYAx5mT4I8bD3pf/S',NULL,'Zenia','Crane','2014-10-13 01:12:03','2014-10-13 01:15:30',9,'ServiceProvider');
 INSERT INTO `users` VALUES (10,'fizepegjlyz@yahoo.com','$2y$10$fSBG0zyVfNYYWfz7uOcy3entiZ2/zgbn/PDmUDjx7IphtaXzgz6Sm',NULL,1,'WqktzM4MA6Ly9iYTmv7ymWCCsBOHecZrQ0rG5GBFoN',NULL,NULL,NULL,NULL,'Zenia','Crane','2014-10-13 01:14:04','2014-10-13 01:14:04',10,'ServiceProvider');
-INSERT INTO `users` VALUES (12,'zprosacco@herzogbergstrom.com','$2y$10$/JgiI5.EnISIzi7km9s4N.fdZ3I7U86KHD7hZolIvYE7K1uhewoqS',NULL,1,NULL,NULL,'2014-10-13 14:59:06','$2y$10$QsXl6earifhjViI8YrEdG.dq5AGL0FQ2uw5Kmg9LN04gvZ9/2/O8O',NULL,'Marilou','Stroman','2014-10-13 04:04:42','2014-10-13 14:59:06',2,'Administrator');
+INSERT INTO `users` VALUES (12,'zprosacco@herzogbergstrom.com','$2y$10$/JgiI5.EnISIzi7km9s4N.fdZ3I7U86KHD7hZolIvYE7K1uhewoqS',NULL,1,NULL,NULL,'2014-10-15 02:55:17','$2y$10$Pc27fAxvwwcRrr2zDELg4eah2I6L7bCiLAOhOq1RnEYR.mJ4h0orq',NULL,'Marilou','Stroman','2014-10-13 04:04:42','2014-10-15 02:55:17',2,'Administrator');
 INSERT INTO `users` VALUES (13,'lesote@hotmail.com','$2y$10$CdOWFTz84X4MvDNCDFGyhuOnnF/3dAExtW6heY3G6jMMmsZVpbIh6',NULL,1,'zmIeDLBb912iHYasdnkwt4NxaXB2W13AaV6PjY3gpK',NULL,NULL,NULL,NULL,'Brennan','Evans','2014-10-14 03:47:00','2014-10-14 03:47:01',11,'ServiceProvider');
 INSERT INTO `users` VALUES (14,'sejysydo@yahoo.com','$2y$10$.rOz76RvAoxKmtR8GMSQUuTpSnKTsJuEOhKIrLfVMyrHHoGiI/xii',NULL,1,'M29xRYOT69uooj2cSp0rUIgTIw0Usq8mOZSKhYiABc',NULL,NULL,NULL,NULL,'Bryar','Calderon','2014-10-14 03:50:00','2014-10-14 03:50:00',12,'ServiceProvider');
 INSERT INTO `users` VALUES (15,'dybewub@hotmail.com','$2y$10$Y1nBl4kXo7z6VDHCYAl49Or0xGPj3jX2yUd7LmUntP./LNN1AvRb6',NULL,1,'nE9f8QvcG31yzAaTjV03E0SYH4hCC5K5bcqlr1V4XF',NULL,NULL,NULL,NULL,'Cooper','Molina','2014-10-14 03:59:40','2014-10-14 03:59:40',13,'ServiceProvider');
-INSERT INTO `users` VALUES (16,'nebekihed@hotmail.com','$2y$10$PV5cutEijk2bcHcLdg0Ix.R8o/DKL4RSBEVD9RM.w2S3.V0xNl2Ua',NULL,1,'Y5P7azpYwYCm8iKx7DakXafJ1rNDuiK5EiWyVd09Z3',NULL,NULL,NULL,NULL,'Gannon','Murphy','2014-10-14 19:10:54','2014-10-14 19:10:54',14,'ServiceProvider');
+INSERT INTO `users` VALUES (16,'nebekihed@hotmail.com','$2y$10$PV5cutEijk2bcHcLdg0Ix.R8o/DKL4RSBEVD9RM.w2S3.V0xNl2Ua',NULL,1,'Y5P7azpYwYCm8iKx7DakXafJ1rNDuiK5EiWyVd09Z3',NULL,'2014-10-15 02:59:01','$2y$10$qJyerNacN6rtsadGnPmOyeXnn3msAVtt9CvQ/8oEpZgzv1t1PIEf6',NULL,'Gannon','Murphy','2014-10-14 19:10:54','2014-10-15 02:59:01',14,'ServiceProvider');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16611,17 +16619,18 @@ INSERT INTO `users_groups` VALUES (16,2);
 UNLOCK TABLES;
 
 --
--- Table structure for table `webreviews`
+-- Table structure for table `websitereview`
 --
 
-DROP TABLE IF EXISTS `webreviews`;
+DROP TABLE IF EXISTS `websitereview`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `webreviews` (
+CREATE TABLE `websitereview` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `rating` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `review` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` text COLLATE utf8_unicode_ci NOT NULL,
+  `score` int(10) unsigned NOT NULL,
+  `ratings` int(10) unsigned NOT NULL,
+  `review` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
@@ -16629,12 +16638,12 @@ CREATE TABLE `webreviews` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `webreviews`
+-- Dumping data for table `websitereview`
 --
 
-LOCK TABLES `webreviews` WRITE;
-/*!40000 ALTER TABLE `webreviews` DISABLE KEYS */;
-/*!40000 ALTER TABLE `webreviews` ENABLE KEYS */;
+LOCK TABLES `websitereview` WRITE;
+/*!40000 ALTER TABLE `websitereview` DISABLE KEYS */;
+/*!40000 ALTER TABLE `websitereview` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -16704,6 +16713,38 @@ INSERT INTO `workshop_types` VALUES (13,'Other','OTH','2014-10-13 23:14:27','201
 UNLOCK TABLES;
 
 --
+-- Table structure for table `workshopreview`
+--
+
+DROP TABLE IF EXISTS `workshopreview`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `workshopreview` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `workshop_id` int(10) unsigned NOT NULL,
+  `ticketNumber` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `score` int(10) unsigned NOT NULL,
+  `ratings` int(10) unsigned NOT NULL,
+  `review` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `workshopreview_ticketnumber_unique` (`ticketNumber`),
+  KEY `workshopreview_workshop_id_ticketnumber_index` (`workshop_id`,`ticketNumber`),
+  CONSTRAINT `workshopreview_workshop_id_foreign` FOREIGN KEY (`workshop_id`) REFERENCES `workshops` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `workshopreview`
+--
+
+LOCK TABLES `workshopreview` WRITE;
+/*!40000 ALTER TABLE `workshopreview` DISABLE KEYS */;
+/*!40000 ALTER TABLE `workshopreview` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `workshops`
 --
 
@@ -16762,4 +16803,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-16  0:25:48
+-- Dump completed on 2014-10-16  2:11:28

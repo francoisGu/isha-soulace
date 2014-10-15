@@ -15,22 +15,26 @@ Route::post('/registerworkshop/{id}', 'ClientsController@registerWorkshop');
 # Standard User Routes
 Route::group(['before' => 'sentry|serviceProviders'], function(){
 
-    Route::resource('serviceProviders', 'ServiceProvidersController');
-    Route::resource('workshopAdvertisements', 'WorkshopAdvertisementsController');
-    Route::resource('workshops', 'WorkshopsController');
+    Route::get('serviceProviders/{id}', 'ServiceProvidersController@show');
 
-    Route::group(['prefix' => 'myclients'], function(){
+    Route::group(['before' => 'verified'], function(){
+        Route::resource('serviceProviders', 'ServiceProvidersController', array('except' => array('show')));
+        Route::resource('workshopAdvertisements', 'WorkshopAdvertisementsController');
+        Route::resource('workshops', 'WorkshopsController');
 
-        Route::get('/', 'ClientsController@getSPClients');
+        Route::group(['prefix' => 'myclients'], function(){
 
-    });
+            Route::get('/', 'ClientsController@getSPClients');
 
-    Route::group(['prefix' => 'myworkshops'], function(){
+        });
 
-        Route::get('/', 'WorkshopsController@getMyWorkshops');
-        Route::get('/myclients/', 'ClientsController@getClients');
-        Route::post('/myclients/', 'ClientsController@searchClients');
+        Route::group(['prefix' => 'myworkshops'], function(){
 
+            Route::get('/', 'WorkshopsController@getMyWorkshops');
+            Route::get('/myclients/', 'ClientsController@getClients');
+            Route::post('/myclients/', 'ClientsController@searchClients');
+
+        });
     });
 
 });
@@ -80,7 +84,7 @@ Route::post('services/financialadvice', array('uses' => 'ServiceFormController@p
 Route::post('services/options', array('uses' => 'ServiceFormController@postOptions'));
 Route::post('services/mentors', array('uses' => 'ServiceFormController@postMentors'));
 
-Route::controller('reviews', 'ReviewController');
+//Route::controller('reviews', 'ReviewController');
 
 Route::post('reviews/website', 'WebReviewsController@storeComment');
 Route::post('reviews/workshops', 'WorkshopReviewsController@storeComment');
@@ -94,8 +98,6 @@ Route::get('reviews/services', array('uses' => 'ReviewController@getServices'));
 Route::get('reviews/workshops', array('uses' => 'ReviewController@getWorkshops'));
 
 Route::controller('users', 'UsersController');
-Route::get('workshopAdvertisements/premium', 'WorkshopAdvertisementsController@getPremiumAdvertisements');
-
 
 
 //Route::resource('tickets', 'TicketsController');

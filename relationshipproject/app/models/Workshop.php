@@ -42,4 +42,8 @@ class Workshop extends \Eloquent {
     public function clients(){
         return $this->belongsToMany('Client');
     }
+
+    public function reviews(){
+        return $this->hasMany('WorkshopReview');
+    }
 }

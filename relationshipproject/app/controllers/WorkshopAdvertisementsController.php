@@ -60,6 +60,10 @@ class WorkshopAdvertisementsController extends \BaseController {
 
         WorkshopAdvertisement::create($data);
         if(Input::get('paynow')){
+
+            /*
+             * payment stuff goes here
+             */
             return Redirect::to('home');
         }
         return Redirect::route('myworkshops');

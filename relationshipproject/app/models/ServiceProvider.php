@@ -21,5 +21,9 @@ class ServiceProvider extends Eloquent {
         return $this->belongsToMany('Client');
     }
 
+    public function reviews(){
+        return $this->hasMany('ServiceReview');
+    }
+
 
 }

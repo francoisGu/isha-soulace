@@ -127,7 +127,7 @@ class UsersController extends BaseController {
             
             if(Sentry::check()){
                 //dd($loginMessage['url']);
-                return Redirect::to($loginMessage['url'] . Sentry::getUser()->id)->with('message', 
+                return Redirect::to($loginMessage['url'] . Sentry::getUser()->userable_id)->with('message', 
                     $loginMessage['message']);
             } else {
                 return Redirect::to($loginMessage['url'])->withMessage($loginMessage['message']);

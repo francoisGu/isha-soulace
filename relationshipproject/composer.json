@@ -17,7 +17,6 @@
         "payum/payum":"*@stable",
         "anahkiasen/former": "dev-master",
         "barryvdh/laravel-dompdf": "0.4.*",
-        "barryvdh/laravel-ide-helper": "1.*",
         "fzaninotto/faker": "@stable"
     },
 
@@ -39,7 +38,6 @@
         ],
         "post-update-cmd": [
             "php artisan clear-compiled",
-            "php artisan ide-helper:generate",
             "php artisan asset:publish frozennode/administrator",
             "php artisan optimize"
         ],

@@ -5,16 +5,22 @@ use Faker\Factory as Faker;
 
 class AdministratorsTableSeeder extends Seeder {
 
-	public function run()
-	{
-		$faker = Faker::create();
+    public function run()
+    {
+        $faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
-			Administrator::create([
+        foreach(range(1, 1) as $index)
+        {
+            $user = new User;
+            $user->createUser('Administrator',[
+                'type'      => 'General Administrators',
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
+                'email' => $faker->email,
+                'password' => '123456'
 
-			]);
-		}
-	}
+            ]);
+        }
+    }
 
 }

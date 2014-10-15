@@ -2,6 +2,7 @@
 
 @section('content')
 
+<<<<<<< HEAD
 {{ HTML::script('js/plugins/dataTables/jquery.js') }}
 {{ HTML::script('js/bootstrap.min.js') }}
 {{ HTML::script('js/plugins/dataTables/jquery.dataTables.js') }}
@@ -11,9 +12,12 @@
 {{-- HTML::script('http://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js') --}}
 
 
+=======
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
 {{ HTML::style('css/plugins/dataTables.bootstrap.css') }}
 {{-- HTML::style('http://cdn.datatables.net/1.10.3/css/jquery.dataTables.css') --}}
 
+<<<<<<< HEAD
 <script>
     $('.list-group-item').removeClass('active');
     $('#myWorkshopsPage').addClass('active');
@@ -39,6 +43,8 @@
 </script>
 
 
+=======
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
 <div class="panel-heading">
     <h3 class="panel-title">
         My workshops
@@ -51,7 +57,10 @@
         <div class="row">
 
             <div class="col-lg-6 ">
+<<<<<<< HEAD
+=======
                 <!-- <a class="btn btn-small btn-success" href="{{ URL::to('workshops/create') }}">New Workshop</a> -->
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
              
                 <label class="form-inline">Service Type: <select id="selectWorkshop" class="form-control input-sm"><option value=""></option></select></label>
             </div>
@@ -71,6 +80,7 @@
             </thead>
 
             <tbody>
+<<<<<<< HEAD
                 @foreach( $workshops as $workshop )
 
                 <tr class="odd gradeX" >
@@ -96,6 +106,14 @@
                     @if($workshop->workshopAdvertisement && $workshop->workshopAdvertisement->paid)
                     <td style="width:90px;color:green;">
                         Contact admin to edit.
+=======
+                
+                <tr class="odd gradeX">
+                    
+                    <td>paid</td>
+                    <td>
+
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
                     </td>
                     <td style='color:red;'>
                         Cannot Delete
@@ -103,6 +121,7 @@
                     @else
 
                     <td>
+<<<<<<< HEAD
                         <a class="btn btn-small btn-success btn-outline" href="{{ URL::to('workshops/' . $workshop->id . '/edit') }}">Edit</a>
                     </td>
 
@@ -110,15 +129,57 @@
                         {{ Former::open()->method('DELETE')->class('form-horizontal')->route('workshops.destroy' , $workshop->id) }}
                         {{Former::submit('Delete')->class('btn btn-danger btn-outline')}}
                         {{Former::close()}}
+=======
+    
+                    </td>
+
+                    <td>
+
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
                     </td>
                     @endif
 
                 </tr>
-                @endforeach
+                
 
+<<<<<<< HEAD
+=======
+                <tr class="odd gradeX">
+                    <td>Workshop1</td>
+                    <td><a class='btn btn-success'>pay now</a></td>
+                    <td>Edit</td>
+                    <td>Edit</td>
+                </tr>
+                <tr class="odd gradeX">
+                    <td>Workshop1</td>
+                    <td>paid</td>
+                    <td>Edit</td>
+                    <td>Edit</td>
+                </tr>
+
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
             </tbody>
         </table>
     </div>
 
 </div>
+{{ HTML::script('js/plugins/dataTables/jquery.js') }}
+<script>
+    $(document).ready(function() {
+    $('.list-group-item').removeClass('active');
+    $('#reviewPage').addClass('active');
+        var table = $('#myDatas').DataTable();
+        var select =$('#selectWorkshop').on('change',function() {
+            var val = $(this).val();
+            table.column(1)
+            .search( val ? '^'+$(this).val()+'$' : val, true, false )
+            .draw();
+        });
+
+        table.column(1).data().unique().sort().each( function (d,j) {
+            select.append( '<option value="'+d+'">'+d+'</option>' )
+        } );
+
+    });
+</script>
 @stop

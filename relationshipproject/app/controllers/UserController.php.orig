@@ -88,6 +88,7 @@ class UsersController extends BaseController {
 
     public function getLogin() {
 
+<<<<<<< HEAD
         if(Sentry::check()){
             $user = Sentry::getUser();
             $group = Sentry::findGroupByName('Service Providers');
@@ -99,6 +100,11 @@ class UsersController extends BaseController {
             }
         }
         return View::make('users.login');
+=======
+        // if(Sentry::check()){
+        //     return Redirect::to('serviceProvider/profile');
+        // }
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
     }
 
     public function postLogin() {

@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Workshop extends \Eloquent {
-    protected $fillable = ['service_provider_id','topic','description','unit', 'street_number', 'street_name', 'street_type', 'suburb', 'state', 'postcode', 'date','start_time','end_time','total_ticket_number', 'ticket_number', 'price', 'longitude', 'latitude'];
+    protected $fillable = ['class', 'food','service_provider_id','topic','description','unit', 'street_number', 'street_name', 'street_type', 'suburb', 'state', 'postcode', 'date','start_time','end_time','total_ticket_number', 'ticket_number', 'price', 'longitude', 'latitude'];
     protected $guarded = array('id');
 
     public static $rules = array(

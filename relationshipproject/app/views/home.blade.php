@@ -35,7 +35,7 @@ color: white;
 		<a id="mental_wellbeing" href="services/mentalwellbeing" class="list-group-item">Mental Wellbeing, Counselling</a>
 		<a id="financial_advice" href="services/financialadvice" class="list-group-item">Financial Advice</a>
 		<a id="mentors" href="services/mentors" class="list-group-item">Support Networks & Mentors</a>
-		<a href="#" class="list-group-item">Workshops</a>
+        <a href="{{ URL::to('/workshoplist') }}" class="list-group-item">Workshops</a>
 <!-- 		Domestic Violence Help Contact Numbers -->
 		<a id="help" class="list-group-item">
 		  <strong>Australia 24/7 Support Telephone Line</strong>

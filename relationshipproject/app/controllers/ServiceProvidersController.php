@@ -21,7 +21,7 @@ class ServiceProvidersController extends \BaseController {
         return View::make('serviceProviders.index')->with('sps', $sps);
 	}
 
-	/**
+	/**'
 	 * Show the form for creating a new resource.
 	 * GET /serviceproviders/create
 	 *
@@ -39,7 +39,7 @@ class ServiceProvidersController extends \BaseController {
 	 * POST /serviceproviders
 	 *
 	 * @return Response
-	 */
+	Sign out */
 	public function store()
 	{
 		//
@@ -82,7 +82,7 @@ class ServiceProvidersController extends \BaseController {
 	{
         $sp = ServiceProvider::find($id);
         
-        return View::make('serviceProviders.edit')->with('sp', $sp); 
+        return View::make('serviceProviders.show')->with('sp', $sp); 
 		//
 	}
 

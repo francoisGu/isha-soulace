@@ -55,12 +55,16 @@
 {{ Former::inline_radios('identity')->radios(array('Individual' =>array( 'name'=>'identity','checked'=>'checked'), 'Company' => array('name'=>'identity', 'checked'=>'')))->onchange('change()') }}
 
 <div id='company_part' style="display:none;">
+<<<<<<< HEAD
     {{ Former::text('companyName')->id('companyName')->label('Company Name')->class('input-xlarge inputHeight form-control company')->placeholder('Company Name')->required()}}
+=======
+    {{ Former::text('companyname','Company Name')->class('input-xlarge inputHeight form-control company')->placeholder('Company Name')}}
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
 
-    {{ Former::text('acn')->label('ACN')->class('input-medium inputHeight form-control company')->placeholder('ACN')->required()}}
+    {{ Former::text('acn')->label('ACN')->class('input-medium inputHeight form-control company')->placeholder('ACN')}}
 </div>
 <div id='individual_part'>
-    {{ Former::text('abn')->label('ABN')->class('input-medium inputHeight form-control individual')->placeholder('ABN')->required()}}
+    {{ Former::text('abn')->label('ABN')->class('input-medium inputHeight form-control individual')->placeholder('ABN')}}
 </div>
 
 {{ Former::select('type')->class('input-large inputHeight form-control')->placeholder('Service Type')->options($services)->required() }}

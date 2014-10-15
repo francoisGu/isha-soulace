@@ -104,4 +104,55 @@ class ClientsController extends \BaseController {
 		return Redirect::route('clients.index');
 	}
 
+
+    public function getClients(){
+
+        $TYPE = Crypt::decrypt(Input::get('TYPE'));
+        $id = Crypt::decrypt(Input::get('id'));
+
+        $service = $TYPE::find($id);        
+
+        $clients = [];
+
+        if($service != null){
+            $clients = $service->clients;
+        }
+
+        return View::make('workshops.myClients')->with('clients', $clients)->with('service', $service);
+         
+    }
+
+    public function searchClients(){
+
+        $TYPE = Crypt::decrypt(Input::get('TYPE'));
+        $id = Crypt::decrypt(Input::get('id'));
+        $content = trim(Input::get('content'));
+
+        $service = $TYPE::find($id);
+        $clients = $service->clients;
+
+        $found = array();
+
+        if($service){
+            
+            foreach($clients as $client){
+                $ticket = Ticket::where('client_id', $client->id)->where('workshop_id', $service->id)->pluck('ticketNumber');
+                if($content == $client->email || $content == $ticket){
+
+                    array_push($found, $client);
+                
+                }
+            }
+
+        }
+
+        if(count($found) == 0){
+            return View::make('workshops.myClients')->with('clients', $clients)->with('service', $service)->withErrors('Client not found'); 
+        }
+
+        $clients = $found;
+        return View::make('workshops.myClients')->with('clients', $clients)->with('service', $service);
+    
+    }
+
 }

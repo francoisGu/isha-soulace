@@ -80,6 +80,10 @@
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogout') }}" method="get">
                     <input type="submit" value="Sign out" class="btn btn-success"/>
                 </form>
+                <form class="navbar-form navbar-right" action = "{{ action('ServiceProvidersController@show', array('id' => Sentry::getUser()->userable->id)) }}" method="get">
+                    <input type="submit" value="My profile" class="btn btn-success"/>
+                </form>
+
 
                 @endif
         </div>
@@ -89,7 +93,7 @@
     </div><!--/row-->
 
     
-	<div class="container">
+    <div class="container" >
         <!--@if(Session::has('message'))
 			<p class="alert">{{ Session::get('message') }}</p>
 		@endif

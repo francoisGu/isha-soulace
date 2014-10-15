@@ -7,6 +7,16 @@
 
 
 @section('main')
+<<<<<<< HEAD
+
+  <div class="row-fluid">
+      <div class="span6" style="margin: 0px auto; min-height:200px;">
+      <div id="step1Form" class="panel panel-success" >
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Log in</h3>
+          </div>
+=======
 <style type="text/css">
 .auth .auth-box{
   background-color: white;
@@ -24,6 +34,7 @@
 </style>
   <div class="auth">
       <div id="step1Form" class="well auth-box" style="min-height:200px;">
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
           {{Former::open()->method('POST')->class('form-horizontal')->url('users/login')}} 
           <!-- Form Name -->
           <legend class="text-center" style="border-bottom:solid 1px;">Log in</legend>
@@ -57,7 +68,11 @@
           <div class="control-group">
             <label class="control-label" for="submit"></label>
             <div class="controls">
+<<<<<<< HEAD
+              {{ Form::submit('Login', array('class'=>'btn btn-success '))}}
+=======
               {{ Form::submit('Login', array('class'=>'btn btn-danger btn-outline'))}}
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
             </div>
           </div>
           {{ Former::close()}}

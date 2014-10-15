@@ -32,7 +32,14 @@ class WorkshopsController extends \BaseController {
      */
     public function create()
     {
-        return View::make('workshops.create');
+        $types = DB::table('workshop_types')->lists('type');
+        $workshop_types = array();
+
+        foreach($types as $type){
+            $workshop_types[$type] = $type;
+        }
+
+        return View::make('workshops.create')->with('workshop_types', $workshop_types);
         //
     }
 
@@ -57,13 +64,25 @@ class WorkshopsController extends \BaseController {
         if ($validator->passes())
         {
             try {
-                $venue = Input::get('unit') . ' ' . Input::get('street_number') 
-                    .' ' . Input::get('street_name') . ',' .  
-                    Input::get('street_type') . ',' . Input::get('suburb') . ',' 
-                    . Input::get('state') . ',' . Input::get('postcode');
-                $geocode = Geocoder::geocode($venue);
+                //$venue = Input::get('unit') . ' ' . Input::get('street_number') 
+                //.' ' . Input::get('street_name') . ',' .  
+                //Input::get('street_type') . ',' . Input::get('suburb') . ',' 
+                //. Input::get('state') . ',' . Input::get('postcode');
+                //$geocode = Geocoder::geocode($venue);
+
+                $venue = Util::getVenue(Input::all());
+
+                $geocode = Map::validateAddress($venue, Input::get('postcode'));
+
+                if(is_null($geocode)){
+                    return Redirect::back()->withErrors('Location not 
+                        found.')->withInput();
+                }
+
+                $class = DB::table('workshop_types')->where('type', Input::get('type'))->pluck('code');
+
                 // ...
-                Workshop::create(array_merge( array(
+                Workshop::create(array_merge( array( 'class' => $class,
                     'service_provider_id' => $sp->id, 
                     'ticket_number' => Input::get('total_ticket_number'), 
                     'longitude' => $geocode['longitude'], 
@@ -81,17 +100,15 @@ class WorkshopsController extends \BaseController {
                 // Street addresses." ;)
                 return Redirect::route('workshops.create')
                     ->withinput()
-                    ->witherrors($validator)
-                    ->with('message', $e->getMessage());
- 
+                    ->witherrors($e->getMessage());
+
             }
 
         }
 
         return Redirect::route('workshops.create')
             ->withinput()
-            ->witherrors($validator)
-            ->with('message', 'there are validation errors');
+            ->witherrors($validator);
     }
 
     /**
@@ -108,8 +125,9 @@ class WorkshopsController extends \BaseController {
             return Redirect::back();
         }
 
-        return View::make('workshops.show')
-            ->with('workshop', $workshop);
+        $workshop_types = $this->workshop_types();
+        return View::make('workshops.profile')
+            ->with('workshop', $workshop)->with('workshop_types', $workshop_types);
     }
 
     /**
@@ -127,8 +145,15 @@ class WorkshopsController extends \BaseController {
             return Redirect::route('workshops.index');
         }
 
-        return View::make('workshops.edit')
-            ->with('workshop', $workshop);
+        $types = DB::table('workshop_types')->lists('type');
+        $workshop_types = array();
+
+        foreach($types as $type){
+            $workshop_types[$type] = $type;
+        }
+
+        return View::make('workshops.profile')
+            ->with('workshop', $workshop)->with('workshop_types', $workshop_types);
     }
 
     /**
@@ -152,8 +177,12 @@ class WorkshopsController extends \BaseController {
                 $geocode = Geocoder::geocode($venue);
                 // ...
 
+                $class = DB::table('workshop_types')->where('type', Input::get('type'))->pluck('code');
+
+
                 $workshop = Workshop::find($id);
-                $workshop->update(array_merge( array('ticket_number' => 
+                $workshop->update(array_merge( array('class' => $class
+                    ,'ticket_number' => 
                     Input::get('total_ticket_number'), 'longitude' => 
                     $geocode['longitude'], 'latitude' => $geocode['latitude']) , 
                     $input));
@@ -162,15 +191,14 @@ class WorkshopsController extends \BaseController {
                     . $geocode{'latitude'}. ',' . $geocode['longitude'] );
                 //Session::flash('message', var_dump($geocode));
                 return Redirect::route('workshops.show', $id);
-                    //->with('message', 'Update successful');
- 
+                //->with('message', 'Update successful');
+
 
             } catch (\Exception $e) {
 
                 return Redirect::to('workshops/' . $id . '/edit')
                     ->withInput()
-                    ->withErrors($validator)
-                    ->with('message', $e->getMessage());
+                    ->withErrors( $e->getMessage());
 
 
             }
@@ -180,8 +208,7 @@ class WorkshopsController extends \BaseController {
 
         return Redirect::to('workshops/' . $id . '/edit')
             ->withInput()
-            ->withErrors($validator)
-            ->with('message', 'There are validation errors');
+            ->withErrors($validator);
 
     }
 
@@ -202,11 +229,11 @@ class WorkshopsController extends \BaseController {
         //return Response::json(array('success' => true));
     }
 
-	/**
+    /**
      *  	 
      * retrieve all workshops w.r.t currently loging user	 
-	 * @return Response
-	 */
+     * @return Response
+     */
     public function getMyWorkshops(){
         if(! Sentry::check()){
             return Redirect::to('users/login')->with('message', 'Please log in first.'); 
@@ -218,46 +245,85 @@ class WorkshopsController extends \BaseController {
             $workshops = $sp->workshops;
 
             return View::make('serviceProviders.myWorkshops')->with('workshops', $workshops)->with('sp', $sp);
-        
+
         }
     }
 
-    public function findByPostcode($postcode){
-        
-        $workshops = Workshop::where('postcode', '=', $postcode)->get();
+    /*
+     *  return all workshops to workshop list
+     */
+    public function getWorkshoplist(){
 
-        if(count((array) $workshops) <= 5){
-        
-        }
-    
+        $workshops = Workshop::all(); 
+
+        $types = $this->workshop_types();
+
+        return View::make('workshops.workshoplist')->with('workshops', $workshops)->with('types', $types);
     }
 
-    public function expandRange($postcode, $range){
-        
-        $expand = [];
-        //$workshops = Workshop::get(array('latitude','longitude'))->lists('id');
+    /*
+     * search for workshops by postcode and within range of 30;
+     */
+    public function searchWorkshop(){
 
-        $pos = Map::getPositionByPostcode($postcode); 
+        // list of workshop types for view
+        $types = $this->workshop_types();
 
-        Workshop::chunk(200, function($workshops){
-            
-            foreach($workshops as $workshop){
+        $type = Input::get('type');
+        $class = WorkshopType::where('type', $type)->pluck('code');
+        $postcode = trim(Input::get('postcode'));
 
-                dd($workshop);
+        $workshops = array();
 
-                $lat = $workshop->latitude;
-                $lon = $workshop->longitude;
-                $dist = Map::calc_dist($lat, $lon, $pos['lat'], $pos['lon']);
-
-                if($dist <= range){
-                    array_push($expand, $workshop); 
+        if($postcode != ""){
+            $temp = Map::expandRange('Workshop',$postcode, 30);
+            if($class != null){
+                foreach($temp as $workshop){
+                    if($workshop->class == $class){
+                        array_push($workshops, $workshop);
+                    }
                 }
+            } else{
+                $workshops = $temp;
             }
-        
-        });
 
-        return $expand;
-    
+        } else{
+            if($class != null){
+                $temp = Workshop::all();
+                foreach($temp as $workshop){
+                    if($workshop->class == $class){
+                        array_push($workshops, $workshop);
+                    }
+                } 
+            } else {
+                $workshops = Workshop::all();
+            }
+        }
+
+        if(count($workshops) == 0){
+
+            $workshops = Workshop::all();
+            return View::make('workshops.workshoplist')->with('workshops', $workshops)->with('types', $types)->withErrors('Sorry! No workshop found.');
+
+
+        }
+
+        return View::make('workshops.workshoplist')->with('workshops', $workshops)->with('types', $types);
+
     }
 
+    /*
+     * return all workshop types
+     */
+    public function workshop_types(){
+
+        $types = DB::table('workshop_types')->lists('type');
+        $workshop_types = array();
+
+        foreach($types as $type){
+            $workshop_types[$type] = $type;
+        }
+
+        return $workshop_types;
+    }
 }

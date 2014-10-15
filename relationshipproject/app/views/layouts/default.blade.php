@@ -105,9 +105,9 @@
 
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
                     <input type="submit" value="Register" class="btn btn-success"/>
-<!--                 </form> -->
+                </form>
 
-<!--                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get"> -->
+                <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get">
                     <input type="submit" value="Sign in" class="btn btn-success"/>
                 </form>
 

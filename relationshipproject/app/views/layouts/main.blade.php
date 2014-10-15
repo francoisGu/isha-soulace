@@ -8,12 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="http://localhost:8000/favicon.ico">
     <style type="text/css">
-body {
-  background:url('http://static.tumblr.com/f06e99f57f07d88f2fe1e1c044dbfacd/fxwkji2/JDDmqz238/tumblr_static_yellow_background.jpg');
-  background-size:100% 100%;
-  background-attachment: fixed; 
-  background-repeat:no-repeat;
-}
+
 </style>
     <div class='title'>
         @yield('title', '<title>Isha SoulAce</title>')
@@ -25,7 +20,7 @@ body {
 
   </head>
 
-  <body>
+  <body style="background-color:gold">
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">

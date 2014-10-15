@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-<style>
-.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
-z-index: 2;
-color: #555;
-background-color: #c9302c;
-border-color: white;
-color: white;
-}
-</style>
-=======
+
 @extends('layouts.main')
 
 @section('title')
@@ -23,6 +13,15 @@ color: white;
 <!--<figure align='middle'>
   {{ HTML::image('images/logo/Isha SoulAce_Red-Font.png', '',array('style' => 'height:100px')) }}
 </figure>-->
+<style>
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+z-index: 2;
+color: #555;
+background-color: #c9302c;
+border-color: white;
+color: white;
+}
+</style>
 <div class="row-fluid">
 <!--   Types of services & Domestic Violence -->
   <div class="span9"><!--class="col-sm-9 col-sm-pull-3"  style="z-index:0;">-->
@@ -151,7 +150,7 @@ color: white;
 	</div>
   </div>
 </div>
-<<<<<<< HEAD
+
 
 <!-- Controls the highlight effect for relevant services for specific types of domestic violence -->
 <script>
@@ -248,7 +247,7 @@ color: white;
 	togglePhysicalAndSexual();
   }
 </script>
-=======
+
 <hr>
 
 @stop

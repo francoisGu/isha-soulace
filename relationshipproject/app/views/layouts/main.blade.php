@@ -7,11 +7,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="http://localhost:8000/favicon.ico">
-
+    <style type="text/css">
+body {
+  background:url('http://static.tumblr.com/f06e99f57f07d88f2fe1e1c044dbfacd/fxwkji2/JDDmqz238/tumblr_static_yellow_background.jpg');
+  background-size:100% 100%;
+  background-attachment: fixed; 
+  background-repeat:no-repeat;
+}
+</style>
     <div class='title'>
         @yield('title', '<title>Isha SoulAce</title>')
     </div>
-
 <!--     {{ HTML::style('css/bootstrap.min.css') }} -->
     {{ HTML::style('css/plugins/bootstrap.css') }}
     {{ HTML::style('css/offcanvas.css') }}
@@ -108,8 +114,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/offcanvas.js') }}
+    
   </body>
+    {{ HTML::script('js/plugins/dataTables/jquery.js') }}
+{{ HTML::script('js/bootstrap.min.js') }}
+{{ HTML::script('js/plugins/dataTables/jquery.dataTables.js') }}
+{{ HTML::script('js/plugins/dataTables/dataTables.bootstrap.js') }}
+{{ HTML::script('js/plugins/dataTables/shCore.js') }}
+
+    {{ HTML::script('js/offcanvas.js') }}
 </html>
+

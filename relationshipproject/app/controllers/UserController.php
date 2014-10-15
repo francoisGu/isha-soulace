@@ -88,9 +88,9 @@ class UsersController extends BaseController {
     public function getLogin() {
         $this->layout->content = View::make('users.login');
 
-        if(Sentry::check()){
-            return Redirect::to('serviceProvider/profile');
-        }
+        // if(Sentry::check()){
+        //     return Redirect::to('serviceProvider/profile');
+        // }
     }
 
     public function postLogin() {
@@ -100,6 +100,7 @@ class UsersController extends BaseController {
             'password'  => 'required|between:6,12'
         );
 
+
         $validator = Validator::make(Input::all(), $rules);
 
         if($validator->fails()){
@@ -108,20 +109,21 @@ class UsersController extends BaseController {
                 -> withInput(Input::except('password'));
         } else
         {
+
             $loginInfo = array(
                 'email'         => Input::get('email'),
                 'password'      => Input::get('password'),
                 'rememberme'    => Input::get('rememberme') );
 
             $loginMessage = $this->account->login($loginInfo);
-
+            
             if(Sentry::check()){
             return Redirect::to($loginMessage['url'] . Sentry::getUser()->id)->with('message', 
                 $loginMessage['message']);
             } else {
                 return Redirect::to($loginMessage['url'])->withMessage($loginMessage['message']);
             }
-        }
+         }
 
     }
 

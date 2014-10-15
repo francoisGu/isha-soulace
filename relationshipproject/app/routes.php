@@ -83,9 +83,13 @@ Route::get('/', function()
 
 Route::controller('services','ServiceFormController');
 
-Route::get('/about', function()
+Route::get('/sponsors', function()
     {
-        return View::make('about');
+        return View::make('sponsors');
+    });
+Route::get('/remove', function()
+    {
+        return View::make('removeHistory');
     });
 
 /*Route::get('workshops/', function(){*/

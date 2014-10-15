@@ -1,10 +1,11 @@
 @extends('layouts.main')
 
 @section('main')
-<div class="page-header">
-<h3>Mission of Isha SoulAce</h3>
-</div>
-	<p>
+
+<h3 class="text-center">Mission of Isha SoulAce</h3>
+<br>
+
+<p>
 " To provide support & services to people going through relationship breakdown every step of the way."
 <br>
 <ul class=list-unstyled">

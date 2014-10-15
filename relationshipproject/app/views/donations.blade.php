@@ -22,7 +22,7 @@
 }
 </style>
 <div class="container auth">
-    <h1 class="text-center">Offer your donations here!<span>Thank you for your support!</span> </h1>
+    <h3 class="text-center">Support us with donations!  <span>Thank you!</span> </h3>
     <div id="big-form" class="well auth-box">
       {{Former::framework('Nude');}}
       {{Former::open()->method('POST')->url('')->class('')}}

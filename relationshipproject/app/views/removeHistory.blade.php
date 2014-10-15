@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-{{ HTML::style('css/plugins/bootstrap-datetimepicker.min.css') }}
-<style>
-=======
-@extends('layouts.main')
-
-@section('title')
-<title>Isha SoulAce - Removing History</title>
-@stop
-
-@section('main')
 <style type="text/css">
 .auth .auth-box{
   background-color: white;
@@ -23,7 +12,6 @@
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
 .clickable
 {
   cursor: pointer;
@@ -46,23 +34,22 @@
 a.clickable { color: inherit; }
 a.clickable:hover { text-decoration:none; }
 </style>
-<div class="page-header">
-<<<<<<< HEAD
-  <h3>Private Browsing</h1>
-=======
-  <h3 class="text-center">Private Browsing</h1>
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
-</div>
+@extends('layouts.main')
+
+@section('title')
+<title>Isha SoulAce - Removing History</title>
+@stop
+
+@section('main')
+
+<h3 class="text-center">Private Browsing</h3>
+
 <div class="container auth">
   <div id="big-form" class="well auth-box">
     <!-- Form Name -->
     <legend class="text-center" style="border-bottom:solid 1px;">For Google Chrome <!--(latest version)--></legend>
     <div class="col-md-12">
-<<<<<<< HEAD
-      <div class="panel panel-success">
-=======
       <div class="panel panel-danger">
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
         <div class="panel-heading">
           <h3 class="panel-title">
             Clear your entire browsing history
@@ -80,11 +67,7 @@ a.clickable:hover { text-decoration:none; }
       </div>
     </div>
     <div class="col-md-12">
-<<<<<<< HEAD
-      <div class="panel panel-success">
-=======
       <div class="panel panel-danger">
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
         <div class="panel-heading">
           <h3 class="panel-title">
             Clear specific items from your browsing history
@@ -101,21 +84,13 @@ a.clickable:hover { text-decoration:none; }
         </div>
       </div>
       <p>More Details, <a href="https://support.google.com/chrome/answer/95537?hl=en" target="_blank">Click here</a></p>
-<<<<<<< HEAD
-      <p>To be easier, <a href="https://chrome.google.com/webstore/detail/history-eraser/gjieilkfnnjoihjjonajndjldjoagffm" target="_blank">History Eraser</a> is a useful plugin to help you. 
-=======
       <p>To be easier, <a href="https://chrome.google.com/webstore/detail/history-eraser/gjieilkfnnjoihjjonajndjldjoagffm" target="_blank">History Eraser</a> is a useful plugin to help you.</p> 
       <p>You can also use the keyboard shortcuts <strong>Ctrl+Shift+N</strong> (Windows, Linux, and Chrome OS) and <strong>⌘-Shift-N</strong> (Mac) to open an incognito window.</p>
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
     </div>       
     <legend class="text-center" style="border-bottom:solid 1px;">For Firefox 
     </legend>
     <div class="col-md-12">
-<<<<<<< HEAD
-      <div class="panel panel-success">
-=======
       <div class="panel panel-danger">
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
         <div class="panel-heading">
           <h3 class="panel-title">
             Clear your entire browsing history
@@ -160,24 +135,17 @@ a.clickable:hover { text-decoration:none; }
           <p>3. Finally, click the <STRONG>Clear Now</STRONG> button. The window will close and the items you've selected will be cleared.</p>
         </div>
       </div>
-<<<<<<< HEAD
       <span>More Details, <a href="https://support.mozilla.org/en-US/kb/remove-recent-browsing-search-and-download-history#w_how-do-i-clear-my-history" target="_blank">Click here</a></span>
-    </div>
-    <legend class="text-center" style="border-bottom:solid 1px;">For Internet Explorer (IE 9)</legend>
-    <div class="col-md-12">
-      <div class="panel panel-success">
-=======
-      <p>More Details, <a href="https://support.mozilla.org/en-US/kb/remove-recent-browsing-search-and-download-history#w_how-do-i-clear-my-history" target="_blank">Click here</a></p>
+      <br>
       <span>To open a new private window, click the menu button   
 <img alt="New Fx Menu" class="wiki-image frameless" data-original-src="//support.cdn.mozilla.net/media/uploads/gallery/images/2014-01-10-13-08-08-f52b8c.png" src="//support.cdn.mozilla.net/media/uploads/gallery/images/2014-01-10-13-08-08-f52b8c.png" title="">
 
- and then click <span class="button">New Private Window</span>. </span>
+ and then click <span class="button">New Private Window</span>. </span><br>
 
     </div>
     <legend class="text-center" style="border-bottom:solid 1px;">For Internet Explorer (IE 9)</legend>
     <div class="col-md-12">
       <div class="panel panel-danger">
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
         <div class="panel-heading">
           <h3 class="panel-title">
             Delete all or some of your browsing history
@@ -196,11 +164,7 @@ a.clickable:hover { text-decoration:none; }
     <!--IE-->
     <legend class="text-center" style="border-bottom:solid 1px;">For Safari 6</legend>
     <div class="col-md-12">
-<<<<<<< HEAD
-      <div class="panel panel-success">
-=======
       <div class="panel panel-danger">
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
         <div class="panel-heading">
           <h3 class="panel-title">
             Clear the entire history list
@@ -216,11 +180,7 @@ a.clickable:hover { text-decoration:none; }
       </div>
     </div>
     <div class="col-md-12">
-<<<<<<< HEAD
-      <div class="panel panel-success">
-=======
       <div class="panel panel-danger">
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
         <div class="panel-heading">
           <h3 class="panel-title">
             Clear individual items from the history list
@@ -244,16 +204,6 @@ If you can’t see the list of bookmarks on the right because Cover Flow view is
 </div>
 {{ HTML::script('js/plugins/dataTables/jquery.js') }}
 <script type="text/javascript">
-<<<<<<< HEAD
-$('.form_birthday').datetimepicker({
-  format: "dd MM yyyy",
-  autoclose: true,
-  todayBtn: true,
-  pickerPosition: "bottom-left",
-  minView: 2,
-});
-=======
->>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
 $(document).on('click', '.panel-heading span.clickable', function (e) {
   var $this = $(this);
   if (!$this.hasClass('panel-collapsed')) {

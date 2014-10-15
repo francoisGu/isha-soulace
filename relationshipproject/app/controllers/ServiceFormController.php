@@ -2,7 +2,7 @@
 
 class ServiceFormController extends BaseController {
 
-    protected $layout = "layouts.default";
+    protected $layout = "layouts.default_forms";
     
 	public function getFamilylaw()
 	{

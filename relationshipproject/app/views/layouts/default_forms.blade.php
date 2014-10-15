@@ -141,10 +141,10 @@
   {{ HTML::script('js/plugins/dataTables/jquery.js') }}
 <!-- {{ HTML::script('js/bootstrap.min.js') }}
 {{ HTML::script('js/plugins/dataTables/bootstrap-datetimepicker.js') }}
-{{ HTML::script('js/plugins/dataTables/bootstrap-datetimepicker.min.js') }} -->
+{{ HTML::script('js/plugins/dataTables/bootstrap-datetimepicker.min.js') }} --><!--
 <script type="text/javascript"
         src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/bootstrap.min.js">
-</script>
+</script>-->
 <script type="text/javascript" src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js">
 </script>
 <script type="text/javascript"

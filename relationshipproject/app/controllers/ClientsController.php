@@ -155,4 +155,24 @@ class ClientsController extends \BaseController {
     
     }
 
+
+
+    public function getSPClients(){
+
+        if(! Sentry::check()){
+            return Redirect::to('users/login')->with('message', 'Please log in first.'); 
+        }
+        $sp = Sentry::getUser()->userable;
+        //dd($sp->email);
+
+        if(get_class($sp) == 'ServiceProvider'){
+            $clients = $sp->clients;
+
+            return View::make('serviceProviders.myClients')->with('clients', $clients)->with('sp', $sp);
+
+        }
+
+    
+    }
+
 }

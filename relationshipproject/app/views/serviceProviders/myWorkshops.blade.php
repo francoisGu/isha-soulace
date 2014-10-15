@@ -3,7 +3,6 @@
 @section('content')
 
 {{ HTML::script('js/plugins/dataTables/jquery.js') }}
-{{ HTML::script('js/bootstrap.min.js') }}
 {{ HTML::script('js/plugins/dataTables/jquery.dataTables.js') }}
 {{ HTML::script('js/plugins/dataTables/dataTables.bootstrap.js') }}
 
@@ -84,7 +83,7 @@
 
                     @elseif($workshop->workshopAdvertisement && ! $workshop->workshopAdvertisement->paid )
 
-                        <td><a class='btn btn-success btn-outline' href="#">pay now</a></td>
+                    <td><a class='btn btn-success btn-outline' href="{{ URL::to('/payment/') }}?advertisementID={{ $workshop->workshopAdvertisement->id }}" >pay now</a></td>
                     @else
                     <td align='' style='color:green;'>paid</td>
                     @endif

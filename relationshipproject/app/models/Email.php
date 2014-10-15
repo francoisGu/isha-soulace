@@ -16,12 +16,6 @@ class Email extends Eloquent {
                     $userInfo['firstname'] . ' ', $userInfo['lastname']) 
                     -> subject('Welcome to the Isha SoulAce');
             });
-
-
-
     }
-
-
-
 }
 ?>

@@ -17,7 +17,7 @@
 
             <a id="myWorkshopsPage" href="{{ URL::to('/myworkshops/') }}" class="list-group-item">My workshops</a>
             <a id="reviewPage" href="review" class="list-group-item">Review the website</a>
-            <a id="clientsPage" href="clients" class="list-group-item">Clients</a>
+            <a id="clientsPage" href="{{ URL::to('/myclients/') }}" class="list-group-item">Clients</a>
       </ul>
     </div>
   </div><!--span3-->

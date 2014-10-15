@@ -2,7 +2,19 @@
 
 @section('main')
 
-{{ HTML::style('css/list.css') }}
+<style>
+a.list-group-item {
+    height:auto;
+    min-height:250px;
+    word-wrap: break-word;
+}
+a.list-group-item.active small {
+    color:#fff;
+}
+.stars {
+    margin:20px auto 1px;    
+}
+</style>
 <div class="container auth">
     <h1 class="text-center"><span>Here is the list of workshops you may need.</span> </h1>
     <div id="big-form" class="well auth-box">
@@ -63,7 +75,8 @@
                     <p class="list-group-item-text"><strong class="col-md-3">Price: </strong><div class="col-md-9">AU$ {{ $workshop->price }} </div></p>
                     <p class="list-group-item-text"><strong class="col-md-3">Ticket Left: </strong><div class="col-md-9"> {{ $workshop->ticket_number }} </div></p>
                 </div>
-                <div class="col-md-3 text-center">
+
+                <div class="col-md-3 text-left">
                     <div class="stars">
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star"></span>
@@ -72,11 +85,39 @@
                         <span class="glyphicon glyphicon-star-empty"></span>
                     </div>
                     <p> Average 4.5 <small> / </small> 5 </p>
-                    <button id='pay' type="button" class="btn btn-default btn-lg btn-block" href="#">Register & Pay</button>
+
+                    <div class="left-align control-group">
+
+                    <!--
+                    {{ Form::open(array('method' => 'POST', 'url' => '')) }}
+
+                    {{ Form::text('email', null, array('class' => 'input-large text-left form-control', 'placeholder' => 'Email')) }}
+                    {{ Form::label('number', 'Ticket NO.', array('class' => 'left-align', 'style' => 'margin-left:0%;')) }}
+                    {{ Form::number('number', 1, array('class' => 'input-small left-align')) }}
+                    {{ Form::submit('Register & Pay', array('class' => 'btn btn-danger btn-outline btn-lg btn-block form-control')) }}
+
+                    {{ Form::close() }}
+
+                    {{ Former::open()->method('POST')->url('')
+                            ->rules(array(
+                            'number' => 'between:' . 1 . ',' . $workshop->ticket_number, 
+                            'email' => 'email')) }}
+
+                    -->
+                    {{ Form::open(array('method' => 'POST', 'url' => '')) }}
+                    {{ Former::text('email', 'Email: ')->class('input-large text-left')->required()}}
+
+                    {{ Former::number('number', 'Ticket Number: ')->value(1)->class('input-small')->required() }}
+
+                    {{ Former::submit('Register & Pay')->class('btn btn-danger btn-outline btn-lg btn-block') }}
+
+                    {{ Former::close() }}
+                    </div>
                 </div>
             </a>
 
             @endforeach
+            </div>
 
         </div>
     </div>
@@ -90,7 +131,4 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/offcanvas.js') }}
 

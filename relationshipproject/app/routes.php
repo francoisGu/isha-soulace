@@ -18,6 +18,12 @@ Route::group(['before' => 'sentry|serviceProviders'], function(){
     Route::resource('workshopAdvertisements', 'WorkshopAdvertisementsController');
     Route::resource('workshops', 'WorkshopsController');
 
+    Route::group(['prefix' => 'myclients'], function(){
+
+        Route::get('/', 'ClientsController@getSPClients');
+
+    });
+
     Route::group(['prefix' => 'myworkshops'], function(){
 
         Route::get('/', 'WorkshopsController@getMyWorkshops');
@@ -79,31 +85,10 @@ Route::post('reviews/services', 'ServicesReviewsController@storeComment');
 
 //Route::controller('services','ServiceFormController');
 //Route::controller('reviews', 'ReviewController');
-Route::get('password/remind', array('uses' => 'PasswordController@getRemind'));
-Route::get('password/reset', array('uses' => 'PasswordController@getReset'));
-Route::post('password/remind', array('uses' => 'PasswordController@postRemind'));
-Route::post('/password/reset/', array('uses' => 'PasswordController@postReset'));
 
 Route::get('reviews/website', array('uses' => 'ReviewController@getWebsite'));
 Route::get('reviews/services', array('uses' => 'ReviewController@getServices'));
 Route::get('reviews/workshops', array('uses' => 'ReviewController@getWorkshops'));
-/*Route::get('workshops/', function(){*/
-
-    //return View::make('workshops.index');
-//Route::post('WebReview', function()
-//{
-  //      $obj = new WebReviewsController() ;
-    //    return $obj->store();
-//});
-
-//});
-//Route::group(array('prefix' => 'api'), function() {
-
-//Route::resource('workshops', 'WorkshopsController', 
-//array('only' => array('index', 'store', 'destroy', 'create', 'edit')));
-//});
-//Route::get('serviceProviders/myworkshops', 'ServiceProvidersController@getMyWorkshops');
-
 
 Route::controller('users', 'UsersController');
 Route::get('workshopAdvertisements/premium', 'WorkshopAdvertisementsController@getPremiumAdvertisements');

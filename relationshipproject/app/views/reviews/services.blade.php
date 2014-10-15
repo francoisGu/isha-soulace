@@ -1,3 +1,19 @@
+<style type="text/css">
+.auth .auth-box{
+  background-color: white;
+  max-width:660px;
+  margin:0 auto;
+  border:1px solid rgba(255, 255, 255, 0.4);;
+  margin-top:40px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  -moz-box-shadow:    0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  box-shadow:         0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+</style>
+
 <div class="container auth">
   <h4 class="text-center">Review our Services</h4>
   <p class="text-center">Tell us what you think about the services providers you contacted so service providers can improve!</p>

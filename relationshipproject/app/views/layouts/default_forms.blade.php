@@ -101,7 +101,7 @@
 				<li><a href="{{ URL::to('services/fitnessandnutrition') }}">Fitness & Nutrition</a></li>
 				<li><a href="{{ URL::to('services/mentalwellbeing') }}">Mental Wellbeing, Counselling</a></li>
 				<li><a href="{{ URL::to('services/financialadvice') }}">Financial Advice</a></li>
-				<li><a href="#workshops">Workshops</a></li>
+                <li><a href="/workshoplist">Workshops</a></li>
               </ul>
             </li>
             <li><a href="#donate">Donate</a></li>
@@ -135,6 +135,10 @@
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogout') }}" method="get">
                     <input type="submit" value="Sign out" class="btn btn-success"/>
                 </form>
+                <form class="navbar-form navbar-right" action = "{{ action('ServiceProvidersController@show', array('id' => Sentry::getUser()->userable->id)) }}" method="get">
+                    <input type="submit" value="My profile" class="btn btn-success"/>
+                </form>
+
 
                 @endif
 		  </div>

@@ -7,8 +7,6 @@ class WorkshopAdvertisementsController extends \BaseController {
 
     public function __construct(){
         $this->beforeFilter('csrf', array('on' => 'post'));
-        $this->beforeFilter('sentry', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy')));
-        $this->beforeFilter('serviceProviders', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy')));
 
     }
     /**
@@ -36,7 +34,7 @@ class WorkshopAdvertisementsController extends \BaseController {
      */
     public function create()
     {
-        $workshop_id = Input::get('workshop_id');
+        $workshop_id = Crypt::decrypt(Input::get('workshopid'));
         $workshop = Workshop::find($workshop_id);
         //
         if(is_null($workshop)){
@@ -61,7 +59,10 @@ class WorkshopAdvertisementsController extends \BaseController {
         }
 
         WorkshopAdvertisement::create($data);
-        return Redirect::route('workshopAdvertisements.index');
+        if(Input::get('paynow')){
+            return Redirect::to('home');
+        }
+        return Redirect::route('myworkshops');
 
     }
 

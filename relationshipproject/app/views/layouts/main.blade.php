@@ -79,6 +79,10 @@
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogout') }}" method="get">
                     <input type="submit" value="Sign out" class="btn btn-success"/>
                 </form>
+                <form class="navbar-form navbar-right" action = "{{ action('ServiceProvidersController@show', array('id' => Sentry::getUser()->userable->id)) }}" method="get">
+                    <input type="submit" value="My profile" class="btn btn-success"/>
+                </form>
+
 
                 @endif
         </div>
@@ -108,7 +112,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::script('js/offcanvas.js') }}
   </body>

@@ -93,7 +93,7 @@ CREATE TABLE `client_workshop` (
   KEY `client_workshop_workshop_id_index` (`workshop_id`),
   CONSTRAINT `client_workshop_client_id_foreign` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE,
   CONSTRAINT `client_workshop_workshop_id_foreign` FOREIGN KEY (`workshop_id`) REFERENCES `workshops` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +102,16 @@ CREATE TABLE `client_workshop` (
 
 LOCK TABLES `client_workshop` WRITE;
 /*!40000 ALTER TABLE `client_workshop` DISABLE KEYS */;
+INSERT INTO `client_workshop` VALUES (1,1,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `client_workshop` VALUES (2,2,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `client_workshop` VALUES (3,3,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `client_workshop` VALUES (4,4,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `client_workshop` VALUES (5,5,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `client_workshop` VALUES (6,6,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `client_workshop` VALUES (7,7,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `client_workshop` VALUES (8,8,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `client_workshop` VALUES (9,9,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `client_workshop` VALUES (10,10,6,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `client_workshop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +130,7 @@ CREATE TABLE `clients` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `clients_id_email_unique` (`id`,`email`),
   UNIQUE KEY `clients_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,6 +139,16 @@ CREATE TABLE `clients` (
 
 LOCK TABLES `clients` WRITE;
 /*!40000 ALTER TABLE `clients` DISABLE KEYS */;
+INSERT INTO `clients` VALUES (1,'schoen.ariane@yahoo.com','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `clients` VALUES (2,'may52@caspergorczany.org','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `clients` VALUES (3,'ferne90@murray.com','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `clients` VALUES (4,'jherman@gmail.com','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `clients` VALUES (5,'ruecker.derrick@gmail.com','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `clients` VALUES (6,'virgie99@mcglynn.com','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `clients` VALUES (7,'chyna10@yahoo.com','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `clients` VALUES (8,'crunolfsson@gmail.com','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `clients` VALUES (9,'sjohns@renner.net','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `clients` VALUES (10,'gail.hegmann@yahoo.com','2014-10-14 07:39:54','2014-10-14 07:39:54');
 /*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,6 +216,9 @@ INSERT INTO `migrations` VALUES ('2014_10_09_131639_create_client_workshop_table
 INSERT INTO `migrations` VALUES ('2014_10_09_162425_create_services_table',4);
 INSERT INTO `migrations` VALUES ('2014_09_03_153611_create_admin_table',5);
 INSERT INTO `migrations` VALUES ('2014_09_03_153611_create_client_table',5);
+INSERT INTO `migrations` VALUES ('2014_10_13_151421_add_Verified_To_ServiceProviders',6);
+INSERT INTO `migrations` VALUES ('2014_10_14_095936_create_workshop_types_table',7);
+INSERT INTO `migrations` VALUES ('2014_10_14_124211_add_food_to_workshops',8);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16340,10 +16363,11 @@ CREATE TABLE `serviceProviders` (
   `latitude` double DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `verified` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `serviceproviders_email_unique` (`email`),
   KEY `serviceproviders_longitude_latitude_index` (`longitude`,`latitude`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16352,13 +16376,16 @@ CREATE TABLE `serviceProviders` (
 
 LOCK TABLES `serviceProviders` WRITE;
 /*!40000 ALTER TABLE `serviceProviders` DISABLE KEYS */;
-INSERT INTO `serviceProviders` VALUES (4,'0','Fitness & Nutrition','','808098908','123','89','Queens','Rd','Melbourne','VIC',3004,'080989080','',0,NULL,'litao','shen','litaoshen_0315@hotmail.com',145.2277374,-38.2073102,'2014-10-09 05:55:28','2014-10-09 05:55:28');
-INSERT INTO `serviceProviders` VALUES (5,'0','Family Law','','0980980','87','74','Queens','St','Melbourne','VIC',3004,'0980080','',0,'','litaoss','shen','litaoshen0315@gmail.com',144.979558,-37.852241,'2014-10-09 05:58:58','2014-10-12 19:54:32');
-INSERT INTO `serviceProviders` VALUES (6,'0','Fitness & Nutrition','','0809808','101','185',' Pelham','Street','Carlton','VIC',3053,'10898','',0,NULL,'hhh','hhhh','423860200@qq.com',144.9599996,-37.8023753,'2014-10-09 07:37:06','2014-10-09 07:37:06');
-INSERT INTO `serviceProviders` VALUES (7,'1','Mental Wellbeing, Counselling','123445',NULL,'Nihil in deserunt ipsum cum corrupti lorem aut explicabo Deserunt eiusmod rerum maxime sequi pariatur Duis nisi modi veniam rerum','324','collins','st','Melbourne','Vic',3000,'18789797','7279878979',1,NULL,'Blake','Henderson','cypazafi@gmail.com',144.9635913,-37.816271,'2014-10-11 18:19:45','2014-10-11 18:19:45');
-INSERT INTO `serviceProviders` VALUES (8,'0','Financial Advice',NULL,'Sequi doloremque porro sed porro porro non aliquam ipsum itaque nobis','123','779','Collins','St','Melbourne','VIC',3000,'45','79',0,NULL,'Colton','Hooper','dogokyli@yahoo.com',144.9639718,-37.8161782,'2014-10-13 01:09:14','2014-10-13 01:09:14');
-INSERT INTO `serviceProviders` VALUES (9,'1','Mental Wellbeing, Counselling','08990808',NULL,'102','983','Collins','St','Melbourne','Vic',3000,'87','68',1,NULL,'Zenia','Crane','fizepegyz@yahoo.com',144.9639718,-37.8161782,'2014-10-13 01:12:03','2014-10-13 01:12:03');
-INSERT INTO `serviceProviders` VALUES (10,'0','Mental Wellbeing, Counselling',NULL,'898098908','102','983','Collins','St','Melbourne','Vic',3000,'93','53',1,NULL,'Zenia','Crane','fizepegjlyz@yahoo.com',144.9639718,-37.8161782,'2014-10-13 01:14:04','2014-10-13 01:14:04');
+INSERT INTO `serviceProviders` VALUES (4,'0','Fitness & Nutrition','','808098908','123','89','Queens','Rd','Melbourne','VIC',3004,'080989080','',0,NULL,'litao','shen','litaoshen_0315@hotmail.com',145.2277374,-38.2073102,'2014-10-09 05:55:28','2014-10-09 05:55:28',0);
+INSERT INTO `serviceProviders` VALUES (5,'0','Family Law','','0980980','87','74','Queens','St','Melbourne','VIC',3004,'0980080','',0,'','litaoss','shen','litaoshen0315@gmail.com',144.979558,-37.852241,'2014-10-09 05:58:58','2014-10-12 19:54:32',1);
+INSERT INTO `serviceProviders` VALUES (6,'0','Fitness & Nutrition','','0809808','101','185',' Pelham','Street','Carlton','VIC',3053,'10898','',0,NULL,'hhh','hhhh','423860200@qq.com',144.9599996,-37.8023753,'2014-10-09 07:37:06','2014-10-09 07:37:06',0);
+INSERT INTO `serviceProviders` VALUES (7,'1','Mental Wellbeing, Counselling','123445',NULL,'Nihil in deserunt ipsum cum corrupti lorem aut explicabo Deserunt eiusmod rerum maxime sequi pariatur Duis nisi modi veniam rerum','324','collins','st','Melbourne','Vic',3000,'18789797','7279878979',1,NULL,'Blake','Henderson','cypazafi@gmail.com',144.9635913,-37.816271,'2014-10-11 18:19:45','2014-10-11 18:19:45',0);
+INSERT INTO `serviceProviders` VALUES (8,'0','Financial Advice',NULL,'Sequi doloremque porro sed porro porro non aliquam ipsum itaque nobis','123','779','Collins','St','Melbourne','VIC',3000,'45','79',0,NULL,'Colton','Hooper','dogokyli@yahoo.com',144.9639718,-37.8161782,'2014-10-13 01:09:14','2014-10-13 01:09:14',0);
+INSERT INTO `serviceProviders` VALUES (9,'1','Mental Wellbeing, Counselling','08990808',NULL,'102','983','Collins','St','Melbourne','Vic',3000,'87','68',1,'Real World','Zenia','Crane','fizepegyz@yahoo.com',144.9639718,-37.8161782,'2014-10-13 01:12:03','2014-10-13 01:12:03',0);
+INSERT INTO `serviceProviders` VALUES (10,'0','Mental Wellbeing, Counselling',NULL,'898098908','102','983','Collins','St','Melbourne','Vic',3000,'93','53',1,NULL,'Zenia','Crane','fizepegjlyz@yahoo.com',144.9639718,-37.8161782,'2014-10-13 01:14:04','2014-10-13 01:14:04',0);
+INSERT INTO `serviceProviders` VALUES (11,'1','Financial Advice','80980980',NULL,'76','127','Leicester ','ST','Carlton','VIC',3053,'989080809','59',1,'yuuiiyi','Brennan','Evans','lesote@hotmail.com',144.960203,-37.802893,'2014-10-14 03:47:00','2014-10-14 03:47:00',0);
+INSERT INTO `serviceProviders` VALUES (12,'1','Accommodation for Domestic Violence Victims','9080808',NULL,'127','127','Leicester','St','Melbourne','VIC',3053,'26089080','51',0,'Uni Melb','Bryar','Calderon','sejysydo@yahoo.com',144.9604386,-37.8029381,'2014-10-14 03:50:00','2014-10-14 03:50:00',0);
+INSERT INTO `serviceProviders` VALUES (13,'1','Fitness & Nutrition','0980808',NULL,'302','127 ','Leicester','St','Carlton','VIC',3053,'890808908','80',0,'Hello Company','Cooper','Molina','dybewub@hotmail.com',144.960203,-37.802893,'2014-10-14 03:59:39','2014-10-14 03:59:39',0);
 /*!40000 ALTER TABLE `serviceProviders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16448,7 +16475,7 @@ CREATE TABLE `tickets` (
   UNIQUE KEY `tickets_ticketnumber_unique` (`ticketNumber`),
   KEY `tickets_workshop_id_foreign` (`workshop_id`),
   CONSTRAINT `tickets_workshop_id_foreign` FOREIGN KEY (`workshop_id`) REFERENCES `workshops` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16457,6 +16484,16 @@ CREATE TABLE `tickets` (
 
 LOCK TABLES `tickets` WRITE;
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
+INSERT INTO `tickets` VALUES (1,6,'TR','TR6543d6dfa11a80','1','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `tickets` VALUES (2,6,'TR','TR6543d6dfa14be8','2','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `tickets` VALUES (3,6,'TR','TR6543d6dfa6d9f7','3','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `tickets` VALUES (4,6,'TR','TR6543d6dfa6ed25','4','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `tickets` VALUES (5,6,'TR','TR6543d6dfa6fd20','5','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `tickets` VALUES (6,6,'TR','TR6543d6dfa70e06','6','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `tickets` VALUES (7,6,'TR','TR6543d6dfa71b1c','7','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `tickets` VALUES (8,6,'TR','TR6543d6dfa72861','8','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `tickets` VALUES (9,6,'TR','TR6543d6dfa7356e','9','2014-10-14 07:39:54','2014-10-14 07:39:54');
+INSERT INTO `tickets` VALUES (10,6,'TR','TR6543d6dfa742fb','10','2014-10-14 07:39:54','2014-10-14 07:39:54');
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16488,7 +16525,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `users_activation_code_index` (`activation_code`),
   KEY `users_reset_password_code_index` (`reset_password_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16497,14 +16534,17 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (4,'litaoshen_0315@hotmail.com','$2y$10$sN22jCl/6bzeR7PzWnyuROsiB0P0HqvZOM5xE2aE6JubtypNYA7nm',NULL,0,'LzpSjsFjYFBscsiXfizXJr4yCDrhlsLeWcJiYoZbnh',NULL,NULL,NULL,NULL,'litao','shen','2014-10-09 05:55:28','2014-10-09 05:55:28',4,'ServiceProvider');
-INSERT INTO `users` VALUES (5,'litaoshen0315@gmail.com','$2y$10$Ovc049psJD.fTr7VJTGdz.8ZAt929HQls3V84Fy.jwQV.EuH.7FQK',NULL,1,NULL,'2014-10-09 06:05:51','2014-10-13 03:35:33','$2y$10$J5zI925UFL2lVtPlSP9dbuAGPzlVH4J3JalXgbg9G9RxLkEjvUVq2',NULL,'litao','shen','2014-10-09 05:58:58','2014-10-13 03:35:33',5,'ServiceProvider');
+INSERT INTO `users` VALUES (4,'litaoshen_0315@hotmail.com','$2y$10$sN22jCl/6bzeR7PzWnyuROsiB0P0HqvZOM5xE2aE6JubtypNYA7nm',NULL,1,'LzpSjsFjYFBscsiXfizXJr4yCDrhlsLeWcJiYoZbnh',NULL,NULL,NULL,NULL,'litao','shen','2014-10-09 05:55:28','2014-10-09 05:55:28',4,'ServiceProvider');
+INSERT INTO `users` VALUES (5,'litaoshen0315@gmail.com','$2y$10$Ovc049psJD.fTr7VJTGdz.8ZAt929HQls3V84Fy.jwQV.EuH.7FQK',NULL,1,NULL,'2014-10-09 06:05:51','2014-10-14 13:06:55','$2y$10$yEzpOVOx1KQ6GbYwXhpIauTyncfGDRjkwyIKdcJ0E027eX.jjrCuS',NULL,'litao','shen','2014-10-09 05:58:58','2014-10-14 13:06:55',5,'ServiceProvider');
 INSERT INTO `users` VALUES (6,'423860200@qq.com','$2y$10$KuEktBdN4raYcfTOhojjQ.NEfbMo2jd3aOjD0NFLbWNH5isVkRdZy',NULL,0,'yV43jPwqbTYwSbiTUSXT511BA7kqiuXypZJXi0aQCO',NULL,NULL,NULL,NULL,'hhh','hhhh','2014-10-09 07:37:06','2014-10-09 07:37:06',6,'ServiceProvider');
 INSERT INTO `users` VALUES (7,'cypazafi@gmail.com','$2y$10$mVfIVrNXDvKx6Zz0XlBEHu3AzdpE3ZWfHxnNCs71jteKncAoQrmuG',NULL,0,'KQXvPXuaiUB9h1fOYJNE1MODCylqScFogtYEyA6om2',NULL,NULL,NULL,NULL,'Blake','Henderson','2014-10-11 18:19:45','2014-10-11 18:19:45',7,'ServiceProvider');
 INSERT INTO `users` VALUES (8,'dogokyli@yahoo.com','$2y$10$oipRs8RJlOccElgEUxzky.k9EKnvkLgIVzyxfDRqNFJnH/s/w0N0C',NULL,1,NULL,NULL,NULL,NULL,NULL,'Colton','Hooper','2014-10-13 01:09:14','2014-10-13 01:09:14',8,'ServiceProvider');
 INSERT INTO `users` VALUES (9,'fizepegyz@yahoo.com','$2y$10$ClBINIHbj6w/jjBtgB7WJeXuqhqxm5LUUmQ7vRF4noUd0AI6w47Ia',NULL,1,NULL,NULL,'2014-10-13 01:15:30','$2y$10$yEF5CYJjdZf4rTsEMiZp2e2ZJNtDaeew/ZFYfYAx5mT4I8bD3pf/S',NULL,'Zenia','Crane','2014-10-13 01:12:03','2014-10-13 01:15:30',9,'ServiceProvider');
 INSERT INTO `users` VALUES (10,'fizepegjlyz@yahoo.com','$2y$10$fSBG0zyVfNYYWfz7uOcy3entiZ2/zgbn/PDmUDjx7IphtaXzgz6Sm',NULL,1,'WqktzM4MA6Ly9iYTmv7ymWCCsBOHecZrQ0rG5GBFoN',NULL,NULL,NULL,NULL,'Zenia','Crane','2014-10-13 01:14:04','2014-10-13 01:14:04',10,'ServiceProvider');
-INSERT INTO `users` VALUES (12,'zprosacco@herzogbergstrom.com','$2y$10$/JgiI5.EnISIzi7km9s4N.fdZ3I7U86KHD7hZolIvYE7K1uhewoqS',NULL,1,NULL,NULL,'2014-10-13 04:07:39','$2y$10$NAAzLzh8c2OD4DJAkJAtR.FH/dsAp.y2tGzDa592ntk21X/ZgboTS',NULL,'Marilou','Stroman','2014-10-13 04:04:42','2014-10-13 04:07:39',2,'Administrator');
+INSERT INTO `users` VALUES (12,'zprosacco@herzogbergstrom.com','$2y$10$/JgiI5.EnISIzi7km9s4N.fdZ3I7U86KHD7hZolIvYE7K1uhewoqS',NULL,1,NULL,NULL,'2014-10-13 14:59:06','$2y$10$QsXl6earifhjViI8YrEdG.dq5AGL0FQ2uw5Kmg9LN04gvZ9/2/O8O',NULL,'Marilou','Stroman','2014-10-13 04:04:42','2014-10-13 14:59:06',2,'Administrator');
+INSERT INTO `users` VALUES (13,'lesote@hotmail.com','$2y$10$CdOWFTz84X4MvDNCDFGyhuOnnF/3dAExtW6heY3G6jMMmsZVpbIh6',NULL,1,'zmIeDLBb912iHYasdnkwt4NxaXB2W13AaV6PjY3gpK',NULL,NULL,NULL,NULL,'Brennan','Evans','2014-10-14 03:47:00','2014-10-14 03:47:01',11,'ServiceProvider');
+INSERT INTO `users` VALUES (14,'sejysydo@yahoo.com','$2y$10$.rOz76RvAoxKmtR8GMSQUuTpSnKTsJuEOhKIrLfVMyrHHoGiI/xii',NULL,1,'M29xRYOT69uooj2cSp0rUIgTIw0Usq8mOZSKhYiABc',NULL,NULL,NULL,NULL,'Bryar','Calderon','2014-10-14 03:50:00','2014-10-14 03:50:00',12,'ServiceProvider');
+INSERT INTO `users` VALUES (15,'dybewub@hotmail.com','$2y$10$Y1nBl4kXo7z6VDHCYAl49Or0xGPj3jX2yUd7LmUntP./LNN1AvRb6',NULL,1,'nE9f8QvcG31yzAaTjV03E0SYH4hCC5K5bcqlr1V4XF',NULL,NULL,NULL,NULL,'Cooper','Molina','2014-10-14 03:59:40','2014-10-14 03:59:40',13,'ServiceProvider');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16532,6 +16572,9 @@ INSERT INTO `users_groups` VALUES (5,2);
 INSERT INTO `users_groups` VALUES (9,2);
 INSERT INTO `users_groups` VALUES (10,2);
 INSERT INTO `users_groups` VALUES (12,1);
+INSERT INTO `users_groups` VALUES (13,2);
+INSERT INTO `users_groups` VALUES (14,2);
+INSERT INTO `users_groups` VALUES (15,2);
 /*!40000 ALTER TABLE `users_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16554,7 +16597,7 @@ CREATE TABLE `workshopAdvertisements` (
   PRIMARY KEY (`id`),
   KEY `workshopadvertisements_workshop_id_foreign` (`workshop_id`),
   CONSTRAINT `workshopadvertisements_workshop_id_foreign` FOREIGN KEY (`workshop_id`) REFERENCES `workshops` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16563,8 +16606,42 @@ CREATE TABLE `workshopAdvertisements` (
 
 LOCK TABLES `workshopAdvertisements` WRITE;
 /*!40000 ALTER TABLE `workshopAdvertisements` DISABLE KEYS */;
-INSERT INTO `workshopAdvertisements` VALUES (1,1,'2014-10-07','2014-10-11','premium',0,'2014-10-12 21:48:35','2014-10-12 21:48:35');
+INSERT INTO `workshopAdvertisements` VALUES (1,1,'2014-10-07','2014-10-11','premium',1,'2014-10-12 21:48:35','2014-10-12 21:48:35');
+INSERT INTO `workshopAdvertisements` VALUES (2,5,'2014-10-14','2014-10-17','premium',0,'2014-10-14 01:35:30','2014-10-14 01:35:30');
 /*!40000 ALTER TABLE `workshopAdvertisements` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `workshop_types`
+--
+
+DROP TABLE IF EXISTS `workshop_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `workshop_types` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `workshop_types`
+--
+
+LOCK TABLES `workshop_types` WRITE;
+/*!40000 ALTER TABLE `workshop_types` DISABLE KEYS */;
+INSERT INTO `workshop_types` VALUES (7,'Domestic Violence','DV','2014-10-13 23:14:27','2014-10-13 23:14:27');
+INSERT INTO `workshop_types` VALUES (8,'Education & Training','TR','2014-10-13 23:14:27','2014-10-13 23:14:27');
+INSERT INTO `workshop_types` VALUES (9,'Financial Advice','FA','2014-10-13 23:14:27','2014-10-13 23:14:27');
+INSERT INTO `workshop_types` VALUES (10,'Fitness & Nutrition','FN','2014-10-13 23:14:27','2014-10-13 23:14:27');
+INSERT INTO `workshop_types` VALUES (11,'Legal','FL','2014-10-13 23:14:27','2014-10-13 23:14:27');
+INSERT INTO `workshop_types` VALUES (12,'Mental Wellbeing & Counselling','PC','2014-10-13 23:14:27','2014-10-13 23:14:27');
+INSERT INTO `workshop_types` VALUES (13,'Other','OTH','2014-10-13 23:14:27','2014-10-13 23:14:27');
+/*!40000 ALTER TABLE `workshop_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -16597,10 +16674,11 @@ CREATE TABLE `workshops` (
   `latitude` double DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `food` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `workshops_service_provider_id_longitude_latitude_index` (`service_provider_id`,`longitude`,`latitude`),
   CONSTRAINT `workshops_service_provider_id_foreign` FOREIGN KEY (`service_provider_id`) REFERENCES `serviceProviders` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16609,8 +16687,10 @@ CREATE TABLE `workshops` (
 
 LOCK TABLES `workshops` WRITE;
 /*!40000 ALTER TABLE `workshops` DISABLE KEYS */;
-INSERT INTO `workshops` VALUES (NULL,1,5,'jljkj','jlkjlkjl','123','106','collins','st','Melbourne','Vic',3000,'2014-10-11','10:10:00','18:10:00',123,123,123.00,144.969698,-37.814223,'2014-10-09 16:47:35','2014-10-09 16:47:35');
-INSERT INTO `workshops` VALUES (NULL,3,5,'Sed asperiores pariatur Quam et tempore quis tenetur aut autem','Sit ut excepteur sunt eius ea vitae porro est in itaque doloremque praesentium perspiciatis eligendi et voluptas consequat','88','127','collins','st','Melbourne','Vic',3000,'2014-10-13','17:55:00','17:55:00',461,461,12.00,144.9695546,-37.8146859,'2014-10-12 19:57:02','2014-10-12 19:57:02');
+INSERT INTO `workshops` VALUES ('PC',1,5,'jljkj','jlkjlkjl','123','106','collins','st','Melbourne','Vic',3000,'2014-10-11','10:10:00','18:10:00',123,123,123.00,144.969698,-37.814223,'2014-10-09 16:47:35','2014-10-09 16:47:35',0);
+INSERT INTO `workshops` VALUES ('FA',4,5,'lkjljlkjlkjl','Ut dolorum accusantium eius iusto fuga Possimus sed ratione dolor exercitation fuga Non adipisicing quas est','804','127','collins','st','Melbourne','VIC',3000,'2014-08-15','23:00:00','21:00:00',465,465,261.00,144.9695546,-37.8146859,'2014-10-14 00:10:01','2014-10-14 00:10:01',0);
+INSERT INTO `workshops` VALUES ('PC',5,5,'Consectetur explicabo Nesciunt commodo in minus aliquam odio ut eos cupidatat eos','Labore cumque nostrud labore officiis nihil','909','765','Collins','ST','Melbourne','VIC',3000,'2014-10-17','01:12:00','06:12:00',554,554,804.00,144.9639718,-37.8161782,'2014-10-14 00:13:37','2014-10-14 00:42:40',0);
+INSERT INTO `workshops` VALUES ('TR',6,5,'Come here & join us','Similique voluptatem aut deserunt possimus, id, in nihil aperiam ut sapiente deserunt magnam nemo.','800','744','Collins','St','Melbourne','VIC',3000,'2014-10-16','01:45:00','02:45:00',399,399,199.00,144.9639718,-37.8161782,'2014-10-14 02:46:22','2014-10-14 02:46:22',1);
 /*!40000 ALTER TABLE `workshops` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -16623,4 +16703,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-14  2:26:49
+-- Dump completed on 2014-10-15 16:33:15

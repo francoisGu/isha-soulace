@@ -13,7 +13,7 @@
 
           <a id="profilePage" href="{{ URL::to('serviceProviders/' . Sentry::getUser()->id) }}" class="list-group-item active">Profile</a>
 
-            <a id="advertiseWSPage" href="advertise" class="list-group-item">Advertise a new workshop</a>
+          <!--<a id="advertiseWSPage" href="advertise" class="list-group-item">Advertise a new workshop</a>-->
 
             <a id="myWorkshopsPage" href="{{ URL::to('/myworkshops/') }}" class="list-group-item">My workshops</a>
             <a id="reviewPage" href="review" class="list-group-item">Review the website</a>

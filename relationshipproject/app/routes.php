@@ -17,7 +17,15 @@ Route::group(['before' => 'sentry|serviceProviders'], function(){
     Route::resource('serviceProviders', 'ServiceProvidersController');
     Route::resource('workshopAdvertisements', 'WorkshopAdvertisementsController');
     Route::resource('workshops', 'WorkshopsController');
-    Route::get('/myworkshops', 'WorkshopsController@getMyWorkshops');
+
+    Route::group(['prefix' => 'myworkshops'], function(){
+
+        Route::get('/', 'WorkshopsController@getMyWorkshops');
+        Route::get('/myclients/', 'ClientsController@getClients');
+        Route::post('/myclients/', 'ClientsController@searchClients');
+
+    });
+
 });
 
 # Admin Routes
@@ -30,10 +38,23 @@ Route::group(['before' => 'sentry|admin'], function(){
 
 Route::when('admin/*', 'admin');
 
-Route::get('/', function()
-{
-    return Redirect::to('home');//View::make('home');
+Route::get('ad', function(){
+
+    return View::make('serviceProvider.advertiseWS');
+
 });
+
+Route::group(['prefix' => 'workshoplist'], function(){
+
+    Route::get('/', 'WorkshopsController@getWorkshoplist');
+    Route::post('/', 'WorkshopsController@searchWorkshop');
+
+});
+
+Route::get('/', function()
+    {
+        return Redirect::to('home');//View::make('home');
+    });
 
 Route::controller('services','ServiceFormController');
 

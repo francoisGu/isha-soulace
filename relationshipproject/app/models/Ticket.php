@@ -19,15 +19,22 @@ class Ticket extends \Eloquent {
         if(is_null($workshop)){
             return Response::make("the workshop doesn't exist");
         }
+
         $ticketNumber = uniqid($workshop->class . $workshop_id);
+
 
         $client = new Client(array('email' => $client_email));
 
         // attach client to workshop
         $workshop->clients()->save($client);
 
-        Ticket::create(array('workshop_id' => $workshop_id, 'class' => '$workshop->class', 'ticketNumber' => $ticketNumber, 'client_id' => $client_id) );
-
+        // create a new ticket and store to db
+        $ticket = Ticket::create(array(
+            'workshop_id' => $workshop->id, 
+            'class' => $workshop->class, 
+            'ticketNumber' => $ticketNumber, 
+            'client_id' => $client->id
+        ));
 
         return Response::make('Ticket generated.');
     }

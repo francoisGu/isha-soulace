@@ -4,9 +4,6 @@ class ServiceProvidersController extends \BaseController {
 
     public function __construct() {
         $this->beforeFilter('csrf',  array('on'=>'post'));
-
-        $this->beforeFilter('sentry', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy')));
-        $this->beforeFilter('serviceProviders', array('only'=>array('create', 'store', 'show','edit', 'update', 'destroy')));
     }
 
 
@@ -42,7 +39,7 @@ class ServiceProvidersController extends \BaseController {
 	 * POST /serviceproviders
 	 *
 	 * @return Response
-	 */
+	Sign out */
 	public function store()
 	{
 		//
@@ -85,7 +82,7 @@ class ServiceProvidersController extends \BaseController {
 	{
         $sp = ServiceProvider::find($id);
         
-        return View::make('serviceProviders.edit')->with('sp', $sp); 
+        return View::make('serviceProviders.show')->with('sp', $sp); 
 		//
 	}
 

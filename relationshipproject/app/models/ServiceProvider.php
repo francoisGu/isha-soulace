@@ -21,4 +21,5 @@ class ServiceProvider extends \Eloquent {
         return $this->belongsToMany('Client');
     }
 
+
 }

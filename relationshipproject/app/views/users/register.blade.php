@@ -38,15 +38,15 @@
 {{ Former::password('password_confirmation','Confirm Password')->class('input-xlarge inputHeight form-control')->placeholder('Confirm Password')->required() }}
 
 
-{{ Former::text('first_name','first name')->class('input-large inputHeight form-control')->placeholder('First Name')->required() }}
+{{ Former::text('first_name','First Name')->class('input-large inputHeight form-control')->placeholder('First Name')->required() }}
 
-{{ Former::text('last_name','last name')->class('input-large inputHeight form-control')->placeholder('Last Name')->required() }}
+{{ Former::text('last_name','Last Name')->class('input-large inputHeight form-control')->placeholder('Last Name')->required() }}
 
 
 {{ Former::inline_radios('identity')->radios(array('Individual' =>array( 'name'=>'identity','checked'=>'checked'), 'Company' => array('name'=>'identity', 'checked'=>'')))->onchange('change()') }}
 
 <div id='company_part' style="display:none;">
-    {{ Former::text('companyname','Company Name')->class('input-xlarge inputHeight form-control company')->placeholder('Company Name')->required()}}
+    {{ Former::text('companyName')->id('companyName')->label('Company Name')->class('input-xlarge inputHeight form-control company')->placeholder('Company Name')->required()}}
 
     {{ Former::text('acn')->label('ACN')->class('input-medium inputHeight form-control company')->placeholder('ACN')->required()}}
 </div>
@@ -119,7 +119,7 @@
 
             $('#individual_part').empty();
             $('#company_part').empty();
-            $('#company_part').append('<div class="control-group required"><label for="companyname" class="control-label">Company Name<sup>*</sup></label><div class="controls"><input class="input-xlarge inputHeight form-control company" placeholder="Company Name" required="true" id="companyname" type="text" name="companyname"></div></div><div class="control-group required"><label for="acn" class="control-label">ACN<sup>*</sup></label><div class="controls"><input class="input-medium inputHeight form-control company" placeholder="ACN" required="true" id="acn" type="text" name="acn"></div></div></div>');
+            $('#company_part').append('<div class="control-group required"><label for="companyName" class="control-label">Company Name<sup>*</sup></label><div class="controls"><input class="input-xlarge inputHeight form-control company" placeholder="Company Name" required="true" id="companyName" type="text" name="companyName"></div></div><div class="control-group required"><label for="acn" class="control-label">ACN<sup>*</sup></label><div class="controls"><input class="input-medium inputHeight form-control company" placeholder="ACN" required="true" id="acn" type="text" name="acn"></div></div></div>');
 
 
 

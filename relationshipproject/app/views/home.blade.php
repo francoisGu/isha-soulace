@@ -89,7 +89,8 @@
 		<a href="services/fitnessandnutition" class="list-group-item">Fitness & Nutrition &raquo;</a>
 		<a href="services/mentalwellbeing" class="list-group-item">Mental Wellbeing, Counselling &raquo;</a>
 		<a href="services/financialadvice" class="list-group-item">Financial Advice &raquo;</a>
-		<a href="#" class="list-group-item">Workshops &raquo;</a>
+
+		<a href="/workshoplist" class="list-group-item">Workshops &raquo;</a>
 	  </div>
 	</div>
   </div>

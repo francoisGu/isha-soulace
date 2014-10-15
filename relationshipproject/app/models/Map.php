@@ -212,6 +212,36 @@ mapCentre.lng())
     }
 
 
+    /*
+     * return a list of items around $postcode within $range
+     */
+    public static function expandRange($type, $postcode, $range){
+
+        $expand = [];
+        //$workshops = Workshop::get(array('latitude','longitude'))->lists('id');
+
+        if($postcode != ""){
+            $pos = Map::getPositionByPostcode($postcode); 
+
+            $all = $type::all();
+
+            foreach($all as $single){
+
+                $lat = $single->latitude;
+                $lon = $single->longitude;
+                $dist = Map::calc_dist($lat, $lon, $pos['lat'], $pos['lon']);
+
+                if($dist <= $range){
+                    array_push($expand, $single); 
+                }
+            }
+        }
+
+
+        return $expand;
+
+    }
+
 
 }
 ?>

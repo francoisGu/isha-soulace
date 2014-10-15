@@ -11,10 +11,12 @@ class ServiceProvidersTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			ServiceProvider::create([
+            
+            $user = new User;
+            $registerInfo = array();
+            $user->register('ServiceProvider', $registerInfo);
 
-			]);
-		}
+        }
 	}
 
 }

@@ -47,7 +47,7 @@
           <div class="control-group">
             <label class="control-label" for="submit"></label>
             <div class="controls">
-              {{ Form::submit('Login', array('class'=>'btn btn-success'))}}
+              {{ Form::submit('Login', array('class'=>'btn btn-success '))}}
             </div>
           </div>
           {{ Former::close()}}

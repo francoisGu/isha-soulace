@@ -7,13 +7,13 @@ class ClientsTableSeeder extends Seeder {
 
 	public function run()
 	{
+        DB::table('tickets')->delete();
+        DB::table('clients')->delete();
 		$faker = Faker::create();
 
 		foreach(range(1, 10) as $index)
 		{
-			Client::create([
-
-			]);
+		    Ticket::generateTicket(6, $faker->email);	
 		}
 	}
 

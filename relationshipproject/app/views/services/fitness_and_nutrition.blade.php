@@ -162,3 +162,15 @@
 }}
 {{ Former::close(); }}
 </div>
+ <script>
+   function change() {
+ 	var radio = document.getElementsByName('unit');
+ 	if (radio[0].checked) {
+ 	  document.getElementById('cm_part').style.display = '';
+ 	  document.getElementById('feet_and_inches_part').style.display = 'none';
+ 	} else if (radio[1].checked) {
+ 	  document.getElementById('cm_part').style.display = 'none';
+ 	  document.getElementById('feet_and_inches_part').style.display = '';	  
+ 	}
+   }
+ </script>

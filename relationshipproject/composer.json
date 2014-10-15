@@ -38,7 +38,6 @@
         ],
         "post-update-cmd": [
             "php artisan clear-compiled",
-            "php artisan ide-helper:generate",
             "php artisan asset:publish frozennode/administrator",
             "php artisan optimize"
         ],

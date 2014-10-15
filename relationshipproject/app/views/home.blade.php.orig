@@ -1,248 +1,308 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="http://localhost:8000/favicon.ico">
 
-    <title>Off Canvas Template for Bootstrap</title>
+@extends('layouts.main')
 
-    {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/offcanvas.css') }}
+@section('title')
+<title>Isha SoulAce - Home</title>
+@stop
 
-  </head>
+@section('main')
 
-  <body>
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Isha SoulAce</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href="#donate">Donate</a></li>
-            <li><a href="#sponsor">Sponsor</a></li>
-            <li><a href="#review">Review</a></li>
-          </ul>
+<!-- Begin page content -->
+<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 
+<!--<figure align='middle'>
+  {{ HTML::image('images/logo/Isha SoulAce_Red-Font.png', '',array('style' => 'height:100px')) }}
+</figure>-->
+<style>
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+z-index: 2;
+color: #555;
+background-color: #c9302c;
+border-color: white;
+color: white;
+}
+</style>
+<div class="row-fluid">
+<!--   Types of services & Domestic Violence -->
+  <div class="span9"><!--class="col-sm-9 col-sm-pull-3"  style="z-index:0;">-->
+  
+<!-- 	Types of Services -->
+	<div class="span4"><!--"col-sm-4 col-sm-pull-8">-->
+	  <div class="list-group">
+		<a id="family_law" href="services/familylaw" class="list-group-item">Family Law</a>
+		<a id="accommodation" href="services/accommodation" class="list-group-item">Accommodation</a>
+		<a id="fitness" href="services/fitnessandnutrition" class="list-group-item">Fitness & Nutrition</a>
+		<a id="mental_wellbeing" href="services/mentalwellbeing" class="list-group-item">Mental Wellbeing, Counselling</a>
+		<a id="financial_advice" href="services/financialadvice" class="list-group-item">Financial Advice</a>
+		<a id="mentors" href="services/mentors" class="list-group-item">Support Networks & Mentors</a>
+		<a href="#" class="list-group-item">Workshops</a>
+<!-- 		Domestic Violence Help Contact Numbers -->
+		<a id="help" class="list-group-item">
+		  <strong>Australia 24/7 Support Telephone Line</strong>
+		  <br>
+		  1800 RESPECT 
+		  <br>
+		  1800 737 732
+		</a>
+	  </div>
+	</div>
+<!-- 	Types of Domestic Violence -->
+	<div class="span8"><!--"col-sm-8 col-sm-push-4" >-->
+	  <div class="span4">
+      <h4>Psychological Abuse</h4>
+<!--       <p>name-calling, insults, constant criticism, silent treatment</p> -->
+	  <figure>
+		{{ HTML::image('img/psychological.png', '',array('style' => 'height:80px')) }}
+	  </figure>
+      <a id="emotional" class="btn btn-danger" style="margin-top:10px" onclick="showEmotional()" role="button">Seek help</a>
+    </div><!--/span-->
+    <div class="span4"> 
+      <h4>Financial Abuse</h4>
+<!--       <p>withholding money, forcing total control over victims earned income, forbidding employment</p> -->
+	  <figure>
+		{{ HTML::image('img/financial.png', '',array('style' => 'height:80px')) }}
+	  </figure>
+      <p><a id="financial" class="btn btn-danger" style="margin-top:10px" onclick="showFinancial()" role="button">Seek help</a></p>
+	</div><!--/span-->
+	<div class="span4">
+      <h4>Sexual Abuse</h4>
+<!--       <p>slapping, hitting, beating, kicking, arm twisting, punching, stabbing</p> -->
+	  <figure>
+		{{ HTML::image('img/sexual.png', '',array('style' => 'height:80px')) }}
+	  </figure>
+      <p><a id="physical" class="btn btn-danger" style="margin-top:10px" onclick="showPhysical()" role="button">Seek help</a></p>
+	</div><!--/span-->
+	<div class="span12 panel panel-danger"><!--well auth-box">-->
+	  <div class="panel-heading text-center"><h5><strong>IF YOU ARE IN IMMEDIATE DANGER AND UNSAFE</strong></h5></div>
+	  <div class="panel-body text-center"><strong>CALL POLICE NOW - "000"</strong></div>
+	</div>
+	<div class="span5">
+      <h4>Emotional Abuse</h4>
+<!--       <p>intimidation, damaging property, stalking, isolating from friends and family</p> -->
+	  <figure>
+		{{ HTML::image('img/emotional.png', '',array('style' => 'height:80px')) }}
+	  </figure>
+      <p><a id="psychological" class="btn btn-danger" style="margin-top:10px" onclick="showPsychological()" role="button">Seek help</a></p>
+    </div><!--/span-->
+	<div class="span5">
+      <h4>Physical Abuse</h4>
+<!--       <p>marital rape, forced sex after physical abuse, forced prostitution</p> -->
+	  <figure>
+		{{ HTML::image('img/physical.png', '',array('style' => 'height:80px')) }}
+	  </figure>
+      <p><a id="sexual" class="btn btn-danger" style="margin-top:10px" onclick="showSexual()" role="button">Seek help</a></p>
+    </div><!--/span--><!--
+		<div class="active col-6 col-sm-6 col-sm-3">
+      <h4>CONTACT HELP</h4>
+      <p>Police</p>
+    </div><!--/span-->
+	</div>
+
+<!-- 	Private Browsing Instructions -->
+	<div class="col-sm-12"> 
+	<h4>Private Browsing</h4>
+	<p>
+	  It is important that you remain safe and do not put yourself at risk of harm.
+	  You may not want anyone including your partner to know you have visited this website, either for safety, privacy or other reasons.
+	  One way is to remove traces on your browser. Click "Learn how" below for detailed instructions.
+	</p>
+	<p><a class="btn btn-default" href="privatebrowsing" role="button">Learn how</a></p>
+	</div>
+  </div>
+  
+  <!-- Workshop Advertisments -->
+  <div class="span3"><!--"col-sm-3 col-sm-push-9">-->
+  <div class="list-group">
+	  <a href="#" class="list-group-item">
+	    <h4 class="list-group-item-heading">Workshop Title  <span class="label label-danger pull-right">Featured</span></h4>
+	    <p class="list-group-item-text">
+			Date & Time:  <span class="label label-warning pull-right">Top Rated</span><br>
+			Venue:<br>
+			Price:<br>
+			RSVPs<br>
+			Food & Drinks Provided<br></p>
+	  </a>
+	  <a href="#" class="list-group-item">
+			<h4 class="list-group-item-heading">Workshop Title</h4>
+			<p class="list-group-item-text">
+			Date:<br>
+			Time:<br>
+			Venue:<br>
+			Price:<br>
+			RSVPs:<br></p>
+	  </a>
+	  <a href="#" class="list-group-item">
+			<h4 class="list-group-item-heading">Workshop Title</h4>
+			<p class="list-group-item-text">
+			Date & Time:<br>
+			Venue:<br>
+			Price:<br>
+			RSVPs<br></p>
+	  </a>
+	  <a href="#" class="list-group-item">
+			<h4 class="list-group-item-heading">Workshop Title</h4>
+			<p class="list-group-item-text">
+			Date & Time: <br>
+			Venue:<br>
+			Price:<br>
+			RSVPs<br></p>
+	  </a>
 <<<<<<< HEAD
-          <form class="navbar-form navbar-right" role="form">
-			<div class="form-group">
-			  <input type="text" placeholder="Email" class="form-control">
-			</div>
-			<div class="form-group">
-			  <input type="password" placeholder="Password" class="form-control">
-			</div>
-            <button type="submit" class="btn btn-success"> Sign in</button>
-            <a href="register" class="btn btn-success">Register</a>
+	</div>
+  </div>
+<!--   Types of services & Domestic Violence -->
+  <div class="col-md-9 col-md-pull-3">
+    <!--<div class="page-header" id="services">
+	  <h3>Find help for domestic violence!</h1>
+	</div>
+	<p>What problems are you facing? Find out which services you need and contact them.</p>--> 
+<!-- 	Types of Domestic Violence -->
+	<div class="col-md-8 col-md-push-4">
+	    <div class="col-6 col-sm-6 col-lg-3">
+      <h4>Emotional Abuse</h4>
+      <p>Legal services for family matters.</p>
+      <p><a class="btn btn-default" href="services/familylaw" role="button">Consult &raquo;</a></p>
+    </div><!--/span-->
+    <div class="col-6 col-sm-6 col-lg-3"> 
+      <h4>Financial Abuse</h4>
+      <p>Housing and lodgings</p>
+      <p><a class="btn btn-default" href="services/accommodation" role="button">Consult &raquo;</a></p>
+		</div><!--/span-->
+		<div class="col-6 col-sm-6 col-lg-3">
+      <h4>Physical Abuse</h4>
+      <p>Healthy exercise and diets</p>
+      <p><a class="btn btn-default" href="services/fitnessandnutrition" role="button">Consult &raquo;</a></p>
+		</div><!--/span-->
+		<div class="col-6 col-sm-6 col-lg-3">
+      <h4>Psychological Abuse</h4>
+      <p>Overcome psychological problems and build self esteem</p>
+      <p><a class="btn btn-default" href="services/mentalwellbeing" role="button">Consult &raquo;</a></p>
+    </div><!--/span-->
+		<div class="col-6 col-sm-6 col-lg-3">
+      <h4>Sexual Abuse</h4>
+      <p>Property settlement, mortage and other financial matters</p>
+      <p><a class="btn btn-default" href="services/financialadvice" role="button">Consult &raquo;</a></p>
+    </div><!--/span-->
+		<div class="col-6 col-sm-6 col-lg-3">
+      <h4>HELP</h4>
+      <p>Build skills for employment</p>
+      <p><a class="btn btn-default" href="#" role="button">Consult &raquo;</a></p>
+    </div><!--/span-->
+	</div>
+<!-- 	Types of Services -->
+	<div class="col-md-4 col-md-pull-8">
+	  <div class="list-group">
+		<a href="services/familylaw" class="list-group-item">Family Law &raquo;</a>
+		<a href="services/accommodation" class="list-group-item">Accommodation &raquo;</a>
+		<a href="services/fitnessandnutition" class="list-group-item">Fitness & Nutrition &raquo;</a>
+		<a href="services/mentalwellbeing" class="list-group-item">Mental Wellbeing, Counselling &raquo;</a>
+		<a href="services/financialadvice" class="list-group-item">Financial Advice &raquo;</a>
+
+		<a href="/workshoplist" class="list-group-item">Workshops &raquo;</a>
+	  </div>
 =======
-            <div class="form-group">
-          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get">
-                <!-- <input type="text" name="email" placeholder="Email" class="form-control"/> -->
-			    <!-- <input type="password" name="password" placeholder="Password" class="form-control"/> -->
-                    <input type="submit" value="Sign in" class="btn btn-success"/>
-            <!--<button type="submit" class="btn btn-success">Sign in</button>-->
->>>>>>> 8854ab0ebc7340f7cd90f12e839ce895392bd8a1
-          </form>
-          <form class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
-            <input type="submit" value="Register" class="btn btn-success"/>
-          </form>
-        </div>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
-
-    <div class="container">
-
-      <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-          <div class="jumbotron">
-            <h1>Isha SoulAce</h1>
-            <p>Helping you find the right service to assist in marriage and de facto relationship breakdowns</p>
-          </div>
-          
-              <!-- Begin page content -->
-    
-		  <div class="page-header">
-			<h3>Find help now</h1>
-		  </div>
-			<p>Select one of the services below to find a service to get help. If you don't know what you need, select one of the options on the left list below and the right services will be highlighted for you to choose.</p>
-			<br>
-          
-          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-          <div class="list-group">
-			<a href="#" class="list-group-item">Emotional Abuse</a>
-            <a href="#" class="list-group-item">Financial Abuse</a>
-            <a href="#" class="list-group-item">Physical Abuse</a>
-            <a href="#" class="list-group-item">Psychological Abuse</a>
-            <a href="#" class="list-group-item">Sexual Abuse</a>
-            <!--
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Emotional Abuse</h4>
-              <p class="list-group-item-text">Examples: name-calling, insults, constant criticism, silent treatment, manipulation to induce guilt</p>
-             </a>
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Financial Abuse</h4>
-			  <p class="list-group-item-text">Examples: withholding money, forcing total control over victims earned income, forbidding employment, justification for all money spent</p>
-			 </a>
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Physical Abuse</h4>
-			  <p class="list-group-item-text">Examples: pinching, slapping, hitting, beating, kicking, arm twisting, punching, stabbing, not giving food to eat, forcing drug/alcohol use</p>
-			 </a>
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Psychological Abuse</h4>
-			  <p class="list-group-item-text">Examples: intimidation, damaging property, stalking, isolating from friends, family</p>
-			  </a>
-            <a href="#" class="list-group-item">
-			  <h4 class="list-group-item-heading">Sexual Abuse</h4>
-			  <p class="list-group-item-text">Examples: coercing, marital rape, acquaintance rape, forced sex after physical abuse, forced prostitution</p>
-			 </a>
-			 -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6 col-sm-6 col-lg-4">
-            <h4>Family Law</h4>
-            <p>Legal services for family matters.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-<!--             </div><!--/span-->
-<!--             <div class="col-6 col-sm-6 col-lg-4"> -->
-            <h4>Accommodation for Domestic Violence Victims</h4>
-            <p>Housing and lodgings</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-<!--             </div><!--/span-->
-<!--             <div class="col-6 col-sm-6 col-lg-4"> -->
-            <h4>Fitness & Nutrition</h4>
-            <p>Healthy exercise and diets</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-		  </div><!--/span-->
-		  <div class="col-6 col-sm-6 col-lg-4">
-            <h4>Mental Wellbeing, Counselling</h4>
-            <p>Overcome psychological problems and build self esteem</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-<!--             </div><!--/span-->
-<!--             <div class="col-6 col-sm-6 col-lg-4"> -->
-            <h4>Financial Advice</h4>
-            <p>Property settlement, mortage and other financial matters</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-<!--             </div><!--/span-->
-<!--             <div class="col-6 col-sm-6 col-lg-4"> -->
-            <h4>Workshops</h4>
-            <p>Build skills for employment</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            <br>
-          </div><!--/span-->
-        </div><!--/row-->
-      </div><!--/span-->
-
-      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-        <div class="list-group">
-          <a href="#" class="list-group-item">
-		  <h4 class="list-group-item-heading">Workshop Title</h4>
-		  <p class="list-group-item-text">
-			Topic:<br>
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			Tickets left:<br>
-			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Topic:<br>
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			Tickets left:<br>
-			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Topic:<br>
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			Tickets left:<br>
-			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Topic:<br>
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			Tickets left:<br>
-			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Topic:<br>
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			Tickets left:<br>
-			Food & Drinks:<br></p>
-          </a>
-          <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Topic:<br>
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			Tickets left:<br>
-			Food & Drinks:<br></p>
-          </a>
-        </div>
-      </div><!--/span-->
-    </div><!--/row-->
-
-    
-
-    <footer>
-	  <p class="pull-right"><a href="#">Back to top</a></p>
-      <p>&copy; Company 2014</p>
-    </footer>
-
-    </div><!--/.container-->
+>>>>>>> e91507831ffcb077c695fc529055959691096c46
+	</div>
+  </div>
+</div>
 
 
+<!-- Controls the highlight effect for relevant services for specific types of domestic violence -->
+<script>
+// Toggles services for different types of domestic violence
+  function toggleEmotional() {
+	$("a#family_law").toggleClass("active");
+	$("a#fitness").toggleClass("active");
+	$("a#mental_wellbeing").toggleClass("active");
+  }
+  function togglePsychological() {
+	$("a#family_law").toggleClass("active");
+	$("a#fitness").toggleClass("active");
+	$("a#mental_wellbeing").toggleClass("active");
+	$("a#help").toggleClass("active");
+  }
+  function togglePhysicalAndSexual() {
+	$("a#family_law").toggleClass("active");
+	$("a#accommodation").toggleClass("active");
+	$("a#help").toggleClass("active");
+  }
+  
+  function toggleFinancial() {
+	$("a#family_law").toggleClass("active");
+	$("a#financial_advice").toggleClass("active");
+  }
+// Highlights emotional services
+  function showEmotional() {
+	if ($("a#physical").hasClass("active")) {
+	  showPhysical();
+	} else if ($("a#financial").hasClass("active")) {
+	  showFinancial();
+	} else if ($("a#psychological").hasClass("active")) {
+	  showPsychological();
+	} else if ($("a#sexual").hasClass("active")) {
+	  showSexual();
+	} 
+	$("a#emotional").toggleClass("active");
+	toggleEmotional();
+  }
+  
+  function showFinancial() {
+	if ($("a#physical").hasClass("active")) {
+	  showPhysical();
+	} else if ($("a#emotional").hasClass("active")) {
+	  showEmotional();
+	} else if ($("a#psychological").hasClass("active")) {
+	  showPsychological();
+	} else if ($("a#sexual").hasClass("active")) {
+	  showSexual();
+	}
+	$("a#financial").toggleClass("active");
+	toggleFinancial();
+	
+  }
+  function showPsychological() {
+	if ($("a#physical").hasClass("active")) {
+	  showPhysical();
+	} else if ($("a#financial").hasClass("active")) {
+	  showFinancial();
+	} else if ($("a#emotional").hasClass("active")) {
+	  showEmotional();
+	} else if ($("a#sexual").hasClass("active")) {
+	  showSexual();
+	}
+	$("a#psychological").toggleClass("active");
+	togglePsychological();
+}
+  
+  function showPhysical() {
+	if ($("a#emotional").hasClass("active")) {
+	  showEmotional();
+	} else if ($("a#financial").hasClass("active")) {
+	  showFinancial();
+	} else if ($("a#psychological").hasClass("active")) {
+	  showPsychological();
+	} else if ($("a#sexual").hasClass("active")) {
+	  showSexual();
+	}
+	$("a#physical").toggleClass("active");
+	togglePhysicalAndSexual();
+  }
+  
+  function showSexual() {
+	if ($("a#physical").hasClass("active")) {
+	  showPhysical();
+	} else if ($("a#financial").hasClass("active")) {
+	  showFinancial();
+	} else if ($("a#psychological").hasClass("active")) {
+	  showPsychological();
+	} else if ($("a#emotional").hasClass("active")) {
+	  showEmotional();
+	}
+	$("a#sexual").toggleClass("active");
+	togglePhysicalAndSexual();
+  }
+</script>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/offcanvas.js') }}
-  </body>
-</html>
+<hr>
+
+@stop

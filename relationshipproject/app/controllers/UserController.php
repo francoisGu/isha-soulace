@@ -108,6 +108,7 @@ class UsersController extends BaseController {
             'password'  => 'required|between:6,12'
         );
 
+
         $validator = Validator::make(Input::all(), $rules);
 
         if($validator->fails()){
@@ -116,13 +117,14 @@ class UsersController extends BaseController {
                 -> withInput(Input::except('password'));
         } else
         {
+
             $loginInfo = array(
                 'email'         => Input::get('email'),
                 'password'      => Input::get('password'),
                 'rememberme'    => Input::get('rememberme') );
 
             $loginMessage = $this->account->login($loginInfo);
-
+            
             if(Sentry::check()){
                 //dd($loginMessage['url']);
                 return Redirect::to($loginMessage['url'] . Sentry::getUser()->id)->with('message', 
@@ -130,7 +132,7 @@ class UsersController extends BaseController {
             } else {
                 return Redirect::to($loginMessage['url'])->withMessage($loginMessage['message']);
             }
-        }
+         }
 
     }
 

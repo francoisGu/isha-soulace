@@ -195,6 +195,8 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
     }
 
     public function login(array $loginInfo){
+        
+        $message = "";
 
         try
         {
@@ -209,7 +211,9 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
             $user = Sentry::authenticate($credentials, $rememberme?:false);
 
             $message = 'You are now logged in!';
+
             $user = Sentry::getUser()->userable;
+
             return ['url' => 'serviceProviders/', 'message' => $user->email];
 
 

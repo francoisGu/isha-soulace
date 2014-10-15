@@ -132,7 +132,6 @@ return array(
         'Payum\LaravelPackage\PayumServiceProvider',
         'Former\FormerServiceProvider',
         'Barryvdh\DomPDF\ServiceProvider',
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 	),
 

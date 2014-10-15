@@ -17,7 +17,6 @@
         "payum/payum":"*@stable",
         "anahkiasen/former": "dev-master",
         "barryvdh/laravel-dompdf": "0.4.*",
-        "barryvdh/laravel-ide-helper": "1.*",
         "fzaninotto/faker": "@stable"
     },
 

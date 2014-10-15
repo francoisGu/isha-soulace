@@ -2,7 +2,7 @@
 
 class ServiceFormController extends BaseController {
 
-    protected $layout = "layouts.default";
+    protected $layout = "layouts.default_forms";
     
 	public function getFamilylaw()
 	{
@@ -36,6 +36,46 @@ class ServiceFormController extends BaseController {
 	{
         $this->layout->title = 'Fitness & Nutrition - Isha SoulAce';
         $this->layout->content = View::make('services.fitness_and_nutrition');
+        
+	}
+	
+	public function getMentors() {
+	  $this->layout->title = 'Support Networks & Mentors';
+	  $this->layout->content = View::make('services.mentors');
+	}
+	
+	public function getOptions()
+	{
+        $this->layout->title = 'Your contact options - Isha SoulAce';
+        $this->layout->content = View::make('services.options');
+	
+	}
+	
+	public function postFamilylaw(){
+	
+		return Redirect::to('services/options');
+	}
+	public function postMentalwellbeing()
+	{
+		return Redirect::to('services/options');
+        
+	}
+	
+	public function postAccommodation()
+	{
+		return Redirect::to('services/options');
+        
+	}
+	
+	public function postFinancialadvice()
+	{
+		return Redirect::to('services/options');
+        
+	}
+	
+	public function postFitnessandnutrition()
+	{
+		return Redirect::to('services/options');
         
 	}
 

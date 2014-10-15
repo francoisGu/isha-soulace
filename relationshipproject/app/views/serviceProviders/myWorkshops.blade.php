@@ -51,6 +51,7 @@
         <div class="row">
 
             <div class="col-lg-6 ">
+                <!-- <a class="btn btn-small btn-success" href="{{ URL::to('workshops/create') }}">New Workshop</a> -->
              
                 <label class="form-inline">Service Type: <select id="selectWorkshop" class="form-control input-sm"><option value=""></option></select></label>
             </div>

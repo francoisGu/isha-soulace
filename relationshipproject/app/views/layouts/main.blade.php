@@ -7,11 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="http://localhost:8000/favicon.ico">
+    <style type="text/css">
 
+</style>
     <div class='title'>
         @yield('title', '<title>Isha SoulAce</title>')
     </div>
-
 <!--     {{ HTML::style('css/bootstrap.min.css') }} -->
     {{ HTML::style('css/plugins/bootstrap.css') }}
     {{ HTML::style('css/offcanvas.css') }}
@@ -19,7 +20,7 @@
 
   </head>
 
-  <body>
+  <body style="background-color:gold">
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -112,7 +113,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/offcanvas.js') }}
+    
   </body>
+    {{ HTML::script('js/plugins/dataTables/jquery.js') }}
+{{ HTML::script('js/bootstrap.min.js') }}
+{{ HTML::script('js/plugins/dataTables/jquery.dataTables.js') }}
+{{ HTML::script('js/plugins/dataTables/dataTables.bootstrap.js') }}
+{{ HTML::script('js/plugins/dataTables/shCore.js') }}
+
+    {{ HTML::script('js/offcanvas.js') }}
 </html>
+

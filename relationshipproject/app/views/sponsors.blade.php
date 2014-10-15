@@ -103,7 +103,12 @@
 
           <div class="form-group">
             <label class=" control-label" for="">Date of Contact*</label>
-            {{Former::text('contact_date')->class('input-large input-md form-control form_birthday')->required()}}
+            <div id="datepicker" class="input-append date timepicker">
+                    {{ Former::text('birthday')
+                    ->label('birthday')
+                    ->placeholder(' yyyy-mm-dd')
+                    ->class('form-control input-large') }}
+                </div>
           </div>
 
           <div class="form-group">
@@ -152,14 +157,14 @@
         src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js">
 </script>
 <script type="text/javascript">
-$('#datetimepicker').datetimepicker({
+$('#datepicker').datetimepicker({
             format: 'YYYY-MM-DD',
             pickTime: false,
             pickDate: true,
             language: 'en'
     });
 $('.timepicker').datetimepicker({
-            format: 'hh:mm',
+            format: 'HH:mm',
             pickTime: true,
             pickDate: false,
             pickSeconds: false,

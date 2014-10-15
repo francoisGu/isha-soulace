@@ -81,7 +81,7 @@ Route::get('/', function()
     return Redirect::to('home');//View::make('home');
 });
 
-
+Route::post('services/accommodation', 'AccommodationController@storeComment');
 Route::post('reviews/website', 'WebReviewsController@storeComment');
 Route::post('reviews/workshops', 'WorkshopReviewsController@storeComment');
 Route::post('reviews/services', 'ServicesReviewsController@storeComment');

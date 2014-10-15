@@ -171,8 +171,31 @@ class ClientsController extends \BaseController {
             return View::make('serviceProviders.myClients')->with('clients', $clients)->with('sp', $sp);
 
         }
+    }
 
-    
+    public function registerWorkshop($workshop_id){
+
+        $workshop = Workshop::find($workshop_id);
+
+        if($workshop == null){
+            return Redirect::back()->withErrors('Workshop not found!');
+        }
+
+        $rules = array(
+            'email' => 'required|email',
+            'number' => 'integer|between:0,'.$workshop->ticket_number, 
+        );
+        
+        $validator = Validator::make(Input::all(), $rules);
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator);
+        }
+        $email = Input::get('client_email');
+        $number = Input::get('number');
+        //$workshop_id = Input::get('workshop_id');
+
+        dd( $email . '  ' . $number . '  ' . $workshop_id);
+        // payment function goes here
     }
 
 }

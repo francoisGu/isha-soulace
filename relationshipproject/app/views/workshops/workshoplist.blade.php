@@ -5,7 +5,7 @@
 <style>
 li.list-group-item {
     height:auto;
-    min-height:250px;
+    min-height:280px;
     word-wrap: break-word;
 }
 li.list-group-item.active small {
@@ -15,7 +15,7 @@ li.list-group-item.active small {
     margin:20px auto 1px;    
 }
 </style>
-<div class="container auth">
+<div class="container-fluid auth">
     <h1 class="text-center"><span>Here is the list of workshops you may need.</span> </h1>
     <div id="big-form" class="well auth-box">
 
@@ -35,7 +35,7 @@ li.list-group-item.active small {
                 {{ Form::select('type', array_merge($types, array(' ' => ' ')), ' ') }}
 
                 {{ Form::label('postcode', 'Postcode: ', array('style'=>'margin-left: 3%;', 'class'=>'form-inline')) }}
-                {{ Form::text('postcode') }}
+                {{ Form::number('postcode') }}
 
                 {{ Form::label('search', " ", array('style'=>'margin-left: 3%;', 'class'=>'form-inline')) }}
                 {{ Former::submit('search', 'Search')->class('btn btn-small btn-success btn-outline') }}
@@ -87,32 +87,20 @@ li.list-group-item.active small {
                     <p> Average 4.5 <small> / </small> 5 </p>
 
                     <div class="left-align control-group">
+                        <form method="POST" action={{ "/registerworkshop/".$workshop->id }} accept-charset="UTF-8">
+                            <input name="_token" type="hidden" value="9spg0lrjq4FaMi7lKjFXezLJZvdz7ztUarfggmDk">
 
-                    <!--
-                    {{ Form::open(array('method' => 'POST', 'url' => '')) }}
+                    
+                                <label for="client_email">Email: <sup>*</sup></label><input type="email" class="input-large text-left form-control" id="client_email" type="text" name="client_email">
 
-                    {{ Form::text('email', null, array('class' => 'input-large text-left form-control', 'placeholder' => 'Email')) }}
-                    {{ Form::label('number', 'Ticket NO.', array('class' => 'left-align', 'style' => 'margin-left:0%;')) }}
-                    {{ Form::number('number', 1, array('class' => 'input-small left-align')) }}
-                    {{ Form::submit('Register & Pay', array('class' => 'btn btn-danger btn-outline btn-lg btn-block form-control')) }}
+                                    <label for="number">Ticket Number: <sup>*</sup></label><input class="input-large form-control" required="true" id="number" type="number" name="number" min="1" max={{ $workshop->ticket_number }} value="1">
+                    <br>
 
-                    {{ Form::close() }}
+                    <input class="btn btn-danger btn-outline btn-lg btn-block" type="submit" value="Register &amp; Pay">
 
-                    {{ Former::open()->method('POST')->url('')
-                            ->rules(array(
-                            'number' => 'between:' . 1 . ',' . $workshop->ticket_number, 
-                            'email' => 'email')) }}
-
-                    -->
-                    {{ Form::open(array('method' => 'POST', 'url' => '')) }}
-                    {{ Former::text('email', 'Email: ')->class('input-large text-left')->required()}}
-
-                    {{ Former::number('number', 'Ticket Number: ')->value(1)->class('input-small')->required() }}
-
-                    {{ Former::submit('Register & Pay')->class('btn btn-danger btn-outline btn-lg btn-block') }}
-
-                    {{ Former::close() }}
-                    </div>
+                    
+                    </form>
+                </div>
                 </div>
             </li>
 

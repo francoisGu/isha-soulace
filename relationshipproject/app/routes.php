@@ -11,6 +11,7 @@
 |
  */
 
+Route::post('/registerworkshop/{id}', 'ClientsController@registerWorkshop');
 # Standard User Routes
 Route::group(['before' => 'sentry|serviceProviders'], function(){
 
@@ -78,7 +79,9 @@ Route::post('services/mentalwellbeing', array('uses' => 'ServiceFormController@p
 Route::post('services/financialadvice', array('uses' => 'ServiceFormController@postFinancialadvice'));
 Route::post('services/options', array('uses' => 'ServiceFormController@postOptions'));
 Route::post('services/mentors', array('uses' => 'ServiceFormController@postMentors'));
+
 Route::controller('reviews', 'ReviewController');
+
 Route::post('reviews/website', 'WebReviewsController@storeComment');
 Route::post('reviews/workshops', 'WorkshopReviewsController@storeComment');
 Route::post('reviews/services', 'ServicesReviewsController@storeComment');
@@ -108,6 +111,7 @@ Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@acti
 Route::controller('/', 'HomeController');
 //Route::controller('emails', 'EmailController');
 //Route::controller('password', 'PasswordController');
+//
 
 /* HTML Macros */
 HTML::macro('smartNavMenu', function($url, $text) {

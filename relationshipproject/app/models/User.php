@@ -4,100 +4,161 @@ use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Cartalyst\Sentry\Users\Eloquent\User as SentryUserModel;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends SentryUserModel implements UserInterface, RemindableInterface {
 
-        use UserTrait, RemindableTrait;
+    use UserTrait, RemindableTrait;
 
-        public static $rules = array(
-            'firstname' =>'required|alpha|min:2',
-            'lastname'  =>'required|alpha|min:2',
-            'email'     =>'required|email|unique:users',
-            'password'  =>'required|alpha_num|between:6,12|confirmed',
-            'password_confirmation' =>'required|alpha_num|between:6,12'
-        );
+    public static $rules = array(
+        'firstname'=>'required|alpha|min:2',
+        'lastname'=>'required|alpha|min:2',
+        'email'=>'required|email|unique:users',
+        'password'=>'required|alpha_num|between:6,12|confirmed',
+        'password_confirmation'=>'required|alpha_num|between:6,12'
+    );
 
-        /**
-         * The database table used by the model.
-         *
-         * @var string
-         */
-        protected $table = 'users';
+    public function userable(){
 
-        /**
-         * The attributes excluded from the model's JSON form.
-         *
-         * @var array
-         */
-        protected $hidden = array('password', 'remember_token');
+        return $this->morphTo();    
 
-        /**
-         * Get the unique identifier for the user.
-         *
-         * @return mixed
-         */
-        public function getAuthIdentifier()
-        {
-            return $this->getKey();
-        }
+    }
 
-        /**
-         * Get the password for the user.
-         *
-         * @return string
-         */
-        public function getAuthPassword()
-        {
-            return $this->password;
-        }
+    //public function serviceProvider()
+    //{
+        //return $this->hasOne('ServiceProvider');
+    //}
 
-        /**
-         * Get the e-mail address where password reminders are sent.
-         *
-         * @return string
-         */
-        public function getReminderEmail()
-        {
-            return $this->email;
-        }
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 
-        public function getRememberToken()
-        {
-            return $this->remember_token;
-        }
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = array('password', 'remember_token');
 
-        public function setRememberToken($value)
-        {
-            $this->remember_token = $value;
-        }
+    /**
+     *
+     *
+     */
+    //protected $fillable = array('userable_id', 'userable_type');
 
-        public function getRememberTokenName()
-        {
-            return 'remember_token';
-        }
+    /**
+     * Get the unique identifier for the user.
+     *
+     * @return mixed
+     */
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
 
-        public function register(array $registerInfo){
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
 
+    /**
+     * Get the e-mail address where password reminders are sent.
+     *
+     * @return string
+     */
+    public function getReminderEmail()
+    {
+        return $this->email;
+    }
+
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'remember_token';
+    }
+
+    public function createUser($type, array $info){
+ 
+        if(class_exists($type)){
             try {
                 $register = array('email'    => $registerInfo['email'], 
-                    'password' => $registerInfo['password']);
-                $user = Sentry::register($register, false); 
+                    'password' => $registerInfo['password'],
+                    'first_name' => $registerInfo['first_name'],
+                    'last_name'  => $registerInfo['last_name'],
+                    'activated'  => true);
+                //$user = Sentry::register($register, false); 
+
+                // create user into its own table
+                $type_user = $type::create($info);
+
+                $user = Sentry::createUser(array_merge($register, array('userable_id' => $type_user->id, 'userable_type' => $type)));
+            } 
+            catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
+                echo 'Login field is required.'; 
+            }
+            catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
+                echo 'Password field is required.'; 
+            }
+            catch (Cartalyst\Sentry\Users\UserExistsException $e) {
+                echo 'User with this login already exists.'; 
+            }
+        }
+        else{
+            throw new Exception('Invalid user type');
+
+        }
+   
+    
+    }
+
+    public function register($type, array $registerInfo){
+
+        if(class_exists($type)){
+            try {
+                $register = array('email'    => $registerInfo['email'], 
+                    'password' => $registerInfo['password'],
+                    'first_name' => $registerInfo['first_name'],
+                    'last_name'  => $registerInfo['last_name']);
+                //$user = Sentry::register($register, false); 
+
+                // create user into its own table
+                $type_user = $type::create($registerInfo);
+
+                $user = Sentry::register(array_merge($register, array('userable_id' => $type_user->id, 'userable_type' => $type)) , false);
 
                 $activationCode = URL::to('/') . '/activate/' .  
                     $user->getActivationCode();
 
-                $data = array('firstname'      => $registerInfo['firstname'],
+                $data = array('first_name'      => $registerInfo['first_name'],
                     'activationCode' => $activationCode
                 );
-                $userInfo = array('firstname' => $registerInfo['firstname'],
-                    'lastname'  => $registerInfo['lastname'],
+
+                $userInfo = array('first_name' => $registerInfo['first_name'],
+                    'last_name'  => $registerInfo['last_name'],
                     'email'     => $registerInfo['email'],
                 );
 
                 Mailgun::send('emails.welcome', $data, function($message) use 
                     ($userInfo) {
                         $message -> to($userInfo['email'], 
-                            $userInfo['firstname'] . ' ', $userInfo['lastname']) 
+                            $userInfo['first_name'] . ' ', $userInfo['last_name']) 
                             -> subject('Welcome to the Isha SoulAce');
                     });
 
@@ -112,106 +173,114 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
                 echo 'User with this login already exists.'; 
             }
         }
+        else{
+            throw new Exception('Invalid user type');
 
-        public function login(array $loginInfo){
-
-            $message = "";
-
-            try
-            {
-                // Login credentials
-                $credentials = array( 'email' => $loginInfo['email'],
-                    'password' => $loginInfo['password']
-                );
-
-                $rememberme = $loginInfo['rememberme'];
-                // Authenticate the user
-                //$user = Sentry::authenticate($credentials, false);
-                $user = Sentry::authenticate($credentials, $rememberme?:false);
-
-                $message = 'You are now logged in!';
-                return ['url' => 'users/dashboard', 'message' => $message];
-
-
-            }
-            catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
-            {
-
-                $message = 'Wrong password, try again.';
-                return ['url' => 'users/login', 'message' => $message];
-
-            }
-            catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-            {
-                $message = 'User was not found.';
-                return ['url' => 'users/login', 'message' => $message];
-
-            }
-            catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
-            {
-                $message = 'User is not activated.';
-                return ['url' => 'users/login', 'message' => $message];
-
-            }
-
-            // The following is only required if the throttling is enabled
-            catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
-            {
-                $message = 'User is suspended.';
-                return ['url' => 'users/login', 'message' => $message];
-
-            }
-            catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
-            {
-                $message = 'User is banned.';
-                return ['url' => 'users/login', 'message' => $message];
-
-            }
         }
-
-        public function activate($activationCode){
-
-            try
-            {
-                $user = Sentry::findUserByActivationCode($activationCode);
-
-                if($user -> attemptActivation($activationCode))
-                {
-                    //TO-Do
-                    // Assign user to a group with some permissions 
-                    return ['url' => 'users/login', 'message' => 'Thanks for 
-                        activating!'];
-                }
-                else
-                {
-                    return ['url' => 'users/login', 'message' => 'Thanks for 
-                        activating!'];
-
-                } }
-                    catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-                    {
-                        return ['url' => 'users/login', 'message' => 'Thanks for 
-                            activating!'];
-
-
-                    } catch (Cartalyst\Sentry\Users\UserAlreadyActivatedException $e)
-                    {
-                        return ['url' => 'users/login', 'message' => 'Thanks for 
-                            activating!'];
-
-
-                    }
-        }
-
-        //public function all(){
-        //return User::all();
-        //}
-
-        //public function find($id){
-        //return User::find($id);
-        //}
-
-        //public function create($input){
-        //return User::create($input);
-        /*}*/
     }
+
+    public function login(array $loginInfo){
+
+        $message = "";
+
+        try
+        {
+            // Login credentials
+            $credentials = array( 'email' => $loginInfo['email'],
+                'password' => $loginInfo['password']
+            );
+
+            $rememberme = $loginInfo['rememberme'];
+            // Authenticate the user
+            //$user = Sentry::authenticate($credentials, false);
+            $user = Sentry::authenticate($credentials, $rememberme?:false);
+
+            $message = 'You are now logged in!';
+            $user = Sentry::getUser()->userable;
+            return ['url' => 'serviceProviders/', 'message' => $user->email];
+
+
+        }
+        catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
+        {
+
+            $message = 'Wrong password, try again.';
+            return ['url' => 'users/login', 'message' => $message];
+
+        }
+        catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+        {
+            $message = 'User was not found.';
+            return ['url' => 'users/login', 'message' => $message];
+
+        }
+        catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
+        {
+            $message = 'User is not activated.';
+            return ['url' => 'users/login', 'message' => $message];
+
+        }
+
+        // The following is only required if the throttling is enabled
+        catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
+        {
+            $message = 'User is suspended.';
+            return ['url' => 'users/login', 'message' => $message];
+
+        }
+        catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
+        {
+            $message = 'User is banned.';
+            return ['url' => 'users/login', 'message' => $message];
+
+        }
+    }
+
+    public function activate($activationCode){
+
+        try
+        {
+            $user = Sentry::findUserByActivationCode($activationCode);
+
+            if($user -> attemptActivation($activationCode))
+            {
+                //TO-Do
+                // Assign user to a group with some permissions 
+                return ['url' => 'users/login', 'message' => 'Thanks for 
+                    activating!'];
+            }
+            else
+            {
+                return ['url' => 'users/login', 'message' => 'Thanks for 
+                    activating!'];
+
+            } }
+                catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+                {
+                    return ['url' => 'users/login', 'message' => 'Thanks for 
+                        activating!'];
+
+
+                } catch (Cartalyst\Sentry\Users\UserAlreadyActivatedException $e)
+                {
+                    return ['url' => 'users/login', 'message' => 'Thanks for 
+                        activating!'];
+
+
+                }
+    }
+
+    static public function getUser()
+    {
+        return User::where('email', '=', Sentry::getUser()->email)->first();
+    }
+
+    static public function updateUser() {
+        $user = User::getUser();
+        $user->first_name = Input::get('firstname');
+        $user->last_name = Input::get('lastname');
+        $user->save();
+        return $user;
+    }
+}
+

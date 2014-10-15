@@ -1,7 +1,11 @@
 <?php
 /**
  * An helper file for Laravel 4, to provide autocomplete information to your IDE
+<<<<<<< HEAD
  * Generated for Laravel 4.2.9 on 2014-09-24.
+=======
+ * Generated for Laravel 4.2.11 on 2014-10-09.
+>>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -3653,16 +3657,6 @@ namespace {
         }
         
         /**
-         * Run the default delete function on the builder.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function forceDelete(){
-            return \Illuminate\Database\Eloquent\Builder::forceDelete();
-        }
-        
-        /**
          * Register a replacement for the default delete function.
          *
          * @param \Closure $callback
@@ -5007,6 +5001,16 @@ namespace {
             \Illuminate\Events\Dispatcher::forget($event);
         }
         
+        /**
+         * Forget all of the queued listeners.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function forgetQueued(){
+            \Illuminate\Events\Dispatcher::forgetQueued();
+        }
+        
     }
 
 
@@ -5476,6 +5480,18 @@ namespace {
          */
         public static function textarea($name, $value = null, $options = array()){
             return \Illuminate\Html\FormBuilder::textarea($name, $value, $options);
+        }
+        
+        /**
+         * Create a number input field.
+         *
+         * @param string $name
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function number($name, $value = null, $options = array()){
+            return \Illuminate\Html\FormBuilder::number($name, $value, $options);
         }
         
         /**
@@ -6935,9 +6951,9 @@ namespace {
         }
         
         /**
-         * Returns the requested URI.
+         * Returns the requested URI (path and query string).
          *
-         * @return string The raw URI (i.e. not urldecoded)
+         * @return string The raw URI (i.e. not URI decoded)
          * @api 
          * @static 
          */
@@ -6961,9 +6977,9 @@ namespace {
         }
         
         /**
-         * Generates a normalized URI for the Request.
+         * Generates a normalized URI (URL) for the Request.
          *
-         * @return string A normalized URI for the Request
+         * @return string A normalized URI (URL) for the Request
          * @see getQueryString()
          * @api 
          * @static 
@@ -9568,9 +9584,9 @@ namespace {
         }
         
         /**
-         * Returns the requested URI.
+         * Returns the requested URI (path and query string).
          *
-         * @return string The raw URI (i.e. not urldecoded)
+         * @return string The raw URI (i.e. not URI decoded)
          * @api 
          * @static 
          */
@@ -9594,9 +9610,9 @@ namespace {
         }
         
         /**
-         * Generates a normalized URI for the Request.
+         * Generates a normalized URI (URL) for the Request.
          *
-         * @return string A normalized URI for the Request
+         * @return string A normalized URI (URL) for the Request
          * @see getQueryString()
          * @api 
          * @static 
@@ -11542,7 +11558,7 @@ namespace {
          *
          * @param string $path
          * @param mixed $extra
-         * @param bool $secure
+         * @param bool|null $secure
          * @return string 
          * @static 
          */
@@ -11566,7 +11582,7 @@ namespace {
          * Generate a URL to an application asset.
          *
          * @param string $path
-         * @param bool $secure
+         * @param bool|null $secure
          * @return string 
          * @static 
          */
@@ -13026,7 +13042,8 @@ namespace {
          * Get a new framework instance
          *
          * @param string $framework
-         * @return \Former\Framework 
+         * @throws Exceptions\InvalidFrameworkException
+         * @return \Former\Interfaces\FrameworkInterface 
          * @static 
          */
         public static function getFrameworkInstance($framework){

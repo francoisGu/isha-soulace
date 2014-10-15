@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
 z-index: 2;
@@ -7,6 +8,15 @@ border-color: white;
 color: white;
 }
 </style>
+=======
+@extends('layouts.main')
+
+@section('title')
+<title>Isha SoulAce - Home</title>
+@stop
+
+@section('main')
+>>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
 <!-- Begin page content -->
 <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 
@@ -140,6 +150,7 @@ color: white;
 	</div>
   </div>
 </div>
+<<<<<<< HEAD
 
 <!-- Controls the highlight effect for relevant services for specific types of domestic violence -->
 <script>
@@ -236,3 +247,8 @@ color: white;
 	togglePhysicalAndSexual();
   }
 </script>
+=======
+<hr>
+
+@stop
+>>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9

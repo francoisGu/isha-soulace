@@ -9,7 +9,7 @@ class AdministratorsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$administrators = Administrator::all();
+		$administrators = Administrator::paginate(20);
 
 		return View::make('administrators.index', compact('administrators'));
 	}
@@ -38,7 +38,8 @@ class AdministratorsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Administrator::create($data);
+        User::createUser('Administrator', array_merge($data)); 
+		//Administrator::create($data);
 
 		return Redirect::route('administrators.index');
 	}

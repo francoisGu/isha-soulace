@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
+
+@section('main')
     <head>
         {{ $map['js'] }}
         <meta charset="UTF-8">
         <title></title>
     </head>
     <body>
-        {{ Form::open(array('url' => 'map/map', 'class' => 'form-map')) }}
+        {{ Form::open(array('url' => 'map', 'class' => 'form-map')) }}
 
     	    <ul>
     	    	@foreach($errors->all() as $error)
@@ -18,4 +19,5 @@
 
         {{ $map['html'] }}
     </body>
-</html>
+
+@stop

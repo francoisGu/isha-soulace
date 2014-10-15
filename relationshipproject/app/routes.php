@@ -21,6 +21,39 @@
 //'app\models\PasswordReminder'
 /*);*/
 
+/*View::composer('map.map', function($view){*/
+        //$config = array();
+        //$config['center'] = 'auto';
+        //$config['zoom'] = 'auto';
+        ////$config['places'] = TRUE;
+        ////$config['placesLocation'] = 'auto';
+        ////$config['placesRadius'] = '200';
+        //$config['onboundschanged'] = 'if (!centreGot) {
+            //var mapCentre = map.getCenter();
+            //marker_0.setOptions({
+                //position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
+            //});
+            //}
+            //centreGot = true;';
+
+        //Gmaps::initialize($config);
+
+        //// set up the marker ready for positioning
+        //// once we know the users location
+        //$marker = array();
+        //Gmaps::add_marker($marker);
+
+        //$map = Gmaps::create_map();
+
+    //$view->with('map', $map);
+
+//});
+
+Route::get('/map', 'MapController@getMap');
+Route::post('/map', 'MapController@postMap');
+//Route::controller('map', 'MapController');
+
+
 Route::get('/client_admin', function()
 {
     return View::make('client');
@@ -83,9 +116,26 @@ Route::get('reviews/workshops', array('uses' => 'ReviewController@getWorkshops')
     //Route::resource('workshops', 'WorkshopsController', 
         //array('only' => array('index', 'store', 'destroy', 'create', 'edit')));
 //});
+//Route::get('serviceProviders/myworkshops', 'ServiceProvidersController@getMyWorkshops');
+
+
+Route::controller('users', 'UsersController');
+Route::get('workshopAdvertisements/premium', 'WorkshopAdvertisementsController@getPremiumAdvertisements');
 
 Route::resource('workshops', 'WorkshopsController');
-Route::resource('ServiceProviders', 'ServiceProvidersController');
+Route::resource('serviceProviders', 'ServiceProvidersController');
+
+Route::get('/myworkshops', 'WorkshopsController@getMyWorkshops');
+
+//Route::get('/myworkshops', function(){
+    
+    //return View::make('serviceProviders.myWorkshops');
+
+/*});*/
+
+Route::resource('workshopAdvertisements', 'WorkshopAdvertisementsController');
+Route::resource('tickets', 'TicketsController');
+Route::resource('clients', 'ClientsController');
 //Route::resource('Administrators', 'AdministratorsController');
 //Route::get('password/remind', array('uses' => 'PasswordController@getRemind'));
 //Route::get('password/reset', array('uses' => 'PasswordController@getReset'));
@@ -93,14 +143,17 @@ Route::resource('ServiceProviders', 'ServiceProvidersController');
 //Route::post('/password/reset/', array('uses' => 'PasswordController@postReset'));
 Route::controller('password', 'PasswordController');
 Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
-Route::controller('users', 'UsersController');
+
 Route::controller('/', 'HomeController');
 Route::controller('emails', 'EmailController');
 //Route::controller('password', 'PasswordController');
+<<<<<<< HEAD
 
 Route::controller('map', 'MapController');
 
 Route::resource('payment', 'PaypalPaymentController');
+=======
+>>>>>>> ae237e1f39cbdec1c84ed7fb6f10bb641d1dc4a9
 Route::resource('payment', 'PaymentController');
 
 /* HTML Macros */

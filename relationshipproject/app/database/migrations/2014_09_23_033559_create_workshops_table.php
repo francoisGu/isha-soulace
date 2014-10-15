@@ -15,8 +15,12 @@ class CreateWorkshopsTable extends Migration {
         Schema::create('workshops', function(Blueprint $table)
     {
 
+        $table->engine ='InnoDB';
         $table->string('class')->nullable();
         $table->increments('id');
+        $table->integer('service_provider_id')->unsigned();
+        $table->foreign('service_provider_id')->references('id')->on('serviceProviders');
+
         $table->string('topic', 100)->nullable();
         $table->longText('description')->nullable();
         $table->string('unit')->nullable();
@@ -30,10 +34,15 @@ class CreateWorkshopsTable extends Migration {
         $table->time('start_time')->nullable();
         $table->time('end_time')->nullable();
         $table->integer('total_ticket_number')->nullable();
+        $table->integer('ticket_number')->nullable();
         $table->float('price')->nullable();
-        $table->integer('service_provider_id')->nullable()->index('service_provider_id');
+        
+        $table->double('longitude')->nullable();
+        $table->double('latitude')->nullable();
 
         $table->timestamps();
+
+        $table->index(array('service_provider_id', 'longitude', 'latitude'));
     });
     }
 

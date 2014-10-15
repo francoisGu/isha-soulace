@@ -2,6 +2,11 @@
 
 class ServiceProvidersController extends \BaseController {
 
+    public function __construct() {
+        $this->beforeFilter('csrf',  array('on'=>'post'));
+    }
+
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /serviceproviders
@@ -11,6 +16,9 @@ class ServiceProvidersController extends \BaseController {
 	public function index()
 	{
 		//
+        $sps = ServiceProvider::paginate(20);
+
+        return View::make('serviceProviders.index')->with('sps', $sps);
 	}
 
 	/**
@@ -21,11 +29,13 @@ class ServiceProvidersController extends \BaseController {
 	 */
 	public function create()
 	{
+        return View::make('serviceProviders.create');
 		//
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+     * Store a manually newly created resource in storage.
+     * with default password 123456
 	 * POST /serviceproviders
 	 *
 	 * @return Response
@@ -33,6 +43,18 @@ class ServiceProvidersController extends \BaseController {
 	public function store()
 	{
 		//
+        $validator = Validator::make($data=Input::all(), ServiceProvider::$rules);
+
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        User::register('ServiceProvider', array_merge($data, array('password' => Hash::make('123456'))));
+
+        //$sp = ServiceProvider::create($data);
+        /*Sentry::register(array_merge($data, array('userable_id' => $sp->id, 'userable_type' => get_class($sp), 'password' => Hash::make('123456'))));*/
+        return Redirect::route('serviceProviders.index');
+
 	}
 
 	/**
@@ -44,7 +66,9 @@ class ServiceProvidersController extends \BaseController {
 	 */
 	public function show($id)
 	{
+        $sp = ServiceProvider::find($id);
 		//
+        return View::make('serviceProviders.show')->with('sp', $sp);
 	}
 
 	/**
@@ -56,6 +80,9 @@ class ServiceProvidersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+        $sp = ServiceProvider::find($id);
+        
+        return View::make('serviceProviders.edit')->with('sp', $sp); 
 		//
 	}
 
@@ -68,7 +95,19 @@ class ServiceProvidersController extends \BaseController {
 	 */
 	public function update($id)
 	{
+        $sp = ServiceProvider::findOrFail($id);
+        //dd($sp);
 		//
+        $validator = Validator::make($data = Input::all(), ServiceProvider::$rules);
+
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        $sp->update(array_merge($data, ['message' => 'success']));
+
+        //dd($data);
+        return Redirect::route('serviceProviders.show', $id);
 	}
 
 	/**
@@ -80,6 +119,8 @@ class ServiceProvidersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+        ServiceProvider::destroy($id);
+        return Redirect::route('serviceProviders.index');
 		//
 	}
 

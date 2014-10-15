@@ -15,12 +15,14 @@ class HomeController extends BaseController {
 	|
 	*/
 
-    protected $layout = "layouts.default";
+    protected $layout = "layouts.main";
     
 	public function getHome()
 	{
-        $this->layout->title = 'Isha SoulAce - Home';
-        $this->layout->content = View::make('home');
+        //$this->layout->title = 'Isha SoulAce - Home';
+        $title = 'Isha SoulAce - Home';
+        //$this->layout->content = View::make('home');
+        return View::make('home')->with('title', $title);
         
 	}
 

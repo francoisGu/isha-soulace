@@ -14,6 +14,26 @@
     {{ HTML::style('css/plugins/bootstrap.css') }}  <!--Problem with columns-->
     {{ HTML::style('css/offcanvas.css') }}
     {{ HTML::style('css/bootstrap-responsive.css') }} <!--Problem which mobile navbar-->
+<!-- <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" media="screen"
+            href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css">
+@section('main')
+<style type="text/css">
+.auth .auth-box{
+  background-color: white;
+  max-width:660px;
+  margin:0 auto;
+  border:1px solid rgba(255, 255, 255, 0.4);;
+  margin-top:40px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  -moz-box-shadow:    0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  box-shadow:         0px 0px 30px 0px rgba(50, 50, 50, 0.32);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+</style>
+{{ HTML::style('css/plugins/bootstrap-datetimepicker.min.css') }}
 <!--     {{ HTML::style('css/list.css') }} -->
   <style>
 	.logo-space{
@@ -158,7 +178,7 @@ $('#datetimepicker').datetimepicker({
             language: 'en'
     });
 $('.timepicker').datetimepicker({
-            format: 'hh:mm',
+            format: 'HH:mm',
             pickTime: true,
             pickDate: false,
             pickSeconds: false,

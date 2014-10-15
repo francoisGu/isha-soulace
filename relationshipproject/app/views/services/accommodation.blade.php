@@ -87,7 +87,8 @@
 	->max('0999999999')
 	->class('input-large input-md form-control');
 }}
-    <div id="datetimepicker" class="input-append date timepicker">
+
+    <div id="datetimepicker" class=" date timepicker">
     {{Former::text('contact_date','Contact date')
 	  ->class('input-large input-md form-control form_birthday')
 	  ->required();
@@ -99,15 +100,15 @@
 					'Other' => array('name'=>'contact_time', 'checked'=>'')))
 	  ->required();
 	}}
-    <div id="start_timepicker" class="input-append date timepicker">
+    <div id="start_timepicker" class="date timepicker">
 	{{ Former::text('start_time')
       ->label('Start Time')
       ->placeholder(' hh:mm')
       ->class('form-control input-medium'); 
 	}}
     </div>
-    <span>to<span>
-    <div id="end_timepicker" class="input-append date timepicker">
+<!--     <span>to<span> -->
+    <div id="end_timepicker" class=" date timepicker">
 	{{ Former::text('end_time')
       ->label('End Time')
       ->placeholder(' hh:mm')

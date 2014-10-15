@@ -25,7 +25,7 @@
 {{ HTML::style('css/plugins/bootstrap-datetimepicker.min.css') }}
 
 <div class="container auth">
-    <h1 class="text-center"><span>Sponsor us</span> </h1>
+    <h3 class="text-center"><span>Sponsor us</span> </h3>
     <div id="big-form" class="well auth-box">
       {{Former::framework('Nude');}}
       {{Former::open()->method('POST')->url('')->class('')}}

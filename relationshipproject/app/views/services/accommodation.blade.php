@@ -8,11 +8,11 @@
 		@endforeach
   </ul>
 <div id="big-form" class="well auth-box">
-{{ Former::horizontal_open()
+{{ Former::open()
   ->id('accommodationForm')
   ->secure()
   ->rules(['postcode' => 'required'])
-  ->method('POST')->url('services/accommodation')->class('');
+  ->method('POST');
 }}
 {{ Former::radio('title', 'Title')
     ->radios(array('Mr' => 'title', 'Ms' => 'title', 'Mrs' => 'title', 'Miss' => 'title'))
@@ -75,6 +75,17 @@
 <br>
 <h3>   Your Contact details</h3>
 <br>
+{{Former::radio('contact_mode')
+  ->label('Preferred mode of contact')
+  ->radios(array('Email' => 'mode', 'Phone' => 'mode'))
+  ->inline()
+  ->required();
+}}
+{{Former::email('email')
+  ->label('Email Address')
+	->class('form-control input-large')
+  ->required();
+}}
 {{Former::number('phonenumber','Phone number')
 	->placeholder('Home or Work')
 	->min('10000000')

@@ -19,23 +19,26 @@ class HomeController extends BaseController {
     
 	public function getHome()
 	{
-        //$this->layout->title = 'Isha SoulAce - Home';
-        $title = 'Isha SoulAce - Home';
-        //$this->layout->content = View::make('home');
-        return View::make('home')->with('title', $title);
+        return View::make('home');
         
 	}
 
 	public function getAbout()
 	{
-        $this->layout->title = 'About Us - Isha SoulAce';
-        $this->layout->content = View::make('about');
+        return View::make('about');
         
 	}
 	
 	public function getPrivatebrowsing(){
-		$this->layout->title = 'Private Browsing - Isha SoulAce';
-		$this->layout->content = View::make('removeHistory');
+		return View::make('removeHistory');
+	}
+	
+		public function getDonations(){
+		return View::make('donations');
+	}
+	
+		public function getSponsors(){
+		return View::make('sponsors');
 	}
 	
 }

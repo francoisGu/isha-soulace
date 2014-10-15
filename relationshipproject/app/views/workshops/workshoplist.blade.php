@@ -3,12 +3,12 @@
 @section('main')
 
 <style>
-a.list-group-item {
+li.list-group-item {
     height:auto;
     min-height:250px;
     word-wrap: break-word;
 }
-a.list-group-item.active small {
+li.list-group-item.active small {
     color:#fff;
 }
 .stars {
@@ -44,11 +44,11 @@ a.list-group-item.active small {
             </div>
             <div style="padding: 50px;">
              <!--list here-->
-             <div class="list-group" >
+             <ul class="list-group" >
 
             @foreach($workshops as $workshop)
 
-              <a href="#" class="list-group-item">
+            <li class="list-group-item">
                 <div class="col-md-9">
                     <h4 class="list-group-item-heading"> {{ $workshop->topic }} </h4>
                     <p class="list-group-item-text"> <strong class="col-md-3">Service Provider: </strong>
@@ -114,10 +114,10 @@ a.list-group-item.active small {
                     {{ Former::close() }}
                     </div>
                 </div>
-            </a>
+            </li>
 
             @endforeach
-            </div>
+            </ul>
 
         </div>
     </div>

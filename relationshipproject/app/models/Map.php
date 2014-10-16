@@ -63,9 +63,19 @@ mapCentre.lng())
         $markerInfo['position'] = $position['center'];
         //$markerInfo['infowindow_content'] = $sp->email . '\n' . $sp->first_name;
         //
+        if($sp->identity){
+            $name = $sp->companyName;
+        } else {
+            $name = $sp->first_name . ' ' . $sp->last_name;
+        }
         
-        $content = '<strong>Email: </strong>' . $sp->email . '<br/>' . 
-                   '<strong>Name: </strong>'. $sp->first_name;
+        $content = 
+            '<strong>Email: </strong>' . $sp->email . '<br/>' . 
+            '<strong>Name: </strong>' . $name . '<br/>' .
+            '<strong>Type: </strong>' . $sp->type . '<br/>' .
+            '<strong>Verified: </strong>' . $sp->verified . '<br/>'.
+            '<strong>Number of client: </strong>' . count($sp->clients) . '<br/>';
+
         $infowindow_content = ("<div class='infowin-content' style='width: 200px; height: 100px; max-width: 200px; max-height: 100px;'>" . $content . "</div>");
         //$markerInfo['infowindow_content'] = $sp->email . '\n' . $sp->first_name;
         $markerInfo['infowindow_content'] = $infowindow_content;

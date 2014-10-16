@@ -16,7 +16,7 @@
           <!--<a id="advertiseWSPage" href="advertise" class="list-group-item">Advertise a new workshop</a>-->
 
             <a id="myWorkshopsPage" href="{{ URL::to('/myworkshops/') }}" class="list-group-item">My workshops</a>
-            <a id="reviewPage" href="review" class="list-group-item">Review the website</a>
+            <a id="reviewPage" href="{{ URL::to('reviews/website') }}" class="list-group-item">Review the website</a>
             <a id="clientsPage" href="{{ URL::to('/myclients/') }}" class="list-group-item">Clients</a>
       </ul>
     </div>

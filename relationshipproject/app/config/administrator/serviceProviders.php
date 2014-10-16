@@ -37,16 +37,46 @@ return array(
 
         ),
 
-        'topic' => array(
-            'title' => 'Topic',
+
+        'email' => array(
+            'title' => 'Email',
 
         ),
 
-        'description' => array(
-            'title' => 'Descritption',
+
+        'identity' => array(
+            'title' => 'Identity',
+
+        ),
+
+        'companyName' => array(
+            'title' => 'Company Name',
 
 
         ),
+
+        'acn' => array(
+            'title' => 'ACN',
+
+
+        ),
+
+        'first_name' => array(
+            'title' => 'First Name',
+
+        ),
+
+        'last_name' => array(
+            'title' => 'Last Name',
+
+        ),
+
+        'abn' => array(
+            'title' => 'ABN',
+
+
+        ),
+
 
         'unit' => array(
             'title' => 'Unit',
@@ -80,26 +110,6 @@ return array(
 
         'postcode' => array(
             'title' => 'Postcode',
-
-        ),
-
-        'date' => array(
-            'title' => 'Date',
-
-        ),
-
-        'start_time' => array(
-            'title' => 'Start Time',
-
-        ),
-
-        'end_time' => array(
-            'title' => 'End Time',
-
-        ),
-
-        'total_ticket_number' => array(
-            'title' => 'Total Ticket Number',
 
         ),
 

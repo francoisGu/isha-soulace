@@ -71,6 +71,9 @@ Route::get('/', function()
         return Redirect::to('home');//View::make('home');
     });
 
+Route::get('/sponsors',array('as' => 'sponsors','uses'=>'SponsorController@getSponsors'));
+Route::post('/sponsors',array('as' => 'sponsors-post','uses'=>'SponsorController@postSponsors'));
+
 Route::controller('services','ServiceFormController');
 
 Route::get('services/accommodation', array('uses' => 'ServiceFormController@getAccommodation'));

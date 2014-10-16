@@ -69,7 +69,8 @@ Route::get('/', function()
 
 Route::get('/sponsors',array('as' => 'sponsors','uses'=>'SponsorController@getSponsors'));
 Route::post('/sponsors',array('as' => 'sponsors-post','uses'=>'SponsorController@postSponsors'));
-
+Route::get('workshop_payment', array('uses' => 'PaypalController@postPayWorkshops'));
+Route::get('/payment/done/{payum_token}', array('as' => 'payment_done', 'uses' => 'PaymentController@done'));
 Route::controller('services','ServiceFormController');
 
 Route::get('services/accommodation', array('uses' => 'ServiceFormController@getAccommodation'));

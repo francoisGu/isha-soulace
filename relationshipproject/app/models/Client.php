@@ -17,7 +17,7 @@ class Client extends \Eloquent {
     }
 
     public function serviceProviders(){
-        return $this->belongsToMany('ServiceProvider');
+        return $this->belongsToMany('ServiceProvider', 'client_serviceProvider', 'client_id', 'serviceProvider_id');
     }
 
 }

@@ -18,7 +18,7 @@ class ServiceProvider extends Eloquent {
     }
 
     public function clients(){
-        return $this->belongsToMany('Client');
+        return $this->belongsToMany('Client', 'client_serviceProvider', 'serviceProvider_id', 'client_id');
     }
 
     public function reviews(){

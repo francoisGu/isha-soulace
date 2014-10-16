@@ -25,5 +25,20 @@ class ServiceProvider extends Eloquent {
         return $this->hasMany('ServiceReview');
     }
 
+    public static function searchServiceProviders( $postcode, $type ){
+
+        $expand = Map::expandRange('ServiceProvider', $postcode, 30);
+        $sps = array();
+
+        foreach($expand as $single){
+            if($single->type == $type){
+                array_push($sps, $single);
+            }
+        }
+
+        return $sps;    
+    
+    }
+
 
 }

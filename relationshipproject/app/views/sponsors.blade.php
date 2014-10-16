@@ -23,10 +23,12 @@
 }
 </style>
 {{ HTML::style('css/plugins/bootstrap-datetimepicker.min.css') }}
-
 <div class="container auth">
-    <h3 class="text-center"><span>Sponsor us</span> </h3>
+    <h1 class="text-center"><span>Sponsor us</span> </h1>
     <div id="big-form" class="well auth-box">
+    @if (Session:: has('message'))
+<p style="color:red;">{{Session::get('message')}}</p>
+@endif
       {{Former::framework('Nude');}}
       {{Former::open()->method('POST')->url('')->class('')}}
           <!-- Form Name -->
@@ -36,13 +38,12 @@
           <div class="form-group">
             <label class=" control-label" for="">Title*</label>
             {{Former::select('title')->class('input-large input-md form-control')->required()->options(array(
-    1  => 'Ms.',
-    2  => 'Miss',
-    3 => 'Mr.',
-    4 => 'Mrs.'
+    'Ms.'  => 'Ms.',
+    'Miss'  => 'Miss',
+    'Mr.' => 'Mr.',
+    'Mrs.' => 'Mrs.'
 ));}}
           </div>
-
           <div class="form-group">
             <label class=" control-label" for="">First Name*</label>
             {{Former::text('firstname')->placeholder('First Name')->class('input-large input-md form-control')->required()}}
@@ -56,7 +57,7 @@
           <div class="form-group">
             <label class=" control-label" for="">Date of birth</label>
             <div id="datetimepicker" class="input-append date datepicker">
-                    {{ Former::text('date')
+                    {{ Former::text('birthday')
                     ->label('Date')
                     ->placeholder(' yyyy-mm-dd')
                     ->class('form-control input-medium') }}
@@ -67,7 +68,7 @@
 
           <div class="form-group">
             <label class=" control-label" for="">Email Address*</label>
-            {{Former::text('email')->placeholder('Email')->class('input-xlarge input-md form-control')->required()}}
+            {{Former::email('email')->placeholder('Email')->class('input-xlarge input-md form-control')->required()}}
           </div>
 
           <div class="form-group">
@@ -78,6 +79,8 @@
           <div class="form-group">
             <label class=" control-label" for="">Address*</label>
             {{Former::text('address_home')->placeholder('Home...')->class('input-xxlarge input-md form-control')->required()}}
+          </div>
+          <div class="form-group">
             {{Former::text('address_work')->placeholder('Work...')->class('input-xxlarge input-md form-control')->required()}}
           </div>
 
@@ -88,7 +91,7 @@
 
           <div class="form-group">
             <label class=" control-label" for="">Postcode*</label>
-            {{Former::number('postcode')->placeholder('3000')->class('input-medium input-md form-control')->required()}}
+            {{Former::number('postcode')->placeholder('3000')->class('input-medium input-md form-control')->required()->min('200')->max('9944')}}
           </div>
 
           <div class="form-group">
@@ -103,9 +106,9 @@
 
           <div class="form-group">
             <label class=" control-label" for="">Date of Contact*</label>
-            <div id="datepicker" class="input-append date timepicker">
-                    {{ Former::text('birthday')
-                    ->label('birthday')
+            <div id="datepicker" class="input-append date datepicker">
+                    {{ Former::text('contact_date')
+                    ->label('contact_date')
                     ->placeholder(' yyyy-mm-dd')
                     ->class('form-control input-large') }}
                 </div>
@@ -138,7 +141,7 @@
             
 
           <div class="form-group controls">
-          {{ Form::submit('Sponsor us', array('class'=>'btn btn-success'))}}
+          {{ Form::submit('Sponsor us', array('class'=>'btn btn-danger btn-outline'))}}
         </div>
         {{ Former::close()}}
     </div>
@@ -157,7 +160,7 @@
         src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js">
 </script>
 <script type="text/javascript">
-$('#datepicker').datetimepicker({
+$('.datepicker').datetimepicker({
             format: 'YYYY-MM-DD',
             pickTime: false,
             pickDate: true,
@@ -172,3 +175,4 @@ $('.timepicker').datetimepicker({
     });
 
 </script>
+@stop

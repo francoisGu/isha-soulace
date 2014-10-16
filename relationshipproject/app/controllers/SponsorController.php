@@ -8,8 +8,17 @@ class SponsorController extends BaseController
 
 	public function postSponsors(){
 		$sponsorInfo = Input::all();
-		$sponsorInfo['contact_start'] = '9:00:00';
-		$sponsorInfo['contact_end'] = '12:00:00';
+		if ($sponsorInfo['contact_time'] == 1){
+			$sponsorInfo['contact_start'] ='9:00:00';
+			$sponsorInfo['contact_end'] ='13:00:00';
+		}elseif ($sponsorInfo['contact_time'] == 2) {
+			$sponsorInfo['contact_start'] ='13:00:00';
+			$sponsorInfo['contact_end'] ='17:00:00';
+		}elseif ($sponsorInfo['contact_time'] == 3) {
+			$sponsorInfo['contact_start'] =$sponsorInfo['start_time'].':00';
+			$sponsorInfo['contact_end'] = $sponsorInfo['end_time'].':00';
+		}
+
 		$validator = Validator::make($sponsorInfo, 
 			array(
 				'title'=> 'required|max:20',
@@ -34,9 +43,9 @@ class SponsorController extends BaseController
 					->withErrors($validator)
 					->withInput();
 		}else{
-			$sponsorInfo['name'] = $sponsorInfo['title'].$sponsorInfo['firstname'].$sponsorInfo['lastname'];
+			$sponsorInfo['name'] = $sponsorInfo['title'].' '.$sponsorInfo['firstname'].' '.$sponsorInfo['lastname'];
 			$sponsorInfo['contacted'] = 0;
-			//$newSponsor = Sponsor::create($sponsorInfo);
+			$newSponsor = Sponsor::create($sponsorInfo);
 			if ($newSponsor) {
 		    	Mailgun::send('emails.sponsor', 
 		    					$sponsorInfo, 

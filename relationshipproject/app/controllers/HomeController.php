@@ -37,8 +37,8 @@ class HomeController extends BaseController {
 		return View::make('donations');
 	}
 	
-		public function getSponsors(){
-		return View::make('sponsors');
-	}
+	// 	public function getSponsors(){
+	// 	return View::make('sponsors');
+	// }
 	
 }

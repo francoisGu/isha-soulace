@@ -55,9 +55,15 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
+<<<<<<< HEAD
+			'database'  => 'relationship',
+			'username'  => 'root',
+			'password'  => 'root',
+=======
             'database'  => 'relationship',
             'username'  => 'root',
             'password'  => '',
+>>>>>>> 139e0ff244520579d5b379e13b2fa21f777a449d
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

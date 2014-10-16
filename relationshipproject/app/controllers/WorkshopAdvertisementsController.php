@@ -66,10 +66,10 @@ class WorkshopAdvertisementsController extends \BaseController {
             $data['id'] = $workshop_ads->id;
             //paypal config info
             $data['_id'] = 'advertisement';
-            $data['_topic'] = 'advertisements';
+            $data['_topic'] = $data['type'].' advertisements';
             $data['_price'] = $ads_info['price'];
             $data['_amount'] = 1;
-            $data['_description'] = '~~~';
+            $data['_description'] = 'This is payment of '.$data['type'].' advertisements';
             $paypal_url = App::make('PaypalController')->getPaypalURL($data);
             return Redirect::to($paypal_url);
         }

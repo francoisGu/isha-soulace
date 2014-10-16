@@ -187,10 +187,10 @@ mapCentre.lng())
         $postcode = $input['postcode'];
 
 
-        $venue = $unit . ' ' . $street_number 
-            .' ' . $street_name . ',' .  
-            $street_type . ',' . $suburb . ',' 
-            . $state . ',' . $postcode;
+        $venue = $unit . '/' . $street_number 
+            .' ' . $street_name . ' ' .  
+            $street_type . ', ' . $suburb . ', ' 
+            . $state . ', ' . $postcode;
 
         return $venue;
     }

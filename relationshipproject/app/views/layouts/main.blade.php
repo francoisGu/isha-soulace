@@ -64,9 +64,6 @@
 
             <div class="form-group">
                 @if(!Sentry::check())
-                <form class="navbar-form navbar-right" action = "{{ action('UsersController@getActivation') }}" method="get">
-                    <input type="submit" value="Activate" class="btn btn-success"/>
-                </form>
 
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
                     <input type="submit" value="Register" class="btn btn-success"/>

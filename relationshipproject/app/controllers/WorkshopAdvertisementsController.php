@@ -66,7 +66,7 @@ class WorkshopAdvertisementsController extends \BaseController {
              */
             return Redirect::to('home');
         }
-        return Redirect::route('myworkshops');
+        return Redirect::to('myworkshops');
 
     }
 

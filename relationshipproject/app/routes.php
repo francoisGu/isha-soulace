@@ -10,7 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
  */
-
+Route::post('services/familylaw', 'FamilyController@storeComment');
+Route::post('services/accommodation', 'AccommodationController@storeComment');
+Route::post('services/financialadvice', 'FinancialController@storeComment');
+Route::post('services/fitnessandnutrition', 'FitnessController@storeComment');
+Route::post('services/mentalwellbeing', 'MentalController@storeComment');
 Route::post('/registerworkshop/{id}', 'ClientsController@registerWorkshop');
 # Standard User Routes
 Route::group(['before' => 'sentry|serviceProviders'], function(){
@@ -76,13 +80,13 @@ Route::get('services/mentalwellbeing', array('uses' => 'ServiceFormController@ge
 Route::get('services/financialadvice', array('uses' => 'ServiceFormController@getFinancialadvice'));
 Route::get('services/options', array('uses' => 'ServiceFormController@getOptions'));
 Route::get('services/mentors', array('uses' => 'ServiceFormController@getMentors'));
-Route::post('services/accommodation', array('uses' => 'ServiceFormController@postAccommodation'));
-Route::post('services/familylaw', array('uses' => 'ServiceFormController@postFamilyLaw'));
-Route::post('services/fitnessandnutrition', array('uses' => 'ServiceFormController@postFitnessandNutrition'));
-Route::post('services/mentalwellbeing', array('uses' => 'ServiceFormController@postMentalwellbeing'));
-Route::post('services/financialadvice', array('uses' => 'ServiceFormController@postFinancialadvice'));
-Route::post('services/options', array('uses' => 'ServiceFormController@postOptions'));
-Route::post('services/mentors', array('uses' => 'ServiceFormController@postMentors'));
+//Route::post('services/accommodation', array('uses' => 'ServiceFormController@postAccommodation'));
+//Route::post('services/familylaw', array('uses' => 'ServiceFormController@postFamilyLaw'));
+//Route::post('services/fitnessandnutrition', array('uses' => 'ServiceFormController@postFitnessandNutrition'));
+//Route::post('services/mentalwellbeing', array('uses' => 'ServiceFormController@postMentalwellbeing'));
+//Route::post('services/financialadvice', array('uses' => 'ServiceFormController@postFinancialadvice'));
+//Route::post('services/options', array('uses' => 'ServiceFormController@postOptions'));
+//Route::post('services/mentors', array('uses' => 'ServiceFormController@postMentors'));
 
 
 Route::controller('users', 'UsersController');
@@ -97,6 +101,7 @@ Route::controller('reviews', 'ReviewController');
 //Route::post('/password/reset/', array('uses' => 'PasswordController@postReset'));
 Route::controller('password', 'PasswordController');
 Route::get( '/activate/{activationCode}', array( 'uses' => 'UsersController@activate' )); 
+
 
 Route::controller('/', 'HomeController');
 //Route::controller('emails', 'EmailController');

@@ -18,6 +18,7 @@
     ->radios(array('Mr' => 'title', 'Ms' => 'title', 'Mrs' => 'title', 'Miss' => 'title'))
     ->inline();
 }}
+ <input name="type" type='hidden' value='financial_advice'/>
 {{ Former::text('first_name', 'first name')
 	->class('form-control input-xlarge')
     ->placeholder('First Name');
@@ -132,7 +133,7 @@
     ->checkboxes(array('Medical' => 'insurance', 'Total and Permanent Disability' => 'insurance', 'Income Protection' => 'insurance', 'Life insurance' => 'insurance'))
     ->inline();
 }}
-{{ Former::checkbox('investment', 'Do you have any investments?')
+{{ Former::checkbox('investments', 'Do you have any investments?')
     ->checkboxes(array('Property' => 'investments', 'Shares' => 'investments', 'Cash Investments' => 'investments', 'Other' => 'investments'))
     ->inline();
 }}
@@ -146,7 +147,7 @@
 <br>
 {{Former::radio('contact_mode')
   ->label('Preferred mode of contact')
-  ->radios(array('Email' => 'mode', 'Phone' => 'mode'))
+  ->radios(array('Email' => 'contact_mode', 'Phone' => 'contact_mode'))
   ->inline()
   ->required();
 }}
@@ -174,9 +175,9 @@
 	}}
 	</div>
     {{Former::radio('select_time','Select a time period')
-	  ->radios(array('9am to 1pm' =>array( 'name'=>'contact_time','checked'=>'checked'),
-					'1pm to 5pm' =>array( 'name'=>'contact_time','checked'=>''),
-					'Other' => array('name'=>'contact_time', 'checked'=>'')))
+	  ->radios(array('9am to 1pm' =>array( 'name'=>'select_time','checked'=>'checked'),
+					'1pm to 5pm' =>array( 'name'=>'select_time','checked'=>''),
+					'Other' => array('name'=>'select_time', 'checked'=>'')))
 	  ->required();
 	}}
     <div id="start_timepicker" class="input-append date timepicker">

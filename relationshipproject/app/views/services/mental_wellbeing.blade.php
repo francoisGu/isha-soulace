@@ -18,6 +18,7 @@
     ->radios(array('Mr' => 'title', 'Ms' => 'title', 'Mrs' => 'title', 'Miss' => 'title'))
     ->inline();
 }}
+ <input name="type" type='hidden' value='mental_wellbeing'/>
 {{ Former::text('first_name', 'first name')
 	->class('form-control input-xlarge')
     ->placeholder('First Name');
@@ -74,13 +75,13 @@
 <br>
 <h3>   Your Contact details</h3>
 <br>
-{{Former::radio('contact_mode')
+{{Former::radio('contact_mode','contact_mode')
   ->label('Preferred mode of contact')
-  ->radios(array('Email' => 'mode', 'Phone' => 'mode'))
+  ->radios(array('Email' => 'contact_mode', 'Phone' => 'contact_mode'))
   ->inline()
   ->required();
 }}
-{{Former::email('email')
+{{Former::email('email','email')
   ->label('Email Address')
 	->class('form-control input-large')
   ->required();
@@ -104,9 +105,9 @@
 	}}
 	</div>
     {{Former::radio('select_time','Select a time period')
-	  ->radios(array('9am to 1pm' =>array( 'name'=>'contact_time','checked'=>'checked'),
-					'1pm to 5pm' =>array( 'name'=>'contact_time','checked'=>''),
-					'Other' => array('name'=>'contact_time', 'checked'=>'')))
+	  ->radios(array('9am to 1pm' =>array( 'name'=>'select_time','checked'=>'checked'),
+					'1pm to 5pm' =>array( 'name'=>'select_time','checked'=>''),
+					'Other' => array('name'=>'select_time', 'checked'=>'')))
 	  ->required();
 	}}
     <div id="start_timepicker" class="input-append date timepicker">

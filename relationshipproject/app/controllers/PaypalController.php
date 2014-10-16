@@ -40,44 +40,37 @@ class PaypalController extends BaseController
 
     public function postPayWorkshops()
     {
-        //$payWorkshopInfo = Input::all();
-        $payWorkshopInfo = array(
-                    'item' => 'workshop',
-                    'workshop_id' => 1,
-                    'amount' => 2,
-            );
-
+        $payWorkshopInfo = Input::all();
+        
         if (!isset($payWorkshopInfo['workshop_id'])) {
             // change direct..
-            return Redirect::back();
+            return Redirect::back()->withErrors('Workshop not found!');
+        }        
+        $workshop = Workshop::find($payWorkshopInfo['workshop_id']);
+        if($workshop == null){
+            return Redirect::back()->withErrors('Workshop not found!');
         }
 
+        $validator = Validator::make($payWorkshopInfo, array(
+                        'email' => 'required|email',
+                        'amount' => 'integer|between:0,'.$workshop->ticket_number, 
+            ));
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator);
+        }
+        $paymentInfo = array(
+                                'item' => 'workshop',
+                                'price' => $workshop->price,
+                                'amount' => $payWorkshopInfo['amount'],
+                                'service_provider_id' => $workshop->service_provider_id,
+                                'topic' => $workshop->topic,
+                                'description' => $workshop->description,
+                                'id' => $workshop->id,
+        );
 
-        // get workshop data in DB
-        $workshop = Workshop::find($payWorkshopInfo['workshop_id']);
-
-        $ticket_left = $workshop->ticket_number - $payWorkshopInfo['amount'];
+        $paypal_url = $this->getPaypalURL($paymentInfo);
+        return \Redirect::to($paypal_url);
         
-        if ($ticket_left >= 0) {
-            // turn to paypal page
-            $paymentInfo = array(
-                                    'item' => 'workshop',
-                                    'price' => $workshop->price,
-                                    'amount' => $payWorkshopInfo['amount'],
-                                    'service_provider_id' => $workshop->service_provider_id,
-                                    'topic' => $workshop->topic,
-                                    'description' => $workshop->description,
-                                    'id' => $workshop->id,
-            );
-
-            $paypal_url = $this->getPaypalURL($paymentInfo);
-            return \Redirect::to($paypal_url);
-        }else{
-            return Redirect::back()
-                ->withErrors($affectedRows)
-                ->withInput();
-        };
-
     }
     public function postPayAdvertisement()
     {

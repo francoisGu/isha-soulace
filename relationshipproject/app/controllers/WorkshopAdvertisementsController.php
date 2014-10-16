@@ -51,20 +51,27 @@ class WorkshopAdvertisementsController extends \BaseController {
      */
     public function store()
     {
-        //
         $validator = Validator::make($data=Input::all(), WorkshopAdvertisement::$rules);
 
         if($validator->fails()){
             return Redirect::back()->withErrors($validator)->withInput();
         }
 
-        WorkshopAdvertisement::create($data);
+        $workshop_ads = WorkshopAdvertisement::create($data);
+
         if(Input::get('paynow')){
 
-            /*
-             * payment stuff goes here
-             */
-            return Redirect::to('home');
+            $ads_info = AdvertisementType::where('type','=', $data['type'])->first();
+            $data['item'] = 'advertisement';
+            $data['id'] = $workshop_ads->id;
+            //paypal config info
+            $data['_id'] = 'advertisement';
+            $data['_topic'] = 'advertisements';
+            $data['_price'] = $ads_info['price'];
+            $data['_amount'] = 1;
+            $data['_description'] = '~~~';
+            $paypal_url = App::make('PaypalController')->getPaypalURL($data);
+            return Redirect::to($paypal_url);
         }
         return Redirect::route('myworkshops');
 

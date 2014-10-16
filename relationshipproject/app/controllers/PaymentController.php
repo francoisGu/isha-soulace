@@ -22,7 +22,7 @@ class PaymentController extends BaseController
 
         if (!$this->storagePaymentAction($token)) {
             # code...
-            return Redirect::route('/'); 
+            return View::make('home'); 
         }
 
         $status = new GetHumanStatus($token);
@@ -41,15 +41,7 @@ class PaymentController extends BaseController
         //get payment info from cache
         $payum_id = $token->getDetails()->getID();
         //$value = Cache::pull($payum_id);
-        $value = Cache::pull($payum_id);
-        //return print_r($value);
-        /*
-        if ($value['payment_done'] != false) {
-            # code...
-        }
-        */
-        //return print_r($value);
-
+        $value = Cache::get($payum_id);
         if ($value) {
             # act with different payment
             if ($value['item'] == 'workshop') {
@@ -65,7 +57,7 @@ class PaymentController extends BaseController
                     }
                 # send email
             }elseif ($value['item'] == 'advertisement') {
-                    $affectedRows = WorkshopAdvertisement::where('id','=',$value['advertisement_id'])
+                    $affectedRows = WorkshopAdvertisement::where('id','=',$value['id'])
                                     ->update(array('paid' => 1));  
             }elseif ($value['item'] == 'form') {
                 # code...

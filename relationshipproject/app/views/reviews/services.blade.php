@@ -1,3 +1,9 @@
+@extends('layouts.main')
+
+@section('title')
+<title>Isha SoulAce - Review Service</title>
+@stop
+@section('main')
 <style type="text/css">
 .auth .auth-box{
   background-color: white;
@@ -31,17 +37,16 @@
       <label class=" control-label" for="">Ratings*</label>
       <div class="controls">                     
         <div id="custom" style="margin-top:5px;" required='true'></div>
-        <input name="ratings" type='hidden' value='8'/>
       </div>
     </div>
 
       <div class="form-group" >
         <label class=" control-label" for="">Reviews*</label>
-        {{Former::textarea('review_content')->maxlength('2500')->placeholder('Leave your review here...')->rows(4)->class('input-xxlarge input-md form-control')->required()}}
+        {{Former::textarea('review')->maxlength('2500')->placeholder('Leave your review here...')->rows(4)->class('input-xxlarge input-md form-control')->required()}}
       </div>
 
       <div class="form-group controls">
-        {{ Form::submit('Submit', array('class'=>'btn btn-success'))}}
+        {{ Form::submit('Submit', array('class'=>'btn btn-danger btn-outline'))}}
       </div>
       {{ Former::close()}}
       @if(Session::has('message'))
@@ -62,7 +67,6 @@
 
   </div>
   {{ HTML::script('js/jquery-1.8.3.min.js') }}
-  {{ HTML::script('js/bootstrap.min.js') }}
   {{ HTML::script('js/plugins/jquery.raty.min.js') }}
   <script type="text/javascript">
   var url = 'http://localhost:8000/reviews';
@@ -83,4 +87,4 @@
     document.getElementById('details').style.display = '';
   }
   </script>
-  {{ HTML::script('js/bootstrap.min.js') }}
+  @stop

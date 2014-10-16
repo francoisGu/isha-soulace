@@ -84,21 +84,9 @@ Route::post('services/financialadvice', array('uses' => 'ServiceFormController@p
 Route::post('services/options', array('uses' => 'ServiceFormController@postOptions'));
 Route::post('services/mentors', array('uses' => 'ServiceFormController@postMentors'));
 
-//Route::controller('reviews', 'ReviewController');
-
-Route::post('reviews/website', 'WebReviewsController@storeComment');
-Route::post('reviews/workshops', 'WorkshopReviewsController@storeComment');
-Route::post('reviews/services', 'ServicesReviewsController@storeComment');
-
-//Route::controller('services','ServiceFormController');
-//Route::controller('reviews', 'ReviewController');
-
-Route::get('reviews/website', array('uses' => 'ReviewController@getWebsite'));
-Route::get('reviews/services', array('uses' => 'ReviewController@getServices'));
-Route::get('reviews/workshops', array('uses' => 'ReviewController@getWorkshops'));
 
 Route::controller('users', 'UsersController');
-
+Route::controller('reviews', 'ReviewController');
 
 //Route::resource('tickets', 'TicketsController');
 //Route::resource('clients', 'ClientsController');

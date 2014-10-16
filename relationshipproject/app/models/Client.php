@@ -20,4 +20,16 @@ class Client extends \Eloquent {
         return $this->belongsToMany('ServiceProvider');
     }
 
+    public static function is_email_existed($email) {
+        if (Client::where('email', '=', $email)->first())
+            return true;
+        else return false;
+    }
+
+    public static function is_form_id_existed($form_id) {
+        if (Client::where('email', '=', $email)->first())
+            return true;
+        else return false;
+    }
+
 }

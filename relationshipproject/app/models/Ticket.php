@@ -53,4 +53,10 @@ class Ticket extends \Eloquent {
 
 
     }
+
+    public static function is_ticket_existed($ticket_number) {
+        if (Ticket::where('ticketNumber', '=', $ticket_number)->first())
+            return true;
+        else return false;
+    }
 }

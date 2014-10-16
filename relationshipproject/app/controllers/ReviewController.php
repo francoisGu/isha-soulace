@@ -19,22 +19,83 @@ class ReviewController extends BaseController {
     
 	public function getWebsite()
 	{
-        $this->layout->title = 'Review our website - Isha SoulAce';
-        $this->layout->content = View::make('reviews.website');
+        return View::make('reviews.website');
         
 	}
 
 	public function getServices()
 	{
-        $this->layout->title = 'Review services - Isha SoulAce';
-        $this->layout->content = View::make('reviews.services');
+        return View::make('reviews.services');
         
 	}
 	
 	public function getWorkshops()
 	{
-        $this->layout->title = 'Review workshops - Isha SoulAce';
-        $this->layout->content = View::make('reviews.workshops');
+        return View::make('reviews.workshops');
+        
+	}
+
+	public function postWebsite()
+	{
+         $websiteReview = Input:: all();
+         if(!Client::is_email_existed($websiteReview['email']))
+         {
+         	return Redirect::back()->with('message', 'Email doesn\'t exist!');
+         }
+         	
+         else if(WebsiteReview::has_reviewed($websiteReview['email']))
+         {
+         	return Redirect::back()->with('message', 'You have already reviewed for the website!');
+         }
+         else 
+         {
+         	$newReview = WebsiteReview::create($websiteReview);
+            return Redirect::back()->with('message', 'You have successfully reviewed for us. Thank you!');
+         }	
+         
+	}
+
+	public function postServices()
+	{
+        $serviceReview = Input:: all();
+         // if(!Client::is_form_id_existed($serviceReview['form_id']))
+         // {
+         // 	return Redirect::back()->with('message', 'Form_id doesn\'t exist!');
+         // }
+         	
+         if(ServiceReview::has_reviewed($serviceReview['form_id']))
+         {
+         	return Redirect::back()->with('message', 'You have already reviewed for this service!');
+         }
+         else 
+         {
+         	$newReview = ServiceReview::create($serviceReview);
+            return Redirect::back()->with('message', 'You have successfully reviewed for it. Thank you!');
+         }	
+        
+	}
+	
+	public function postWorkshops()
+	{
+        $workshopReview = Input:: all();
+         if(!Ticket::is_ticket_existed($workshopReview['ticketNumber']))
+         {
+         	return Redirect::back()->with('message', 'Ticket doesn\'t exist!');
+         }
+         	
+         else if(WorkshopReview::has_reviewed($workshopReview['ticketNumber']))
+         {
+         	return Redirect::back()->with('message', 'You have already reviewed for this workshop!');
+         }
+         else 
+         {
+         	$ticket = Ticket::where('ticketNumber', $workshopReview['ticketNumber'])->first();
+         	$workshop = $ticket->workshop;
+         	$workshop->save($workshopReview); 
+         	$workshopReview['workshop_id'] = $workshop->id;
+            $newReview = WorkshopReview::create($workshopReview);
+            return Redirect::back()->with('message', 'You have successfully reviewed for it. Thank you!');
+         }	
         
 	}
 

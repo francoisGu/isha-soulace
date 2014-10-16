@@ -10,4 +10,10 @@ class ServiceReview extends \Eloquent {
         return $this->belongsTo('ServiceProvider');
     
     }
+
+    public static function has_reviewed($form_id) {
+    	if(ServiceReview::where('form_id', '=', $form_id)->first())
+    		return true;
+    	return false;
+    }
 }

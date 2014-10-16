@@ -9,4 +9,10 @@ class WorkshopReview extends \Eloquent {
         return $this->belongsTo('Workshop');
     }
 
+    public static function has_reviewed($ticket_number) {
+    	if(WorkshopReview::where('ticketNumber', '=', $ticket_number)->first())
+    		return true;
+    	return false;
+    }
+
 }

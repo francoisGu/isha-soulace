@@ -106,9 +106,6 @@
 <script type="text/javascript"
         src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 </script> 
-<script type="text/javascript"
-        src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-</script>
 
 <script type="text/javascript">
     function change() {

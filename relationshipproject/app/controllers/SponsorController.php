@@ -8,13 +8,17 @@ class SponsorController extends BaseController
 
 	public function postSponsors(){
 		$sponsorInfo = Input::all();
-		if ($sponsorInfo['contact_time'] == 1){
+		if ($sponsorInfo['contact_time'] == 1 or $sponsorInfo['contact_time'] == 0){
 			$sponsorInfo['contact_start'] ='9:00:00';
 			$sponsorInfo['contact_end'] ='13:00:00';
 		}elseif ($sponsorInfo['contact_time'] == 2) {
 			$sponsorInfo['contact_start'] ='13:00:00';
 			$sponsorInfo['contact_end'] ='17:00:00';
 		}elseif ($sponsorInfo['contact_time'] == 3) {
+			if ($sponsorInfo['start_time'] == '' or $sponsorInfo['end_time'] == '') {
+				return Redirect::back()->with('message', 'You have to selet a contact time!');
+			}
+
 			$sponsorInfo['contact_start'] =$sponsorInfo['start_time'].':00';
 			$sponsorInfo['contact_end'] = $sponsorInfo['end_time'].':00';
 		}

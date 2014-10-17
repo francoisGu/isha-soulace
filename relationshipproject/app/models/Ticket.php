@@ -55,7 +55,7 @@ class Ticket extends \Eloquent {
         if (!$workshopObj) {
             return false;
         }
-        $emailInfo = (array)$workshopObj;
+        $emailInfo = get_object_vars($workshopObj)['attributes'];
         $emailInfo['ticketNumber'] = $ticket->ticketNumber;
         $_mail = Mailgun::send('emails.ticket', 
                         $emailInfo, 

@@ -16,7 +16,7 @@ class CreateWorkshopAdvertisementsTable extends Migration {
     {
         $table->engine ='InnoDB';
         $table->increments('id');
-        $table->integer('workshop_id')->unsigned();
+        $table->integer('workshop_id')->unsigned()->unique();
         $table->foreign('workshop_id')->references('id')->on('workshops');
         $table->date('start_date')->nullable();
         $table->date('end_date')->nullable();

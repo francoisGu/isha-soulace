@@ -10,7 +10,8 @@ class WorkshopAdvertisement extends \Eloquent {
     public static $rules = array(
         'start_date'    => 'required|date',  
         'end_date'      => 'required|date', 
-        'type'          => 'required|in:"general", "premium"'
+        'type'          => 'required|in:"general", "premium"',
+        'workshop_id'   => 'required|unique:workshopadvertisements'
     );
 
     public function workshop(){

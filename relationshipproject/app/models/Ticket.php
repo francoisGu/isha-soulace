@@ -36,22 +36,34 @@ class Ticket extends \Eloquent {
             'client_id' => $client->id
         ));
 
-        return Response::make('Ticket generated.');
+        return $ticket;
+        //return Response::make('Ticket generated.');
     }
 
     /*
      * sendTicket to client email
      */
-    public static function sendTicket(Ticket $ticket){
+    public static function sendTicket(Ticket $ticket, $email){
 
-        Mailgun::send('emails.ticket', $data, function($message) use 
-            ($userInfo) {
-                $message -> to($userInfo['email'], 
-                    'there') 
-                    -> subject('Your ticket to workshop');
-            });
-
-
+        // Mailgun::send('emails.ticket', $data, function($message) use 
+        //     ($userInfo) {
+        //         $message -> to($userInfo['email'], 
+        //             'there') 
+        //             -> subject('Your ticket to workshop');
+        //     });
+        $workshopObj = Workshop::find($ticket->workshop_id);
+        if (!$workshopObj) {
+            return false;
+        }
+        $emailInfo = (array)$workshopObj;
+        $emailInfo['ticketNumber'] = $ticket->ticketNumber;
+        $_mail = Mailgun::send('emails.ticket', 
+                        $emailInfo, 
+                        function($message) use ($email) {
+                                $message->to($email, "Dear.")
+                                ->subject('[Isha SoulAce] Workshop Tickets');
+        });
+        return $_mail;
     }
 
     public static function is_ticket_existed($ticket_number) {

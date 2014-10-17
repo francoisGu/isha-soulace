@@ -40,8 +40,8 @@ class PaymentController extends BaseController
     {
         //get payment info from cache
         $payum_id = $token->getDetails()->getID();
-        //$value = Cache::pull($payum_id);
-        $value = Cache::get($payum_id);
+        $value = Cache::pull($payum_id);
+        //$value = Cache::get($payum_id);
         if ($value) {
             # act with different payment
             if ($value['item'] == 'workshop') {
@@ -49,13 +49,21 @@ class PaymentController extends BaseController
                 $value['workshop_id'] = $value['id'];
                 $payment = WorkshopPayment::create($value);
                 if ($payment) {
+                    // take off available ticket in workshop table
                     $workshop = Workshop::find($value['id']);
                     $ticket_left = $workshop->ticket_number - $value['amount'];
                     $affectedRows = Workshop::where('id', '=', $value['id'])
                                 ->update(array('ticket_number' => $ticket_left));  
 
-                    }
-                # send email
+                    // create tickets and send emails
+                    for($i= 0; $i< $value['amount']; $i++){
+                         // create ticket for client
+                        $newTicket = Ticket::generateTicket($value['workshop_id'],  $value['email']);
+                        // send email 
+                        Ticket::sendTicket($newTicket, $value['email']);
+                    }                   
+                }
+
             }elseif ($value['item'] == 'advertisement') {
                     $affectedRows = WorkshopAdvertisement::where('id','=',$value['id'])
                                     ->update(array('paid' => 1));  

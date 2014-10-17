@@ -83,7 +83,7 @@
 
                     @elseif($workshop->workshopAdvertisement && ! $workshop->workshopAdvertisement->paid )
 
-                    <td><a class='btn btn-success btn-outline' href="{{ URL::to('/payment/') }}?advertisementID={{ $workshop->workshopAdvertisement->id }}" >pay now</a></td>
+                    <td><a class='btn btn-success btn-outline' href="{{ URL::to('/pay_advertise/'.$workshop->workshopAdvertisement->id)}}" >pay now</a></td>
                     @else
                     <td align='' style='color:green;'>paid</td>
                     @endif

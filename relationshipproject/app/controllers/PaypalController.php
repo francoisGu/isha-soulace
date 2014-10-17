@@ -67,7 +67,24 @@ class PaypalController extends BaseController
     }
 
     //This function is implemented in WorkshopAdvvertisementsController
-    public function postPayAdvertisement(){}
+    public function payAdvertisement($advertisement_id){
+        $ads_info = WorkshopAdvertisement::find($advertisement_id);
+        if (!$ads_info || $ads_info['paid'] == 1) {
+            return Redirect::to('myworkshops');
+        }
+
+        $ads_type = AdvertisementType::where('type','=', $ads_info['type'])->first();
+        $pay_info['item'] = 'advertisement';
+        $pay_info['id'] = $advertisement_id;
+        //paypal config info
+        $pay_info['_id'] = 'advertisement';
+        $pay_info['_topic'] = $ads_type['type'].' advertisements';
+        $pay_info['_price'] = $ads_type['price'];
+        $pay_info['_amount'] = 1;
+        $pay_info['_description'] = 'This is payment of '.$ads_type['type'].' advertisements';
+        $paypal_url = App::make('PaypalController')->getPaypalURL($pay_info);
+        return Redirect::to($paypal_url);
+    }
 
     public function postPayForms()
     {

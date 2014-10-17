@@ -61,7 +61,7 @@ Route::get('ad', function(){
 
 Route::group(['prefix' => 'workshoplist'], function(){
 
-    Route::get('/', 'WorkshopsController@getWorkshoplist');
+    Route::get('/{id?}', 'WorkshopsController@getWorkshoplist');
     Route::post('/', 'WorkshopsController@searchWorkshop');
 
 });
@@ -75,6 +75,7 @@ Route::get('/sponsors',array('as' => 'sponsors','uses'=>'SponsorController@getSp
 Route::post('/sponsors',array('as' => 'sponsors-post','uses'=>'SponsorController@postSponsors'));
 Route::get('/donations',array('as' => 'donations','uses'=>'HomeController@getDonations'));
 Route::post('/donations', array('as' => 'pay-donation-post','uses' => 'PaypalController@postDonation'));
+Route::get('/pay_advertise/{advertise_id}', array('as' => 'pay-advertise','uses' => 'PaypalController@payAdvertisement'));
 Route::post('/registerworkshop', array('as'=>'pay-workshop-post','uses' => 'PaypalController@postPayWorkshops'));
 Route::get('/payment/done/{payum_token}', array('as' => 'payment_done', 'uses' => 'PaymentController@done'));
 

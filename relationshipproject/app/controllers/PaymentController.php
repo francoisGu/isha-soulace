@@ -22,7 +22,6 @@ class PaymentController extends BaseController
         $status = new GetHumanStatus($token);
         $this->getPayum()->getPayment($token->getPaymentName())->execute($status);
         $_url = $this->storagePaymentAction($token, $status->getStatus());
-        
         echo "<script>
             alert('Pay successfully.');
             window.location.href='admin/ahm/panel';
@@ -72,7 +71,7 @@ class PaymentController extends BaseController
                     $affectedRows = WorkshopAdvertisement::where('id','=',$value['id'])
                                     ->update(array('paid' => 1)); 
                 }
-                return 'workshopAdvertisements';
+                return 'myworkshops';
             }elseif ($value['item'] == 'form') {
                 # code...
 

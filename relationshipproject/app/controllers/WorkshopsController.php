@@ -326,18 +326,4 @@ class WorkshopsController extends \BaseController {
 
         return $workshop_types;
     }
-
-    public function getPremiumAdvertisements($number){
-
-        $ads = WorkshopAdvertisement::where('type', 'premium')->where('paid', '=', 1)->get();
-        $r = array_rand($ads, $number);
-
-        $premium = array();
-
-        for($i = 0; $i < $number; $i++){
-            array_push($premium, $ads[$r[$i]]); 
-        }
-
-        return $premium;
-    }
 }

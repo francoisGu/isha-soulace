@@ -19,3 +19,4 @@ class Email extends Eloquent {
     }
 }
 ?>
+

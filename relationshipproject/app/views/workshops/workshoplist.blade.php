@@ -87,13 +87,12 @@ li.list-group-item.active small {
                     <p> Average 4.5 <small> / </small> 5 </p>
 
                     <div class="left-align control-group">
-                        <form method="POST" action={{ "/registerworkshop/".$workshop->id }} accept-charset="UTF-8">
-                            <input name="_token" type="hidden" value="9spg0lrjq4FaMi7lKjFXezLJZvdz7ztUarfggmDk">
-
-                    
-                                <label for="client_email">Email: <sup>*</sup></label><input type="email" class="input-large text-left form-control" id="client_email" type="text" name="client_email">
-
-                                    <label for="number">Ticket Number: <sup>*</sup></label><input class="input-large form-control" required="true" id="number" type="number" name="number" min="1" max={{ $workshop->ticket_number }} value="1">
+                        <form method="POST" action="{{URL::route('pay-workshop-post')}}" accept-charset="UTF-8">
+                            <input name="workshop_id" type="hidden" value="{{$workshop->id}}">
+                            <input name="item" type="hidden" value="workshop">            
+                            <label for="client_email">Email: <sup>*</sup></label><input type="email" class="input-large text-left form-control" id="client_email" type="text" name="email">
+                            <label for="number">Ticket Number: <sup>*</sup></label><input class="input-large form-control" required="true" id="number" type="number" name="amount" min="1" max={{ $workshop->ticket_number }} value="1">
+                            {{ Form::token()}}
                     <br>
 
                     <input class="btn btn-danger btn-outline btn-lg btn-block" type="submit" value="Register &amp; Pay">

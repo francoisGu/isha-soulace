@@ -15,7 +15,7 @@ Route::post('services/accommodation', 'AccommodationController@storeComment');
 Route::post('services/financialadvice', 'FinancialController@storeComment');
 Route::post('services/fitnessandnutrition', 'FitnessController@storeComment');
 Route::post('services/mentalwellbeing', 'MentalController@storeComment');
-Route::post('/registerworkshop/{id}', 'ClientsController@registerWorkshop');
+//Route::post('/registerworkshop/{id}', 'ClientsController@registerWorkshop');
 # Standard User Routes
 Route::group(['before' => 'sentry|serviceProviders'], function(){
 
@@ -73,9 +73,11 @@ Route::get('/', function()
 
 Route::get('/sponsors',array('as' => 'sponsors','uses'=>'SponsorController@getSponsors'));
 Route::post('/sponsors',array('as' => 'sponsors-post','uses'=>'SponsorController@postSponsors'));
+Route::post('/donations', array('as' => 'pay-donation-post','uses' => 'PaypalController@postDonation'));
+Route::post('/registerworkshop', array('as'=>'pay-workshop-post','uses' => 'PaypalController@postPayWorkshops'));
+Route::get('/payment/done/{payum_token}', array('as' => 'payment_done', 'uses' => 'PaymentController@done'));
 
 Route::controller('services','ServiceFormController');
-
 Route::get('services/accommodation', array('uses' => 'ServiceFormController@getAccommodation'));
 Route::get('services/familylaw', array('uses' => 'ServiceFormController@getFamilyLaw'));
 Route::get('services/fitnessandnutrition', array('uses' => 'ServiceFormController@getFitnessandNutrition'));

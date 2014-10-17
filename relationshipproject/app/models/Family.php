@@ -15,5 +15,8 @@ class Family extends Eloquent {
         {
             DB::table('family_services')->insert($data);
         }
+		public function serviceProvider(){
+        return $this->belongsToMany('ServiceProvider');
+    }
  
 }

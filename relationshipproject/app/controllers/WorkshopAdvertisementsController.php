@@ -73,7 +73,7 @@ class WorkshopAdvertisementsController extends \BaseController {
             $paypal_url = App::make('PaypalController')->getPaypalURL($data);
             return Redirect::to($paypal_url);
         }
-        return Redirect::route('myworkshops');
+        return Redirect::to('myworkshops');
 
     }
 

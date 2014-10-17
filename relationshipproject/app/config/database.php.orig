@@ -52,12 +52,18 @@ return array(
 			'prefix'   => '',
 		),
 
-		'mysql' => array(
+'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
+<<<<<<< HEAD
             'database'  => 'relationship',
             'username'  => 'root',
             'password'  => '1006',
+=======
+			'database'  => 'relationship',
+			'username'  => 'root',
+			'password'  => 'root',
+>>>>>>> e2e1b6e8ecc44c37cb84294687a6ee4c9409ae5e
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

@@ -16572,7 +16572,7 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (4,'litaoshen_0315@hotmail.com','$2y$10$sN22jCl/6bzeR7PzWnyuROsiB0P0HqvZOM5xE2aE6JubtypNYA7nm',NULL,1,'LzpSjsFjYFBscsiXfizXJr4yCDrhlsLeWcJiYoZbnh',NULL,NULL,NULL,NULL,'litao','shen','2014-10-09 05:55:28','2014-10-09 05:55:28',4,'ServiceProvider');
-INSERT INTO `users` VALUES (5,'litaoshen0315@gmail.com','$2y$10$Ovc049psJD.fTr7VJTGdz.8ZAt929HQls3V84Fy.jwQV.EuH.7FQK',NULL,1,NULL,'2014-10-09 06:05:51','2014-10-15 17:15:04','$2y$10$YAqwZVHDtFLHJxuVXcRnCOaEEomA7hmZkV20vua5qRs1HmsqEdU2q',NULL,'litao','shen','2014-10-09 05:58:58','2014-10-15 17:15:04',5,'ServiceProvider');
+INSERT INTO `users` VALUES (5,'litaoshen0315@gmail.com','$2y$10$Ovc049psJD.fTr7VJTGdz.8ZAt929HQls3V84Fy.jwQV.EuH.7FQK',NULL,1,NULL,'2014-10-09 06:05:51','2014-10-16 02:35:43','$2y$10$UGa5hH.iva.Fp8AgWn5s/OHQ61LiKFsWtTZJUx1vX7ETEI2LDALO2',NULL,'litao','shen','2014-10-09 05:58:58','2014-10-16 02:35:43',5,'ServiceProvider');
 INSERT INTO `users` VALUES (6,'423860200@qq.com','$2y$10$KuEktBdN4raYcfTOhojjQ.NEfbMo2jd3aOjD0NFLbWNH5isVkRdZy',NULL,0,'yV43jPwqbTYwSbiTUSXT511BA7kqiuXypZJXi0aQCO',NULL,NULL,NULL,NULL,'hhh','hhhh','2014-10-09 07:37:06','2014-10-09 07:37:06',6,'ServiceProvider');
 INSERT INTO `users` VALUES (7,'cypazafi@gmail.com','$2y$10$mVfIVrNXDvKx6Zz0XlBEHu3AzdpE3ZWfHxnNCs71jteKncAoQrmuG',NULL,0,'KQXvPXuaiUB9h1fOYJNE1MODCylqScFogtYEyA6om2',NULL,NULL,NULL,NULL,'Blake','Henderson','2014-10-11 18:19:45','2014-10-11 18:19:45',7,'ServiceProvider');
 INSERT INTO `users` VALUES (8,'dogokyli@yahoo.com','$2y$10$oipRs8RJlOccElgEUxzky.k9EKnvkLgIVzyxfDRqNFJnH/s/w0N0C',NULL,1,NULL,NULL,NULL,NULL,NULL,'Colton','Hooper','2014-10-13 01:09:14','2014-10-13 01:09:14',8,'ServiceProvider');
@@ -16664,7 +16664,7 @@ CREATE TABLE `workshopAdvertisements` (
   PRIMARY KEY (`id`),
   KEY `workshopadvertisements_workshop_id_foreign` (`workshop_id`),
   CONSTRAINT `workshopadvertisements_workshop_id_foreign` FOREIGN KEY (`workshop_id`) REFERENCES `workshops` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -16675,6 +16675,7 @@ LOCK TABLES `workshopAdvertisements` WRITE;
 /*!40000 ALTER TABLE `workshopAdvertisements` DISABLE KEYS */;
 INSERT INTO `workshopAdvertisements` VALUES (1,1,'2014-10-07','2014-10-11','premium',1,'2014-10-12 21:48:35','2014-10-12 21:48:35');
 INSERT INTO `workshopAdvertisements` VALUES (2,5,'2014-10-14','2014-10-17','premium',0,'2014-10-14 01:35:30','2014-10-14 01:35:30');
+INSERT INTO `workshopAdvertisements` VALUES (3,4,'2014-07-18','2014-08-15','general',1,'2014-10-16 03:15:16','2014-10-16 03:15:16');
 /*!40000 ALTER TABLE `workshopAdvertisements` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -16802,4 +16803,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-16 23:53:04
+-- Dump completed on 2014-10-17 20:07:33

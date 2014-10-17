@@ -124,3 +124,8 @@ HTML::macro('startSmartDropdown', function($url) {
     return ''.$class.' class="dropdown"';
 });
 
+
+App::missing(function($exception){
+        return Response::view('errors.missing', array(), 404);
+        //return Redirect::to('someurl');
+});

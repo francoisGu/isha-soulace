@@ -23,4 +23,28 @@ class WorkshopAdvertisement extends \Eloquent {
 
         return $d; 
     }
+
+    public static function getAdvertisements($number, $type){
+
+
+        $ads = WorkshopAdvertisement::where('type', $type)->where('paid', '=', 1)->get();
+
+
+        if($ads->count() < $number){
+            return $ads;
+        }
+        $ads = $ads->toArray();
+        $r = array_rand( $ads, $number);
+
+        $retrieve = array();
+
+
+        for($i = 0; $i < $number; $i++){
+            $key = $r[$i];
+            array_push($retrieve, WorkshopAdvertisement::find($key + 1)); 
+        }
+
+        return $retrieve;
+    }
+
 }

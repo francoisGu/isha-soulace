@@ -10,7 +10,6 @@
 
     <title>{{ $title }}</title>
 
-    {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/plugins/bootstrap.css') }}  <!--Problem with columns-->
     {{ HTML::style('css/offcanvas.css') }}
     {{ HTML::style('css/bootstrap-responsive.css') }} <!--Problem which mobile navbar-->
@@ -97,27 +96,28 @@
             <!-- Manage active state for pages -->
           </ul>
 
-          <div class="form-group">
+           <div class="form-group">
                 @if(!Sentry::check())
-                <!--<form class="navbar-form navbar-right" action = "{{ action('UsersController@getActivation') }}" method="get">
-                    <input type="submit" value="Activate" class="btn btn-success"/>
-                </form>-->
 
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
-                    <input type="submit" value="Register" class="btn btn-success"/>
-<!--                 </form> -->
+                    <input type="submit" value="Register" class="btn btn-success btn-outline"/>
+                </form>
 
-<!--                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get"> -->
-                    <input type="submit" value="Sign in" class="btn btn-success"/>
+                <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get">
+                    <input type="submit" value="Sign in" class="btn btn-success btn-outline"/>
                 </form>
 
                 @else
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogout') }}" method="get">
-                    <input type="submit" value="Sign out" class="btn btn-success"/>
+                    <input type="submit" value="Sign out" class="btn btn-success btn-outline"/>
+                </form>
+                <form class="navbar-form navbar-right" action = "{{ action('ServiceProvidersController@show', array('id' => Sentry::getUser()->userable->id)) }}" method="get">
+                    <input type="submit" value="My profile" class="btn btn-success btn-outline"/>
                 </form>
 
+
                 @endif
-		  </div>
+        </div>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->

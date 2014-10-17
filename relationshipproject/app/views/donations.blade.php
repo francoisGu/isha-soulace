@@ -38,7 +38,7 @@
             {{ Former::radios('')->radios(array( 'AUD$250' => array('name'=>'amount', 'checked'=>'', 'value'=>200)))}}
             </div>
             <div class='radio'>
-            {{ Former::radios('')->radios(array( 'Other' => array('name'=>'type', 'checked'=>'','value'=>0)))}}
+            {{ Former::radios('')->radios(array( 'Other' => array('name'=>'amount', 'checked'=>'','value'=>0)))}}
             {{Former::number('other_amount')->placeholder('No less than AUD$10')->class('input-large input-md form-control')->min(10)}}
             </div>
         </div>

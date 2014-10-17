@@ -22,7 +22,7 @@ border-color: white;
 color: white;
 }
 </style>
-<div class="row-fluid">
+<div class="row-fluid" style="margin-top:30px;">
 <!--   Types of services & Domestic Violence -->
   <div class="span9"><!--class="col-sm-9 col-sm-pull-3"  style="z-index:0;">-->
   

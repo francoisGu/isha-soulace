@@ -17,7 +17,32 @@
     {{ HTML::style('css/plugins/bootstrap.css') }}
     {{ HTML::style('css/offcanvas.css') }}
     {{ HTML::style('css/bootstrap-responsive.css') }}
-
+      <style>
+  .logo-space{
+    background-color:white;
+    padding-bottom:20px;
+  }
+  .main-white-space{
+    background-color:white;
+    padding-top:20px;
+  }
+  .main-gold-space{
+    background-color:gold;
+/*    background-color:rgb(255, 255, 110); */
+/*    background:url(http://www.hdesktops.com/wp-content/uploads/2013/08/yellow-parchment-paper-texture.jpg); */
+  }
+  .page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #000;
+  }
+  .hr-black {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #000;
+  }
+  </style>
   </head>
 
   <body style="background-color:gold">
@@ -30,6 +55,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <a class="navbar-brand" href="/">Isha SoulAce</a>
           <!-- <a class="navbar-brand" href="/"><img alt="Logo" src="images/logo/Isha SoulAce_Red-Font-pic-only.png"> Isha SoulAce</a> -->
         </div>
         <div class="collapse navbar-collapse">
@@ -66,19 +92,19 @@
                 @if(!Sentry::check())
 
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getRegister') }}" method="get">
-                    <input type="submit" value="Register" class="btn btn-success"/>
+                    <input type="submit" value="Register" class="btn btn-success btn-outline"/>
                 </form>
 
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogin') }}" method="get">
-                    <input type="submit" value="Sign in" class="btn btn-success"/>
+                    <input type="submit" value="Sign in" class="btn btn-success btn-outline"/>
                 </form>
 
                 @else
                 <form class="navbar-form navbar-right" action = "{{ action('UsersController@getLogout') }}" method="get">
-                    <input type="submit" value="Sign out" class="btn btn-success"/>
+                    <input type="submit" value="Sign out" class="btn btn-success btn-outline"/>
                 </form>
                 <form class="navbar-form navbar-right" action = "{{ action('ServiceProvidersController@show', array('id' => Sentry::getUser()->userable->id)) }}" method="get">
-                    <input type="submit" value="My profile" class="btn btn-success"/>
+                    <input type="submit" value="My profile" class="btn btn-success btn-outline"/>
                 </form>
 
 

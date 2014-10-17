@@ -51,6 +51,7 @@ class PaypalController extends BaseController
                                 'item' => 'workshop',
                                 'service_provider_id' => $workshop->service_provider_id,
                                 'amount' => $payWorkshopInfo['amount'],
+                                'email' => $payWorkshopInfo['email'],
                                 'id' => $workshop->id,
                                 //paypal info
                                 '_price' => $workshop->price,

@@ -57,8 +57,7 @@ class SponsorController extends BaseController
 		            					$message->to($newSponsor->email, $newSponsor->name)
 		            					->subject('Sponsorship');
 		        }); 
-
-		        return Redirect::back()->with('message', 'Thanks.');				
+		        return Redirect::back()->with('message', 'Thanks for your support.');				
 
 			}else{
 

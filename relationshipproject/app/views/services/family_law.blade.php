@@ -1,13 +1,14 @@
-
+<div class="text-center">
 <h2 class="form-signup-heading">Brief details</h2>
   <p> Please give some brief details about yourself. This helps the expert understand your situation and saves time and cost before actual contact between yourself and the expert.</p>
   <br>
-  <ul>
-	@foreach($errors->all() as $error)
-	  <li>{{ $error }}</li>
-		@endforeach
-  </ul>
+</div>
 <div id="big-form" class="well auth-box">
+    <ul>
+  @foreach($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
 {{ Former::open()
   ->id('familyLawForm')
   ->secure()
@@ -168,8 +169,8 @@
       ->class('form-control input-medium'); 
     }}
     </div>
-{{ Former::actions()
-  ->large_primary_submit('Submit');
-}}
+    <div class="form-group controls">
+{{ Form::submit('Submit', array('class'=>'btn btn-danger btn-outline'))}}
+</div>
 {{ Former::close(); }}
 </div>

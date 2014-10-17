@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-<title>Isha SoulAce - Sponsors</title>
+<title>Sponsor us - Isha SoulAce</title>
 @stop
 <!-- <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" media="screen"
@@ -151,9 +151,6 @@
 <!-- {{ HTML::script('js/bootstrap.min.js') }}
 {{ HTML::script('js/plugins/dataTables/bootstrap-datetimepicker.js') }}
 {{ HTML::script('js/plugins/dataTables/bootstrap-datetimepicker.min.js') }} -->
-<script type="text/javascript"
-        src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/bootstrap.min.js">
-</script>
 <script type="text/javascript" src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js">
 </script>
 <script type="text/javascript"

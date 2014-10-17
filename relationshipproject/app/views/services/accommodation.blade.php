@@ -18,6 +18,7 @@
     ->radios(array('Mr' => 'title', 'Ms' => 'title', 'Mrs' => 'title', 'Miss' => 'title'))
     ->inline();
 }}
+ <input name="type" type='hidden' value='accommodation'/>
 {{ Former::text('first_name', 'first name')
 	->class('form-control input-xlarge')
     ->placeholder('First Name');
@@ -77,7 +78,7 @@
 <br>
 {{Former::radio('contact_mode')
   ->label('Preferred mode of contact')
-  ->radios(array('Email' => 'mode', 'Phone' => 'mode'))
+  ->radios(array('Email' => 'contact_mode', 'Phone' => 'contact_mode'))
   ->inline()
   ->required();
 }}
@@ -106,9 +107,9 @@
 	}}
 	</div>
     {{Former::radio('select_time','Select a time period')
-	  ->radios(array('9am to 1pm' =>array( 'name'=>'contact_time','checked'=>'checked'),
-					'1pm to 5pm' =>array( 'name'=>'contact_time','checked'=>''),
-					'Other' => array('name'=>'contact_time', 'checked'=>'')))
+	  ->radios(array('9am to 1pm' =>array( 'name'=>'select_time','checked'=>'checked'),
+					'1pm to 5pm' =>array( 'name'=>'select_time','checked'=>''),
+					'Other' => array('name'=>'select_time', 'checked'=>'')))
 	  ->required();
 	}}
     <div id="start_timepicker" class="date timepicker">

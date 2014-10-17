@@ -18,6 +18,7 @@
     ->radios(array('Mr' => 'title', 'Ms' => 'title', 'Mrs' => 'title', 'Miss' => 'title'))
     ->inline();
 }}
+ <input name="type" type='hidden' value='family_law'/>
 {{ Former::text('first_name', 'first name')
 	->class('form-control input-xlarge')
     ->placeholder('First Name');
@@ -65,22 +66,22 @@
     ->required();
 }}
 {{ Former::radio('same_sex', 'Are you in a same-sex relationship?')
-    ->radios(array('Yes' => 'same-sex', 'No' => 'same-sex'))
+    ->radios(array('Yes' => 'same_sex', 'No' => 'same_sex'))
     ->inline()
     ->required();
 }}
-{{ Former::radio('relationship_status', 'Relationship status')
+{{ Former::radio('status', 'Relationship status')
     ->radios(array('Married' => 'status', 'De facto' => 'status', 'Separated' => 'status'))
     ->inline()
     ->required();
 }}
 {{ Former::radio('employment', 'Are you employed?')
-    ->radios(array('Yes' => 'employed', 'No' => 'employed'))
+    ->radios(array('Yes' => 'employment', 'No' => 'employment'))
     ->inline()
     ->required();
 }}
 {{ Former::radio('residency_status', 'What is your residency status?')
-    ->radios(array('Student Visa' => 'residency-status', '457 Visa' => 'residency-status', 'Spouse Visa' => 'residency-status', 'Permanent Resident' => 'residency-status', 'Citizen' => 'residency-status', 'Other' => 'residency-status'))
+    ->radios(array('Student Visa' => 'residency_status', '457 Visa' => 'residency_status', 'Spouse Visa' => 'residency_status', 'Permanent Resident' => 'residency_status', 'Citizen' => 'residency_status', 'Other' => 'residency_status'))
     ->inline()
     ->required();
 }}
@@ -90,7 +91,7 @@
     ->required();
 }}
 {{ Former::checkbox('liabilities', 'Do you have any liabilities?')
-    ->checkboxes(array('Mortage Loan' => 'liability', 'Financial Debt' => 'liability', 'Car Loan' => 'liability', 'Personal Loan' => 'liability', 'Other' => 'liability'))
+    ->checkboxes(array('Mortage Loan' => 'liabilities', 'Financial Debt' => 'liabilities', 'Car Loan' => 'liabilities', 'Personal Loan' => 'liabilities', 'Other' => 'liabilities'))
     ->inline();
 }}
 {{ Former::radio('superannuation', 'Do you have superannuation?')
@@ -119,7 +120,7 @@
 <br>
 {{Former::radio('contact_mode')
   ->label('Preferred mode of contact')
-  ->radios(array('Email' => 'mode', 'Phone' => 'mode'))
+  ->radios(array('Email' => 'contact_mode', 'Phone' => 'contact_mode'))
   ->inline()
   ->required();
 }}
@@ -147,9 +148,9 @@
 	}}
 	</div>
     {{Former::radio('select_time','Select a time period')
-	  ->radios(array('9am to 1pm' =>array( 'name'=>'contact_time','checked'=>'checked'),
-					'1pm to 5pm' =>array( 'name'=>'contact_time','checked'=>''),
-					'Other' => array('name'=>'contact_time', 'checked'=>'')))
+	  ->radios(array('9am to 1pm' =>array( 'name'=>'select_time','checked'=>'checked'),
+					'1pm to 5pm' =>array( 'name'=>'select_time','checked'=>''),
+					'Other' => array('name'=>'select_time', 'checked'=>'')))
 	  ->required();
 	}}
     <div id="start_timepicker" class="input-append date timepicker">

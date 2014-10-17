@@ -25,20 +25,20 @@
     <h3 class="text-center">Support us with donations!  <span>Thank you!</span> </h3>
     <div id="big-form" class="well auth-box">
       {{Former::framework('Nude');}}
-      {{Former::open()->method('POST')->url('')->class('')}}
+      {{Former::open()->method('POST')->url('pay-donation-post')->class('')}}
           <!-- Form Name -->
           <legend class="text-center" style="border-bottom:solid 1px;">Donation Details</legend>
           <!-- Text input-->
           <div class="form-group">
             <label class=" control-label" for="radios">Donation Amount</label>
             <div class='radio'>
-            {{ Former::radios('')->radios(array('AUD$100' =>array( 'name'=>'amount','checked'=>'checked')))}}
+            {{ Former::radios('')->radios(array('AUD$100' =>array( 'name'=>'amount','checked'=>'checked', 'value'=>100)))}}
             </div>
             <div class='radio'>
-            {{ Former::radios('')->radios(array( 'AUD$250' => array('name'=>'amount', 'checked'=>'')))}}
+            {{ Former::radios('')->radios(array( 'AUD$250' => array('name'=>'amount', 'checked'=>'', 'value'=>200)))}}
             </div>
             <div class='radio'>
-            {{ Former::radios('')->radios(array( 'Other' => array('name'=>'amount', 'checked'=>'')))}}
+            {{ Former::radios('')->radios(array( 'Other' => array('name'=>'type', 'checked'=>'','value'=>0)))}}
             {{Former::number('other_amount')->placeholder('No less than AUD$10')->class('input-large input-md form-control')->min(10)}}
             </div>
         </div>

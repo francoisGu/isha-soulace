@@ -16,5 +16,7 @@ class Fitness extends Eloquent {
             DB::table('fitness_services')->insert($data);
 			
         }
- 
+ public function serviceProvider(){
+        return $this->belongsToMany('ServiceProvider');
+    }
 }

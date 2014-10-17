@@ -16,5 +16,8 @@ class Accommodation extends Eloquent {
         {
             DB::table('accommodation_service')->insert($data);
         }
+		public function serviceProvider(){
+        return $this->belongsToMany('ServiceProvider');
+    }
  
 }

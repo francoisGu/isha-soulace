@@ -15,5 +15,7 @@ class Mental extends Eloquent {
         {
             DB::table('mental_services')->insert($data);
         }
- 
+ public function serviceProvider(){
+        return $this->belongsToMany('ServiceProvider');
+    }
 }

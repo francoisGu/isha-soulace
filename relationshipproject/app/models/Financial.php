@@ -15,5 +15,8 @@ class Financial extends Eloquent {
         {
             DB::table('financial_services')->insert($data);
         }
+		public function serviceProvider(){
+        return $this->belongsToMany('ServiceProvider');
+    }
  
 }

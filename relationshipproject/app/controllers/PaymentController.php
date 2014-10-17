@@ -19,24 +19,25 @@ class PaymentController extends BaseController
         $request->attributes->set('payum_token', $payum_token);
 
         $token = $this->getHttpRequestVerifier()->verify($request);
-
-        if (!$this->storagePaymentAction($token)) {
-            # code...
-            return View::make('home'); 
-        }
-
         $status = new GetHumanStatus($token);
-
         $this->getPayum()->getPayment($token->getPaymentName())->execute($status);
+        $_url = $this->storagePaymentAction($token, $status->getStatus());
+        
+        echo "<script>
+            alert('Pay successfully.');
+            window.location.href='admin/ahm/panel';
+        </script>";
 
-        return \Response::json(array(
-            'status' => $status->getStatus(),
-            'details' => iterator_to_array($status->getModel())
-        ));
+        return Redirect::to($_url);
+        
+        // return \Response::json(array(
+        //     'status' => $status->getStatus(),
+        //     'details' => iterator_to_array($status->getModel())
+        // ));
     }
 
 
-    public function storagePaymentAction($token)
+    public function storagePaymentAction($token, $status)
     {
         //get payment info from cache
         $payum_id = $token->getDetails()->getID();
@@ -45,45 +46,48 @@ class PaymentController extends BaseController
         if ($value) {
             # act with different payment
             if ($value['item'] == 'workshop') {
-                $value['workshop_payment_amount'] = $value['amount'];
-                $value['workshop_id'] = $value['id'];
-                $payment = WorkshopPayment::create($value);
-                if ($payment) {
-                    // take off available ticket in workshop table
-                    $workshop = Workshop::find($value['id']);
-                    $ticket_left = $workshop->ticket_number - $value['amount'];
-                    $affectedRows = Workshop::where('id', '=', $value['id'])
-                                ->update(array('ticket_number' => $ticket_left));  
+                if ($status == 'success') {
+                    $value['workshop_payment_amount'] = $value['amount'];
+                    $value['workshop_id'] = $value['id'];
+                    $payment = WorkshopPayment::create($value);
+                    if ($payment) {
+                        // take off available ticket in workshop table
+                        $workshop = Workshop::find($value['id']);
+                        $ticket_left = $workshop->ticket_number - $value['amount'];
+                        $affectedRows = Workshop::where('id', '=', $value['id'])
+                                    ->update(array('ticket_number' => $ticket_left));  
 
-                    // create tickets and send emails
-                    for($i= 0; $i< $value['amount']; $i++){
-                         // create ticket for client
-                        $newTicket = Ticket::generateTicket($value['workshop_id'],  $value['email']);
-                        // send email 
-                        Ticket::sendTicket($newTicket, $value['email']);
-                    }                   
+                        // create tickets and send emails
+                        for($i= 0; $i< $value['amount']; $i++){
+                             // create ticket for client
+                            $newTicket = Ticket::generateTicket($value['workshop_id'],  $value['email']);
+                            // send email 
+                            Ticket::sendTicket($newTicket, $value['email']);
+                        }                 
+                    }
                 }
-
+                return 'workshoplist';
             }elseif ($value['item'] == 'advertisement') {
+                if ($status == 'success') {
                     $affectedRows = WorkshopAdvertisement::where('id','=',$value['id'])
-                                    ->update(array('paid' => 1));  
+                                    ->update(array('paid' => 1)); 
+                }
+                return 'workshopAdvertisements';
             }elseif ($value['item'] == 'form') {
                 # code...
 
             }elseif ($value['item'] == 'donation') {
-                $title      = isset($value['title'])?($value['title'].' '):'';
-                $firstname  = isset($value['firstname'])?($value['firstname'].' '):'';
-                $lastname   = isset($value['lastname'])?$value['lastname']:'';
-                $value['name'] = $title.$firstname.$lastname;
-                $payment = Donation::create($value);
-            }else{
-                return false;
+                if ($status == 'success') {
+                    $title      = isset($value['title'])?($value['title'].' '):'';
+                    $firstname  = isset($value['firstname'])?($value['firstname'].' '):'';
+                    $lastname   = isset($value['lastname'])?$value['lastname']:'';
+                    $value['name'] = $title.$firstname.$lastname;
+                    $payment = Donation::create($value);
+                }
+                return 'donations';
             }
-
-        }else{
-            return false;
         }
-        return true;
+        return 'home';
     }
 
     /**

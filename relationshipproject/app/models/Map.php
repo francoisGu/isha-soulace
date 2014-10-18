@@ -227,7 +227,7 @@ mapCentre.lng())
      */
     public static function expandRange($type, $postcode, $range){
 
-        $expand = [];
+        $expand = array();
         //$workshops = Workshop::get(array('latitude','longitude'))->lists('id');
 
         if($postcode != ""){

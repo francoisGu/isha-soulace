@@ -11,17 +11,17 @@ class Workshop extends \Eloquent {
         'topic'                 => 'required',
         'description'           => 'required',
         'unit'                  => 'required',
-        'street_number'         => 'required',
+        'street_number'         => 'required|integer',
         'street_name'           => 'required',
         'street_type'           => 'required',
         'suburb'                => 'required',
         'state'                 => 'required',
-        'postcode'              => 'required',
-        'date'                  => 'required',
-        'start_time'            => 'required',
-        'end_time'              => 'required',
-        'total_ticket_number'   => 'required',
-        'price'                 => 'required' 
+        'postcode'              => 'required|integer',
+        'date'                  => 'required|date_format:Y-m-d',
+        'start_time'            => 'required|date_format:H:i',
+        'end_time'              => 'required|date_format:H:i',
+        'total_ticket_number'   => 'required|integer',
+        'price'                 => 'required|integer' 
     
     );
 

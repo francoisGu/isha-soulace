@@ -25,6 +25,12 @@ class WorkshopAdvertisement extends \Eloquent {
         return $d; 
     }
 
+    public static function getPaidAdvertisements(){
+
+        $ads = WorkshopAdvertisement::where('paid', '=', 1)->get();
+    
+    }
+
     public static function getAdvertisements($number, $type){
 
 

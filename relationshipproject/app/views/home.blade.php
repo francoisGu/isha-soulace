@@ -115,8 +115,10 @@ color: white;
   <div class="list-group">
 
         @foreach( WorkshopAdvertisement::getAdvertisements(4, 'premium') as $ad)
+        @if(is_null($ad))
 
-	  <a href="#" class="list-group-item">
+        @else
+	  <a href="{{ URL::to('workshoplist/' . $ad->workshop->id) }}" class="list-group-item">
           <h4 class="list-group-item-heading"> {{ $ad->workshop->topic }} <span class="label label-danger pull-right">Featured</span></h4>
 	    <p class="list-group-item-text">
             <strong>Date & Time:</strong> <span class="label label-warning pull-right">Top Rated</span><br/>{{ $ad->workshop->date . ' ' . $ad->workshop->start_time . ' - ' . $ad->workshop->end_time }} <br>
@@ -125,33 +127,8 @@ color: white;
             <strong>RSVPs:</strong>{{ $ad->workshop->ticket_number }}<br>
             <strong>Food & Drinks Provided:</strong>{{ $ad->workshop->food? ' Yes':' No'; }}<br></p>
 	  </a>
-
+	  @endif
       @endforeach
-	  <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			RSVPs:<br></p>
-	  </a>
-	  <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Date & Time:<br>
-			Venue:<br>
-			Price:<br>
-			RSVPs<br></p>
-	  </a>
-	  <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Date & Time: <br>
-			Venue:<br>
-			Price:<br>
-			RSVPs<br></p>
-	  </a>
 	</div>
   </div>
 </div>

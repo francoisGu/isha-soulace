@@ -82,7 +82,9 @@
 
     @foreach( WorkshopAdvertisement::getAdvertisements(3, 'general') as $ad)
 
-	  <a href="#" class="list-group-item">
+    @if($ad->workshop)
+
+    <a href="{{ URL::to('workshoplist/' . $ad->workshop->id) }}" class="list-group-item">
           <h4 class="list-group-item-heading"> {{ $ad->workshop->topic }} </h4>
 	    <p class="list-group-item-text">
             <strong>Date & Time:</strong> <br/>{{ $ad->workshop->date . ' ' . $ad->workshop->start_time . ' - ' . $ad->workshop->end_time }} <br>
@@ -91,27 +93,9 @@
             <strong>RSVPs:</strong>{{ $ad->workshop->ticket_number }}<br>
             <strong>Food & Drinks Provided:</strong>{{ $ad->workshop->food? ' Yes':' No'; }}<br></p>
 	  </a>
+    @endif
 
     @endforeach
-
-	  <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			RSVPs:<br></p>
-	  </a>
-	  <a href="#" class="list-group-item">
-			<h4 class="list-group-item-heading">Workshop Title</h4>
-			<p class="list-group-item-text">
-			Date:<br>
-			Time:<br>
-			Venue:<br>
-			Price:<br>
-			RSVPs<br></p>
-	  </a>
 	</div>
   </div>
     </div>

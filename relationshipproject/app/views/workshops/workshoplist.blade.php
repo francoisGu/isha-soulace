@@ -2,6 +2,15 @@
 
 @section('main')
 
+@if(isset($jump_to))
+{{ HTML::script('js/plugins/dataTables/jquery.js') }}
+<script type="text/javascript">
+$(window).load(function(){
+    window.location = "{{ '#'. $jump_to }}";
+    document.getElementById("{{ $jump_to}}").parentNode.style.backgroundColor = 'rgb(104,184,252)';
+});
+</script>
+@endif
 <style>
 li.list-group-item {
     height:auto;
@@ -35,7 +44,7 @@ li.list-group-item.active small {
                 {{ Form::select('type', array_merge($types, array(' ' => ' ')), ' ') }}
 
                 {{ Form::label('postcode', 'Postcode: ', array('style'=>'margin-left: 3%;', 'class'=>'form-inline')) }}
-                {{ Form::number('postcode') }}
+                {{ Form::number('postcode')}}
 
                 {{ Form::label('search', " ", array('style'=>'margin-left: 3%;', 'class'=>'form-inline')) }}
                 {{ Former::submit('search', 'Search')->class('btn btn-small btn-success btn-outline') }}
@@ -46,10 +55,13 @@ li.list-group-item.active small {
              <!--list here-->
              <ul class="list-group" >
 
-            @foreach($workshops as $workshop)
+            @foreach($ads as $ad)
+            @if( $workshop = $ad->workshop )
 
             <li class="list-group-item">
+                <a id={{ "workshop" . $workshop->id }}></a>
                 <div class="col-md-9">
+                    
                     <h4 class="list-group-item-heading"> {{ $workshop->topic }} </h4>
                     <p class="list-group-item-text"> <strong class="col-md-3">Service Provider: </strong>
                         @if( $workshop->serviceProvider->identity )
@@ -103,8 +115,13 @@ li.list-group-item.active small {
                 </div>
             </li>
 
+            @endif
             @endforeach
             </ul>
+
+            <div class="pull-right">
+            <?php echo $ads->links(); ?>
+            </div>
 
         </div>
     </div>

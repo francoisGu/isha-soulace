@@ -11,7 +11,7 @@ class ClientsTableSeeder extends Seeder {
         DB::table('clients')->delete();
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
+		foreach(range(1, 100) as $index)
 		{
 		    Ticket::generateTicket(6, $faker->email);	
 		}

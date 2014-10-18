@@ -40,5 +40,10 @@ class ServiceProvider extends Eloquent {
     
     }
 
+    public static function is_email_existed($email) {
+        if (ServiceProvider::where('email', '=', $email)->first())
+            return true;
+        else return false;
+    }
 
 }

@@ -2,6 +2,8 @@
 
 class WorkshopsController extends \BaseController {
 
+    protected $per_page = 10;
+
     public function __construct() {
         $this->beforeFilter('csrf',  array('on'=>'post'));
     }
@@ -252,13 +254,22 @@ class WorkshopsController extends \BaseController {
     /*
      *  return all workshops to workshop list
      */
-    public function getWorkshoplist(){
+    public function getWorkshoplist($id = null){
 
-        $workshops = Workshop::all(); 
+        $ads = WorkshopAdvertisement::where('paid', '=', 1)->paginate($this->per_page);
 
         $types = $this->workshop_types();
 
-        return View::make('workshops.workshoplist')->with('workshops', $workshops)->with('types', $types);
+        $jump_to = null;
+        if($id != null){
+
+            $jump_to = "workshop" . $id;
+        }
+
+        return View::make('workshops.workshoplist')
+            ->with('ads', $ads)
+            ->with('types', $types)
+            ->with('jump_to', $jump_to);
     }
 
     /*
@@ -277,14 +288,16 @@ class WorkshopsController extends \BaseController {
 
         if($postcode != ""){
             $temp = Map::expandRange('Workshop',$postcode, 30);
-            if($class != null){
+            if(! is_null($class)){
                 foreach($temp as $workshop){
                     if($workshop->class == $class){
-                        array_push($workshops, $workshop);
+                        array_push($workshops, $workshop->id);
                     }
                 }
-            } else{
-                $workshops = $temp;
+            } else {
+                foreach($temp as $workshop){
+                    array_push($workshops, $workshop->id);
+                }
             }
 
         } else{
@@ -292,23 +305,22 @@ class WorkshopsController extends \BaseController {
                 $temp = Workshop::all();
                 foreach($temp as $workshop){
                     if($workshop->class == $class){
-                        array_push($workshops, $workshop);
+                        array_push($workshops, $workshop->id);
                     }
                 } 
-            } else {
-                $workshops = Workshop::all();
-            }
+            } 
         }
 
         if(count($workshops) == 0){
 
-            $workshops = Workshop::all();
-            return View::make('workshops.workshoplist')->with('workshops', $workshops)->with('types', $types)->withErrors('Sorry! No workshop found.');
-
+            $workshops = Workshop::all()->lists('id');
+            $ads = WorkshopAdvertisement::whereIn('workshop_id', $workshops)->where('paid', '=', 1)->paginate($this->per_page);
+            return View::make('workshops.workshoplist')->with('ads', $ads)->with('types', $types)->withErrors('Sorry! No workshop found.');
 
         }
 
-        return View::make('workshops.workshoplist')->with('workshops', $workshops)->with('types', $types);
+        $ads = WorkshopAdvertisement::whereIn('workshop_id', $workshops)->where('paid', '=', 1)->paginate($this->per_page);
+        return View::make('workshops.workshoplist')->with('ads', $ads)->with('types', $types);
 
     }
 

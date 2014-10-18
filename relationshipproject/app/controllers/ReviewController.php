@@ -38,9 +38,9 @@ class ReviewController extends BaseController {
 	public function postWebsite()
 	{
          $websiteReview = Input:: all();
-         if(!Client::is_email_existed($websiteReview['email']))
+         if(!Client::is_email_existed($websiteReview['email']) && !ServiceProvider::is_email_existed($websiteReview['email']))
          {
-         	return Redirect::back()->with('message', 'Email doesn\'t exist!');
+         	return Redirect::back()->with('message', 'Email doesn\'t exist! You cannot review for us.');
          }
          	
          else if(WebsiteReview::has_reviewed($websiteReview['email']))

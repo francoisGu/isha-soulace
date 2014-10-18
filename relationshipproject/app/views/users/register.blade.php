@@ -40,7 +40,7 @@
                 @endif
                 -->
 
-{{Former::text('email')->placeholder('Email')->class('input-xlarge inputHeight form-control')->required()}} 
+{{Former::email('email')->placeholder('Email')->class('input-xlarge inputHeight form-control')->required()}} 
 <!-- {{ Form::text('email', null, array('class'=>'input-xlarge inputHeight form-control', 'placeholder'=>'Email Address')) }} -->
 {{Former::password('password')->placeholder('Password')->class('input-xlarge inputHeight form-control')->required()}}
 <!-- {{ Form::password('password', array('class'=>'input-xlarge inputHeight form-control', 'placeholder'=>'Password')) }} -->

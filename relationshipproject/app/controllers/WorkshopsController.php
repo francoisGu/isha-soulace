@@ -2,7 +2,7 @@
 
 class WorkshopsController extends \BaseController {
 
-    protected $per_page = 10;
+    protected $per_page = 1;
 
     public function __construct() {
         $this->beforeFilter('csrf',  array('on'=>'post'));
@@ -251,25 +251,45 @@ class WorkshopsController extends \BaseController {
         }
     }
 
+
+    public function selectWorkshop($id){
+
+        $ads = WorkshopAdvertisement::where('paid', '=', 1)->get();
+
+        $types = $this->workshop_types();
+
+        $jump_to = null;
+
+        $workshop = Workshop::find($id);
+        $count = 0;
+        $page = 1;
+        foreach($ads as $ad){
+
+            $count ++;
+            if($ad->workshop && $ad->workshop->id == $id){
+                $page = floor($count / $this->per_page);
+                $jump_to = "workshop" . $id;
+
+                $url = URL::to('workshoplist' . '?page=' . $page);
+                return Redirect::to($url)
+                    ->with('jump_to', $jump_to);
+
+            }
+        }
+    }
+
     /*
      *  return all workshops to workshop list
      */
-    public function getWorkshoplist($id = null){
+    public function getWorkshoplist(){
 
         $ads = WorkshopAdvertisement::where('paid', '=', 1)->paginate($this->per_page);
 
         $types = $this->workshop_types();
 
-        $jump_to = null;
-        if($id != null){
-
-            $jump_to = "workshop" . $id;
-        }
-
         return View::make('workshops.workshoplist')
             ->with('ads', $ads)
-            ->with('types', $types)
-            ->with('jump_to', $jump_to);
+            ->with('types', $types);
     }
 
     /*

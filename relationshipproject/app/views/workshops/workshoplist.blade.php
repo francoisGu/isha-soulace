@@ -2,7 +2,7 @@
 
 @section('main')
 
-@if(isset($jump_to))
+@if($jump_to=Session::get('jump_to'))
 {{ HTML::script('js/plugins/dataTables/jquery.js') }}
 <script type="text/javascript">
 $(window).load(function(){
@@ -117,9 +117,11 @@ li.list-group-item.active small {
 
             @endif
             @endforeach
+
             </ul>
 
             <div class="pull-right">
+
             <?php echo $ads->links(); ?>
             </div>
 

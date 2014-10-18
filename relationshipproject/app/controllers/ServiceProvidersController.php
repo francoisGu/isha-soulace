@@ -53,7 +53,7 @@ class ServiceProvidersController extends \BaseController {
 
         //$sp = ServiceProvider::create($data);
         /*Sentry::register(array_merge($data, array('userable_id' => $sp->id, 'userable_type' => get_class($sp), 'password' => Hash::make('123456'))));*/
-        return Redirect::route('serviceProviders.index');
+        return Redirect::to('users/login');
 
 	}
 
@@ -107,7 +107,7 @@ class ServiceProvidersController extends \BaseController {
         $sp->update(array_merge($data, ['message' => 'success']));
 
         //dd($data);
-        return Redirect::route('serviceProviders.show', $id);
+        return Redirect::to('serviceProviders/'. $id);
 	}
 
 	/**
@@ -120,7 +120,7 @@ class ServiceProvidersController extends \BaseController {
 	public function destroy($id)
 	{
         ServiceProvider::destroy($id);
-        return Redirect::route('serviceProviders.index');
+        return Redirect::to('home');
 		//
 	}
 

@@ -61,7 +61,8 @@ Route::get('ad', function(){
 
 Route::group(['prefix' => 'workshoplist'], function(){
 
-    Route::get('/{id?}', 'WorkshopsController@getWorkshoplist');
+    Route::get('/{id}', 'WorkshopsController@selectWorkshop');
+    Route::get('/', 'WorkshopsController@getWorkshoplist');
     Route::post('/', 'WorkshopsController@searchWorkshop');
 
 });

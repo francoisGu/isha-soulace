@@ -20,7 +20,7 @@
     ->radios(array('Mr' => 'title', 'Ms' => 'title', 'Mrs' => 'title', 'Miss' => 'title'))
     ->inline();
 }}
- <input name="type" type='hidden' value='financial_advice'/>
+ <input name="type" type='hidden' value='Financial Advice'/>
 {{ Former::text('first_name', 'first name')
 	->class('form-control input-xlarge')
     ->placeholder('First Name');

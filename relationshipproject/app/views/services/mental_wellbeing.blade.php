@@ -61,6 +61,7 @@
 {{ Former::number('postcode', 'Postcode')
 	->class('form-control input-small')
     ->placeholder('3000')
+    ->value('3000')
     ->min('0200')
     ->max('9944')
     ->required();

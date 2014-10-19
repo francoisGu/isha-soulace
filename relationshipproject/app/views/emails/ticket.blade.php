@@ -9,17 +9,20 @@
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h4 class="text-center">
-                        Ticket</h4>
+                        Dear client, this is your Ticket:</h4>
                 </div>
                 <div class="panel-body text-center">
                     <p class="lead">
-                        <strong>{{$title}}</strong></p>
+                        <strong>{{'Ticket Number: '. $ticketNumber}}</strong></p>
                 </div>
                 <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>{{'Workshop: '. $topic}}</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>{{'Venue: '. $unit.'/'.$street_number.' '.$street_name.' '.$street_type.', '.$suburb.', '.$state}}</li>                    <li class="list-group-item"><i class="icon-ok text-danger"></i>{{'Postcode: '. $postcode}}</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>{{'Date: '. $date}}</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>{{'Time:'. $start_time. '~'. $end_time}}</li>
                 </ul>
+                <h4 class="text-center">
+                        (Attention: Please keep this ticket carefully.)</h4>
             </div>
         </div>         
 </div>

@@ -33,8 +33,6 @@ return array(
 
         'id' => array(
             'title' => 'ID',
-
-
         ),
 
         'topic' => array(
@@ -44,63 +42,50 @@ return array(
 
         'description' => array(
             'title' => 'Descritption',
-
-
         ),
 
         'unit' => array(
             'title' => 'Unit',
-
         ),
 
         'street_number' => array(
             'title' => 'Street Number',
-
         ),
 
         'street_name' => array(
             'title' => 'Street Name',
-
         ),
 
         'street_type' => array(
             'title' => 'Street Type',
-
         ),
 
         'suburb' => array(
             'title' => 'Suburb',
-
         ),
 
         'state' => array(
             'title' => 'State',
-
         ),
 
         'postcode' => array(
             'title' => 'Postcode',
-
         ),
 
         'date' => array(
             'title' => 'Date',
-
         ),
 
         'start_time' => array(
             'title' => 'Start Time',
-
         ),
 
         'end_time' => array(
             'title' => 'End Time',
-
         ),
 
         'total_ticket_number' => array(
             'title' => 'Total Ticket Number',
-
         ),
 
         'price' => array(

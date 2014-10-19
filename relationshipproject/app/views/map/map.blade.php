@@ -15,10 +15,17 @@
     	    	@endforeach
     	    </ul>
 
-            {{ Former::text('postcode')->label('')->class('input-xxlarge')->placeholder('Enter postcode here...') }}
+            {{ Former::text('postcode')->label('')->class('input-xxlarge form-control')->placeholder('Enter postcode here...') }}
+    
+            {{ Former::submit('search', 'SEARCH')->class("btn btn-medium btn-danger btn-outline") }}
+
+            <a class="btn btn-medium btn-danger btn-outline" href="{{ URL::to('admin/serviceProviders') }} ">BACK</a>
+
+
+        {{ Former::close() }}
+        <br/>
 
         {{ $map['html'] }}
-        {{ Former::close() }}
     </body>
 
 @stop

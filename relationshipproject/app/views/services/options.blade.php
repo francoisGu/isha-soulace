@@ -91,7 +91,11 @@
             <strong>Venue:</strong> {{ Map::getVenue($ad->workshop) }}<br>
             <strong>Price:</strong>{{ ' AU$'. $ad->workshop->price }}<br>
             <strong>RSVPs:</strong>{{ $ad->workshop->ticket_number }}<br>
-            <strong>Food & Drinks Provided:</strong>{{ $ad->workshop->food? ' Yes':' No'; }}<br></p>
+            @if($ad->workshop->food)
+            <br/>
+            <strong>Food & Drinks Provided</strong><br>
+            @endif
+        </p>
 	  </a>
     @endif
 

@@ -89,7 +89,12 @@
 
 {{ Former::number('mobile')->class('input-medium inputHeight form-control')->placeholder('Mobile') }}
 
-{{ Former::inline_radios('mode')->radios(array('hourly' =>array( 'name'=>'mode','checked'=>'checked'), 'session' => array('name'=>'mode', 'checked'=>''))) }}
+{{ Former::inline_radios('mode')->radios(array('hourly' =>array( 'name'=>'mode','checked'=>'checked'), 'session' => array('name'=>'mode', 'checked'=>'')))->required() }}
+
+{{ Former::number('price')->class('input-medium inputHeight form-control')->placeholder('AU$ 0')->min(0)->required() }}
+
+{{ Former::checkbox('negotiable', 'Negotiable?') }}
+
 <!-- Multiple Radios -->
 
 <div class="control-group controls">

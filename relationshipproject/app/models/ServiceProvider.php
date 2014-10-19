@@ -3,7 +3,7 @@
 class ServiceProvider extends Eloquent {
 
     protected $fillable = array('identity', 'type', 'abn', 
-        'acn','unit','street_number','street_name','street_type','suburb','state','postcode' ,'phone','mobile','mode','companyName', 'first_name', 'last_name', 'email', 'longitude', 'latitude');
+        'acn','unit','street_number','street_name','street_type','suburb','state','postcode' ,'phone','mobile','mode','companyName', 'first_name', 'last_name', 'email', 'longitude', 'latitude', 'price', 'negotiable');
 
     public static $rules = array();
 

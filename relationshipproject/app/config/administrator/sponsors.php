@@ -52,11 +52,11 @@ return array(
         ),
 
         'address_home' => array(
-            'title' => 'Address Home',
+            'title' => 'Address 1',
         ),
 
         'address_work' => array(
-            'title' => 'Address Work',
+            'title' => 'Address 2',
         ),
 
         'suburb' => array(
@@ -120,12 +120,12 @@ return array(
         ),
 
         'address_home' => array(
-            'title' => 'Address Home',
+            'title' => 'Address 1',
             'type' => 'text'
         ),
 
         'address_work' => array(
-            'title' => 'Address Work',
+            'title' => 'Address 2',
             'type' => 'text'
         ),
 

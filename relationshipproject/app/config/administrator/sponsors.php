@@ -166,7 +166,7 @@ return array(
 
         'contacted' => array(
             'title' => 'Contacted',
-            'type' =>'number'
+            'type' =>'bool'
         ),
     ),
 );

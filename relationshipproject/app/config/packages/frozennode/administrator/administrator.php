@@ -51,7 +51,13 @@ return array(
 	 * 		'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
 	 *	)
 	 */
-    'menu' => array( 'users', 'serviceProviders', 'workshops',
+    'menu' => array( 'users', 
+			    	 'serviceProviders', 
+			    	 'workshops',
+			    	 'advertisements',
+			    	 'adverstisementtype',
+			    	 'donations',
+			    	 'sponsors'
                 //'Map'=> 'page.map.map',
 
     ),
@@ -64,7 +70,7 @@ return array(
 	 */
 	'permission'=> function()
 	{
-		return Sentry::check();
+		return true;
 	},
 
 	/**

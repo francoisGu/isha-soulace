@@ -223,7 +223,12 @@ class WorkshopsController extends \BaseController {
      */
     public function destroy($id)
     {
-        Workshop::find($id)->delete();
+        $workshop = Workshop::find($id)->delete();
+
+        if($workshop->workshopAdvertisement){
+            $workshop->WorkshopAdvertisement->delete(); 
+        }
+
         //return Redirect::route('workshops.index');
         return Redirect::to('myworkshops');
 

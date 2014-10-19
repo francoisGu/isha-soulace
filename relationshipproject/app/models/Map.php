@@ -73,7 +73,7 @@ mapCentre.lng())
             '<strong>Email: </strong>' . $sp->email . '<br/>' . 
             '<strong>Name: </strong>' . $name . '<br/>' .
             '<strong>Type: </strong>' . $sp->type . '<br/>' .
-            '<strong>Verified: </strong>' . $sp->verified . '<br/>'.
+            '<strong>Verified: </strong>' . ($sp->verified? 'YES':'NO') . '<br/>'.
             '<strong>Number of client: </strong>' . count($sp->clients) . '<br/>';
 
         $infowindow_content = ("<div class='infowin-content' style='width: 200px; height: 100px; max-width: 200px; max-height: 100px;'>" . $content . "</div>");

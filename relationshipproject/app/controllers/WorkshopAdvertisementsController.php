@@ -36,11 +36,20 @@ class WorkshopAdvertisementsController extends \BaseController {
     {
         $workshop_id = Crypt::decrypt(Input::get('workshopid'));
         $workshop = Workshop::find($workshop_id);
+
+        $types = array();
+        $adTypes = AdvertisementType::get();
+
+        foreach( $adTypes as $adType ){
+            $types[$adType->type] = $adType->type . ' AU$ ' . $adType->price;
+        }
+
+
         //
         if(is_null($workshop)){
             return Redirect::back()->withErrors('Workshop ' . $workshop_id . ' not found!');
         }
-        return View::make('workshopAdvertisements.create')->with('workshop', $workshop);
+        return View::make('workshopAdvertisements.create')->with('workshop', $workshop)->with('types', $types);
     }
 
     /**
@@ -88,7 +97,7 @@ class WorkshopAdvertisementsController extends \BaseController {
     {
         $advertisement = WorkshopAdvertisement::find($id);
         //
-        return View::make('workshopAdvertisements.show')->with('workshopAdvertisement', $advertisement);
+        return View::make('workshopAdvertisements.edit')->with('workshopAdvertisement', $advertisement);
     }
 
     /**
@@ -100,8 +109,17 @@ class WorkshopAdvertisementsController extends \BaseController {
      */
     public function edit($id)
     {
-        $advertisement = WorkshopAdvertisement::find($id);
-        return View::make('workshopAdvertisements.edit')->with('workshopAdvertisement', $advertisement);
+        $ad = WorkshopAdvertisement::find($id);
+
+        $types = array();
+        $adTypes = AdvertisementType::get();
+
+        foreach( $adTypes as $adType ){
+            $types[$adType->type] = $adType->type . ' AU$ ' . $adType->price;
+        }
+
+
+        return View::make('workshopAdvertisements.edit')->with('ad', $ad)->with('types', $types);
         //return View::make('workshopAdvertisements.edit', compact('advertisement'));
         //
     }
@@ -115,9 +133,14 @@ class WorkshopAdvertisementsController extends \BaseController {
      */
     public function update($id)
     {
+
+    $rules = array(
+        'type'          => 'required|in:"general", "premium"',
+    );
+
         $workshopAdvertisement = WorkshopAdvertisement::findOrFail($id);
 
-        $validator = Validator::make($data = Input::all(), WorkshopAdvertisement::$rules);
+        $validator = Validator::make($data = Input::all(), $rules);
 
         if ($validator->fails())
         {
@@ -126,7 +149,7 @@ class WorkshopAdvertisementsController extends \BaseController {
 
         $workshopAdvertisement->update($data);
 
-        return Redirect::route('workshopAdvertisements.index');
+        return Redirect::to('myworkshops');
         //
     }
 

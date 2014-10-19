@@ -88,7 +88,7 @@ li.list-group-item.active small {
                     <p class="list-group-item-text"><strong class="col-md-3">Ticket Left: </strong><div class="col-md-9"> {{ $workshop->ticket_number }} </div></p>
 
                     @if($workshop->food)
-                    <br/>
+                    <br>
                     <p class="list-group-item-text"><div class="col-md-3"></div><strong class="col-md-9"> Food & Drinks provided</strong></p>
                     @endif
                 </div>

@@ -10,11 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
  */
-Route::post('services/familylaw', 'FamilyController@storeComment');
-Route::post('services/accommodation', 'AccommodationController@storeComment');
-Route::post('services/financialadvice', 'FinancialController@storeComment');
-Route::post('services/fitnessandnutrition', 'FitnessController@storeComment');
-Route::post('services/mentalwellbeing', 'MentalController@storeComment');
 //Route::post('/registerworkshop/{id}', 'ClientsController@registerWorkshop');
 # Standard User Routes
 Route::group(['before' => 'sentry|serviceProviders'], function(){
@@ -81,7 +76,7 @@ Route::get('/pay_advertise/{advertise_id}', array('as' => 'pay-advertise','uses'
 Route::post('/registerworkshop', array('as'=>'pay-workshop-post','uses' => 'PaypalController@postPayWorkshops'));
 Route::get('/payment/done/{payum_token}', array('as' => 'payment_done', 'uses' => 'PaymentController@done'));
 
-Route::controller('services','ServiceFormController');
+//Route::controller('services','ServiceFormController');
 Route::get('services/accommodation', array('uses' => 'ServiceFormController@getAccommodation'));
 Route::get('services/familylaw', array('uses' => 'ServiceFormController@getFamilyLaw'));
 Route::get('services/fitnessandnutrition', array('uses' => 'ServiceFormController@getFitnessandNutrition'));
@@ -89,6 +84,14 @@ Route::get('services/mentalwellbeing', array('uses' => 'ServiceFormController@ge
 Route::get('services/financialadvice', array('uses' => 'ServiceFormController@getFinancialadvice'));
 Route::get('services/options/{type}/{postcode}', array('uses' => 'ServiceFormController@getOptions'));
 Route::get('services/mentors', array('uses' => 'ServiceFormController@getMentors'));
+
+Route::post('services/familylaw', 'FamilyController@storeComment');
+Route::post('services/accommodation', 'AccommodationController@storeComment');
+Route::post('services/financialadvice', 'FinancialController@storeComment');
+Route::post('services/fitnessandnutrition', 'FitnessController@storeComment');
+Route::post('services/mentalwellbeing', 'MentalController@storeComment');
+
+
 //Route::post('services/accommodation', array('uses' => 'ServiceFormController@postAccommodation'));
 //Route::post('services/familylaw', array('uses' => 'ServiceFormController@postFamilyLaw'));
 //Route::post('services/fitnessandnutrition', array('uses' => 'ServiceFormController@postFitnessandNutrition'));

@@ -14,9 +14,10 @@ class Fitness extends Eloquent {
         public static function saveFormData($data)
         {
             DB::table('fitness_services')->insert($data);
-			
+            
         }
+
  public function serviceProvider(){
-        return $this->belongsToMany('ServiceProvider');
+        return $this->belongsTo('ServiceProvider');
     }
 }

@@ -11,7 +11,7 @@
       </div>
       <ul class="list-group">
 
-          <a id="profilePage" href="{{ URL::to('serviceProviders/' . Sentry::getUser()->id) }}" class="list-group-item active">Profile</a>
+          <a id="profilePage" href="{{ URL::to('serviceProviders/' . Sentry::getUser()->userable->id) }}" class="list-group-item active">Profile</a>
 
           <!--<a id="advertiseWSPage" href="advertise" class="list-group-item">Advertise a new workshop</a>-->
 

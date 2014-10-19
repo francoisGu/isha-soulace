@@ -169,11 +169,11 @@
 <script type="text/javascript">
 var today = new Date();
 $('#datetimepicker').datetimepicker({
-            format: 'DD/MM/YYYY',
+            format: 'YYYY-MM-DD',
             pickTime: false,
             pickDate: true,
             minDate: new Date(),
-            maxDate: today.getDate() + '/' + today.getMonth() + '/' + (today.getFullYear() + 1),
+            maxDate: (today.getFullYear() + 1) + '-' + today.getMonth() + '-' + today.getDate(),
             language: 'en'
     });
 $('.timepicker').datetimepicker({

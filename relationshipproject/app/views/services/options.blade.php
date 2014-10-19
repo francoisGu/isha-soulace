@@ -8,6 +8,10 @@
     <div style="padding: 10px;">
       <div class="list-group span8" >
 
+          @if(count($serviceProviders) == 0 )
+
+          <p class="list-group-item-text"> <strong style="color:red;"> Sorry! No service providers found. </strong></p>
+          @else
           @foreach($serviceProviders as $sp)
 
         <a href="#" class="list-group-item col-md-12">
@@ -39,6 +43,7 @@
         </a>
 
         @endforeach
+        @endif
 
       </div>
       <!-- Workshop Advertisments -->

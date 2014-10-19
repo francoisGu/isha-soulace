@@ -51,6 +51,7 @@ Route::group(['before' => 'sentry|admin'], function(){
 
 });
 
+Route::when('admin/*', 'sentry');
 Route::when('admin/*', 'admin');
 
 Route::get('ad', function(){
@@ -86,7 +87,7 @@ Route::get('services/familylaw', array('uses' => 'ServiceFormController@getFamil
 Route::get('services/fitnessandnutrition', array('uses' => 'ServiceFormController@getFitnessandNutrition'));
 Route::get('services/mentalwellbeing', array('uses' => 'ServiceFormController@getMentalwellbeing'));
 Route::get('services/financialadvice', array('uses' => 'ServiceFormController@getFinancialadvice'));
-Route::get('services/options', array('uses' => 'ServiceFormController@getOptions'));
+Route::get('services/options/{type}/{postcode}', array('uses' => 'ServiceFormController@getOptions'));
 Route::get('services/mentors', array('uses' => 'ServiceFormController@getMentors'));
 //Route::post('services/accommodation', array('uses' => 'ServiceFormController@postAccommodation'));
 //Route::post('services/familylaw', array('uses' => 'ServiceFormController@postFamilyLaw'));

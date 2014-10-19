@@ -40,9 +40,19 @@ class PaymentController extends BaseController
     {
         //get payment info from cache
         $payum_id = $token->getDetails()->getID();
-        $value = Cache::pull($payum_id);
+        $value = Cache::get($payum_id);
         //$value = Cache::get($payum_id);
         if ($value) {
+            if ($status == 'success'){
+                //save to Payment table
+                $paymentInfo = array(
+                            'type' => $value['item'],
+                            'pay_amount'=> $value['_amount']*$value['_price'],
+                            'email'=> $value['email'],
+                            'item_amount'=> $value['_amount'],
+                    );
+                $payment = BasicPayment::create($paymentInfo);
+            }
             # act with different payment
             if ($value['item'] == 'workshop') {
                 if ($status == 'success') {

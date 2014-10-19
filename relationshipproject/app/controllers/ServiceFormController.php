@@ -44,10 +44,14 @@ class ServiceFormController extends BaseController {
 	  $this->layout->content = View::make('services.mentors');
 	}
 	
-	public function getOptions()
+    public function getOptions($type, $postcode)
 	{
+
+        //$type = $message{'type'};
+        //$postcode = $message['postcode'];
+        $serviceProviders = ServiceProvider::searchServiceProviders($postcode, $type); 
         $this->layout->title = 'Your contact options - Isha SoulAce';
-        $this->layout->content = View::make('services.options');
+        $this->layout->content = View::make('services.options')->with('serviceProviders', $serviceProviders);
 	
 	}
 	

@@ -148,7 +148,7 @@
 	<div class="hr-black"></div>
     <footer>
 	  <p class="pull-right"><a href="#">Back to top</a></p>
-      <p>Copyright &copy; 2014 Isha SoulAce (ABN 34 397 589 509). All rights reserved.</p>
+      <p>Copyright &copy; 2014  Swachchanda Awasare (ABN 34 397 589 509). All rights reserved.</p>
     </footer>
 
     </div><!--/.container-->
@@ -167,11 +167,13 @@
         src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js">
 </script>
 <script type="text/javascript">
+var today = new Date();
 $('#datetimepicker').datetimepicker({
-            format: 'YYYY-MM-DD',
+            format: 'DD/MM/YYYY',
             pickTime: false,
             pickDate: true,
             minDate: new Date(),
+            maxDate: today.getDate() + '/' + today.getMonth() + '/' + (today.getFullYear() + 1),
             language: 'en'
     });
 $('.timepicker').datetimepicker({

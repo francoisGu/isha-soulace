@@ -9,7 +9,11 @@ public function storeComment()
    
     
     Accommodation::saveFormData(Input::except(array('_token')));
-	return Redirect::to('services/options');
+
+    $type = Input::get('type');
+    $postcode = Input::get('postcode');
+
+    return Redirect::to('services/options/'.$type. '/' . $postcode);
 
 }
 

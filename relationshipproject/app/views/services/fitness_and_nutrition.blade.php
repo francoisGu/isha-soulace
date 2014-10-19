@@ -20,7 +20,7 @@
     ->radios(array('Mr' => 'title', 'Ms' => 'title', 'Mrs' => 'title', 'Miss' => 'title'))
     ->inline();
 }}
-  <input name="type" type='hidden' value='fitness_nutrition'/>
+  <input name="type" type='hidden' value='Fitness & Nutrition'/>
 {{ Former::text('first_name', 'first name')
 	->class('form-control input-xlarge')
 	->maxlength('30')

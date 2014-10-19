@@ -17,7 +17,7 @@ class CreateClientsTable extends Migration {
 
         $table->engine ='InnoDB';
         $table->increments('id');
-        $table->string('email')->unique();
+        $table->string('email');
         $table->timestamps();
 
         $table->unique(array('id', 'email'));

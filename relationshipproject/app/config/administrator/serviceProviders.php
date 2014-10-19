@@ -15,7 +15,7 @@ return array(
      **
      ** @type string
      **/
-    'single' => 'serviceProvider',
+    'single' => 'Service Provider',
 
     /**
      ** The class name of the Eloquent model that this config represents

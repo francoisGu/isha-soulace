@@ -82,7 +82,9 @@ class PasswordController extends BaseController {
                 'password' => $newPassword
             );
 
-            $this->reminder->reset($resetMessage);
+            $message = $this->reminder->reset($resetMessage);
+
+            return Redirect::to($message['url'])->with('message', $message['message']);
         }
     }
 

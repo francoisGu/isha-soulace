@@ -21,7 +21,7 @@
     ->inline();
 }}
  <input name="type" type='hidden' value='accommodation'/>
-{{ Former::text('first_name', 'first name')
+{{ Former::text('first_name', 'First name')
 	->class('form-control input-xlarge')
 	->maxlength('30')
     ->placeholder('First Name');
@@ -136,8 +136,8 @@
       ->class('form-control input-medium'); 
     }}
     </div>
- <div class="form-group controls">
-{{ Form::submit('Submit', array('class'=>'btn btn-danger btn-outline'))}}
-</div>
-{{ Former::close(); }}
+    <div class="form-group controls">
+	  {{ Form::submit('Submit', array('class'=>'btn btn-danger btn-outline'))}}
+    </div>
+    {{ Former::close(); }}
 </div>

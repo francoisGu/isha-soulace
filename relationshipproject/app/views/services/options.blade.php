@@ -7,10 +7,23 @@
   <div class="row">
     <div style="padding: 10px;">
       <div class="list-group span8" >
+
+          @foreach($serviceProviders as $sp)
+
         <a href="#" class="list-group-item col-md-12">
           <div class="col-md-9">
-            <h4 class="list-group-item-heading"> List group heading </h4>
-            <p class="list-group-item-text"> blablablablablablah</p>
+              @if( $sp->identity )
+              <h4 class="list-group-item-heading"> <strong> Company Name: </strong>{{ $sp->companyName }} </h4>
+              @else
+              <h4 class="list-group-item-heading"> <strong> Name: </strong>{{ $sp->first_name . ' ' . $sp->last_name }} </h4>
+              @endif
+              @if($sp->mode)
+              <p class="list-group-item-text"> <strong> Price </strong>{{ $sp->price . ' per Session'}}</p>
+              @else
+              <p class="list-group-item-text"> <strong> Price </strong>{{ $sp->price . ' per Hour'}}</p>
+              @endif
+
+              <p class="list-group-item-text"> <strong> Negotiable: </strong>{{ $sp->negotiable? 'Yes': 'No'; }} </p>
           </div>
           <div class="col-md-3 text-center">
             <div class="stars">
@@ -24,57 +37,9 @@
 			<button type="button" class="btn btn-danger btn-block"> Send Form</button>
           </div>
         </a>
-        <a href="#" class="list-group-item col-md-12">
-          <div class="col-md-9">
-            <h4 class="list-group-item-heading"> List group heading </h4>
-            <p class="list-group-item-text"> blablablablablablah</p>
-          </div>
-          <div class="col-md-3 text-center">
-            <div class="stars">
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </div>
-            <p> Average 4 <small> / </small> 5 </p>
-			<button type="button" class="btn btn-danger btn-block"> Send Form</button>
-          </div>
-        </a>
-        <a href="#" class="list-group-item col-md-12">
-          <div class="col-md-9">
-            <h4 class="list-group-item-heading"> List group heading </h4>
-            <p class="list-group-item-text"> blablablablablablah</p>
-          </div>
-          <div class="col-md-3 text-center">
-            <div class="stars">
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </div>
-            <p> Average 4 <small> / </small> 5 </p>
-			<button type="button" class="btn btn-danger btn-block"> Send Form</button>
-          </div>
-        </a>
-        <a href="#" class="list-group-item col-md-12">
-          <div class="col-md-9">
-            <h4 class="list-group-item-heading"> List group heading </h4>
-            <p class="list-group-item-text"> blablablablablablah</p>
-          </div>
-          <div class="col-md-3 text-center">
-            <div class="stars">
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            </div>
-            <p> Average 4 <small> / </small> 5 </p>
-			<button type="button" class="btn btn-danger btn-block"> Send Form</button>
-          </div>
-        </a>
+
+        @endforeach
+
       </div>
       <!-- Workshop Advertisments -->
   <div class="span3"><!--"col-sm-3 col-sm-push-9">-->
@@ -91,7 +56,11 @@
             <strong>Venue:</strong> {{ Map::getVenue($ad->workshop) }}<br>
             <strong>Price:</strong>{{ ' AU$'. $ad->workshop->price }}<br>
             <strong>RSVPs:</strong>{{ $ad->workshop->ticket_number }}<br>
-            <strong>Food & Drinks Provided:</strong>{{ $ad->workshop->food? ' Yes':' No'; }}<br></p>
+            @if($ad->workshop->food)
+            <br/>
+            <strong>Food & Drinks Provided</strong><br>
+            @endif
+        </p>
 	  </a>
     @endif
 

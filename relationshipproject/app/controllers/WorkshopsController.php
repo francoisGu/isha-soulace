@@ -2,7 +2,7 @@
 
 class WorkshopsController extends \BaseController {
 
-    protected $per_page = 1;
+    protected $per_page = 20;
 
     public function __construct() {
         $this->beforeFilter('csrf',  array('on'=>'post'));

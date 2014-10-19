@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => '127.0.0.1',
-//             'unix_socket'   => '/var/mysql/mysql.sock',
+           // 'unix_socket'   => '/var/mysql/mysql.sock',
             'database'  => 'relationship2',
             'username'  => 'root',
             'password'  => '',

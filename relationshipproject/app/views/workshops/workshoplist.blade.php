@@ -86,7 +86,13 @@ li.list-group-item.active small {
                     <p class="list-group-item-text"><strong class="col-md-3">Venue: </strong><div class="col-md-9"> {{ $workshop->unit.'/'.$workshop->street_number.' '.$workshop->street_name. ' ' . $workshop->street_type.', '.$workshop->suburb.', '. $workshop->state.', '. $workshop->postcode }} </div></p>
                     <p class="list-group-item-text"><strong class="col-md-3">Price: </strong><div class="col-md-9">AU$ {{ $workshop->price }} </div></p>
                     <p class="list-group-item-text"><strong class="col-md-3">Ticket Left: </strong><div class="col-md-9"> {{ $workshop->ticket_number }} </div></p>
+
+                    @if($workshop->food)
+                    <br/>
+                    <p class="list-group-item-text"><div class="col-md-3"></div><strong class="col-md-9"> Food & Drinks provided</strong></p>
+                    @endif
                 </div>
+
 
                 <div class="col-md-3 text-left">
                     <div class="stars">

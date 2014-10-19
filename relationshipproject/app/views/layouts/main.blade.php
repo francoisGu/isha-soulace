@@ -126,7 +126,7 @@
 
     <footer>
 	  <p class="pull-right"><a href="#">Back to top</a></p>
-      <p>Copyright &copy; 2014 Isha SoulAce (ABN 34 397 589 509). All rights reserved.</p>
+      <p>Copyright &copy; 2014  Swachchanda Awasare (ABN 34 397 589 509). All rights reserved.</p>
     </footer>
 
     </div><!--/.container-->

@@ -51,6 +51,7 @@ Route::group(['before' => 'sentry|admin'], function(){
 
 });
 
+Route::when('admin/*', 'sentry');
 Route::when('admin/*', 'admin');
 
 Route::get('ad', function(){

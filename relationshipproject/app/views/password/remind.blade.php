@@ -25,7 +25,7 @@
               {{ Former::text('email')->class('input-xlarge inputHeight form-control')->placeholder('Email Address') }}
 
 
-              {{ Former::submit('Send Reminder')->class('btn btn-success') }}
+              {{ Former::submit('Send Reminder')->class('btn btn-danger btn-outline form-control') }}
 
             {{ Former::close() }}
 

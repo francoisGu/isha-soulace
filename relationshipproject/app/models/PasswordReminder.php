@@ -66,6 +66,13 @@ class PasswordReminder extends Eloquent {
             // Find the user using the user email address
             $user = Sentry::findUserByLogin($email);
 
+            if(is_null($user)){
+                  $message = array(
+                'url' => '/password/remind',
+                'message' => 'No email found.');
+
+            }
+
             // Get the password reset code
             $resetPasswordCode = $user->getResetPasswordCode();
             //echo $resetPasswordCode;

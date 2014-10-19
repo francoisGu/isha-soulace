@@ -51,16 +51,13 @@ return array(
 	 * 		'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
 	 *	)
 	 */
-    'menu' => array( 'administrators',
-			    	 'users',
-			    	 'serviceProviders', 
-			    	 'workshops',
-			    	 'advertisements',
-			    	 'adverstisementtype',
-			    	 'donations',
-			    	 'sponsors'
+    'menu' => array( 
+		    		 'Users' => array('users','serviceProviders', 'administrators'),
+		    		 'Workshops' => array('workshops','advertisements','adverstisementtype',),
+		    		 'basicPayments',
+		    		 'donations',
+			    	 'sponsors',
                 //'Map'=> 'page.map.map',
-
     ),
 
 	/**

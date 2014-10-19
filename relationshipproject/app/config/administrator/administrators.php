@@ -15,7 +15,7 @@ return array(
      **
      ** @type string
      **/
-    'single' => 'administrator',
+    'single' => 'Administrator',
 
     /**
      ** The class name of the Eloquent model that this config represents

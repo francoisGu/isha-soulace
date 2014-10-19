@@ -6,13 +6,7 @@
 @stop
 
 @section('main')
-
 <!-- Begin page content -->
-<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-
-<!--<figure align='middle'>
-  {{ HTML::image('images/logo/Isha SoulAce_Red-Font.png', '',array('style' => 'height:100px')) }}
-</figure>-->
 <style>
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
 z-index: 2;
@@ -48,54 +42,44 @@ color: white;
 	</div>
 <!-- 	Types of Domestic Violence -->
 	<div class="span8"><!--"col-sm-8 col-sm-push-4" >-->
-	  <div class="span4">
+	  <div class="span4" style="padding-bottom:15px">
       <h4>Psychological Abuse</h4>
-<!--       <p>name-calling, insults, constant criticism, silent treatment</p> -->
 	  <figure>
-		{{ HTML::image('img/psychological.png', '',array('style' => 'height:80px')) }}
+		{{ HTML::image('img/psychological.png', '',array('style' => 'height:130px')) }}
 	  </figure>
       <a id="emotional" class="btn btn-danger" style="margin-top:10px" onclick="showEmotional()" role="button">Seek help</a>
     </div><!--/span-->
-    <div class="span4"> 
+    <div class="span4" style="padding-bottom:15px"> 
       <h4>Financial Abuse</h4>
-<!--       <p>withholding money, forcing total control over victims earned income, forbidding employment</p> -->
 	  <figure>
-		{{ HTML::image('img/financial.png', '',array('style' => 'height:80px')) }}
+		{{ HTML::image('img/financial.png', '',array('style' => 'height:130px')) }}
 	  </figure>
       <p><a id="financial" class="btn btn-danger" style="margin-top:10px" onclick="showFinancial()" role="button">Seek help</a></p>
 	</div><!--/span-->
-	<div class="span4">
+	<div class="span4" style="padding-bottom:15px">
       <h4>Sexual Abuse</h4>
-<!--       <p>slapping, hitting, beating, kicking, arm twisting, punching, stabbing</p> -->
 	  <figure>
-		{{ HTML::image('img/sexual.png', '',array('style' => 'height:80px')) }}
+		{{ HTML::image('img/sexual.png', '',array('style' => 'height:130px')) }}
 	  </figure>
       <p><a id="physical" class="btn btn-danger" style="margin-top:10px" onclick="showPhysical()" role="button">Seek help</a></p>
 	</div><!--/span-->
-	<div class="span12 panel panel-danger"><!--well auth-box">-->
-	  <div class="panel-heading text-center"><h5><strong>IF YOU ARE IN IMMEDIATE DANGER AND UNSAFE</strong></h5></div>
-	  <div class="panel-body text-center"><strong>CALL POLICE NOW - "000"</strong></div>
+	<div class="span12 panel panel-danger">
+	  <div class="panel-body text-center"><strong>IF YOU ARE IN IMMEDIATE DANGER AND UNSAFE<br>CALL POLICE NOW - "000"</strong></div>
 	</div>
 	<div class="span5">
       <h4>Emotional Abuse</h4>
-<!--       <p>intimidation, damaging property, stalking, isolating from friends and family</p> -->
 	  <figure>
-		{{ HTML::image('img/emotional.png', '',array('style' => 'height:80px')) }}
+		{{ HTML::image('img/emotional_e.png', '',array('style' => 'height:120px')) }}
 	  </figure>
       <p><a id="psychological" class="btn btn-danger" style="margin-top:10px" onclick="showPsychological()" role="button">Seek help</a></p>
     </div><!--/span-->
 	<div class="span5">
       <h4>Physical Abuse</h4>
-<!--       <p>marital rape, forced sex after physical abuse, forced prostitution</p> -->
 	  <figure>
-		{{ HTML::image('img/physical.png', '',array('style' => 'height:80px')) }}
+		{{ HTML::image('img/physical_e.png', '',array('style' => 'height:120px')) }}
 	  </figure>
       <p><a id="sexual" class="btn btn-danger" style="margin-top:10px" onclick="showSexual()" role="button">Seek help</a></p>
-    </div><!--/span--><!--
-		<div class="active col-6 col-sm-6 col-sm-3">
-      <h4>CONTACT HELP</h4>
-      <p>Police</p>
-    </div><!--/span-->
+    </div>
 	</div>
 
 <!-- 	Private Browsing Instructions -->

@@ -99,8 +99,8 @@
                 <li><a href="{{ URL::to('/workshoplist') }}">Workshops</a></li>
               </ul>
             </li>
-            <li><a href="#donate">Donate</a></li>
-            <li><a href="#sponsor">Sponsor</a></li>
+            {{ HTML::smartNavMenu('donations', 'Donate') }}
+            {{ HTML::smartNavMenu('sponsors', 'Sponsor') }}
             <li {{ HTML::startSmartDropdown('reviews') }} ><!-- <li class="active" class="dropdown" > -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Review<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" style="z-index:10">

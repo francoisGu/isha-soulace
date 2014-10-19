@@ -98,7 +98,7 @@
 {{Former::number('phonenumber','Phone number')
 	->placeholder('Home or Work')
 	->min('10000000')
-	->max('99999999')
+	->max('999999999')
 	->class('input-large input-md form-control')
 	->required();
 }}

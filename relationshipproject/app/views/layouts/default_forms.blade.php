@@ -171,6 +171,7 @@ $('#datetimepicker').datetimepicker({
             format: 'YYYY-MM-DD',
             pickTime: false,
             pickDate: true,
+            minDate: new Date(),
             language: 'en'
     });
 $('.timepicker').datetimepicker({

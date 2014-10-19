@@ -65,7 +65,7 @@
 
 {{ Former::select('type')->class('input-large inputHeight form-control')->placeholder('Service Type')->options($services)->required() }}
 
-{{ Former::text('unit')->class('input-xlarge inputHeight form-control')->placeholder('unit')->required() }}
+{{ Former::text('unit')->class('input-xlarge inputHeight form-control')->placeholder('unit') }}
 
 {{ Former::text('street_number')->class('input-xlarge inputHeight form-control')->placeholder('Street Number')->required() }}
 

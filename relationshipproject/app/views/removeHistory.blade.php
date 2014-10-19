@@ -137,11 +137,10 @@ a.clickable:hover { text-decoration:none; }
       </div>
       <span>More Details, <a href="https://support.mozilla.org/en-US/kb/remove-recent-browsing-search-and-download-history#w_how-do-i-clear-my-history" target="_blank">Click here</a></span>
       <br>
-      <span>To open a new private window, click the menu button   
-<img alt="New Fx Menu" class="wiki-image frameless" data-original-src="//support.cdn.mozilla.net/media/uploads/gallery/images/2014-01-10-13-08-08-f52b8c.png" src="//support.cdn.mozilla.net/media/uploads/gallery/images/2014-01-10-13-08-08-f52b8c.png" title="">
-
- and then click <span class="button">New Private Window</span>. </span><br>
-
+      <p>To open a new private window, click the menu button   
+	  <img alt="New Fx Menu" class="wiki-image frameless" data-original-src="//support.cdn.mozilla.net/media/uploads/gallery/images/2014-01-10-13-08-08-f52b8c.png" src="//support.cdn.mozilla.net/media/uploads/gallery/images/2014-01-10-13-08-08-f52b8c.png" title="">
+ and then click <span class="button">New Private Window</span>. 
+	  </p>
     </div>
     <legend class="text-center" style="border-bottom:solid 1px;">For Internet Explorer (IE 9)</legend>
     <div class="col-md-12">

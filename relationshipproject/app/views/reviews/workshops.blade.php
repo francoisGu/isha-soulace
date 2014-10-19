@@ -20,7 +20,7 @@
 }
 </style>
 <div class="container auth">
-  <h4 class="text-center">Review our workshops</h4>
+  <h3 class="text-center">Review our workshops</h3>
   <p class="text-center">Tell us what you think about the workshops you attended so organisers can improve!</p>
   <div id="big-form" class="well auth-box">
     {{Former::framework('Nude');}}

@@ -24,7 +24,7 @@
 </style>
 {{ HTML::style('css/plugins/bootstrap-datetimepicker.min.css') }}
 <div class="container auth">
-    <h1 class="text-center"><span>Sponsor us</span> </h1>
+    <h3 class="text-center"><span>Sponsor us</span> </h3>
     <div id="big-form" class="well auth-box">
     @if (Session:: has('message'))
 <p style="color:red;">{{Session::get('message')}}</p>
@@ -72,16 +72,12 @@
           </div>
 
           <div class="form-group">
-            <label class=" control-label" for="">Country*</label>
-            {{Former::text('country')->placeholder('Country')->class('input-large input-md form-control')->required()}}
-          </div>
-
-          <div class="form-group">
-            <label class=" control-label" for="">Address*</label>
-            {{Former::text('address_home')->placeholder('Home...')->class('input-xxlarge input-md form-control')->required()}}
+            <label class=" control-label" for="">Address Line 1*</label>
+            {{Former::text('address_home')->class('input-xxlarge input-md form-control')->required()}}
           </div>
           <div class="form-group">
-            {{Former::text('address_work')->placeholder('Work...')->class('input-xxlarge input-md form-control')->required()}}
+            <label class=" control-label" for="">Address Line 2</label>
+            {{Former::text('address_work')->class('input-xxlarge input-md form-control')}}
           </div>
 
           <div class="form-group">
@@ -92,6 +88,11 @@
           <div class="form-group">
             <label class=" control-label" for="">Postcode*</label>
             {{Former::number('postcode')->placeholder('3000')->class('input-medium input-md form-control')->required()->min('200')->max('9944')}}
+          </div>
+          
+          <div class="form-group">
+            <label class=" control-label" for="">Country*</label>
+            {{Former::text('country')->value('Australia')->readonly()->class('input-large input-md form-control')->required()}}
           </div>
 
           <div class="form-group">

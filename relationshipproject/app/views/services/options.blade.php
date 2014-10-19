@@ -1,6 +1,6 @@
 <!-- Begin page content -->
 <div class="page-header">
-	<h3>Choose an expert</h1>
+	<h3>Choose an expert</h3>
 </div>
       <p>Select one of the following experts to contact. The form you just completed will be sent to them.</p>
 <div class="container">

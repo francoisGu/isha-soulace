@@ -1,5 +1,5 @@
 <div class="text-center">
-<h2 class="form-signup-heading">Brief details</h2>
+<h3 class="form-signup-heading">Brief details</h3>
   <p> Please give some brief details about yourself. This helps the expert understand your situation and saves time and cost before actual contact between yourself and the expert.</p>
   <br>
 </div>
@@ -23,10 +23,12 @@
  <input name="type" type='hidden' value='Financial Advice'/>
 {{ Former::text('first_name', 'first name')
 	->class('form-control input-xlarge')
+	->maxlength('30')
     ->placeholder('First Name');
 }}
 {{ Former::text('last_name', 'Last name')
 	->class('form-control input-xlarge')
+	->maxlength('30')
     ->placeholder('Last Name');
 }}
 {{ Former::number('age', 'Age')
@@ -42,14 +44,17 @@
 }}
 {{ Former::text('address_line_1', 'Address Line 1')
 	->class('form-control input-xxlarge')
+	->maxlength('30')
 	->placeholder('Address Line 1');
 }}
 {{ Former::text('address_line_2', 'Address Line 2')
 	->class('form-control input-xxlarge')
+	->maxlength('30')
 	->placeholder('Address Line 2');
 }}
 {{ Former::text('suburb', 'Suburb')
 	->class('form-control input-large')
+	->maxlength('30')
 	->placeholder('Suburb');
 }}
 {{ Former::number('postcode', 'Postcode')
@@ -72,7 +77,8 @@
 {{ Former::number('number_of_dependants', 'Number of dependants (Includes children from current and previous relationships and any other family members e.g. partner/spouse/grandparents/parents)')
 	->class('form-control input-small')
 	->placeholder('4')
-	->min(0)
+	->min('0')
+	->max('50')
 	->required();
 }}
 {{ Former::group('Approximate Personal Income (Includes superannuation)') }}
@@ -85,6 +91,7 @@
   {{ Former::number('personal_income')
 	->class('form-control input-medium')
 	->min('0')
+	
 	->required();
   }}
 </div>
@@ -155,13 +162,14 @@
 }}
 {{Former::email('email')
   ->label('Email Address')
-	->class('form-control input-large')
+  ->class('form-control input-large')
+  ->maxlength('254')
   ->required();
 }}
 {{Former::number('phonenumber','Phone number')
 	->placeholder('Home or Work')
 	->min('10000000')
-	->max('99999999')
+	->max('999999999')
 	->class('input-large input-md form-control')
 	->required();
 }}

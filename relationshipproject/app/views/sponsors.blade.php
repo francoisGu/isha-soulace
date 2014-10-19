@@ -158,10 +158,13 @@
         src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js">
 </script>
 <script type="text/javascript">
+var today = new Date();
 $('.datepicker').datetimepicker({
             format: 'YYYY-MM-DD',
             pickTime: false,
             pickDate: true,
+            minDate: new Date(),
+            maxDate: (today.getFullYear() + 1) + '-' + today.getMonth() + '-' + today.getDate(),
             language: 'en'
     });
 $('.timepicker').datetimepicker({

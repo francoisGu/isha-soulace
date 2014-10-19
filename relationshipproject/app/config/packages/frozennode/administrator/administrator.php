@@ -51,7 +51,8 @@ return array(
 	 * 		'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
 	 *	)
 	 */
-    'menu' => array( 'users', 
+    'menu' => array( 'administrators',
+			    	 'users',
 			    	 'serviceProviders', 
 			    	 'workshops',
 			    	 'advertisements',

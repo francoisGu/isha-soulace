@@ -15,7 +15,7 @@ return array(
      **
      ** @type string
      **/
-    'single' => 'adverstisementtype',
+    'single' => 'Adverstisement Type',
 
     /**
      ** The class name of the Eloquent model that this config represents

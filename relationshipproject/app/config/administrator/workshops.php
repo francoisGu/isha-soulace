@@ -8,14 +8,14 @@ return array(
      ** @type string
      **/
 
-    'title' => 'Workshops',
+    'title' => 'Workshop Details',
 
     /**
      ** The singular name of your model
      **
      ** @type string
      **/
-    'single' => 'workshop',
+    'single' => 'Workshop',
 
     /**
      ** The class name of the Eloquent model that this config represents

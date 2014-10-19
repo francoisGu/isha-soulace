@@ -72,12 +72,12 @@
           </div>
 
           <div class="form-group">
-            <label class=" control-label" for="">Address Line 1</label>
-            {{Former::text('address_home')->placeholder('Home...')->class('input-xxlarge input-md form-control')->required()}}
+            <label class=" control-label" for="">Address Line 1*</label>
+            {{Former::text('address_home')->class('input-xxlarge input-md form-control')->required()}}
           </div>
           <div class="form-group">
             <label class=" control-label" for="">Address Line 2</label>
-            {{Former::text('address_work')->placeholder('Work...')->class('input-xxlarge input-md form-control')}}
+            {{Former::text('address_work')->class('input-xxlarge input-md form-control')}}
           </div>
 
           <div class="form-group">

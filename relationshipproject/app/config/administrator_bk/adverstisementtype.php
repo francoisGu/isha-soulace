@@ -52,7 +52,7 @@ return array(
     'edit_fields' => array(
        
         'type' => array(
-            'title' => 'type',
+            'title' => 'Type',
             'type' => 'text'
         ),
 

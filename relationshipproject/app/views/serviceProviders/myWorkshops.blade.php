@@ -49,6 +49,13 @@
     <div class="table-responsive" style="padding:10px;">
         <div class="row">
 
+<ul>
+    @foreach($errors->all() as $error)
+    <li style="color:red; margin-left: 50px;">{{ $error }}</li>
+    @endforeach
+</ul>
+
+
             <div class="col-lg-6 ">
                 <!-- <a class="btn btn-small btn-success" href="{{ URL::to('workshops/create') }}">New Workshop</a> -->
              
@@ -56,7 +63,6 @@
             </div>
 
         </div>
-
         <table id='myDatas' class="table table-responsive table-striped table-condensed table-hover display" cellspacing="0" >
 
             <thead>

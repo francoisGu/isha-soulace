@@ -99,9 +99,9 @@ color: white;
   <div class="list-group">
 
         @foreach( WorkshopAdvertisement::getAdvertisements(4, 'premium') as $ad)
-        @if(is_null($ad))
 
-        @else
+        @if( $ad )
+
 	  <a href="{{ URL::to('workshoplist/' . $ad->workshop->id) }}" class="list-group-item">
           <h4 class="list-group-item-heading"> {{ $ad->workshop->topic }} <span class="label label-danger pull-right">Featured</span></h4>
 	    <p class="list-group-item-text">
@@ -116,7 +116,7 @@ color: white;
             @endif
         </p>
 	  </a>
-	  @endif
+      @endif
       @endforeach
 	</div>
   </div>

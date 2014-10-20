@@ -36,7 +36,7 @@ class PaymentController extends BaseController
     {
         //get payment info from cache
         $payum_id = $token->getDetails()->getID();
-        $value = Cache::get($payum_id);
+        $value = Cache::pull($payum_id);
         //$value = Cache::get($payum_id);
         if ($value) {
             if ($status == 'success'){

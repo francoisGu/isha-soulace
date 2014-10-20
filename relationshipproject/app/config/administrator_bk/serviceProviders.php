@@ -32,7 +32,6 @@ return array(
     'columns' => array(
 
         'id' => array('title' => 'ID'),
-        'verified' => array('title'=>'Verified'),
         'type' => array('title' =>'Service Type'),
         'acn' => array('title' => 'ACN'),
         'abn' => array('title' => 'ABN'),
@@ -41,6 +40,7 @@ return array(
         'last_name' => array('title' => 'Last Name'),
         'email' => array('title'=>'email'),
         'price' => array( 'title' => 'Price'),
+        'verified' => array('title'=>'Verified'),
     ),
 
     /**

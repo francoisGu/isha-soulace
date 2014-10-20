@@ -15,7 +15,7 @@ return array(
      **
      ** @type string
      **/
-    'single' => 'PaymentInfo',
+    'single' => 'BasicPayment',
 
     /**
      ** The class name of the Eloquent model that this config represents
@@ -29,13 +29,36 @@ return array(
      *
      * @type array
      */
+    /*'columns' => array(*/
+
+        //'id' => array('title' => 'ID', ),
+        //'type' => array('title' => 'Type', ),
+        //'email' => array('title' => 'Email', ),
+        //'pay_amount' => array('title' => 'Pay Amount', ),
+        //'item_amount' => array('title' => 'Item Amount',),
+    /*),*/
+
     'columns' => array(
 
-        'id' => array('title' => 'ID'),
-        'type' => array('title' => 'Type'),
-        'email' => array('title' => 'eMail'),
-        'pay_amount' => array('title' => 'Pay Amount'),
-        'item_amount' => array('title' => 'Item Amount'),
+        'id' => array(
+            'title' => 'ID',
+        ),
+        'type' => array(
+            'title' => 'Type',
+        ),
+
+        'pay_amount' => array(
+            'title' => 'Pay Amount',
+        ),
+
+        'item_amount' => array(
+            'title' => 'Item Amount',
+        ),
+
+        'email' => array(
+            'title' => 'Email'
+        ),
+
     ),
 
     /**
@@ -44,7 +67,8 @@ return array(
      * @type array
      */
     'edit_fields' => array(
-        'email' => array('title' => 'eMail', 'type' => 'text'),
+        'email' => array('title' => 'Email', 'type' => 'text'),
+        'pay_amount' => array('title' => 'Pay Amount', 'type' => 'number'),
     ),
 );
 

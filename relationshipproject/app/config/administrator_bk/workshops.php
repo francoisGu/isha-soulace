@@ -44,6 +44,30 @@ return array(
             'title' => 'Descritption',
         ),
 
+        'unit' => array(
+            'title' => 'Unit',
+        ),
+
+        'street_number' => array(
+            'title' => 'Street Number',
+        ),
+
+        'street_name' => array(
+            'title' => 'Street Name',
+        ),
+
+        'street_type' => array(
+            'title' => 'Street Type',
+        ),
+
+        'suburb' => array(
+            'title' => 'Suburb',
+        ),
+
+        'state' => array(
+            'title' => 'State',
+        ),
+
         'postcode' => array(
             'title' => 'Postcode',
         ),
@@ -62,10 +86,6 @@ return array(
 
         'total_ticket_number' => array(
             'title' => 'Total Ticket Number',
-        ),
-
-        'ticket_number' => array(
-            'title' => 'Ticket Left',
         ),
 
         'price' => array(
@@ -158,12 +178,6 @@ return array(
             'type' => 'number'
 
         ),
-
-        'ticket_number' => array(
-            'title' => 'Ticket Left',
-            'type' => 'number'
-        ),
-
 
         'price' => array(
             'title' => 'Price (AU$)',

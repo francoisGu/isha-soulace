@@ -70,12 +70,18 @@ class PaypalController extends BaseController
     public function payAdvertisement($advertisement_id){
         $ads_info = WorkshopAdvertisement::find($advertisement_id);
         if (!$ads_info || $ads_info['paid'] == 1) {
-            return Redirect::to('myworkshops');
+            if(! $ads_info->workshop || ! $ads_info->workshop->serviceProvider){
+                return Redirect::to('myworkshops')->withErrors('Email not found');
+            }
+
+            return Redirect::to('myworkshops')->withErrors("You've paid.");
         }
 
         $ads_type = AdvertisementType::where('type','=', $ads_info['type'])->first();
         $pay_info['item'] = 'advertisement';
         $pay_info['id'] = $advertisement_id;
+        
+        $pay_info['email'] = $ads_info->workshop->serviceProvider->email;
         //paypal config info
         $pay_info['_id'] = 'advertisement';
         $pay_info['_topic'] = $ads_type['type'].' advertisements';

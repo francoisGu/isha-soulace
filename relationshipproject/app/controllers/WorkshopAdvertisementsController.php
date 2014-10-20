@@ -73,6 +73,8 @@ class WorkshopAdvertisementsController extends \BaseController {
             $ads_info = AdvertisementType::where('type','=', $data['type'])->first();
             $data['item'] = 'advertisement';
             $data['id'] = $workshop_ads->id;
+
+            $data['email'] = $workshop_ads->workshop->serviceProvider->email;
             //paypal config info
             $data['_id'] = 'advertisement';
             $data['_topic'] = $data['type'].' advertisements';

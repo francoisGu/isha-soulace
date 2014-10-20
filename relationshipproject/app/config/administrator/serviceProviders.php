@@ -39,7 +39,7 @@ return array(
         'companyName' => array('title' => 'Company Name'),
         'first_name' => array('title' => 'First Name'),
         'last_name' => array('title' => 'Last Name'),
-        'email' => array('title'=>'email'),
+        'email' => array('title'=>'Email'),
         'price' => array( 'title' => 'Price'),
     ),
 
@@ -55,7 +55,7 @@ return array(
         'acn' => array('title' => 'ACN','type' => 'text'),
         'abn' => array('title' => 'ABN','type' => 'text'),
         // address
-        'unit' => array('title' => 'unit','type' => 'text'),
+        'unit' => array('title' => 'Unit','type' => 'text'),
         'street_number'=>array('title'=> 'Street Number','type' => 'text'),
         'street_name'=>array('title'=> 'Street Name','type' => 'text'),
         'street_type'=>array('title'=> 'Street Type','type' => 'text'),
@@ -68,7 +68,7 @@ return array(
         'companyName' => array('title' => 'Company Name','type' => 'text'),
         'first_name' => array('title' => 'First Name','type' => 'text'),
         'last_name' => array('title' => 'Last Name','type' => 'text'),
-        'email' => array('title'=>'email','type' => 'text'),
+        'email' => array('title'=>'Email','type' => 'text'),
         // 'price' => array( 
 				    //     	'title' => 'Price(AU$)',
 				    //     	'type' => 'number',

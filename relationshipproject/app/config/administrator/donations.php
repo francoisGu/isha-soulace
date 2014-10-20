@@ -44,7 +44,7 @@ return array(
         ),
 
         'email' => array(
-            'title' => 'email',
+            'title' => 'Email',
         ),
 
         'country' => array(
@@ -81,7 +81,7 @@ return array(
         ),
 
         'email' => array(
-            'title' => 'email',
+            'title' => 'Email',
             'type' => 'text'
         ),
 

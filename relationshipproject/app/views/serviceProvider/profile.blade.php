@@ -24,6 +24,13 @@
         </h3>                  
       </div>
 
+      @if(! $serviceProvider->verified)
+        <h4 style="color:red;">
+            Please wait for verifying. 
+        </h4>
+
+      @endif
+
       {{Former::open()->method('POST')->class('form-horizontal')->url('account/profile')}}
         <fieldset id="forms" disabled="disabled">
           <!-- Form Name -->
@@ -50,6 +57,9 @@
         {{ Former::number('mobile')->value($serviceProvider->mobile)->class('input-medium inputHeight form-control')->placeholder('Mobile') }}
 
         {{ Former::inline_radios('mode')->radios(array('hourly' =>array( 'name'=>'mode','checked'=>'checked'), 'session' => array('name'=>'mode', 'checked'=>''))) }}
+
+        {{ Former::number('price')->value($serviceProvider->price)->class('input-medium inputHeight form-control')->required() }}
+
          <div class="control-group controls">
           {{ Form::submit('Submit', array('class'=>'btn btn-success', 'id'=>'submit', 'style'=>'display:none;'))}}
           {{ Form::button('Cancel', array('class'=>'btn btn-success', 'id'=>'cancel', 'style'=>'display:none;', 'onclick'=>'cancelForm()'))}}

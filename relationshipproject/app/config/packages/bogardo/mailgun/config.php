@@ -25,19 +25,19 @@ return array(
 	 * Mailgun (private) API key
 	 *
 	 */
-	'api_key' => 'key-4d5bdda319b3aa0fa127451dac2a4d3a',
+	'api_key' => 'key-bd23cb3f21ef543581920b5388a94d29',
 
 	/**
 	 * Mailgun public API key
 	 *
 	 */
-	'public_api_key' => 'pubkey-cbd413e1e2055ddba7d96a4283964465',
+	'public_api_key' => 'pubkey-4a2eb61a2c02f6fa63d4d820a1766449',
 
 	/**
 	 * Domain name registered with Mailgun
 	 *
 	 */
-	'domain' => 'sandbox23b19773e31943db896a0f0295122a22.mailgun.org',
+	'domain' => 'sandbox4f3b565f177543fca18aee1886e882cd.mailgun.org',
 
 	/**
 	 * Force the from address

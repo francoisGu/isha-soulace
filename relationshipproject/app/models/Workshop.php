@@ -21,7 +21,7 @@ class Workshop extends \Eloquent {
         'start_time'            => 'required|date_format:H:i',
         'end_time'              => 'required|date_format:H:i',
         'total_ticket_number'   => 'required|integer',
-        'price'                 => 'required|integer' 
+        'price'                 => 'required|numeric' 
     
     );
 

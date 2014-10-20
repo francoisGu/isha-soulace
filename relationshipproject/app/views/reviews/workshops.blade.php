@@ -69,7 +69,7 @@
   {{ HTML::script('js/plugins/jquery.raty.min.js') }}
   <script type="text/javascript">
   $('div#custom').raty({
-    path:"/img",
+          path:"/project/relationshipproject/public/img",
     number: 5,
     start: 3,
     score: 3,

@@ -22,12 +22,8 @@ class PaymentController extends BaseController
         $status = new GetHumanStatus($token);
         $this->getPayum()->getPayment($token->getPaymentName())->execute($status);
         $_url = $this->storagePaymentAction($token, $status->getStatus());
-        echo "<script>
-            alert('Pay successfully.');
-            window.location.href='admin/ahm/panel';
-        </script>";
 
-        return Redirect::to($_url);
+        return Redirect::to($_url)->withErrors('Payment successful.');
         
         // return \Response::json(array(
         //     'status' => $status->getStatus(),

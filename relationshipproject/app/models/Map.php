@@ -178,7 +178,7 @@ mapCentre.lng())
      */
     public static function getVenue($input){
 
-        $unit = $input['unit'];
+        $unit = is_null($input['unit'])? $input['unit']: 0;
         $street_number = $input['street_number'];
         $street_name = $input['street_name'];
         $street_type = $input['street_type'];

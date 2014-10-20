@@ -71,7 +71,8 @@
   <script type="text/javascript">
   var url = 'http://localhost:8000/reviews';
   $('div#custom').raty({
-    path:"/img",
+
+    path:"/project/relationshipproject/public/img",
     number: 5,
     start: 3,
     score: 3,

@@ -24,6 +24,13 @@
 <div class="container auth">
     <h3 class="text-center">Support us with donations!  <span>Thank you!</span> </h3>
     <div id="big-form" class="well auth-box">
+
+            <ul>
+                @foreach($errors->all() as $error)
+                <li style="color:red; margin-left: 50px;">{{ $error }}</li>
+                @endforeach
+            </ul>
+
       {{Former::framework('Nude');}}
       {{Former::open()->method('POST')->url('pay-donation-post')->class('')}}
           <!-- Form Name -->

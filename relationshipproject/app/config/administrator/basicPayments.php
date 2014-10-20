@@ -15,7 +15,7 @@ return array(
      **
      ** @type string
      **/
-    'single' => 'PaymentInfo',
+    'single' => 'Payment Info',
 
     /**
      ** The class name of the Eloquent model that this config represents
@@ -33,7 +33,7 @@ return array(
 
         'id' => array('title' => 'ID'),
         'type' => array('title' => 'Type'),
-        'email' => array('title' => 'eMail'),
+        'email' => array('title' => 'Email'),
         'pay_amount' => array('title' => 'Pay Amount'),
         'item_amount' => array('title' => 'Item Amount'),
     ),
@@ -44,7 +44,7 @@ return array(
      * @type array
      */
     'edit_fields' => array(
-        'email' => array('title' => 'eMail', 'type' => 'text'),
+        'email' => array('title' => 'Email', 'type' => 'text'),
     ),
 );
 

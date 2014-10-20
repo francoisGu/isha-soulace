@@ -35,7 +35,7 @@ return array(
         'type' => array('title' =>'Type'),
         'first_name' => array('title' => 'First Name'),
         'last_name' => array('title' => 'Last Name'),
-        'email' => array('title'=>'email'),
+        'email' => array('title'=>'Email'),
     ),
 
     /**
@@ -48,7 +48,7 @@ return array(
         'type' => array('title' =>'Service Type','type' => 'text'),
         'first_name' => array('title' => 'First Name','type' => 'text'),
         'last_name' => array('title' => 'Last Name','type' => 'text'),
-        'email' => array('title'=>'email','type' => 'text'),
+        'email' => array('title'=>'Email','type' => 'text'),
     ),
 );
 

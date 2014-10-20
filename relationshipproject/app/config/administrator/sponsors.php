@@ -44,7 +44,7 @@ return array(
         ),
 
         'email' => array(
-            'title' => 'email',
+            'title' => 'Email',
         ),
 
         'country' => array(
@@ -52,11 +52,11 @@ return array(
         ),
 
         'address_home' => array(
-            'title' => 'Address 1',
+            'title' => 'Address Line 1',
         ),
 
         'address_work' => array(
-            'title' => 'Address 2',
+            'title' => 'Address Line 2',
         ),
 
         'suburb' => array(
@@ -105,7 +105,7 @@ return array(
         ),
 
         'email' => array(
-            'title' => 'email',
+            'title' => 'Email',
             'type' => 'text'
         ),
 
@@ -120,12 +120,12 @@ return array(
         ),
 
         'address_home' => array(
-            'title' => 'Address 1',
+            'title' => 'Address Line 1',
             'type' => 'text'
         ),
 
         'address_work' => array(
-            'title' => 'Address 2',
+            'title' => 'Address Line 2',
             'type' => 'text'
         ),
 

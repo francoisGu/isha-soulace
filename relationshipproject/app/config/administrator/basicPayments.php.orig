@@ -1,0 +1,91 @@
+<?php
+
+return array(
+
+    /**
+     ** Model title
+     **
+     ** @type string
+     **/
+
+    'title' => 'All Payments',
+
+    /**
+     ** The singular name of your model
+     **
+     ** @type string
+     **/
+<<<<<<< HEAD
+    'single' => 'BasicPayment',
+=======
+    'single' => 'Payment Info',
+>>>>>>> 12d364e66167e5ba02114a88663b6883252622a1
+
+    /**
+     ** The class name of the Eloquent model that this config represents
+     **
+     ** @type string
+     **/
+    'model' => 'BasicPayment',
+
+    /**
+     * The columns array
+     *
+     * @type array
+     */
+    /*'columns' => array(*/
+
+        //'id' => array('title' => 'ID', ),
+        //'type' => array('title' => 'Type', ),
+        //'email' => array('title' => 'Email', ),
+        //'pay_amount' => array('title' => 'Pay Amount', ),
+        //'item_amount' => array('title' => 'Item Amount',),
+    /*),*/
+
+    'columns' => array(
+
+<<<<<<< HEAD
+        'id' => array(
+            'title' => 'ID',
+        ),
+        'type' => array(
+            'title' => 'Type',
+        ),
+
+        'pay_amount' => array(
+            'title' => 'Pay Amount',
+        ),
+
+        'item_amount' => array(
+            'title' => 'Item Amount',
+        ),
+
+        'email' => array(
+            'title' => 'Email'
+        ),
+
+=======
+        'id' => array('title' => 'ID'),
+        'type' => array('title' => 'Type'),
+        'email' => array('title' => 'Email'),
+        'pay_amount' => array('title' => 'Pay Amount'),
+        'item_amount' => array('title' => 'Item Amount'),
+>>>>>>> 12d364e66167e5ba02114a88663b6883252622a1
+    ),
+
+    /**
+     * The edit fields array
+     *
+     * @type array
+     */
+    'edit_fields' => array(
+        'email' => array('title' => 'Email', 'type' => 'text'),
+<<<<<<< HEAD
+        'pay_amount' => array('title' => 'Pay Amount', 'type' => 'number'),
+=======
+>>>>>>> 12d364e66167e5ba02114a88663b6883252622a1
+    ),
+);
+
+
+?>

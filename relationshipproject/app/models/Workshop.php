@@ -27,6 +27,21 @@ class Workshop extends \Eloquent {
 
     protected $table = "workshops";
 
+
+    public function getStartTimeAttribute($value)
+    {
+        //$this->getAttribute('start_time')
+        //return date_format($value, 'H:i');
+        return date('H:i', strtotime($value));
+    }
+
+    public function getEndTimeAttribute($value)
+    {
+        //$this->getAttribute('end_time')
+        //return date_format($value, 'H:i');
+        return date('H:i', strtotime($value));
+    }
+
     public function workshopAdvertisement(){
         return $this->hasOne('WorkshopAdvertisement');
     }

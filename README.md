@@ -5,16 +5,17 @@ markdown file.
 
 [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-## description of project
+## Description of this project
+This project is a website for proof-of-concept that aims the support victims of domestic violence.
 
-## instructions
+## Instructions
 
 1. This instruction will help you to check out the repository on bitbucket to
 your local machine.
 
 2. Instruct you how to commit your changes of code to bitbucket.
 
-### check out repository into your local machine
+### Check out repository into your local machine
 
 ( Make sure **git** is already installed )
 
@@ -35,7 +36,7 @@ repository
 https://[username]@bitbucket.org/[username]/swen90014-relationship-project.git **
 
 
-### add, commit and push file that you change onto git
+### Add, commit and push files that you change onto git
 
 ```
 * git add "file"
@@ -76,15 +77,22 @@ you can use command below to update your repo up-to-date
 
 ###Installing the project
 You will need to install composer to manage dependencies for the project.
-* https://getcomposer.org/doc/00-intro.md
+```
+ https://getcomposer.org/doc/00-intro.md
+```
 Follow the installation instruction in the above link for your OS environment.
 
 Once you have composer installed, run "composer update" in the directory you have stored the project.
 
 Set up your database connection in "app/config/database.php".
+
 Run "php artisan migrate" to migrate the database tables.
+
 Run "php artisan serve" to deploy the website.
 
 This project uses the Laravel Framework and MySQL.
+
 You may find further help at:
-*http://laravel.com/
+```
+http://laravel.com/
+```

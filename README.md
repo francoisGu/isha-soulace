@@ -1,4 +1,4 @@
-# ISHASoulAce
+# Isha SoulAce
 
 This is the markdown cheatsheet which is useful when you want to edit
 markdown file.
@@ -32,7 +32,7 @@ repository
 "clone repo instructions")
 
 ** git clone
-https://YourUsername@bitbucket.org/litao_shen/swen90014-relationship-project.git **
+https://[username]@bitbucket.org/[username]/swen90014-relationship-project.git **
 
 
 ### add, commit and push file that you change onto git
@@ -54,7 +54,7 @@ here](https://confluence.atlassian.com/display/BITBUCKET/Clone+Your+Git+Repo+and
 you can use command below to update your repo up-to-date
 
 ```
-* git pull https://litao_shen@bitbucket.org/litao_shen/swen30007_group9 master
+* git pull https://[username]@bitbucket.org/[username]/swen30007_group9 master
 * or, git pull 
 ```
 
@@ -73,3 +73,18 @@ you can use command below to update your repo up-to-date
 [for more information about tag, click here](http://git-scm.com/book/en/Git-Basics-Tagging)
                 
 ### Running test file
+
+###Installing the project
+You will need to install composer to manage dependencies for the project.
+* https://getcomposer.org/doc/00-intro.md
+Follow the installation instruction in the above link for your OS environment.
+
+Once you have composer installed, run "composer update" in the directory you have stored the project.
+
+Set up your database connection in "app/config/database.php".
+Run "php artisan migrate" to migrate the database tables.
+Run "php artisan serve" to deploy the website.
+
+This project uses the Laravel Framework and MySQL.
+You may find further help at:
+*http://laravel.com/

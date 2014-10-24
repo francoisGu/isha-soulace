@@ -31,9 +31,9 @@ repository
 
 ![alt text](https://bitbucket.org/litao_shen/swen30007_group9/raw/d90135153ea8f5cf40c187dfb666560c97632ead/clone_repo.png
 "clone repo instructions")
-
-** git clone
-https://[username]@bitbucket.org/[username]/swen90014-relationship-project.git **
+```
+git clone https://[username]@bitbucket.org/[username]/swen90014-relationship-project.git
+```
 
 
 ### Add, commit and push files that you change onto git
@@ -95,4 +95,6 @@ This project uses the Laravel Framework and MySQL.
 You may find further help at:
 ```
 http://laravel.com/
+
+http://www.mysql.com/
 ```

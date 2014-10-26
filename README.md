@@ -115,6 +115,7 @@ Depending on your OS environment, you can choose to install one of the following
 + Cross-platform - XAMPP https://www.apachefriends.org/index.html
 
 Follow the download and install instructions in the link corresponding to your choice above.
+
 You can also find further help at these links.
 
 ###Setting up database
@@ -137,6 +138,8 @@ Import the folder "postcode_db" into your database. It will create a table for p
 Run "php artisan migrate" to migrate other database tables.
 
 Run "php artisan db:seed" to seed the database.
+
+You can also run "php artisan db:seed --class=UserTableSeeder" to run specific seeder classes which are stored in "relationshipproject/app/databas/seeds/".
 
 If you need further help, you can refer to the links above for the web server solution you are using.
 

@@ -107,12 +107,12 @@ Depending on your OS environment, you can choose to install one of the following
 + Cross-platform - XAMPP https://www.apachefriends.org/index.html
 
 Follow the download and install instructions in the link corresponding to your choice above.
-You also find further help at these links.
+You can also find further help at these links.
 
 ###Setting up database
 Create a database in MySQL.
 
-Set up your database connection in "app/config/database.php" in the "mysql" array.
+Set up your database connection in "relationshipproject/app/config/database.php" in the "mysql" array.
 
 Example:
 
@@ -129,3 +129,6 @@ Import the folder "postcode_db" into your database. It will create a table for p
 Run "php artisan migrate" to migrate other database tables.
 
 If you need further help, you can refer to the links above for the web server solution you are using.
+
+###Other
+You can turn on/off debug mode in "relationshipproject/app/config/app.php".

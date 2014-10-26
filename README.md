@@ -9,11 +9,19 @@ markdown file.
 This project is a website for proof-of-concept that aims the support victims of domestic violence.
 
 ## Instructions
+This instruction will help you will help with the following:
 
-1. This instruction will help you to check out the repository on bitbucket to
-your local machine.
+1.  Check out the repository on Bitbucket to your local machine.
 
-2. Instruct you how to commit your changes of code to bitbucket.
+2. Instruct you how to commit your changes of code to Bitbucket.
+
+3. Install the web app.
+
+4. Install a web server solution.
+
+5. Set up the database.
+
+6. Any other useful things.
 
 ### Check out repository into your local machine
 

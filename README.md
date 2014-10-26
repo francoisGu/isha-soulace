@@ -72,8 +72,6 @@ you can use command below to update your repo up-to-date
                 git push origin --tags
 ```
 [for more information about tag, click here](http://git-scm.com/book/en/Git-Basics-Tagging)
-                
-### Running test file
 
 ###Installing the project
 You will need to install composer to manage dependencies for the project.
@@ -82,13 +80,11 @@ You will need to install composer to manage dependencies for the project.
 ```
 Follow the installation instruction in the above link for your OS environment.
 
-Once you have composer installed, run "composer update" in the directory you have stored the project.
+Once you have composer installed, run "composer update" in the directory you have stored the project. This will install dependency packages for the project.
 
-Set up your database connection in "app/config/database.php".
+Set up your database. See "Setting up database" below for more detail.
 
-Run "php artisan migrate" to migrate the database tables.
-
-Run "php artisan serve" to deploy the website.
+Run "php artisan serve" to deploy the website. Make sure to start the server before this.
 
 This project uses the Laravel Framework and MySQL.
 
@@ -98,3 +94,38 @@ http://laravel.com/
 
 http://www.mysql.com/
 ```
+
+###Installing web server solution
+If you don't already, you will need to install an Apache server, PHP and MySQL.
+
+Depending on your OS environment, you can choose to install one of the following options:
+
++ Mac OS - MAMP http://www.mamp.info/en/
+
++ Windows - WAMP http://www.wampserver.com/en/
+
++ Cross-platform - XAMPP https://www.apachefriends.org/index.html
+
+Follow the download and install instructions in the link corresponding to your choice above.
+You also find further help at these links.
+
+###Setting up database
+Create a database in MySQL.
+
+Set up your database connection in "app/config/database.php" in the "mysql" array.
+
+Example:
+
++ host: localhost (name of your host)
+
++ database: relationship (name of the database you created)
+
++ username: root (your username)
+
++ password: root (your password)
+
+Import the folder "postcode_db" into your database. It will create a table for postcodes.
+
+Run "php artisan migrate" to migrate other database tables.
+
+If you need further help, you can refer to the links above for the web server solution you are using.

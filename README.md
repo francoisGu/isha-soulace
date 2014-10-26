@@ -128,6 +128,8 @@ Import the folder "postcode_db" into your database. It will create a table for p
 
 Run "php artisan migrate" to migrate other database tables.
 
+Run "php artisan db:seed" to seed the database.
+
 If you need further help, you can refer to the links above for the web server solution you are using.
 
 ###Other
